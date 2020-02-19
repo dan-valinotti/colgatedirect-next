@@ -1,0 +1,11 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "452441383350.dkr.ecr.us-east-2.amazonaws.com/colgatedirect-next:latest",
+    "Update": "true"
+  },
+  "Ports": [{
+    "ContainerPort": "3000"
+  }],
+  "Logging": "/var/log/nextjs"
+}
