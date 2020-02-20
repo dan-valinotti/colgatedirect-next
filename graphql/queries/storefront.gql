@@ -1,0 +1,17 @@
+query allProducts {
+    products(first: 20){
+        edges{
+        node{
+            id
+            title
+            variants(first: 5){
+            edges{
+                node{
+                id
+                }
+            }
+            }
+        }
+        }
+    }
+}

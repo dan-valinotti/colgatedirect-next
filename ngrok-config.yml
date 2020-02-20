@@ -1,0 +1,11 @@
+region: us
+root_cas: host
+update: true
+console_ui: true
+
+tunnels:
+    dev:
+        proto: http
+        port: 8080
+        inspect: true
+        
