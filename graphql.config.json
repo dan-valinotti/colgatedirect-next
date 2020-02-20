@@ -1,0 +1,21 @@
+{
+	"overwrite": true,
+	"generates": {
+		"models/shopify.model.ts": {
+			"schema": [
+				{
+					"https://shop.colgate.com/api/graphql": {
+						"headers": {
+							"X-Shopify-Storefront-Access-Token": "175a45bbfd272d47d276cad711ea3cba"
+						}
+					}
+				}
+			],
+			"documents": "services/**/*.{ts,tsx}",
+			"plugins": [
+				"typescript",
+				"typescript-operations"
+			]
+		}
+	}
+}

@@ -1,19 +1,19 @@
 import App from 'next/app'
-import { ApolloProvider } from '@apollo/react-hooks'
-
+import { ApolloProvider } from '@apollo/react-hooks';
+import services from '../services';
+import isServer from 'detect-node';
 import apollo from '~lib/apolloClient'
-import '~styles/main.scss'
+import withRedux from '../hocs/withRedux';
 
 class MyApp extends App {
-  render() {
-    const { Component, pageProps } = this.props
+  public static async getInitialProps({ Component, ctx }) {
+    const { req, res, store } = ctx;
+    const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
 
-    return (
-      <ApolloProvider client={apollo}>
-        <Component {...pageProps} />
-      </ApolloProvider>
-    )
+    // if (isServer) await store.dispatch(services.products.getFirstPage(req, res));
+
+    return { pageProps };
   }
 }
 
-export default MyApp
+export default withRedux(MyApp);
