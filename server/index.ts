@@ -33,10 +33,6 @@ nextApp.prepare().then(() => {
   //start apollo server
   apollo.applyMiddleware({ app: server })
 
-  server.get('/products', (req, res) => {
-    
-  })
-
   server.get('*', (req, res) => handle(req, res))
   // express().use(handler).listen(3000) //routes handle way
   server.listen(port, err => {

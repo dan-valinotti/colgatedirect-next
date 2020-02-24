@@ -27,8 +27,6 @@ nextApp.prepare().then(() => {
     server.use(compression_1.default());
     //start apollo server
     apollo_1.default.applyMiddleware({ app: server });
-    server.get('/products', (req, res) => {
-    });
     server.get('*', (req, res) => handle(req, res));
     // express().use(handler).listen(3000) //routes handle way
     server.listen(port, err => {

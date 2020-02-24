@@ -1,7 +1,9 @@
+// REDUX - Product action definition
 import { gql } from 'apollo-boost';
-import { actions } from '../store';
 import { shopify } from './apis.service';
 import { ProductsQueryVariables } from '../models';
+import * as actions from '../store/products/actions'
+import { ProductActionTypes } from '../store/products/types';
 
 const PRODUCTS_FRAGMENT = gql`
   fragment products on ProductConnection {
@@ -40,8 +42,8 @@ const PRODUCTS_FRAGMENT = gql`
 
 export const PRODUCTS_QUERY = gql`
   ${PRODUCTS_FRAGMENT}
-  query products($cursor: String, $query: String!, $sortKey: ProductSortKeys!, $reverse: Boolean!) {
-    products(first: 12, after: $cursor, query: $query, sortKey: $sortKey, reverse: $reverse) {
+  query products($reverse: Boolean!) {
+    products(first: 12, reverse: $reverse) {
       ...products
     }
   }
@@ -50,16 +52,16 @@ export const PRODUCTS_QUERY = gql`
 export function getFirstPage(variables: ProductsQueryVariables) {
   return async dispatch => {
     try {
-      dispatch(actions['products'].getFirstPageRequest());
+      dispatch(actions.getProducts());
 
       const { data } = await shopify.query({
         query: PRODUCTS_QUERY,
         variables
       });
 
-      dispatch(actions['products'].getFirstPageSuccess({ data: data.products }));
+      dispatch(actions.getProductsSuccess({ type: ProductActionTypes.GET_PRODUCTS_SUCCESS, loading: false, data: data.products }));
     } catch (error) {
-      dispatch(actions['products'].getFirstPageFailure({ error }));
+      dispatch(actions.getProductsFailure({ type: ProductActionTypes.GET_PRODUCTS_FAILURE, loading: false, error }));
     }
   };
 }
@@ -67,16 +69,16 @@ export function getFirstPage(variables: ProductsQueryVariables) {
 export function getNextPage(variables: ProductsQueryVariables) {
   return async dispatch => {
     try {
-      dispatch(actions['products'].getNextPageRequest());
+      dispatch(actions.getProducts());
 
       const { data } = await shopify.query({
         query: PRODUCTS_QUERY,
         variables
       });
 
-      dispatch(actions['products'].getNextPageSuccess({ data: data.products }));
+      dispatch(actions.getProductsSuccess({ type: ProductActionTypes.GET_PRODUCTS_SUCCESS, loading: false, data: data.products }));
     } catch (error) {
-      dispatch(actions['products'].getNextPageFailure({ error }));
+      dispatch(actions.getProductsFailure({ type: ProductActionTypes.GET_PRODUCTS_FAILURE, loading: false, error }));
     }
   };
 }

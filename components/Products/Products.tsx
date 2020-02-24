@@ -1,32 +1,42 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { ProductSortKeys } from '../../models/shopify.model';
-import util from 'util';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector, connect, ConnectedProps } from 'react-redux';
 import { ProductsState } from '../../store/products.slice';
+import { AppState } from '../../store/index';
+import { getFirstPage } from '../../services/products.service';
+import { ProductsFragment } from '../../models/shopify.model';
+import { ProductActionTypes } from '../../store/products/types';
 
-interface Props {
+type Props = ReduxProps & {
     query: {
         query: string,
-        reverse: boolean,
-        sortKey: ProductSortKeys,
-        sortIndex: number
+        reverse: boolean
     }
 };
 
-function Products({ query }: Props) {
-    const dispatch = useDispatch();
-    const { firstPage, nextPage, data }: ProductsState = useSelector(({ products }) => products);
+const variables = {
+    cursor: '',
+    query: '',
+    sortKey: null,
+    reverse: false
+}
+
+function Products(props: Props) {
+    const { loading, error, data }: ProductsState = props;
+    let products: ProductsFragment = undefined;
     const hasNextPage = data ? data.pageInfo.hasNextPage : false;
     let gridListCols = 4;
+    const dispatch = useDispatch();
+    
+    console.log(props);
+    
+    useEffect(() => {
+        dispatch(getFirstPage(variables));
+    }, [])
 
     return (
         <div>
-            {firstPage.loading && (
+            {loading && (
                 <div>Loading...</div>
-            )}
-
-            {firstPage.error && (
-                <p>{firstPage.error.message}</p>
             )}
 
             {data && (
@@ -55,4 +65,18 @@ function Products({ query }: Props) {
     );
 }
 
-export default Products;
+const mapStateToProps = (state: AppState) => ({
+    loading: state.products.loading,
+    error: state.products.error,
+    data: state.products.data
+});
+
+const mapDispatchToProps = {
+    getFirstPage: () => ({ type: ProductActionTypes.GET_PRODUCTS })
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type ReduxProps = ConnectedProps<typeof connector>;
+
+export default connector(Products);
