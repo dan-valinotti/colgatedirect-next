@@ -83,6 +83,6 @@ const Home = () => (
       }
     `}</style>
   </div>
-)
+);
 
 export default Home

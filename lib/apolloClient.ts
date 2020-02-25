@@ -7,13 +7,13 @@ import { ApolloLink } from 'apollo-link'
 import { onError } from 'apollo-link-error'
 import { HttpLink } from 'apollo-link-http'
 
-const { GRAPHQL_URL } = process.env
+const { GRAPHQL_URL } = process.env;
 
 const httpLink = new HttpLink({
   uri: GRAPHQL_URL,
   fetch: fetch,
   credentials: 'same-origin',
-})
+});
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
@@ -21,18 +21,18 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
       console.log(
         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
       )
-    )
+    );
 
   if (networkError) console.log(`[Network error]: ${networkError}`)
-})
+});
 
-const link = ApolloLink.from([errorLink, httpLink])
-const cache = new InMemoryCache()
+const link = ApolloLink.from([errorLink, httpLink]);
+const cache = new InMemoryCache();
 
 const apollo = new ApolloClient({
   ssrMode: true,
   link,
   cache,
-})
+});
 
 export default apollo

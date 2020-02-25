@@ -1,14 +1,13 @@
 import { combineReducers, configureStore, Store } from '@reduxjs/toolkit';
 // import products from './products.slice';
-import { ProductActionTypes } from '../services/actions/products.actions';
-import {productsReducer} from '../store/products/reducers';
+// import {productsReducer} from '../store/products/reducers';
 
 // export const actions = {
 //     products: products.actions
 // };
 
 const rootReducer = combineReducers({
-    products: productsReducer
+    // products: productsReducer
 });
 
 export function createStore(initState = {}): Store {
@@ -16,7 +15,7 @@ export function createStore(initState = {}): Store {
         reducer: rootReducer,
         preloadedState: initState
     })
-};
+}
 
 export type AppState = ReturnType<typeof rootReducer>;
 export default rootReducer;

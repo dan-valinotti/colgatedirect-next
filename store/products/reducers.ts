@@ -31,6 +31,6 @@ const reducer: Reducer<ProductsState> = (state = initialState, action) => {
         default:
             return state;
     }
-}
+};
 
 export {reducer as productsReducer};

@@ -14,14 +14,14 @@ export interface ProductsState {
     loading: boolean,
     error: Error,
     data: ProductsFragment
-};
+}
 
 interface ProductsAction {
     payload: {
         error?: Error,
         data?: ProductsFragment
     }
-};
+}
 
 const initialState = {
     // firstPage: {

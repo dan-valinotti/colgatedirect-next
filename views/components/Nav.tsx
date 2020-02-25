@@ -6,9 +6,9 @@ const links = [
   { href: 'https://github.com/zeit/next.js', label: 'GitHub' },
 ].map(link => {
   //@ts-ignore
-  link.key = `nav-link-${link.href}-${link.label}`
+  link.key = `nav-link-${link.href}-${link.label}`;
   return link
-})
+});
 
 const Nav = () => (
   <nav>
@@ -53,6 +53,6 @@ const Nav = () => (
       }
     `}</style>
   </nav>
-)
+);
 
 export default Nav

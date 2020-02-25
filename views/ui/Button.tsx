@@ -10,6 +10,6 @@ const Button = ({ loading = false, children, ...props }: IProps) => (
     {children}
     {loading && <span>Loading</span>}
   </button>
-)
+);
 
 export default Button
