@@ -19,6 +19,6 @@ const MainLayout: React.FC<IProps> = ({ title, children }) => (
 
     <Footer />
   </div>
-)
+);
 
 export default MainLayout

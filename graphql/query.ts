@@ -6,4 +6,4 @@ export const meQuery = gql`
       id
     }
   }
-`
+`;

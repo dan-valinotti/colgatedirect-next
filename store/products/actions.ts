@@ -1,6 +1,5 @@
 import { action } from 'typesafe-actions';
-import { ProductsState, ProductActionTypes, ProductBaseAction, GetProductsAction, GetProductsSuccess, GetProductsFailure } from './types';
-import { ProductsFragment } from '../../models/shopify.model';
+import { ProductActionTypes, GetProductsSuccess, GetProductsFailure } from './types';
 
 export const getProducts = () => action(ProductActionTypes.GET_PRODUCTS);
 

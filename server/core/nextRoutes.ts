@@ -1,4 +1,4 @@
-const nextRoutes = require('next-routes')
+const nextRoutes = require('next-routes');
 const routes = nextRoutes().add({
   name: 'userRoute',
   pattern: '/user/:username',

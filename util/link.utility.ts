@@ -17,7 +17,7 @@ function link(args: LinkArgs) {
   const href = `${args.path}?${query}`;
   const as = `${args.path}${params}`;
 
-  Router.push(href, as);
+  Router.push(href, as).then(r => console.log(r));
 }
 
 export default link;

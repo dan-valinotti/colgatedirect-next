@@ -1,15 +1,15 @@
-require('dotenv').config()
-const path = require('path')
-const Dotenv = require('dotenv-webpack')
-const withCSS = require('@zeit/next-css')
-const withSass = require('@zeit/next-sass')
-const withImages = require('next-images')
+require('dotenv').config();
+const path = require('path');
+const Dotenv = require('dotenv-webpack');
+const withCSS = require('@zeit/next-css');
+const withSass = require('@zeit/next-sass');
+const withImages = require('next-images');
 
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 
 const configureWebpack = (config, { dev }) => {
-	config.plugins = config.plugins || []
+	config.plugins = config.plugins || [];
 
 	config.plugins.push(
 		// Read the .env file
@@ -35,13 +35,13 @@ const configureWebpack = (config, { dev }) => {
 				name: '[name].[ext]'
 			}
 		}
-	})
+	});
 	
 	config.module.rules.push({
 		test: /\.(graphql|gql)$/,
 		exclude: /node_modules/,
 		loader: 'graphql-tag/loader'
-	})
+	});
 
 	if (dev) {
 		config.module.rules.push({
@@ -61,4 +61,4 @@ module.exports = withSass(
 			webpack: configureWebpack
 		})
 	)
-)
+);
