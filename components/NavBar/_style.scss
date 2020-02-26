@@ -1,0 +1,12 @@
+.navbar-drawer {
+  width: 300px;
+
+  &--header {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
+
+#cart-btn {
+  margin-left: auto;
+}

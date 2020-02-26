@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { ProductsType, PRODUCTS_QUERY } from './_types';
 import "./_style.scss"
 import {Button, Grid, Paper, Typography} from "@material-ui/core";
+import ProductThumbnail from "../ProductThumbnail/ProductThumbnail";
 
 type Props = {
     query: string,
@@ -18,8 +19,6 @@ function Products(props: Props) {
         PRODUCTS_QUERY,
         { variables: props.variables }
     );
-    // console.log(props.query);
-    console.log(loading, error, data);
 
     return (
         <div>
@@ -46,16 +45,14 @@ function Products(props: Props) {
                             if (imageSrc !== "") {
                                 return (
                                     <Grid item xs={3}>
-                                        <Paper className={"product-container"}>
-                                            <div className={"product-img-thumb"}>
-                                                <img src={imageSrc} alt={altText}/>
-                                            </div>
-                                            <Typography variant={"subtitle2"} className={"product-title"}>{node.title}</Typography>
-                                            <Typography variant={"body2"} className={"product-price"}>${node.priceRange.minVariantPrice.amount}</Typography>
-                                            <div className={"product-atc-container"}>
-                                                <Button className={"atc-btn"} variant={"contained"} color={"primary"}>Add to cart</Button>
-                                            </div>
-                                        </Paper>
+                                        <ProductThumbnail
+                                            id={"1"}
+                                            title={node.title}
+                                            priceRange={node.priceRange}
+                                            handle={"handle"}
+                                            imageSrc={imageSrc}
+                                            altText={altText}
+                                        />
                                     </Grid>
                                 )
                             }
