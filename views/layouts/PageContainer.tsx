@@ -16,7 +16,7 @@ type Props = {
 
 const PageContainer: FunctionComponent<Props> = (props : Props) => {
     return (
-        <Container maxWidth={props.size}>
+        <Container maxWidth={props.size} style={{ paddingTop: 45 }}>
             {props.children}
         </Container>
     );
