@@ -11,11 +11,12 @@ export enum PageSize {
 
 type Props = {
   size: PageSize;
+  paddingTop: number;
   children: ReactNode;
 };
 
-const PageContainer: FunctionComponent<Props> = ({ size, children }: Props) => (
-  <Container maxWidth={size} style={{ paddingTop: 45 }}>
+const PageContainer: FunctionComponent<Props> = ({ size, paddingTop, children }: Props) => (
+  <Container maxWidth={size} style={{ paddingTop }}>
     { children }
   </Container>
 );
