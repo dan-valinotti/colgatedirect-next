@@ -1,22 +1,16 @@
 import React from 'react';
 import Head from 'next/head';
-import Products from '../components/Products/Products';
-import { ProductSortKeys } from '../models';
+import { useRouter } from 'next/router';
 import { withApollo } from '../services/apollo';
 import PageContainer, { PageSize } from '../views/layouts/PageContainer';
 import NavBar from '../components/NavBar/NavBar';
+import PDPComponent from '../components/PDPComponent/PDPComponent';
 
-interface Props {
-  query: string;
-  reverse: boolean;
-  sortKey: ProductSortKeys;
-  sortIndex: number;
-  variables: object;
-}
+const ProductPage = () => {
+  const router = useRouter();
+  const { pid } = router.query;
+  console.log(pid);
 
-function ProductsPage({
-  query, reverse, sortKey, variables,
-}: Props) {
   return (
     <>
       <Head>
@@ -25,10 +19,10 @@ function ProductsPage({
       </Head>
       <NavBar items={['test']} />
       <PageContainer size={PageSize.large}>
-        <Products query={query} reverse={reverse} sortKey={sortKey} variables={variables} />
+        <PDPComponent product="1" />
       </PageContainer>
     </>
   );
-}
+};
 
-export default withApollo({ ssr: true })(ProductsPage);
+export default withApollo({ ssr: true })(ProductPage);

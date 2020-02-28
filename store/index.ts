@@ -7,14 +7,14 @@ import { combineReducers, configureStore, Store } from '@reduxjs/toolkit';
 // };
 
 const rootReducer = combineReducers({
-    // products: productsReducer
+  // products: productsReducer
 });
 
 export function createStore(initState = {}): Store {
-    return configureStore({
-        reducer: rootReducer,
-        preloadedState: initState
-    })
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState: initState,
+  });
 }
 
 export type AppState = ReturnType<typeof rootReducer>;

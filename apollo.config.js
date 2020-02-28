@@ -5,13 +5,13 @@ const url = Object.keys(shopify)[0];
 const { headers } = shopify[url];
 
 export default {
-    client: {
-        service: {
-            name: 'shopify',
-            url,
-            headers
-        },
-        excludes: ['**/node_modules/**/*'],
-        includes: ['**/*.{ts,tsx}'] 
-    }
-}
+  client: {
+    service: {
+      name: 'shopify',
+      url,
+      headers,
+    },
+    excludes: ['**/node_modules/**/*'],
+    includes: ['**/*.{ts,tsx}'],
+  },
+};
