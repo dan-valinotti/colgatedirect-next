@@ -1,4 +1,4 @@
-import App from 'next/app'
+import App from 'next/app';
 import 'isomorphic-unfetch';
 import 'typeface-roboto';
 import '../styles/main.scss';

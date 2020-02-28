@@ -3,9 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     // Query
     Query: {
-        clients: () => {
-            return [{ name: 'test' }];
-        },
+        clients: () => [{ name: 'test' }],
         client: () => { },
     },
     // Mutation

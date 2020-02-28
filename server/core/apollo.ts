@@ -1,7 +1,8 @@
-import { ApolloServer } from 'apollo-server-express'
+/* eslint-disable */
+import { ApolloServer } from 'apollo-server-express';
 
-import typeDefs from '~server/graphql/typeDefs'
-import resolvers from '~server/graphql/resolvers'
+import typeDefs from '~server/graphql/typeDefs';
+import resolvers from '~server/graphql/resolvers';
 
 const { PORT = 3000 } = process.env;
 
@@ -15,4 +16,4 @@ const apollo = new ApolloServer({
   playground,
 });
 
-export default apollo
+export default apollo;

@@ -1,0 +1,39 @@
+.product-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 325px;
+  padding: 10px;
+
+  .product-img-thumb {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    margin-bottom: 15px;
+
+    img {
+      width: auto;
+      height: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  .product-title {
+    text-align: center;
+    padding: 0 5px 15px;
+    flex-basis: 25%;
+  }
+  .product-price {
+    text-align: center;
+    flex-basis: 25%;
+  }
+  .product-atc-container {
+    display: flex;
+
+    button, a {
+      margin: 0 auto 15px;
+      flex-basis: 46%;
+    }
+  }
+}

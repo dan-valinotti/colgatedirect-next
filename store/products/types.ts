@@ -1,38 +1,38 @@
-import { ProductsFragment } from "models";
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
+import { ProductsFragment } from '../../models';
 
 export interface ProductsState {
-    loading: boolean,
-    error: Error,
-    data: ProductsFragment
+  loading: boolean;
+  error: Error;
+  data: ProductsFragment;
 }
 
 export enum ProductActionTypes {
-    GET_PRODUCT = 'GET_PRODUCT',
-    GET_PRODUCTS = 'GET_PRODUCTS',
-    GET_PRODUCTS_SUCCESS = 'GET_PRODUCTS_SUCCESS',
-    GET_PRODUCTS_FAILURE = 'GET_PRODUCTS_FAILURE'
+  GET_PRODUCT = 'GET_PRODUCT',
+  GET_PRODUCTS = 'GET_PRODUCTS',
+  GET_PRODUCTS_SUCCESS = 'GET_PRODUCTS_SUCCESS',
+  GET_PRODUCTS_FAILURE = 'GET_PRODUCTS_FAILURE'
 }
 
 export interface ProductBaseAction {
-    type: ProductActionTypes
+  type: ProductActionTypes;
 }
 
 export interface GetProductsAction {
-    type: ProductActionTypes.GET_PRODUCTS,
-    loading: true,
-    data: ProductsFragment
+  type: ProductActionTypes.GET_PRODUCTS;
+  loading: true;
+  data: ProductsFragment;
 }
 
 export interface GetProductsSuccess {
-    type: ProductActionTypes.GET_PRODUCTS_SUCCESS,
-    loading: false,
-    data: ProductsFragment
+  type: ProductActionTypes.GET_PRODUCTS_SUCCESS;
+  loading: false;
+  data: ProductsFragment;
 }
 export interface GetProductsFailure {
-    type: ProductActionTypes.GET_PRODUCTS_FAILURE,
-    loading: false,
-    error: Error
+  type: ProductActionTypes.GET_PRODUCTS_FAILURE;
+  loading: false;
+  error: Error;
 }
 
 const PRODUCTS_FRAGMENT = gql`

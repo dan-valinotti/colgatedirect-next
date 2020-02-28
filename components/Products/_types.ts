@@ -1,5 +1,5 @@
-import gql from "graphql-tag";
-import { ProductPriceRange } from "models";
+import gql from 'graphql-tag';
+import { ProductPriceRange } from '../../models';
 
 export const PRODUCTS_QUERY = gql`
     query ProductsQuery($cursor: String){
@@ -37,29 +37,29 @@ export const PRODUCTS_QUERY = gql`
 `;
 
 export interface ProductsType {
-    products: {
-        edges: [
-            {
+  products: {
+    edges: [
+      {
+        node: {
+          id: string;
+          title: string;
+          handle: string;
+          description: string;
+          images: {
+            edges: [
+              {
                 node: {
-                    id: string,
-                    title: string,
-                    handle: string,
-                    description: string,
-                    images: {
-                        edges: [
-                            {
-                                node: {
-                                    id: string,
-                                    originalSrc: string,
-                                    transformedSrc: string,
-                                    altText: string
-                                }
-                            }
-                        ]
-                    }
-                    priceRange: ProductPriceRange
-                }
-            }
-        ]
-    }
+                  id: string;
+                  originalSrc: string;
+                  transformedSrc: string;
+                  altText: string;
+                };
+              }
+            ];
+          };
+          priceRange: ProductPriceRange;
+        };
+      }
+    ];
+  };
 }
