@@ -7,6 +7,7 @@ import next from 'next';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import compression from 'compression';
+import cookieParser from 'cookie-parser';
 
 import apollo from '~server/core/apollo';
 
@@ -25,6 +26,9 @@ nextApp.prepare().then(() => {
 
   // security
   server.use(helmet());
+
+  // cookies
+  server.use(cookieParser());
 
   // Generate logs
   server.use(

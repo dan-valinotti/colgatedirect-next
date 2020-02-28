@@ -24,7 +24,7 @@ function ProductsPage({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <NavBar items={['test']} />
-      <PageContainer size={PageSize.large}>
+      <PageContainer paddingTop={45} size={PageSize.large}>
         <Products query={query} reverse={reverse} sortKey={sortKey} variables={variables} />
       </PageContainer>
     </>
