@@ -1,14 +1,13 @@
-import React from 'react'
-import Head from 'next/head'
+import React, { FunctionComponent } from 'react';
+import Head from 'next/head';
+import Footer from '../components/Footer';
 
-import Footer from '~views/components/Footer'
+type Props = {
+  title?: string;
+  children: React.ReactNode;
+};
 
-interface IProps {
-  title?: string
-  children: React.ReactNode
-}
-
-const MainLayout: React.FC<IProps> = ({ title, children }) => (
+const MainLayout: FunctionComponent<Props> = ({ title, children }: Props) => (
   <div>
     <Head>
       <title>{title}</title>
@@ -21,4 +20,4 @@ const MainLayout: React.FC<IProps> = ({ title, children }) => (
   </div>
 );
 
-export default MainLayout
+export default MainLayout;

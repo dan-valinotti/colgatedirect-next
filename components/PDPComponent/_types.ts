@@ -1,33 +1,23 @@
 import gql from 'graphql-tag';
-import { ProductPriceRange } from '../../models';
 
-export const PRODUCTS_QUERY = gql`
-    query ProductsQuery($cursor: String){
-        products(first: 20, after: $cursor){
-            edges{
-                node{
-                    id
-                    title
+export const PRODUCT_INFO_QUERY = gql`
+    query ProductDetailQuery($query:String){
+        products(first:1,query:$query){
+            edges {
+                node {
                     handle
+                    title
                     description
-                    images(first: 1) {
-                        edges {
-                            node {
-                                id
-                                originalSrc
+                    images(first:1){
+                        edges{
+                            node{
                                 transformedSrc
-                                altText
                             }
                         }
                     }
                     priceRange {
-                        minVariantPrice {
+                        minVariantPrice{
                             amount
-                            currencyCode
-                        }
-                        maxVariantPrice {
-                            amount
-                            currencyCode
                         }
                     }
                 }
@@ -36,7 +26,15 @@ export const PRODUCTS_QUERY = gql`
     }
 `;
 
-export interface ProductsType {
+export interface TransformedProduct {
+  handle: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  price: string;
+}
+
+export interface ProductDetails {
   products: {
     edges: [
       {
@@ -57,7 +55,11 @@ export interface ProductsType {
               }
             ];
           };
-          priceRange: ProductPriceRange;
+          priceRange: {
+            minVariantPrice: {
+              amount: string;
+            };
+          };
         };
       }
     ];

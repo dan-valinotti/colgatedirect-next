@@ -1,13 +1,11 @@
 export default {
   // Query
   Query: {
-    clients: () => {
-      return [{ name: 'test' }]
-    },
+    clients: () => [{ name: 'test' }],
     client: () => {},
   },
   // Mutation
   Mutation: {
     addClient: () => {},
   },
-}
+};

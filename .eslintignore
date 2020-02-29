@@ -1,0 +1,9 @@
+dist
+tests
+server
+store
+models
+.next
+
+*.config.js
+*.js
