@@ -1,3 +1,4 @@
+/* eslint-disable */
 export type Maybe<T> = T | null;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -3225,62 +3226,62 @@ export type PricingValue = PricingPercentageValue | MoneyV2;
  * customization of another product or an extended warranty).
  */
 export type Product = Node &
-  HasMetafields & {
-    __typename?: 'Product';
-    /** Whether the product is available on the Online Store channel and in stock. */
-    availableForSale: Scalars['Boolean'];
-    /** List of collections a product belongs to. */
-    collections: CollectionConnection;
-    /** The date and time when the product was created. */
-    createdAt: Scalars['DateTime'];
-    /** Stripped description of the product, single line with HTML tags removed. */
-    description: Scalars['String'];
-    /** The description of the product, complete with HTML formatting. */
-    descriptionHtml: Scalars['HTML'];
-    /** A human-friendly unique string for the Product automatically generated from its title.
+HasMetafields & {
+  __typename?: 'Product';
+  /** Whether the product is available on the Online Store channel and in stock. */
+  availableForSale: Scalars['Boolean'];
+  /** List of collections a product belongs to. */
+  collections: CollectionConnection;
+  /** The date and time when the product was created. */
+  createdAt: Scalars['DateTime'];
+  /** Stripped description of the product, single line with HTML tags removed. */
+  description: Scalars['String'];
+  /** The description of the product, complete with HTML formatting. */
+  descriptionHtml: Scalars['HTML'];
+  /** A human-friendly unique string for the Product automatically generated from its title.
      * They are used by the Liquid templating language to refer to objects.
      */
-    handle: Scalars['String'];
-    /** Globally unique identifier. */
-    id: Scalars['ID'];
-    /** List of images associated with the product. */
-    images: ImageConnection;
-    /** The metafield associated with the resource. */
-    metafield?: Maybe<Metafield>;
-    /** A paginated list of metafields associated with the resource. */
-    metafields: MetafieldConnection;
-    /** The online store URL for the product.
+  handle: Scalars['String'];
+  /** Globally unique identifier. */
+  id: Scalars['ID'];
+  /** List of images associated with the product. */
+  images: ImageConnection;
+  /** The metafield associated with the resource. */
+  metafield?: Maybe<Metafield>;
+  /** A paginated list of metafields associated with the resource. */
+  metafields: MetafieldConnection;
+  /** The online store URL for the product.
      * A value of `null` indicates that the product is not published to the Online Store sales channel.
      */
-    onlineStoreUrl?: Maybe<Scalars['URL']>;
-    /** List of custom product options (maximum of 3 per product). */
-    options: Array<ProductOption>;
-    /** List of price ranges in the presentment currencies for this shop. */
-    presentmentPriceRanges: ProductPriceRangeConnection;
-    /** The price range. */
-    priceRange: ProductPriceRange;
-    /** A categorization that a product can be tagged with, commonly used for filtering and searching. */
-    productType: Scalars['String'];
-    /** The date and time when the product was published to the channel. */
-    publishedAt: Scalars['DateTime'];
-    /** A categorization that a product can be tagged with, commonly used for filtering and searching.
+  onlineStoreUrl?: Maybe<Scalars['URL']>;
+  /** List of custom product options (maximum of 3 per product). */
+  options: Array<ProductOption>;
+  /** List of price ranges in the presentment currencies for this shop. */
+  presentmentPriceRanges: ProductPriceRangeConnection;
+  /** The price range. */
+  priceRange: ProductPriceRange;
+  /** A categorization that a product can be tagged with, commonly used for filtering and searching. */
+  productType: Scalars['String'];
+  /** The date and time when the product was published to the channel. */
+  publishedAt: Scalars['DateTime'];
+  /** A categorization that a product can be tagged with, commonly used for filtering and searching.
      * Additional access scope required for private apps: unauthenticated_read_product_tags.
      */
-    tags: Array<Scalars['String']>;
-    /** The product’s title. */
-    title: Scalars['String'];
-    /** The date and time when the product was last modified. */
-    updatedAt: Scalars['DateTime'];
-    /** Find a product’s variant based on its selected options.
+  tags: Array<Scalars['String']>;
+  /** The product’s title. */
+  title: Scalars['String'];
+  /** The date and time when the product was last modified. */
+  updatedAt: Scalars['DateTime'];
+  /** Find a product’s variant based on its selected options.
      * This is useful for converting a user’s selection of product options into a single matching variant.
      * If there is not a variant for the selected options, `null` will be returned.
      */
-    variantBySelectedOptions?: Maybe<ProductVariant>;
-    /** List of the product’s variants. */
-    variants: ProductVariantConnection;
-    /** The product’s vendor name. */
-    vendor: Scalars['String'];
-  };
+  variantBySelectedOptions?: Maybe<ProductVariant>;
+  /** List of the product’s variants. */
+  variants: ProductVariantConnection;
+  /** The product’s vendor name. */
+  vendor: Scalars['String'];
+};
 
 /** A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
  * For example, a digital download (such as a movie, music or ebook file) also
@@ -3513,49 +3514,49 @@ export enum ProductSortKeys {
 
 /** A product variant represents a different version of a product, such as differing sizes or differing colors. */
 export type ProductVariant = Node &
-  HasMetafields & {
-    __typename?: 'ProductVariant';
-    /** Indicates if the product variant is in stock. */
-    available?: Maybe<Scalars['Boolean']>;
-    /** Indicates if the product variant is available for sale. */
-    availableForSale: Scalars['Boolean'];
-    /** The compare at price of the variant. This can be used to mark a variant as on
+HasMetafields & {
+  __typename?: 'ProductVariant';
+  /** Indicates if the product variant is in stock. */
+  available?: Maybe<Scalars['Boolean']>;
+  /** Indicates if the product variant is available for sale. */
+  availableForSale: Scalars['Boolean'];
+  /** The compare at price of the variant. This can be used to mark a variant as on
      * sale, when `compareAtPrice` is higher than `price`.
      */
-    compareAtPrice?: Maybe<Scalars['Money']>;
-    /** The compare at price of the variant. This can be used to mark a variant as on
+  compareAtPrice?: Maybe<Scalars['Money']>;
+  /** The compare at price of the variant. This can be used to mark a variant as on
      * sale, when `compareAtPriceV2` is higher than `priceV2`.
      */
-    compareAtPriceV2?: Maybe<MoneyV2>;
-    /** Globally unique identifier. */
-    id: Scalars['ID'];
-    /** Image associated with the product variant. This field falls back to the product image if no image is available. */
-    image?: Maybe<Image>;
-    /** The metafield associated with the resource. */
-    metafield?: Maybe<Metafield>;
-    /** A paginated list of metafields associated with the resource. */
-    metafields: MetafieldConnection;
-    /** List of prices and compare-at prices in the presentment currencies for this shop. */
-    presentmentPrices: ProductVariantPricePairConnection;
-    /** The product variant’s price. */
-    price: Scalars['Money'];
-    /** The product variant’s price. */
-    priceV2: MoneyV2;
-    /** The product object that the product variant belongs to. */
-    product: Product;
-    /** Whether a customer needs to provide a shipping address when placing an order for the product variant. */
-    requiresShipping: Scalars['Boolean'];
-    /** List of product options applied to the variant. */
-    selectedOptions: Array<SelectedOption>;
-    /** The SKU (stock keeping unit) associated with the variant. */
-    sku?: Maybe<Scalars['String']>;
-    /** The product variant’s title. */
-    title: Scalars['String'];
-    /** The weight of the product variant in the unit system specified with `weight_unit`. */
-    weight?: Maybe<Scalars['Float']>;
-    /** Unit of measurement for weight. */
-    weightUnit: WeightUnit;
-  };
+  compareAtPriceV2?: Maybe<MoneyV2>;
+  /** Globally unique identifier. */
+  id: Scalars['ID'];
+  /** Image associated with the product variant. This field falls back to the product image if no image is available. */
+  image?: Maybe<Image>;
+  /** The metafield associated with the resource. */
+  metafield?: Maybe<Metafield>;
+  /** A paginated list of metafields associated with the resource. */
+  metafields: MetafieldConnection;
+  /** List of prices and compare-at prices in the presentment currencies for this shop. */
+  presentmentPrices: ProductVariantPricePairConnection;
+  /** The product variant’s price. */
+  price: Scalars['Money'];
+  /** The product variant’s price. */
+  priceV2: MoneyV2;
+  /** The product object that the product variant belongs to. */
+  product: Product;
+  /** Whether a customer needs to provide a shipping address when placing an order for the product variant. */
+  requiresShipping: Scalars['Boolean'];
+  /** List of product options applied to the variant. */
+  selectedOptions: Array<SelectedOption>;
+  /** The SKU (stock keeping unit) associated with the variant. */
+  sku?: Maybe<Scalars['String']>;
+  /** The product variant’s title. */
+  title: Scalars['String'];
+  /** The weight of the product variant in the unit system specified with `weight_unit`. */
+  weight?: Maybe<Scalars['Float']>;
+  /** Unit of measurement for weight. */
+  weightUnit: WeightUnit;
+};
 
 /** A product variant represents a different version of a product, such as differing sizes or differing colors. */
 export type ProductVariantImageArgs = {
@@ -4089,31 +4090,31 @@ export enum WeightUnit {
   Ounces = 'OUNCES'
 }
 export type CheckoutFragment = { __typename?: 'Checkout' } & Pick<Checkout, 'id' | 'webUrl'> & {
-    subtotalPriceV2: { __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount' | 'currencyCode'>;
-    totalTaxV2: { __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount' | 'currencyCode'>;
-    totalPriceV2: { __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount' | 'currencyCode'>;
-    lineItems: { __typename?: 'CheckoutLineItemConnection' } & {
-      pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage' | 'hasPreviousPage'>;
-      edges: Array<
-        { __typename?: 'CheckoutLineItemEdge' } & {
-          node: { __typename?: 'CheckoutLineItem' } & Pick<CheckoutLineItem, 'id' | 'title' | 'quantity'> & {
-              variant: Maybe<
-                { __typename?: 'ProductVariant' } & Pick<ProductVariant, 'id' | 'title'> & {
-                    image: Maybe<{ __typename?: 'Image' } & Pick<Image, 'transformedSrc'>>;
-                    priceV2: { __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount' | 'currencyCode'>;
-                  }
-              >;
-            };
+  subtotalPriceV2: { __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount' | 'currencyCode'>;
+  totalTaxV2: { __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount' | 'currencyCode'>;
+  totalPriceV2: { __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount' | 'currencyCode'>;
+  lineItems: { __typename?: 'CheckoutLineItemConnection' } & {
+    pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage' | 'hasPreviousPage'>;
+    edges: Array<
+    { __typename?: 'CheckoutLineItemEdge' } & {
+      node: { __typename?: 'CheckoutLineItem' } & Pick<CheckoutLineItem, 'id' | 'title' | 'quantity'> & {
+        variant: Maybe<
+        { __typename?: 'ProductVariant' } & Pick<ProductVariant, 'id' | 'title'> & {
+          image: Maybe<{ __typename?: 'Image' } & Pick<Image, 'transformedSrc'>>;
+          priceV2: { __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount' | 'currencyCode'>;
         }
-      >;
-    };
+        >;
+      };
+    }
+    >;
   };
+};
 
 export type CheckoutCreateMutationVariables = {};
 
 export type CheckoutCreateMutation = { __typename?: 'Mutation' } & {
   checkoutCreate: Maybe<
-    { __typename?: 'CheckoutCreatePayload' } & { checkout: Maybe<{ __typename?: 'Checkout' } & Pick<Checkout, 'id'>> }
+  { __typename?: 'CheckoutCreatePayload' } & { checkout: Maybe<{ __typename?: 'Checkout' } & Pick<Checkout, 'id'>> }
   >;
 };
 
@@ -4123,25 +4124,25 @@ export type CheckoutQueryVariables = {
 
 export type CheckoutQuery = { __typename?: 'QueryRoot' } & {
   node: Maybe<
-    {
-      __typename?:
-        | 'Article'
-        | 'Blog'
-        | 'Comment'
-        | 'Collection'
-        | 'Product'
-        | 'Metafield'
-        | 'ProductVariant'
-        | 'ProductOption'
-        | 'MailingAddress'
-        | 'Checkout'
-        | 'AppliedGiftCard'
-        | 'CheckoutLineItem'
-        | 'Order'
-        | 'Page'
-        | 'ShopPolicy'
-        | 'Payment';
-    } & ({ __typename?: 'Checkout' } & CheckoutFragment)
+  {
+    __typename?:
+    | 'Article'
+    | 'Blog'
+    | 'Comment'
+    | 'Collection'
+    | 'Product'
+    | 'Metafield'
+    | 'ProductVariant'
+    | 'ProductOption'
+    | 'MailingAddress'
+    | 'Checkout'
+    | 'AppliedGiftCard'
+    | 'CheckoutLineItem'
+    | 'Order'
+    | 'Page'
+    | 'ShopPolicy'
+    | 'Payment';
+  } & ({ __typename?: 'Checkout' } & CheckoutFragment)
   >;
 };
 
@@ -4152,29 +4153,29 @@ export type CheckoutLineItemsReplaceMutationVariables = {
 
 export type CheckoutLineItemsReplaceMutation = { __typename?: 'Mutation' } & {
   checkoutLineItemsReplace: Maybe<
-    { __typename?: 'CheckoutLineItemsReplacePayload' } & {
-      checkout: Maybe<{ __typename?: 'Checkout' } & CheckoutFragment>;
-    }
+  { __typename?: 'CheckoutLineItemsReplacePayload' } & {
+    checkout: Maybe<{ __typename?: 'Checkout' } & CheckoutFragment>;
+  }
   >;
 };
 
 export type ProductFragment = { __typename?: 'Product' } & Pick<Product, 'title' | 'description'> & {
-    images: { __typename?: 'ImageConnection' } & {
-      edges: Array<
-        { __typename?: 'ImageEdge' } & { node: { __typename?: 'Image' } & Pick<Image, 'altText' | 'transformedSrc'> }
-      >;
-    };
-    options: Array<{ __typename?: 'ProductOption' } & Pick<ProductOption, 'id' | 'name' | 'values'>>;
-    variants: { __typename?: 'ProductVariantConnection' } & {
-      edges: Array<
-        { __typename?: 'ProductVariantEdge' } & {
-          node: { __typename?: 'ProductVariant' } & Pick<ProductVariant, 'id' | 'title'> & {
-              selectedOptions: Array<{ __typename?: 'SelectedOption' } & Pick<SelectedOption, 'name' | 'value'>>;
-            };
-        }
-      >;
-    };
+  images: { __typename?: 'ImageConnection' } & {
+    edges: Array<
+    { __typename?: 'ImageEdge' } & { node: { __typename?: 'Image' } & Pick<Image, 'altText' | 'transformedSrc'> }
+    >;
   };
+  options: Array<{ __typename?: 'ProductOption' } & Pick<ProductOption, 'id' | 'name' | 'values'>>;
+  variants: { __typename?: 'ProductVariantConnection' } & {
+    edges: Array<
+    { __typename?: 'ProductVariantEdge' } & {
+      node: { __typename?: 'ProductVariant' } & Pick<ProductVariant, 'id' | 'title'> & {
+        selectedOptions: Array<{ __typename?: 'SelectedOption' } & Pick<SelectedOption, 'name' | 'value'>>;
+      };
+    }
+    >;
+  };
+};
 
 export type ProductQueryVariables = {
   handle: Scalars['String'];
@@ -4186,21 +4187,21 @@ export type ProductQuery = { __typename?: 'QueryRoot' } & {
 
 export type ProductsFragment = { __typename?: 'ProductConnection' } & {
   edges: Array<
-    { __typename?: 'ProductEdge' } & Pick<ProductEdge, 'cursor'> & {
-        node: { __typename?: 'Product' } & Pick<Product, 'title' | 'handle' | 'description' | 'createdAt'> & {
-            images: { __typename?: 'ImageConnection' } & {
-              edges: Array<
-                { __typename?: 'ImageEdge' } & {
-                  node: { __typename?: 'Image' } & Pick<Image, 'transformedSrc' | 'altText'>;
-                }
-              >;
-            };
-            priceRange: { __typename?: 'ProductPriceRange' } & {
-              minVariantPrice: { __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount' | 'currencyCode'>;
-              maxVariantPrice: { __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount' | 'currencyCode'>;
-            };
-          };
-      }
+  { __typename?: 'ProductEdge' } & Pick<ProductEdge, 'cursor'> & {
+    node: { __typename?: 'Product' } & Pick<Product, 'title' | 'handle' | 'description' | 'createdAt'> & {
+      images: { __typename?: 'ImageConnection' } & {
+        edges: Array<
+        { __typename?: 'ImageEdge' } & {
+          node: { __typename?: 'Image' } & Pick<Image, 'transformedSrc' | 'altText'>;
+        }
+        >;
+      };
+      priceRange: { __typename?: 'ProductPriceRange' } & {
+        minVariantPrice: { __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount' | 'currencyCode'>;
+        maxVariantPrice: { __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount' | 'currencyCode'>;
+      };
+    };
+  }
   >;
   pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>;
 };

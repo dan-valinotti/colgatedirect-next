@@ -1,14 +1,17 @@
-require('dotenv').config();
+/* eslint-disable */
 // if you want to use nextRoutes
 // const routes = require('~server/core/nextRoutes')
 
-import express from 'express'
-import next from 'next'
-import morgan from 'morgan'
-import helmet from 'helmet'
-import compression from 'compression'
+import express from 'express';
+import next from 'next';
+import morgan from 'morgan';
+import helmet from 'helmet';
+import compression from 'compression';
+import cookieParser from 'cookie-parser';
 
-import apollo from '~server/core/apollo'
+import apollo from '~server/core/apollo';
+
+require('dotenv').config();
 
 const port = parseInt(process.env.PORT || '3000', 10);
 const dev = process.env.NODE_ENV !== 'production';
@@ -21,21 +24,24 @@ const handle = nextApp.getRequestHandler();
 nextApp.prepare().then(() => {
   const server = express();
 
-  //security
+  // security
   server.use(helmet());
+
+  // cookies
+  server.use(cookieParser());
 
   // Generate logs
   server.use(
-    morgan(':method :url :status :res[content-length] - :response-time ms')
+    morgan(':method :url :status :res[content-length] - :response-time ms'),
   );
   server.use(compression());
 
-  //start apollo server
+  // start apollo server
   apollo.applyMiddleware({ app: server });
 
   server.get('*', (req, res) => handle(req, res));
   // express().use(handler).listen(3000) //routes handle way
-  server.listen(port, err => {
-    if (err) throw err
-  })
+  server.listen(port, (err) => {
+    if (err) throw err;
+  });
 });
