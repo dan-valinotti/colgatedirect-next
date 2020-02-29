@@ -18,6 +18,8 @@ import {
   COLLECTIONS_QUERY, Collections,
 } from './_types';
 import './_style.scss';
+import { withApollo } from '../../services/apollo';
+import CartController from '../CartController/CartController';
 
 type Props = {
   items: string[];
@@ -52,14 +54,7 @@ const NavBar: FunctionComponent<Props> = () => {
           <Typography variant="h6">
             Colgate Connect
           </Typography>
-          <IconButton
-            edge="end"
-            id="cart-btn"
-            color="inherit"
-            aria-label="cart"
-          >
-            <ShoppingCartIcon />
-          </IconButton>
+          <CartController />
         </Toolbar>
       </AppBar>
       <Drawer
