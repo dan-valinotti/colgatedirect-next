@@ -5,6 +5,7 @@ export const PRODUCT_INFO_QUERY = gql`
         products(first:1,query:$query){
             edges {
                 node {
+                    id
                     handle
                     title
                     description
@@ -20,18 +21,40 @@ export const PRODUCT_INFO_QUERY = gql`
                             amount
                         }
                     }
+                    variants(first:1) {
+                        edges {
+                            node {
+                                id
+                            }
+                        }
+                    }
                 }
             }
         }
     }
 `;
 
+export interface LineItem {
+  variantId: string;
+  quantity: number;
+}
+
+export interface Variants {
+  edges: [{
+    node: {
+      id: string;
+    };
+  }];
+}
+
 export interface TransformedProduct {
+  id: string;
   handle: string;
   title: string;
   description: string;
   imageSrc: string;
   price: string;
+  variants: Variants;
 }
 
 export interface ProductDetails {
@@ -59,6 +82,13 @@ export interface ProductDetails {
             minVariantPrice: {
               amount: string;
             };
+          };
+          variants: {
+            edges: [{
+              node: {
+                id: string;
+              };
+            }];
           };
         };
       }

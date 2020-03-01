@@ -1,4 +1,5 @@
 import { gql } from 'apollo-boost';
+import { LineItem } from '../PDPComponent/_types';
 
 export type PriceV2 = {
   amount: string;
@@ -10,20 +11,18 @@ export interface GetCartRequest {
 }
 
 export type GetCartResponse = {
-  data: {
-    node: {
-      id: string;
-      webUrl: string;
-      subtotalPriceV2: PriceV2;
-      totalTaxV2: PriceV2;
-      totalPriceV2: PriceV2;
-      lineItems: {
-        pageInfo: {
-          hasNextPage: boolean;
-          hasPreviousPage: boolean;
-        };
-        edges: [];
+  node: {
+    id: string;
+    webUrl: string;
+    subtotalPriceV2: PriceV2;
+    totalTaxV2: PriceV2;
+    totalPriceV2: PriceV2;
+    lineItems: {
+      pageInfo: {
+        hasNextPage: boolean;
+        hasPreviousPage: boolean;
       };
+      edges: LineItem[];
     };
   };
 };
@@ -103,6 +102,21 @@ export const GET_CART_QUERY = gql`
         node(id: $checkoutId) {
             ... on Checkout {
                 ...checkout
+            }
+        }
+    }
+`;
+
+export const CHECKOUT_LINE_ITEMS_REPLACE_MUTATION = gql`
+    mutation checkoutLineItemsReplace($checkoutId: ID!, $lineItems: [CheckoutLineItemInput!]!) {
+        checkoutLineItemsReplace(checkoutId: $checkoutId, lineItems: $lineItems) {
+            checkout {
+                id
+            }
+            userErrors {
+                code
+                field
+                message
             }
         }
     }
