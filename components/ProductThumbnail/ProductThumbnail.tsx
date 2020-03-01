@@ -25,7 +25,7 @@ function ProductThumbnail({
         {title}
       </Typography>
       <Typography variant="body2" className="product-price">
-        { priceRange.minVariantPrice.amount }
+        ${ parseFloat(priceRange.minVariantPrice.amount).toFixed(2) }
       </Typography>
       <div className="product-atc-container">
         <Button className="atc-btn" variant="contained" color="secondary">

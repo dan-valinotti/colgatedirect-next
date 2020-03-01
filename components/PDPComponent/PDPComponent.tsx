@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Button, Typography } from '@material-ui/core';
-import { useQuery } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import Link from 'next/link';
 import Head from 'next/head';
 import { PRODUCT_INFO_QUERY, ProductDetails, TransformedProduct } from './_types';
@@ -23,11 +23,13 @@ const PDPComponent: FunctionComponent<Props> = ({ productId }: Props) => {
 
   function extractProduct(): TransformedProduct {
     return ({
+      id: data.products.edges[0].node.id,
       handle: data.products.edges[0].node.handle,
       title: data.products.edges[0].node.title,
       description: data.products.edges[0].node.description,
       imageSrc: data.products.edges[0].node.images.edges[0].node.transformedSrc,
       price: data.products.edges[0].node.priceRange.minVariantPrice.amount,
+      variants: data.products.edges[0].node.variants,
     });
   }
 
