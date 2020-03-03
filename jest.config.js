@@ -3,16 +3,28 @@ module.exports = {
     "^.+\\.(js|jsx)?$": "babel-jest"
   },
   preset: "ts-jest",
-  
-  testEnvironment: "node",
+  // Test spec file resolution pattern
+  // Matches parent folder `__tests__` and filename
+  // should contain `test` or `spec`.
+  testRegex: "(/tests/.*|(\\.|/)(test|spec))\\.tsx?$",
+  testEnvironment: "jsdom",
   globals: {
     jsx: "react",
     "ts-jest": {
       "tsConfig": "tsconfig.jest.json"
     }
   },
+  testPathIgnorePatterns: [
+    "<rootDir>/tests/setup.ts"
+  ],
   setupFiles: [
-    "<rootDir>/tests/test-setup.ts"
+    "<rootDir>/tests/setup.ts"
+  ],
+  // Runs special logic, such as cleaning up components
+  // when using React Testing Library and adds special
+  // extended assertions to Jest
+  setupFilesAfterEnv: [
+    "@testing-library/jest-dom/extend-expect"
   ],
   moduleFileExtensions: [
     "ts",
@@ -34,8 +46,7 @@ module.exports = {
     "~styles/(.*)": "<rootDir>/styles/$1",
     "~lib/(.*)": "<rootDir>/lib/$1",
     "~assets/(.*)": "<rootDir>/assets/$1",
-    "~styles/(.*)": "<rootDir>/styles/$1",
     "~static/(.*)": "<rootDir>/public/static/$1"
   }
-} 
+};
 

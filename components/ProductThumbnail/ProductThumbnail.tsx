@@ -2,9 +2,9 @@ import React from 'react';
 import { Button, Paper, Typography } from '@material-ui/core';
 import Link from 'next/link';
 import { ProductPriceRange } from '../../models';
-import './_style.scss';
+// import './_style.scss';
 
-type Props = {
+export type Props = {
   id: string;
   title: string;
   priceRange: ProductPriceRange;
@@ -17,7 +17,7 @@ function ProductThumbnail({
   id, title, priceRange, handle, imageSrc, altText,
 }: Props) {
   return (
-    <Paper className="product-container">
+    <Paper className="product-container" data-testid="prod-thumb">
       <div className="product-img-thumb">
         <img src={imageSrc} alt={altText} />
       </div>
@@ -25,7 +25,8 @@ function ProductThumbnail({
         {title}
       </Typography>
       <Typography variant="body2" className="product-price">
-        ${ parseFloat(priceRange.minVariantPrice.amount).toFixed(2) }
+        $
+        { parseFloat(priceRange.minVariantPrice.amount).toFixed(2) }
       </Typography>
       <div className="product-atc-container">
         <Button className="atc-btn" variant="contained" color="secondary">
