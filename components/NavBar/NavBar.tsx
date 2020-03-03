@@ -12,19 +12,21 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import FiberNewIcon from '@material-ui/icons/FiberNew';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { useQuery } from '@apollo/react-hooks';
 import {
   COLLECTIONS_QUERY, Collections,
 } from './_types';
 import './_style.scss';
-import { withApollo } from '../../services/apollo';
 import CartController from '../CartController/CartController';
 
 type Props = {
+  /** Navigation items to be displayed in NavBar */
   items: string[];
 };
 
+/**
+ * General component description.
+ */
 const NavBar: FunctionComponent<Props> = () => {
   const [open, setOpen] = React.useState<boolean>(false);
   const { data, loading, error } = useQuery<Collections, object>(

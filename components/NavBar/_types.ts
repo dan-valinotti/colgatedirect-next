@@ -1,12 +1,18 @@
 import { gql } from 'apollo-boost';
 
 export type Collections = {
+  /** List of Product collections. */
   collections: {
     edges: [{
+      /** Product collection variables */
       node: {
+        /** Shopify Collection UID */
         id: string;
+        /** URL handle */
         handle: string;
+        /** Display name */
         title: string;
+        /** List of products included in collection. */
         products: Products;
       };
     }];
