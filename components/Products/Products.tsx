@@ -4,8 +4,8 @@ import { Grid } from '@material-ui/core';
 import LazyLoad from 'react-lazyload';
 import { ProductSortKeys } from '../../models';
 import { ProductsType, PRODUCTS_QUERY } from './_types';
-import './_style.scss';
 import ProductThumbnail from '../ProductThumbnail/ProductThumbnail';
+import './_style.scss';
 
 type Props = {
   query: string;
@@ -36,7 +36,7 @@ function Products({ variables }: Props) {
 
               if (imageSrc !== '') {
                 return (
-                  <Grid key={key} item xs={12} sm={6} md={4} lg={3}>
+                  <Grid key={key} item xs={12} sm={6} md={4} lg={3} className="product">
                     <LazyLoad height={325}>
                       <ProductThumbnail
                         id={node.id}
