@@ -64,7 +64,7 @@ const CartController = () => {
 
       if (!window.localStorage.getItem('shopifyCartToken')) {
         createCart().then((res) => {
-          console.log(res);
+          // console.log(res);
         });
       }
     }
@@ -72,7 +72,7 @@ const CartController = () => {
     // To be executed after new cart is created
     const onCompleted = (res) => {
       if (res) {
-        console.log(res);
+        // console.log(res);
         setCartToken(res.checkoutCreate.checkout.id);
         localStorage.setItem('shopifyCartToken', cartToken);
       }
@@ -90,7 +90,6 @@ const CartController = () => {
     }
   }, [cartToken, createCart, createCartData, createCartError, createCartLoading, getCartData]);
 
-  console.log(getCartData);
   return (
     <div id="cart-btn">
       {(createCartLoading || getCartLoading) && (

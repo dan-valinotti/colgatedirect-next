@@ -2,23 +2,26 @@ import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
+import { ThemeProvider } from '@material-ui/styles';
+import { withTheme } from '@material-ui/core';
 import { withApollo } from '../services/apollo';
 import PageContainer, { PageSize } from '../views/layouts/PageContainer';
 import NavBar from '../components/NavBar/NavBar';
 import PDPComponent from '../components/PDPComponent/PDPComponent';
+import { theme } from '../views/theme';
 
 const ProductPage = () => {
   const router = useRouter();
-  const { pid }: ParsedUrlQuery = router.query;
+  const { handle }: ParsedUrlQuery = router.query;
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <NavBar items={['test']} />
       <PageContainer paddingTop={30} size={PageSize.medium}>
-        <PDPComponent productId={pid.toString()} />
+        <PDPComponent handle={handle.toString()} />
       </PageContainer>
-    </>
+    </ThemeProvider>
   );
 };
 
-export default withApollo({ ssr: true })(ProductPage);
+export default withTheme(withApollo({ ssr: true })(ProductPage));
