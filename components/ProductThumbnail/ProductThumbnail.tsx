@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Paper, Typography } from '@material-ui/core';
 import Link from 'next/link';
 import { ProductPriceRange } from '../../models';
-// import './_style.scss';
+import './_style.scss';
 
 export type Props = {
   id: string;
@@ -17,7 +17,7 @@ function ProductThumbnail({
   id, title, priceRange, handle, imageSrc, altText,
 }: Props) {
   return (
-    <Paper className="product-container" data-testid="prod-thumb">
+    <Paper className="product-container">
       <div className="product-img-thumb">
         <img src={imageSrc} alt={altText} />
       </div>
