@@ -7,24 +7,34 @@ import {
   Drawer,
   Divider,
   List,
-  ListItem, ListItemIcon, ListItemText,
+  ListItem, ListItemIcon, ListItemText, Collapse,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import FiberNewIcon from '@material-ui/icons/FiberNew';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { useQuery } from '@apollo/react-hooks';
 import {
   COLLECTIONS_QUERY, Collections,
 } from './_types';
 import './_style.scss';
-import { withApollo } from '../../services/apollo';
 import CartController from '../CartController/CartController';
+import NavItems from './navItems.json';
+import NavBarItem, { ProductItem } from '../NavBarItem/NavBarItem';
 
 type Props = {
+  /** Navigation items to be displayed in NavBar */
   items: string[];
 };
 
+interface NavItems {
+  title: string;
+  handle: string;
+  products: ProductItem[];
+}
+
+/**
+ * General component description.
+ */
 const NavBar: FunctionComponent<Props> = () => {
   const [open, setOpen] = React.useState<boolean>(false);
   const { data, loading, error } = useQuery<Collections, object>(
@@ -67,6 +77,7 @@ const NavBar: FunctionComponent<Props> = () => {
         }}
       >
         <div className="navbar-drawer--header">
+          <Typography variant="h6">Site Navigation</Typography>
           <IconButton onClick={toggleDrawer}>
             <ChevronLeftIcon />
           </IconButton>
@@ -74,13 +85,8 @@ const NavBar: FunctionComponent<Props> = () => {
         <Divider />
         { !loading && !error && data && (
         <List>
-          {data.collections.edges.map(({ node }) => (
-            <ListItem button key={node.id}>
-              <ListItemIcon>
-                <FiberNewIcon />
-              </ListItemIcon>
-              <ListItemText primary={node.title} />
-            </ListItem>
+          {NavItems.navigationItems.map(({ title, products }, key) => (
+            <NavBarItem title={title} products={products} />
           ))}
         </List>
         )}

@@ -3,7 +3,7 @@ import { ProductPriceRange } from '../../models';
 
 export const PRODUCTS_QUERY = gql`
     query ProductsQuery($cursor: String){
-        products(first: 20, after: $cursor){
+        products(first: 50, after: $cursor){
             edges{
                 node{
                     id

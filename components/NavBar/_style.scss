@@ -3,6 +3,12 @@
 
   &--header {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    h6 {
+      padding-left: 15px;
+    }
   }
 }
