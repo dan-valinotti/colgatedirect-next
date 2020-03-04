@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ProductPriceRange } from '../../models';
 import './_style.scss';
 
-type Props = {
+export type Props = {
   id: string;
   title: string;
   priceRange: ProductPriceRange;
@@ -25,13 +25,14 @@ function ProductThumbnail({
         {title}
       </Typography>
       <Typography variant="body2" className="product-price">
-        { priceRange.minVariantPrice.amount }
+        $
+        { parseFloat(priceRange.minVariantPrice.amount).toFixed(2) }
       </Typography>
       <div className="product-atc-container">
         <Button className="atc-btn" variant="contained" color="secondary">
           Add to cart
         </Button>
-        <Link href={{ pathname: '/product', query: { pid: id } }} as={`/products/${handle}`} passHref>
+        <Link href={{ pathname: '/product', query: { handle } }} as={`/products/${handle}`} passHref>
           <Button className="details-btn" variant="contained" color="primary">
             Details
           </Button>

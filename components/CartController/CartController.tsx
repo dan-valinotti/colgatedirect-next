@@ -2,13 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import {
-  IconButton, List, ListItem, ListItemText, Popover, Typography,
+  IconButton, Popover, Typography,
 } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import {
   CREATE_CART, CreateCartResponse, GetCartRequest, GET_CART_QUERY, CreateCartRequest,
 } from './_types';
 import './_style.scss';
+import CartContent from '../CartContent/CartContent';
 
 const CartController = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -58,12 +59,12 @@ const CartController = () => {
 
 
   useEffect(() => {
-    if (window.localStorage) {
+    if (window.localStorage && !getCartData) {
       setCartToken(window.localStorage.getItem('shopifyCartToken'));
 
       if (!window.localStorage.getItem('shopifyCartToken')) {
         createCart().then((res) => {
-          console.log(res);
+          // console.log(res);
         });
       }
     }
@@ -71,7 +72,7 @@ const CartController = () => {
     // To be executed after new cart is created
     const onCompleted = (res) => {
       if (res) {
-        console.log(res);
+        // console.log(res);
         setCartToken(res.checkoutCreate.checkout.id);
         localStorage.setItem('shopifyCartToken', cartToken);
       }
@@ -87,7 +88,7 @@ const CartController = () => {
         onError(createCartError);
       }
     }
-  }, [cartToken, createCart, createCartData, createCartError, createCartLoading]);
+  }, [cartToken, createCart, createCartData, createCartError, createCartLoading, getCartData]);
 
   return (
     <div id="cart-btn">
@@ -125,11 +126,7 @@ const CartController = () => {
               horizontal: 'right',
             }}
           >
-            <List className="cart-popover-list">
-              <ListItem button>
-                Item 1
-              </ListItem>
-            </List>
+            <CartContent cart={getCartData} />
           </Popover>
         </>
       )}
