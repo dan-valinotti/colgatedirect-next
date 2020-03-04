@@ -32,7 +32,7 @@ function ProductThumbnail({
         <Button className="atc-btn" variant="contained" color="secondary">
           Add to cart
         </Button>
-        <Link href={{ pathname: '/product', query: { pid: id } }} as={`/products/${handle}`} passHref>
+        <Link href={{ pathname: '/product', query: { handle } }} as={`/products/${handle}`} passHref>
           <Button className="details-btn" variant="contained" color="primary">
             Details
           </Button>

@@ -8,28 +8,31 @@ import ProductDetail from '../ProductDetail/ProductDetail';
 import './_style.scss';
 
 type Props = {
-  productId: string;
+  handle: string;
 };
 
-const PDPComponent: FunctionComponent<Props> = ({ productId }: Props) => {
+const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
   let product: TransformedProduct = null;
   const queryVariables: object = {
-    query: `product_id:'${productId}'`,
+    handle: `${handle}`,
   };
+  console.log(queryVariables);
   const { loading, error, data } = useQuery<ProductDetails, object>(
     PRODUCT_INFO_QUERY,
-    queryVariables,
+    {
+      variables: queryVariables,
+    },
   );
 
   function extractProduct(): TransformedProduct {
     return ({
-      id: data.products.edges[0].node.id,
-      handle: data.products.edges[0].node.handle,
-      title: data.products.edges[0].node.title,
-      description: data.products.edges[0].node.description,
-      imageSrc: data.products.edges[0].node.images.edges[0].node.transformedSrc,
-      price: data.products.edges[0].node.priceRange.minVariantPrice.amount,
-      variants: data.products.edges[0].node.variants,
+      id: data.productByHandle.id,
+      handle: data.productByHandle.handle,
+      title: data.productByHandle.title,
+      description: data.productByHandle.description,
+      imageSrc: data.productByHandle.images.edges[0].node.transformedSrc,
+      price: data.productByHandle.priceRange.minVariantPrice.amount,
+      variants: data.productByHandle.variants,
     });
   }
 
@@ -50,7 +53,7 @@ const PDPComponent: FunctionComponent<Props> = ({ productId }: Props) => {
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           </Head>
           <div id="pdp">
-            <Link href="/products">
+            <Link href="/">
               <Button variant="outlined" color="secondary">Back</Button>
             </Link>
             <ProductDetail product={product} />

@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import { withTheme } from '@material-ui/core';
 import Products from '../components/Products/Products';
 import { ProductSortKeys } from '../models';
 import { withApollo } from '../services/apollo';
@@ -31,4 +32,4 @@ function ProductsPage({
   );
 }
 
-export default withApollo({ ssr: true })(ProductsPage);
+export default withTheme(withApollo({ ssr: true })(ProductsPage));

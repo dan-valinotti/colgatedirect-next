@@ -22,6 +22,7 @@ export function getLineItems(lineItems): LineItem[] {
 const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
   const [cartToken, setCartToken] = useState<string>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  console.log(product);
 
   // Gets cart info to replace item if added to cart
   const {

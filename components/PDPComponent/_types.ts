@@ -1,33 +1,29 @@
 import gql from 'graphql-tag';
 
 export const PRODUCT_INFO_QUERY = gql`
-    query ProductDetailQuery($query:String){
-        products(first:1,query:$query){
-            edges {
-                node {
-                    id
-                    handle
-                    title
-                    description
-                    images(first:1){
-                        edges{
-                            node{
-                                transformedSrc
-                            }
-                        }
+    query ProductDetailQuery($handle:String!){
+        productByHandle(handle:$handle){
+            id
+            variants(first:1) {
+                edges {
+                    node {
+                        id
                     }
-                    priceRange {
-                        minVariantPrice{
-                            amount
-                        }
+                }
+            }
+            handle
+            title
+            description
+            images(first:1){
+                edges{
+                    node{
+                        transformedSrc
                     }
-                    variants(first:1) {
-                        edges {
-                            node {
-                                id
-                            }
-                        }
-                    }
+                }
+            }
+            priceRange {
+                minVariantPrice{
+                    amount
                 }
             }
         }
@@ -58,40 +54,34 @@ export interface TransformedProduct {
 }
 
 export interface ProductDetails {
-  products: {
-    edges: [
-      {
+  productByHandle: {
+    id: string;
+    title: string;
+    handle: string;
+    description: string;
+    images: {
+      edges: [
+        {
+          node: {
+            id: string;
+            originalSrc: string;
+            transformedSrc: string;
+            altText: string;
+          };
+        }
+      ];
+    };
+    priceRange: {
+      minVariantPrice: {
+        amount: string;
+      };
+    };
+    variants: {
+      edges: [{
         node: {
           id: string;
-          title: string;
-          handle: string;
-          description: string;
-          images: {
-            edges: [
-              {
-                node: {
-                  id: string;
-                  originalSrc: string;
-                  transformedSrc: string;
-                  altText: string;
-                };
-              }
-            ];
-          };
-          priceRange: {
-            minVariantPrice: {
-              amount: string;
-            };
-          };
-          variants: {
-            edges: [{
-              node: {
-                id: string;
-              };
-            }];
-          };
         };
-      }
-    ];
+      }];
+    };
   };
 }

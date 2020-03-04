@@ -9,7 +9,6 @@ type Props = {
 };
 
 const CartContent: FunctionComponent<Props> = ({ cart }: Props) => {
-  console.log(cart);
   return (
     <>
       {cart && (
@@ -18,7 +17,7 @@ const CartContent: FunctionComponent<Props> = ({ cart }: Props) => {
           <List className="cart-popover-list">
             {getLineItems(cart.node.lineItems.edges).map((item, key) => (
               <ListItem button key={key}>
-                Item 1
+                {item.variantId}
               </ListItem>
             ))}
           </List>
