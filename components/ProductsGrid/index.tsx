@@ -2,10 +2,11 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { Grid } from '@material-ui/core';
 import LazyLoad from 'react-lazyload';
+import styled from 'styled-components';
 import { ProductSortKeys } from '../../models';
 import { ProductsType, PRODUCTS_QUERY } from './_types';
-import ProductThumbnail from '../ProductThumbnail/ProductThumbnail';
-import './_style.scss';
+import ProductThumbnail from '../ProductThumbnail';
+import { Styled } from './_styles';
 
 type Props = {
   query: string;
@@ -14,7 +15,7 @@ type Props = {
   variables: object;
 };
 
-function Products({ variables }: Props) {
+function Index({ variables }: Props) {
   const { loading, error, data } = useQuery<ProductsType, object>(
     PRODUCTS_QUERY,
     { variables },
@@ -36,7 +37,7 @@ function Products({ variables }: Props) {
 
               if (imageSrc !== '') {
                 return (
-                  <Grid key={key} item xs={12} sm={6} md={4} lg={3} className="product">
+                  <Styled.StyledGrid key={key} item xs={12} sm={6} md={4} lg={3}>
                     <LazyLoad height={325}>
                       <ProductThumbnail
                         id={node.id}
@@ -47,7 +48,7 @@ function Products({ variables }: Props) {
                         altText={altText}
                       />
                     </LazyLoad>
-                  </Grid>
+                  </Styled.StyledGrid>
                 );
               }
             })}
@@ -58,4 +59,4 @@ function Products({ variables }: Props) {
   );
 }
 
-export default Products;
+export default Index;
