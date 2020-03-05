@@ -3220,7 +3220,7 @@ export type PricingPercentageValue = {
 /** The price value (fixed or percentage) for a discount application. */
 export type PricingValue = PricingPercentageValue | MoneyV2;
 
-/** A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
+/** A product represents an individual item for sale in a Shopify store. ProductsGrid are often physical, but they don't have to be.
  * For example, a digital download (such as a movie, music or ebook file) also
  * qualifies as a product, as do services (such as equipment rental, work for hire,
  * customization of another product or an extended warranty).
@@ -3283,7 +3283,7 @@ HasMetafields & {
   vendor: Scalars['String'];
 };
 
-/** A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
+/** A product represents an individual item for sale in a Shopify store. ProductsGrid are often physical, but they don't have to be.
  * For example, a digital download (such as a movie, music or ebook file) also
  * qualifies as a product, as do services (such as equipment rental, work for hire,
  * customization of another product or an extended warranty).
@@ -3296,7 +3296,7 @@ export type ProductCollectionsArgs = {
   reverse: Scalars['Boolean'];
 };
 
-/** A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
+/** A product represents an individual item for sale in a Shopify store. ProductsGrid are often physical, but they don't have to be.
  * For example, a digital download (such as a movie, music or ebook file) also
  * qualifies as a product, as do services (such as equipment rental, work for hire,
  * customization of another product or an extended warranty).
@@ -3305,7 +3305,7 @@ export type ProductDescriptionArgs = {
   truncateAt?: Maybe<Scalars['Int']>;
 };
 
-/** A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
+/** A product represents an individual item for sale in a Shopify store. ProductsGrid are often physical, but they don't have to be.
  * For example, a digital download (such as a movie, music or ebook file) also
  * qualifies as a product, as do services (such as equipment rental, work for hire,
  * customization of another product or an extended warranty).
@@ -3323,7 +3323,7 @@ export type ProductImagesArgs = {
   scale: Scalars['Int'];
 };
 
-/** A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
+/** A product represents an individual item for sale in a Shopify store. ProductsGrid are often physical, but they don't have to be.
  * For example, a digital download (such as a movie, music or ebook file) also
  * qualifies as a product, as do services (such as equipment rental, work for hire,
  * customization of another product or an extended warranty).
@@ -3333,7 +3333,7 @@ export type ProductMetafieldArgs = {
   key: Scalars['String'];
 };
 
-/** A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
+/** A product represents an individual item for sale in a Shopify store. ProductsGrid are often physical, but they don't have to be.
  * For example, a digital download (such as a movie, music or ebook file) also
  * qualifies as a product, as do services (such as equipment rental, work for hire,
  * customization of another product or an extended warranty).
@@ -3347,7 +3347,7 @@ export type ProductMetafieldsArgs = {
   reverse: Scalars['Boolean'];
 };
 
-/** A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
+/** A product represents an individual item for sale in a Shopify store. ProductsGrid are often physical, but they don't have to be.
  * For example, a digital download (such as a movie, music or ebook file) also
  * qualifies as a product, as do services (such as equipment rental, work for hire,
  * customization of another product or an extended warranty).
@@ -3356,7 +3356,7 @@ export type ProductOptionsArgs = {
   first?: Maybe<Scalars['Int']>;
 };
 
-/** A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
+/** A product represents an individual item for sale in a Shopify store. ProductsGrid are often physical, but they don't have to be.
  * For example, a digital download (such as a movie, music or ebook file) also
  * qualifies as a product, as do services (such as equipment rental, work for hire,
  * customization of another product or an extended warranty).
@@ -3370,7 +3370,7 @@ export type ProductPresentmentPriceRangesArgs = {
   reverse: Scalars['Boolean'];
 };
 
-/** A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
+/** A product represents an individual item for sale in a Shopify store. ProductsGrid are often physical, but they don't have to be.
  * For example, a digital download (such as a movie, music or ebook file) also
  * qualifies as a product, as do services (such as equipment rental, work for hire,
  * customization of another product or an extended warranty).
@@ -3379,7 +3379,7 @@ export type ProductVariantBySelectedOptionsArgs = {
   selectedOptions: Array<SelectedOptionInput>;
 };
 
-/** A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
+/** A product represents an individual item for sale in a Shopify store. ProductsGrid are often physical, but they don't have to be.
  * For example, a digital download (such as a movie, music or ebook file) also
  * qualifies as a product, as do services (such as equipment rental, work for hire,
  * customization of another product or an extended warranty).
@@ -3448,7 +3448,7 @@ export enum ProductImageSortKeys {
 }
 
 /** Custom product property names like "Size", "Color", and "Material".
- * Products are based on permutations of these options.
+ * ProductsGrid are based on permutations of these options.
  * A product may have a maximum of 3 options.
  * 255 characters limit each.
  */
