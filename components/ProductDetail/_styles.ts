@@ -18,7 +18,7 @@ const ImageContainer = styled.div`
 `;
 
 const ProductImage = styled.img`
-  margin-right: 30px;
+  padding-right: 30px;
   max-width: 100%;
 `;
 
