@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
   Collapse, List, ListItem, ListItemText,
 } from '@material-ui/core';
-import './_style.scss';
+import { Styled } from './_styles';
 
 interface Props {
   title: string;
@@ -28,13 +28,13 @@ const NavBarItem = ({ title, products }: Props) => {
       </ListItem>
       {products.length > 0 && (
         <Collapse in={open} timeout="auto" unmountOnExit>
-          <List component="div" classes={{ root: 'nav-list-item--inner' }} disablePadding>
+          <Styled.NavList component="div" classes={{ root: 'nav-list-item--inner' }} disablePadding>
             {products.map((product, index) => (
               <ListItem button key={index}>
                 <ListItemText primary={product.title} />
               </ListItem>
             ))}
-          </List>
+          </Styled.NavList>
         </Collapse>
       )}
     </>

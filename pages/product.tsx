@@ -1,5 +1,4 @@
 import React from 'react';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
 import { ThemeProvider } from '@material-ui/styles';
