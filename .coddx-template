@@ -1,0 +1,74 @@
+// -------------->> pages/{{fileName}}.tsx
+// created time: {{YYYY}}-{{MM}}-{{DD}} {{HH}}:{{mm}}
+import React from 'react';
+import { ThemeProvider } from '@material-ui/styles';
+import { withTheme } from '@material-ui/core';
+import { withApollo } from '../services/apollo';
+import PageContainer, { PageSize } from '../views/layouts/PageContainer';
+import NavBar from '../components/NavBar/NavBar';
+import { theme } from '../views/theme';
+
+const {{fileName}} = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <NavBar items={['test']} />
+      <PageContainer paddingTop={30} size={PageSize.medium}>
+        {/* ...content... */}
+      </PageContainer>
+    </ThemeProvider>
+  );
+};
+
+export default withTheme(withApollo({ ssr: true })({{fileName}}));
+
+// -------------->> {{fileName}}/{{fileName}}.tsx
+// created time: {{YYYY}}-{{MM}}-{{DD}} {{HH}}:{{mm}}
+import React, { FunctionComponent } from 'react';
+import { Styled } from './_styles';
+
+type Props = {
+};å
+
+const {{fileName}}: FunctionComponent<Props> = ({}: Props) => {
+  const { loading, error, data } = useQuery<>();
+
+  return (
+    <div>
+      {/* ...content... */}
+    </div>
+  );
+};
+
+export default PDPComponent;
+
+// -------------->> {{fileName}}/_styles.ts
+// created time: {{YYYY}}-{{MM}}-{{DD}} {{HH}}:{{mm}}
+import styled from 'styled-components';
+
+const {{fileName}} = styled.div`
+`;
+
+export const Styled = {
+  {{fileName}},
+};
+
+// -------------->> {{fileName}}/_types.ts
+// created time: {{YYYY}}-{{MM}}-{{DD}} {{HH}}:{{mm}}
+import gql from 'graphql-tag';
+
+export const QUERY = gql``;
+
+export interface TestType {
+  id: string;
+  handle: string;
+  title: string;
+}
+
+export interface TestModel {
+  productByHandle: {
+    id: string;
+    title: string;
+    handle: string;
+  };
+}
+

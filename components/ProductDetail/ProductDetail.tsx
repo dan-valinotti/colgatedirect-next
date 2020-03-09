@@ -22,7 +22,6 @@ export function getLineItems(lineItems): LineItem[] {
 const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
   const [cartToken, setCartToken] = useState<string>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  console.log(product);
 
   // Gets cart info to replace item if added to cart
   const {
@@ -60,11 +59,10 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
         quantity: 1,
       });
       replaceItems().then((res) => {
-        console.log(res);
         setLoading(false);
       });
     } else {
-      console.log("Can't add to cart.");
+      // console.log("Can't add to cart.");
     }
   };
 
