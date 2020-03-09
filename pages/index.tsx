@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { withTheme } from '@material-ui/core';
-import Products from '../components/Products/Products';
+import ProductsGrid from '../components/ProductsGrid';
 import { ProductSortKeys } from '../models';
 import { withApollo } from '../services/apollo';
 import PageContainer, { PageSize } from '../views/layouts/PageContainer';
@@ -26,7 +26,7 @@ function ProductsPage({
       </Head>
       <NavBar items={['test']} />
       <PageContainer paddingTop={45} size={PageSize.large}>
-        <Products query={query} reverse={reverse} sortKey={sortKey} variables={variables} />
+        <ProductsGrid query={query} reverse={reverse} sortKey={sortKey} variables={variables} />
       </PageContainer>
     </>
   );

@@ -6,7 +6,7 @@ import {
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { LineItem, TransformedProduct } from '../PDPComponent/_types';
 import { CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY, GetCartResponse } from '../CartController/_types';
-import './_style.scss';
+import { Styled } from './_styles';
 
 type Props = {
   product: TransformedProduct;
@@ -22,7 +22,6 @@ export function getLineItems(lineItems): LineItem[] {
 const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
   const [cartToken, setCartToken] = useState<string>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  console.log(product);
 
   // Gets cart info to replace item if added to cart
   const {
@@ -60,11 +59,10 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
         quantity: 1,
       });
       replaceItems().then((res) => {
-        console.log(res);
         setLoading(false);
       });
     } else {
-      console.log("Can't add to cart.");
+      // console.log("Can't add to cart.");
     }
   };
 
@@ -76,29 +74,29 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
   }, [cartToken]);
 
   return (
-    <div id="product-detail-container">
-      <div className="pdp-image">
-        <img src={product.imageSrc} alt="PDP" />
-      </div>
-      <div className="pdp-desc">
-        <Typography variant="h5">{product.title}</Typography>
-        <Typography variant="body2">{product.description}</Typography>
-        <div className="atc-section">
+    <Styled.ProductDetailContainer>
+      <Styled.ImageContainer>
+        <Styled.ProductImage src={product.imageSrc} alt="PDP" />
+      </Styled.ImageContainer>
+      <Styled.DescriptionContainer>
+        <Styled.ProductTitle variant="h5">{product.title}</Styled.ProductTitle>
+        <Styled.ProductDescription variant="body2">{product.description}</Styled.ProductDescription>
+        <Styled.ATCContainer>
           <Typography variant="body1">
             Price: ${parseFloat(product.price).toFixed(2)}
           </Typography>
           <Button onClick={addToCart} variant="contained" color="secondary">Add to cart</Button>
-        </div>
-      </div>
+        </Styled.ATCContainer>
+      </Styled.DescriptionContainer>
       <Dialog open={loading}>
         <DialogContent>
           <Typography variant="h6">Adding item to cart...</Typography>
-          <div className="progress-container">
+          <Styled.ProgressContainer>
             <CircularProgress />
-          </div>
+          </Styled.ProgressContainer>
         </DialogContent>
       </Dialog>
-    </div>
+    </Styled.ProductDetailContainer>
   );
 };
 
