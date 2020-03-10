@@ -8,6 +8,7 @@ import PageContainer, { PageSize } from '../views/layouts/PageContainer';
 import NavBar from '../components/NavBar/NavBar';
 import PDPComponent from '../components/PDPComponent/PDPComponent';
 import { theme } from '../views/theme';
+import { withMuiApp } from '../hocs/withMui';
 
 const ProductPage = () => {
   const router = useRouter();
@@ -21,4 +22,4 @@ const ProductPage = () => {
   );
 };
 
-export default withTheme(withApollo({ ssr: true })(ProductPage));
+export default withMuiApp(withTheme(withApollo({ ssr: true })(ProductPage)));
