@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import { Grid, Typography } from '@material-ui/core';
 
-const StyledGrid = styled(Grid)`
+const Container = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  padding-bottom: 2rem;
 `;
 
 const Title = styled(Typography)`
@@ -14,7 +15,13 @@ const Title = styled(Typography)`
 }
 `;
 
+const StyledGrid = styled(Grid)`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
 export const Styled = {
+  Container,
   StyledGrid,
   Title,
 };
