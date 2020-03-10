@@ -7,6 +7,7 @@ import { withApollo } from '../services/apollo';
 import PageContainer, { PageSize } from '../views/layouts/PageContainer';
 import NavBar from '../components/NavBar/NavBar';
 import HeroBanner from '../components/sections/HeroBanner';
+import { withMuiApp } from '../hocs/withMui';
 
 interface Props {
   query: string;
@@ -41,4 +42,4 @@ function ProductsPage({
   );
 }
 
-export default withTheme(withApollo({ ssr: true })(ProductsPage));
+export default withMuiApp(withTheme(withApollo({ ssr: true })(ProductsPage)));

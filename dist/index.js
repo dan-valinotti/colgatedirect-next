@@ -12,14 +12,15 @@ const morgan_1 = __importDefault(require("morgan"));
 const helmet_1 = __importDefault(require("helmet"));
 const compression_1 = __importDefault(require("compression"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const nextRoutes_1 = __importDefault(require("./core/nextRoutes"));
 const apollo_1 = __importDefault(require("~server/core/apollo"));
 require('dotenv').config();
 const port = parseInt(process.env.PORT || '3000', 10);
 const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next_1.default({ dev });
-const handle = nextApp.getRequestHandler();
+// const handle = nextApp.getRequestHandler();
 // if you want to use nextRoutes
-// const handle = routes.getRequestHandler(nextApp)
+const handle = nextRoutes_1.default.getRequestHandler(nextApp);
 nextApp.prepare().then(() => {
     const server = express_1.default();
     // security
