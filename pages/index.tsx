@@ -6,6 +6,7 @@ import { ProductSortKeys } from '../models';
 import { withApollo } from '../services/apollo';
 import PageContainer, { PageSize } from '../views/layouts/PageContainer';
 import NavBar from '../components/NavBar/NavBar';
+import HeroBanner from '../components/sections/HeroBanner';
 
 interface Props {
   query: string;
@@ -25,7 +26,15 @@ function ProductsPage({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <NavBar items={['test']} />
-      <PageContainer paddingTop={45} size={PageSize.large}>
+      <HeroBanner
+        title="ShopSmiles by Colgate®"
+        subtitle="The next generation of dental care is here."
+        bgColor="#a2c1d3"
+        bgUrl="https://cdn.shopify.com/s/files/1/2524/0600/files/colgate_smile_like_you_mean_it2.jpg?v=1553710726"
+        fontColor="#ffffff"
+        textAlign="right"
+      />
+      <PageContainer paddingTop={30} size={PageSize.large}>
         <ProductsGrid query={query} reverse={reverse} sortKey={sortKey} variables={variables} />
       </PageContainer>
     </>

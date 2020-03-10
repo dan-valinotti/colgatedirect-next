@@ -1,11 +1,13 @@
-import React, { FunctionComponent } from 'react';
-import { Button, Typography } from '@material-ui/core';
-import { useMutation, useQuery } from '@apollo/react-hooks';
+import React, {FunctionComponent} from 'react';
+import {Button, Typography} from '@material-ui/core';
+import {useQuery} from '@apollo/react-hooks';
 import Link from 'next/link';
 import Head from 'next/head';
-import { Styled } from './_styles';
-import { PRODUCT_INFO_QUERY, ProductDetails, TransformedProduct } from './_types';
+import {Styled} from './_styles';
+import {PRODUCT_INFO_QUERY, ProductDetails, TransformedProduct} from './_types';
 import ProductDetail from '../ProductDetail/ProductDetail';
+import ManualToothbrush from '../pdp/ManualToothbrush';
+import PageContainer, {PageSize} from "~viewsLay/PageContainer";
 
 type Props = {
   handle: string;
@@ -40,7 +42,7 @@ const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
   }
 
   return (
-    <Styled.PDPContainer>
+    <>
       {loading && (
         <Typography variant="body1">Loading...</Typography>
       )}
@@ -51,15 +53,23 @@ const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
             <title>{product.title}</title>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           </Head>
-          <Styled.PDPMain>
-            <Link href="/">
-              <Button variant="outlined" color="secondary">Back</Button>
-            </Link>
-            <ProductDetail product={product} />
-          </Styled.PDPMain>
+          { product.handle === 'm1' ? (
+            <ManualToothbrush product={product} />
+          ) : (
+            <PageContainer size={PageSize.medium} paddingTop={45}>
+              <Styled.PDPContainer>
+                <Styled.PDPMain>
+                  <Link href="/">
+                    <Button variant="outlined" color="secondary">Back</Button>
+                  </Link>
+                  <ProductDetail product={product} />
+                </Styled.PDPMain>
+              </Styled.PDPContainer>
+            </PageContainer>
+          )}
         </>
       )}
-    </Styled.PDPContainer>
+    </>
   );
 };
 
