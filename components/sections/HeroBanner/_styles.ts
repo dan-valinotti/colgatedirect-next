@@ -22,7 +22,7 @@ const Banner = styled.div`
   }
   
   @media (min-width: 1024px) {
-    min-height: 550px;
+    min-height: 650px;
     background-position-y: 50%;
   }
 `;
