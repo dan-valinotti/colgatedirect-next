@@ -16,9 +16,7 @@ const ProductPage = () => {
   return (
     <ThemeProvider theme={theme}>
       <NavBar items={['test']} />
-      <PageContainer paddingTop={30} size={PageSize.medium}>
-        <PDPComponent handle={handle.toString()} />
-      </PageContainer>
+      <PDPComponent handle={handle.toString()} />
     </ThemeProvider>
   );
 };

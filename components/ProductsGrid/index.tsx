@@ -6,7 +6,7 @@ import { ProductSortKeys } from '../../models';
 import { ProductsType, PRODUCTS_QUERY } from './_types';
 import ProductThumbnail from '../ProductThumbnail';
 import { Styled } from './_styles';
-import FeaturedProducts from '../sections/FeaturedProducts/FeaturedProducts';
+import FeaturedProducts from '../sections/FeaturedProducts';
 
 type Props = {
   query: string;
@@ -36,7 +36,7 @@ function renderGridItems({ node }, key) {
   }
 }
 
-function Index({ variables }: Props) {
+function ProductsGrid({ variables }: Props) {
   const { loading, error, data } = useQuery<ProductsType, object>(
     PRODUCTS_QUERY,
     { variables },
@@ -66,4 +66,4 @@ function Index({ variables }: Props) {
   );
 }
 
-export default Index;
+export default ProductsGrid;

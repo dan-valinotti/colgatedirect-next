@@ -29,31 +29,36 @@ const Banner = styled.div`
 
 const BannerContent = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: ${(props) => (props.textalign === 'left' ? 'flex-start' : 'flex-end')};
   align-items: center;
   margin: 0 auto;
   width: 100%;
   max-width: 900px;
   height: 100%;
+  
+  @media (min-width: 768px) {
+    align-items: flex-start;
+  }
 `;
 
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: ${(props) => (props.textalign === 'left' ? 'flex-start' : 'flex-end')};
   justify-content: flex-start;
   padding-right: 5%;
   margin-top: 2rem;
   
   @media (min-width: 768px) {
     margin-top: 0;
+    max-width: 50%;
   }
 `;
 
 const BannerTitle = styled(Typography)`
 &&& {
   color: ${(props) => props.fontColor};
-  text-align: right;
+  text-align: ${(props) => props.textalign};
   font-weight: 700;
 }
 `;
@@ -61,7 +66,7 @@ const BannerTitle = styled(Typography)`
 const BannerSubtitle = styled(Typography)`
 &&& {
   color: ${(props) => props.fontColor};
-  text-align: right;
+  text-align: ${(props) => props.textalign};
 }
 `;
 
