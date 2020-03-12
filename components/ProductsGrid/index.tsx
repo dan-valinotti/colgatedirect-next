@@ -45,7 +45,6 @@ function ProductsGrid({ variables }: Props) {
   return (
     <Styled.Container>
       {loading && <CircularProgress />}
-
       {error && <div>{error.message}</div>}
 
       {data && (
