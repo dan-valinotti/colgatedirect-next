@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import {
+  CircularProgress,
   IconButton, Popover, Typography,
 } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
@@ -93,7 +94,7 @@ const CartController = () => {
   return (
     <div id="cart-btn">
       {(createCartLoading || getCartLoading) && (
-        <Typography variant="body2">Loading cart...</Typography>
+        <CircularProgress />
       )}
       {(createCartError || getCartError) && (
         <Typography variant="body2">Error!</Typography>
