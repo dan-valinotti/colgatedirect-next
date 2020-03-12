@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Typography } from '@material-ui/core';
+import {Button, Typography} from '@material-ui/core';
 
 const Banner = styled.div`
   display: flex;
@@ -14,11 +14,12 @@ const Banner = styled.div`
   background-position-y: bottom;
   background-repeat: no-repeat;
   background-color: ${(props) => props.bgColor};
+  position: relative;
     
   @media (min-width: 768px) {
     align-items: center;
-    background-size: cover;
-    background-position-x: center;
+    background-size: contain;
+    background-position-x: ${(props) => (props.textalign === 'left' ? 'right' : 'left')};
   }
   
   @media (min-width: 1024px) {
@@ -70,10 +71,19 @@ const BannerSubtitle = styled(Typography)`
 }
 `;
 
+const ShopNowButton = styled(Button)`
+&&& {
+  position: absolute;
+  left: calc(50% - 45px);
+  bottom: -16px;
+}
+`;
+
 export const Styled = {
   Banner,
   BannerContent,
   TextContainer,
   BannerTitle,
   BannerSubtitle,
+  ShopNowButton
 };
