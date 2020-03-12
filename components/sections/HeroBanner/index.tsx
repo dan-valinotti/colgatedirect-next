@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Button } from '@material-ui/core';
 import { Styled } from './_styles';
+import SectionContainer from '../../SectionContainer';
 
 type Props = {
   title: string;
@@ -16,7 +17,7 @@ type Props = {
 const HeroBanner: FunctionComponent<Props> = ({
   title, subtitle, bgColor, bgUrl, fontColor, textAlign, shopNow, productId,
 }: Props) => (
-  <>
+  <SectionContainer>
     <Styled.Banner imageUrl={bgUrl} bgColor={bgColor} textalign={textAlign}>
       <Styled.BannerContent textalign={textAlign}>
         <Styled.TextContainer textalign={textAlign}>
@@ -32,7 +33,7 @@ const HeroBanner: FunctionComponent<Props> = ({
         <Styled.ShopNowButton variant="contained" color="primary">SHOP NOW</Styled.ShopNowButton>
       )}
     </Styled.Banner>
-  </>
+  </SectionContainer>
 );
 
 export default HeroBanner;

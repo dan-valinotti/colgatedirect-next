@@ -74,7 +74,7 @@ const BannerSubtitle = styled(Typography)`
 const ShopNowButton = styled(Button)`
 &&& {
   position: absolute;
-  left: 50%;
+  left: calc(50% - 45px);
   bottom: -16px;
 }
 `;
