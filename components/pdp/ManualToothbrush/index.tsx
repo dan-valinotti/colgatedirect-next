@@ -17,6 +17,8 @@ const ManualToothbrush: FunctionComponent<Props> = ({ product }: Props) => (
       bgUrl="https://cdn.shopify.com/s/files/1/2524/0600/files/M1_model_hero_image_web_2_compressed.png"
       fontColor="#FFFFFF"
       textAlign="left"
+      shopNow
+      productId={product.id}
     />
   </Styled.Container>
 );

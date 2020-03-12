@@ -34,6 +34,7 @@ function ProductsPage({
         bgUrl="https://cdn.shopify.com/s/files/1/2524/0600/files/colgate_smile_like_you_mean_it2.jpg?v=1553710726"
         fontColor="#ffffff"
         textAlign="right"
+        shopNow={false}
       />
       <PageContainer paddingTop={30} size={PageSize.large}>
         <ProductsGrid query={query} reverse={reverse} sortKey={sortKey} variables={variables} />
