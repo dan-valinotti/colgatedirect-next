@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { Grid } from '@material-ui/core';
+import { Grid, CircularProgress } from '@material-ui/core';
 import featuredProducts from './featured.json';
 import { ProductSortKeys } from '../../models';
 import { ProductsType, PRODUCTS_QUERY } from './_types';
@@ -43,9 +43,8 @@ function ProductsGrid({ variables }: Props) {
   );
 
   return (
-    <div>
-      {loading && <div>Loading...</div>}
-
+    <Styled.Container>
+      {loading && <CircularProgress />}
       {error && <div>{error.message}</div>}
 
       {data && (
@@ -62,7 +61,7 @@ function ProductsGrid({ variables }: Props) {
           </Grid>
         </>
       )}
-    </div>
+    </Styled.Container>
   );
 }
 
