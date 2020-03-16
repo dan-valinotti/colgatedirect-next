@@ -1,6 +1,6 @@
 /* global localStorage */
 import React, { useEffect, useState } from 'react';
-import { useMutation, useQuery } from '@apollo/react-hooks';
+import { useMutation, useQuery, useApolloClient } from '@apollo/react-hooks';
 import {
   CircularProgress,
   IconButton, Popover, Typography,
@@ -15,7 +15,7 @@ import CartContent from '../CartContent/CartContent';
 const CartController = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const client = useApolloClient();
   // Check if cart token exists in LocalStorage
   const [cartToken, setCartToken] = useState<string>(null);
 
@@ -39,12 +39,15 @@ const CartController = () => {
     data: getCartData,
     loading: getCartLoading,
     error: getCartError,
+    refetch: getCartRefetch,
   } = useQuery(GET_CART_QUERY, {
     skip: !cartToken,
     variables,
   });
 
   const handleClick = (event) => {
+    getCartRefetch()
+      .catch((error) => console.log(error));
     setAnchorEl(event.currentTarget);
   };
 
@@ -58,8 +61,14 @@ const CartController = () => {
     setOpen(true);
   };
 
-
   useEffect(() => {
+    if (getCartData) {
+      client.writeData({
+        data: {
+          lineItems: getCartData.node.lineItems.edges.filter((item) => item.variantId),
+        },
+      });
+    }
     if (window.localStorage && !getCartData) {
       setCartToken(window.localStorage.getItem('shopifyCartToken'));
 

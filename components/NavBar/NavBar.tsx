@@ -13,6 +13,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import FiberNewIcon from '@material-ui/icons/FiberNew';
 import { useQuery } from '@apollo/react-hooks';
+import Link from 'next/link';
+import styled from 'styled-components';
 import {
   COLLECTIONS_QUERY, Collections,
 } from './_types';
@@ -31,6 +33,14 @@ interface NavItems {
   handle: string;
   products: ProductItem[];
 }
+
+const HomeLink = styled(Typography)`
+&&& {
+  &:hover {
+    cursor: pointer;
+  }
+}
+`;
 
 /**
  * General component description.
@@ -61,9 +71,11 @@ const NavBar: FunctionComponent<Props> = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6">
-            Colgate Connect
-          </Typography>
+          <Link href="/">
+            <HomeLink variant="h6">
+              Colgate Connect
+            </HomeLink>
+          </Link>
           <CartController />
         </Toolbar>
       </AppBar>

@@ -22,6 +22,7 @@ export function getLineItems(lineItems): LineItem[] {
 const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
   const [cartToken, setCartToken] = useState<string>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [lineItems, setLineItems] = useState<LineItem[]>([]);
 
   // Gets cart info to replace item if added to cart
   const {
@@ -42,9 +43,7 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
   }] = useMutation(CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, {
     variables: {
       checkoutId: cartToken,
-      lineItems: getLineItems(getCartData
-        ? getCartData.node.lineItems.edges
-        : []),
+      lineItems,
     },
   });
 
@@ -54,10 +53,19 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
   const addToCart = () => {
     if (cartToken && getCartData) {
       setLoading(true);
-      getLineItems(getCartData.node.lineItems.edges).push({
-        variantId: product.variants.edges[0].node.id,
-        quantity: 1,
-      });
+      const currentItems = lineItems;
+      if (currentItems.some((item) => item.variantId === product.variants.edges[0].node.id)) {
+        const index = currentItems.findIndex(
+          (item) => item.variantId === product.variants.edges[0].node.id,
+        );
+        currentItems[index].quantity += 1;
+      } else {
+        currentItems.push({
+          variantId: product.variants.edges[0].node.id,
+          quantity: 1,
+        });
+      }
+      setLineItems(currentItems);
       replaceItems().then((res) => {
         setLoading(false);
       });
@@ -71,7 +79,10 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
     if (window.localStorage) {
       setCartToken(window.localStorage.getItem('shopifyCartToken'));
     }
-  }, [cartToken]);
+    if (getCartData) {
+      setLineItems(getLineItems(getCartData.node.lineItems.edges));
+    }
+  }, [cartToken, getCartData]);
 
   return (
     <Styled.ProductDetailContainer>

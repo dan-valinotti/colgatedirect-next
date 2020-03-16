@@ -36,6 +36,19 @@ function createClient(initState, ctx) {
     },
   });
 }
+const data = {
+  data: {
+    checkoutId: '',
+    lineItems: [],
+    visibilityFilter: 'SHOW_ALL',
+    networkStatus: {
+      __typename: 'NetworkStatus',
+      isConnected: false,
+    },
+  },
+};
+
+inMemoryCache.writeData(data);
 
 export const initApolloClient = (initialState, ctx) => {
   // Make sure to create a new client for every server-side request so that data
@@ -48,6 +61,7 @@ export const initApolloClient = (initialState, ctx) => {
   if (!globalApolloClient) {
     globalApolloClient = createClient(initialState, ctx);
   }
+  globalApolloClient.onResetStore(() => inMemoryCache.writeData(data));
 
   return globalApolloClient;
 };

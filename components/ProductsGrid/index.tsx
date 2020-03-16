@@ -22,7 +22,7 @@ function renderGridItems({ node }, key) {
 
   if (imageSrc !== '') {
     return (
-      <Styled.StyledGrid key={key} item xs={12} sm={6} md={4} lg={3}>
+      <Grid key={key} item xs={12} sm={6} md={4} lg={3}>
         <ProductThumbnail
           id={node.id}
           title={node.title}
@@ -31,7 +31,7 @@ function renderGridItems({ node }, key) {
           imageSrc={imageSrc}
           altText={altText}
         />
-      </Styled.StyledGrid>
+      </Grid>
     );
   }
 }
