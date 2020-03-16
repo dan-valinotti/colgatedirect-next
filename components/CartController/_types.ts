@@ -42,6 +42,12 @@ export type CreateCartRequest = {
   input: object;
 };
 
+export const GET_TOKEN = gql`
+    fragment checkout on Checkout {
+        id @client
+    }
+`;
+
 export const CREATE_CART = gql`
     mutation checkoutCreate($input: CheckoutCreateInput!) {
         checkoutCreate(input: $input) {

@@ -5,9 +5,14 @@ const ProductContainer = styled(Paper)`
   display: flex;
   flex-direction: column;
   height: 100%;
-  max-height: 350px;
+  max-height: 360px;
   width: 100%;
   padding: 10px;
+  min-width: 280px;
+  
+  @media (min-width: 768px) {
+    min-width: 300px;
+  }
 `;
 
 const ProductTitle = styled(Typography)`
@@ -33,8 +38,7 @@ const ProductATCContainer = styled.div`
 `;
 
 const ProductImg = styled.img`
-  width: auto;  
-  height: 100%;
+  width: auto;
   max-width: 100%;
   margin: 0 auto;
 `;

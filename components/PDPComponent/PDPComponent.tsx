@@ -1,13 +1,13 @@
-import React, {FunctionComponent} from 'react';
-import {Button, Typography} from '@material-ui/core';
-import {useQuery} from '@apollo/react-hooks';
+import React, { FunctionComponent } from 'react';
+import { Button, Typography } from '@material-ui/core';
+import { useQuery } from '@apollo/react-hooks';
 import Link from 'next/link';
 import Head from 'next/head';
-import {Styled} from './_styles';
-import {PRODUCT_INFO_QUERY, ProductDetails, TransformedProduct} from './_types';
+import { Styled } from './_styles';
+import { PRODUCT_INFO_QUERY, ProductDetails, TransformedProduct } from './_types';
 import ProductDetail from '../ProductDetail/ProductDetail';
 import ManualToothbrush from '../pdp/ManualToothbrush';
-import PageContainer, {PageSize} from "~viewsLay/PageContainer";
+import PageContainer, { PageSize } from '../../views/layouts/PageContainer';
 
 type Props = {
   handle: string;
@@ -43,10 +43,6 @@ const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
 
   return (
     <>
-      {loading && (
-        <Typography variant="body1">Loading...</Typography>
-      )}
-
       {!loading && !error && product && (
         <>
           <Head>

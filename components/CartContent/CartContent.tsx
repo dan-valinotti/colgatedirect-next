@@ -2,10 +2,10 @@ import React, { FunctionComponent } from 'react';
 import {
   Button, List, ListItem, Typography,
 } from '@material-ui/core';
+import Link from 'next/link';
 import { GetCartResponse } from '../CartController/_types';
 import { getLineItems } from '../ProductDetail/ProductDetail';
 import { Styled } from './_styles';
-import Link from "next/link";
 
 type Props = {
   cart: GetCartResponse;
@@ -20,6 +20,8 @@ const CartContent: FunctionComponent<Props> = ({ cart }: Props) => (
           {getLineItems(cart.node.lineItems.edges).map((item, key) => (
             <ListItem button key={key}>
               {item.variantId}
+              ,
+              {item.quantity}
             </ListItem>
           ))}
         </List>
