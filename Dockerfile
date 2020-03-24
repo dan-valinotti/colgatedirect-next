@@ -6,6 +6,7 @@ WORKDIR /src
 
 # install, build, prune dependencies
 RUN npm install
+RUN npm rebuild node-sass
 RUN npm run build
 # RUN npm prune --production
 
