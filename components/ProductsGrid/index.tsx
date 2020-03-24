@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { Grid, CircularProgress } from '@material-ui/core';
+import { Grid, CircularProgress, Typography } from '@material-ui/core';
 import featuredProducts from './featured.json';
 import { ProductSortKeys } from '../../models';
 import { ProductsType, PRODUCTS_QUERY } from './_types';
@@ -22,7 +22,7 @@ function renderGridItems({ node }, key) {
 
   if (imageSrc !== '') {
     return (
-      <Styled.StyledGrid key={key} item xs={12} sm={6} md={4} lg={3}>
+      <Grid key={key} item xs={12} sm={6} md={4} lg={3}>
         <ProductThumbnail
           id={node.id}
           title={node.title}
@@ -31,7 +31,7 @@ function renderGridItems({ node }, key) {
           imageSrc={imageSrc}
           altText={altText}
         />
-      </Styled.StyledGrid>
+      </Grid>
     );
   }
 }
@@ -44,9 +44,9 @@ function ProductsGrid({ variables }: Props) {
 
   return (
     <Styled.Container>
-      {loading && <CircularProgress />}
-      {error && <div>{error.message}</div>}
-
+      {error && (
+        <Typography variant="body1">{error.message}</Typography>
+      )}
       {data && (
         <>
           <FeaturedProducts
