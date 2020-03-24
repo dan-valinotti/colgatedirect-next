@@ -31,8 +31,8 @@ const NavBarItem = ({ title, products }: Props) => {
         <Collapse in={open} timeout="auto" unmountOnExit>
           <Styled.NavList component="div" classes={{ root: 'nav-list-item--inner' }} disablePadding>
             {products.map((product, index) => (
-              <Link href={`${product.handle}`}>
-                <ListItem button key={index}>
+              <Link href={`${product.handle}`} key={index}>
+                <ListItem button>
                   <ListItemText primary={product.title} />
                 </ListItem>
               </Link>

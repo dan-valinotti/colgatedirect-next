@@ -9,9 +9,7 @@ import App from 'next/app';
 import config from '../apollo.config';
 
 let globalApolloClient = null;
-const inMemoryCache = new InMemoryCache({
-  dataIdFromObject: (object) => object.id || defaultDataIdFromObject(object),
-});
+const inMemoryCache = new InMemoryCache();
 
 function createClient(initState, ctx) {
   return new ApolloClient({
@@ -61,7 +59,7 @@ export const initApolloClient = (initialState, ctx) => {
   if (!globalApolloClient) {
     globalApolloClient = createClient(initialState, ctx);
   }
-  globalApolloClient.onResetStore(() => inMemoryCache.writeData(data));
+  // globalApolloClient.onResetStore(() => inMemoryCache.writeData(data));
 
   return globalApolloClient;
 };

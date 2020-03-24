@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { withTheme } from '@material-ui/core';
 import ProductsGrid from '../components/ProductsGrid';
 import { ProductSortKeys } from '../models';
-import { withApollo } from '../services/apollo';
+import withData from '../lib/apollo';
 import PageContainer, { PageSize } from '../views/layouts/PageContainer';
 import NavBar from '../components/NavBar/NavBar';
 import HeroBanner from '../components/sections/HeroBanner';
@@ -44,4 +44,4 @@ function ProductsPage({
   );
 }
 
-export default withMuiApp(withTheme(withApollo({ ssr: true })(ProductsPage)));
+export default withMuiApp(withTheme(withData(ProductsPage)));

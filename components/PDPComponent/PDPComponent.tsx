@@ -33,7 +33,9 @@ const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
       description: data.productByHandle.description,
       imageSrc: data.productByHandle.images.edges[0].node.transformedSrc,
       price: data.productByHandle.priceRange.minVariantPrice.amount,
+      priceV2: data.productByHandle.priceRange.minVariantPrice,
       variants: data.productByHandle.variants,
+      variant: data.productByHandle.variants.edges[0].node,
     });
   }
 

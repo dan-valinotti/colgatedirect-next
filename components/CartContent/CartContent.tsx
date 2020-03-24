@@ -9,25 +9,52 @@ import { Styled } from './_styles';
 
 type Props = {
   cart: GetCartResponse;
+  total: number;
+  clearCart: Function;
 };
 
-const CartContent: FunctionComponent<Props> = ({ cart }: Props) => (
+const CartContent: FunctionComponent<Props> = ({ cart, total, clearCart }: Props) => (
   <>
     {cart && (
       <Styled.Container>
         <Typography variant="h6">Cart</Typography>
         <List className="cart-popover-list">
-          {getLineItems(cart.node.lineItems.edges).map((item, key) => (
-            <ListItem button key={key}>
-              {item.variantId}
-              ,
-              {item.quantity}
-            </ListItem>
+          {cart.node.lineItems.edges.map((item, key) => (
+            <>
+              <ListItem button key={key}>
+                <Styled.ItemContainer>
+                  <Typography variant="h6">{item.node.title}</Typography>
+                  <Typography variant="h6">
+                    ${item.node.variant.priceV2.amount * item.node.quantity}
+                  </Typography>
+                </Styled.ItemContainer>
+              </ListItem>
+              {key === cart.node.lineItems.edges.length - 1 && (
+                <Styled.CartListItem>
+                  <Styled.ItemContainer>
+                    <Typography variant="h6">Total:</Typography>
+                    <Typography variant="h6">
+                      ${total}
+                    </Typography>
+                  </Styled.ItemContainer>
+                </Styled.CartListItem>
+              )}
+            </>
           ))}
         </List>
         <Link href="/cart">
           <Button variant="contained" color="secondary">Cart Overview</Button>
         </Link>
+        {total > 0 && (
+          <Button
+            variant="contained"
+            color="secondary"
+            style={{ marginLeft: '1rem' }}
+            onClick={() => clearCart()}
+          >
+            Clear cart
+          </Button>
+        )}
       </Styled.Container>
     )}
     {!cart && (
@@ -37,5 +64,6 @@ const CartContent: FunctionComponent<Props> = ({ cart }: Props) => (
     )}
   </>
 );
+
 
 export default CartContent;

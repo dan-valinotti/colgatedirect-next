@@ -13,6 +13,7 @@ export interface GetCartRequest {
 export type GetCartResponse = {
   node: {
     id: string;
+    title: string;
     webUrl: string;
     subtotalPriceV2: PriceV2;
     totalTaxV2: PriceV2;
@@ -43,7 +44,7 @@ export type CreateCartRequest = {
 };
 
 export const GET_TOKEN = gql`
-    fragment checkout on Checkout {
+    fragment checkoutCached on Checkout {
         id @client
     }
 `;
@@ -104,7 +105,7 @@ export const GET_CART_QUERY = gql`
             }
         }
     }
-    query checkout($checkoutId: ID!) {
+    query CheckoutQuery($checkoutId: ID!) {
         node(id: $checkoutId) {
             ... on Checkout {
                 ...checkout

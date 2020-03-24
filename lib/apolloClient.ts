@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch';
 
 import ApolloClient from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { persistCache } from 'apollo-cache-persist';
 
 import { ApolloLink } from 'apollo-link';
 import { onError } from 'apollo-link-error';
@@ -27,6 +28,11 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 const link = ApolloLink.from([errorLink, httpLink]);
 const cache = new InMemoryCache();
+
+await persistCache({
+  cache,
+  storage: window.localStorage,
+});
 
 const apollo = new ApolloClient({
   ssrMode: true,

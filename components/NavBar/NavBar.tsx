@@ -98,7 +98,7 @@ const NavBar: FunctionComponent<Props> = () => {
         { !loading && !error && data && (
         <List>
           {NavItems.navigationItems.map(({ title, products }, key) => (
-            <NavBarItem title={title} products={products} />
+            <NavBarItem key={key} title={title} products={products} />
           ))}
         </List>
         )}
