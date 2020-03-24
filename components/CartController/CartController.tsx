@@ -12,10 +12,10 @@ import {
   GetCartRequest,
   GET_CART_QUERY,
   CreateCartRequest,
-  CHECKOUT_LINE_ITEMS_REPLACE_MUTATION
+  CHECKOUT_LINE_ITEMS_REPLACE_MUTATION,
 } from './_types';
 import './_style.scss';
-import { getLineItems } from "../ProductDetail/ProductDetail";
+import { getLineItems } from '../ProductDetail/ProductDetail';
 import withData from '../../lib/apollo';
 import CartContent from '../CartContent/CartContent';
 
