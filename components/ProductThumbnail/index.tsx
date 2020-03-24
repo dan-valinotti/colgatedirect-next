@@ -18,7 +18,7 @@ function Index({
   return (
     <Styled.ProductContainer className="product-container">
       <Styled.ProductImgThumbnail>
-        <Styled.ProductImg src={imageSrc} alt={`${title} Thumbnail`} />
+        <Styled.ProductImg src={`${imageSrc}&height=165`} alt={`${title} Thumbnail`} />
       </Styled.ProductImgThumbnail>
       <Styled.ProductTitle variant="subtitle2" className="product-title">
         {title}

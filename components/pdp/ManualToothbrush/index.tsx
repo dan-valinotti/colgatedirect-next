@@ -4,7 +4,6 @@ import {
 } from '@material-ui/icons';
 import { Styled } from './_styles';
 import { TransformedProduct } from '../../PDPComponent/_types';
-import { TestInterface } from './_types';
 import HeroBanner from '../../sections/HeroBanner';
 import IconDescription from '../../sections/IconDescription';
 

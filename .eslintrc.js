@@ -17,6 +17,7 @@ module.exports = {
         "react/no-array-index-key": "off",
         "array-callback-return": "off",
         "consistent-return": "off",
+        "react/jsx-one-expression-per-line": "off",
         "import/prefer-default-export": "off",
         "no-param-reassign": "off",
         "react/jsx-props-no-spreading": "off",

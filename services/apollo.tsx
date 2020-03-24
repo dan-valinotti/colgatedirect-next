@@ -9,9 +9,7 @@ import App from 'next/app';
 import config from '../apollo.config';
 
 let globalApolloClient = null;
-const inMemoryCache = new InMemoryCache({
-  dataIdFromObject: (object) => object.id || defaultDataIdFromObject(object),
-});
+const inMemoryCache = new InMemoryCache();
 
 function createClient(initState, ctx) {
   return new ApolloClient({
@@ -36,6 +34,19 @@ function createClient(initState, ctx) {
     },
   });
 }
+const data = {
+  data: {
+    checkoutId: '',
+    lineItems: [],
+    visibilityFilter: 'SHOW_ALL',
+    networkStatus: {
+      __typename: 'NetworkStatus',
+      isConnected: false,
+    },
+  },
+};
+
+inMemoryCache.writeData(data);
 
 export const initApolloClient = (initialState, ctx) => {
   // Make sure to create a new client for every server-side request so that data
@@ -48,6 +59,7 @@ export const initApolloClient = (initialState, ctx) => {
   if (!globalApolloClient) {
     globalApolloClient = createClient(initialState, ctx);
   }
+  // globalApolloClient.onResetStore(() => inMemoryCache.writeData(data));
 
   return globalApolloClient;
 };
