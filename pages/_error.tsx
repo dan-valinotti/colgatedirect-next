@@ -1,8 +1,8 @@
 import React from 'react';
 
 type Props = {
-  statusCode: string
-}
+  statusCode: string;
+};
 
 function Error({ statusCode }: Props) {
   return (
