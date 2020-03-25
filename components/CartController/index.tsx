@@ -54,7 +54,6 @@ const CartController = () => {
   } = useQuery(GET_CART_QUERY, {
     skip: !cartToken,
     variables,
-    pollInterval: 750,
   });
 
   // Mutation replaces items in cart

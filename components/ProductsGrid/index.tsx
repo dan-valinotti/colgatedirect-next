@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {useMutation, useQuery} from '@apollo/react-hooks';
-import {Grid, CircularProgress, Typography, DialogContent, Dialog} from '@material-ui/core';
+import { useMutation, useQuery } from '@apollo/react-hooks';
+import {
+  Grid, CircularProgress, Typography, DialogContent, Dialog,
+} from '@material-ui/core';
 import featuredProducts from './featured.json';
 import { ProductSortKeys } from '../../models';
 import { ProductsType, PRODUCTS_QUERY } from './_types';
@@ -8,9 +10,9 @@ import ProductThumbnail from '../ProductThumbnail';
 import { Styled } from './_styles';
 import FeaturedProducts from '../sections/FeaturedProducts';
 
-import {CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY} from '../CartController/_types';
+import { CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY } from '../CartController/_types';
 import { getLineItems } from '../ProductDetail';
-import {LineItemsInput} from "../ProductThumbnail/_types";
+import { LineItemsInput } from '../ProductThumbnail/_types';
 
 type Props = {
   query: string;
@@ -30,9 +32,9 @@ function ProductsGrid({ variables }: Props) {
     loading: getCartLoading,
     error: getCartError,
   } = useQuery(GET_CART_QUERY, {
+    skip: !cartToken,
     variables: {
       checkoutId: cartToken,
-      lineItems: getLineItems(lineItems),
     },
   });
 
@@ -77,8 +79,8 @@ function ProductsGrid({ variables }: Props) {
       replaceItems().then((res) => {
         setLoading(false);
       }).catch((error) => console.log(error));
-    } else {
-      // console.log("Can't add to cart.");
+    } else if (getCartError) {
+      console.log(getCartError);
     }
   };
 
