@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery, useApolloClient } from '@apollo/react-hooks';
 import {
-  Button,
   CircularProgress,
   IconButton, Popover, Typography,
 } from '@material-ui/core';
@@ -15,9 +14,8 @@ import {
   CHECKOUT_LINE_ITEMS_REPLACE_MUTATION,
 } from './_types';
 import './_style.scss';
-import { getLineItems } from '../ProductDetail/ProductDetail';
 import withData from '../../lib/apollo';
-import CartContent from '../CartContent/CartContent';
+import CartContent from '../CartContent';
 
 // Container component for the Cart that handles checking if a cart exists,
 // as well as retrieving the cart info and items.
@@ -56,7 +54,6 @@ const CartController = () => {
   } = useQuery(GET_CART_QUERY, {
     skip: !cartToken,
     variables,
-    pollInterval: 750,
   });
 
   // Mutation replaces items in cart

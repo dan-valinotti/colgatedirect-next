@@ -7,11 +7,9 @@ import {
   Drawer,
   Divider,
   List,
-  ListItem, ListItemIcon, ListItemText, Collapse,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import FiberNewIcon from '@material-ui/icons/FiberNew';
 import { useQuery } from '@apollo/react-hooks';
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -19,9 +17,9 @@ import {
   COLLECTIONS_QUERY, Collections,
 } from './_types';
 import './_style.scss';
-import CartController from '../CartController/CartController';
+import CartController from '../CartController';
 import NavItems from './navItems.json';
-import NavBarItem, { ProductItem } from '../NavBarItem/NavBarItem';
+import NavBarItem, { ProductItem } from '../NavBarItem';
 
 type Props = {
   /** Navigation items to be displayed in NavBar */

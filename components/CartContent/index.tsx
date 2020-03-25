@@ -1,10 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import {
-  Button, List, ListItem, Typography,
+  Button, ButtonGroup, List, ListItem, Typography,
 } from '@material-ui/core';
 import Link from 'next/link';
 import { GetCartResponse } from '../CartController/_types';
-import { getLineItems } from '../ProductDetail/ProductDetail';
 import { Styled } from './_styles';
 
 type Props = {
@@ -20,27 +19,32 @@ const CartContent: FunctionComponent<Props> = ({ cart, total, clearCart }: Props
         <Typography variant="h6">Cart</Typography>
         <List className="cart-popover-list">
           {cart.node.lineItems.edges.map((item, key) => (
-            <>
-              <ListItem button key={key}>
-                <Styled.ItemContainer>
-                  <Typography variant="h6">{item.node.title}</Typography>
-                  <Typography variant="h6">
-                    ${item.node.variant.priceV2.amount * item.node.quantity}
-                  </Typography>
-                </Styled.ItemContainer>
-              </ListItem>
-              {key === cart.node.lineItems.edges.length - 1 && (
-                <Styled.CartListItem>
-                  <Styled.ItemContainer>
-                    <Typography variant="h6">Total:</Typography>
-                    <Typography variant="h6">
-                      ${total}
+            <ListItem key={key}>
+              <Styled.ItemContainer>
+                <Typography variant="h6">{item.node.title}</Typography>
+                <ButtonGroup>
+                  <Button variant="outlined">+</Button>
+                  <Button variant="outlined" disabled>
+                    <Typography variant="body2" style={{ color: 'black' }}>
+                      {item.node.quantity}
                     </Typography>
-                  </Styled.ItemContainer>
-                </Styled.CartListItem>
-              )}
-            </>
+                  </Button>
+                  <Button variant="outlined">-</Button>
+                </ButtonGroup>
+                <Typography variant="h6">
+                  ${(item.node.variant.priceV2.amount * item.node.quantity).toFixed(2)}
+                </Typography>
+              </Styled.ItemContainer>
+            </ListItem>
           ))}
+          <Styled.CartListItem>
+            <Styled.ItemContainer>
+              <Typography variant="h6">Total:</Typography>
+              <Typography variant="h6">
+                ${total.toFixed(2)}
+              </Typography>
+            </Styled.ItemContainer>
+          </Styled.CartListItem>
         </List>
         <Link href="/cart">
           <Button variant="contained" color="secondary">Cart Overview</Button>

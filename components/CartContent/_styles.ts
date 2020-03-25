@@ -11,6 +11,30 @@ const ItemContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  height: 3rem;
+  min-width: 500px;
+  
+  h6 {
+    font-size: 1rem;
+    flex-basis: 15%;
+    text-align: right;
+  }
+  
+  h6:first-child {
+    flex-basis: 50%;
+    text-align: left;
+  }
+  
+  div {
+    flex-basis: 15%;
+  }
+`;
+
+const TotalContainer = styled.div`
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
   min-width: 500px;
   
   h6 {
@@ -29,5 +53,6 @@ const CartListItem = styled(ListItem)`
 export const Styled = {
   Container,
   ItemContainer,
+  TotalContainer,
   CartListItem,
 };
