@@ -1,10 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import {
-  Button, List, ListItem, Typography,
+  Button, ButtonGroup, List, ListItem, Typography,
 } from '@material-ui/core';
 import Link from 'next/link';
 import { GetCartResponse } from '../CartController/_types';
-import { getLineItems } from '../ProductDetail/ProductDetail';
 import { Styled } from './_styles';
 
 type Props = {
@@ -21,11 +20,20 @@ const CartContent: FunctionComponent<Props> = ({ cart, total, clearCart }: Props
         <List className="cart-popover-list">
           {cart.node.lineItems.edges.map((item, key) => (
             <>
-              <ListItem button key={key}>
+              <ListItem key={key}>
                 <Styled.ItemContainer>
                   <Typography variant="h6">{item.node.title}</Typography>
+                  <ButtonGroup>
+                    <Button variant="outlined">+</Button>
+                    <Button variant="outlined" disabled>
+                      <Typography variant="body2" style={{ color: 'black' }}>
+                        {item.node.quantity}
+                      </Typography>
+                    </Button>
+                    <Button variant="outlined">-</Button>
+                  </ButtonGroup>
                   <Typography variant="h6">
-                    ${item.node.variant.priceV2.amount * item.node.quantity}
+                    ${(item.node.variant.priceV2.amount * item.node.quantity).toFixed(2)}
                   </Typography>
                 </Styled.ItemContainer>
               </ListItem>
@@ -34,7 +42,7 @@ const CartContent: FunctionComponent<Props> = ({ cart, total, clearCart }: Props
                   <Styled.ItemContainer>
                     <Typography variant="h6">Total:</Typography>
                     <Typography variant="h6">
-                      ${total}
+                      ${total.toFixed(2)}
                     </Typography>
                   </Styled.ItemContainer>
                 </Styled.CartListItem>

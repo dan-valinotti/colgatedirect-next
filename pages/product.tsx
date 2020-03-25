@@ -5,7 +5,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import { withTheme } from '@material-ui/core';
 import withData from '../lib/apollo';
 import NavBar from '../components/NavBar/NavBar';
-import PDPComponent from '../components/PDPComponent/PDPComponent';
+import PDPComponent from '../components/PDPComponent';
 import { theme } from '../views/theme';
 import { withMuiApp } from '../hocs/withMui';
 
