@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import {
-  ApolloClient, defaultDataIdFromObject, HttpLink, InMemoryCache,
+  ApolloClient, HttpLink, InMemoryCache,
 } from 'apollo-boost';
 import 'isomorphic-unfetch';
 import { ApolloProvider } from '@apollo/react-hooks';
