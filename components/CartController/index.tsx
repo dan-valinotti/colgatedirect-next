@@ -182,9 +182,6 @@ const CartController = () => {
 
   return (
     <div id="cart-btn">
-      {(createCartLoading || getCartLoading) && (
-        <CircularProgress />
-      )}
       {(createCartError || getCartError) && (
         <Typography variant="body2">Error!</Typography>
       )}
