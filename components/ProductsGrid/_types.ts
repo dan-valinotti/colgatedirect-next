@@ -10,6 +10,13 @@ export const PRODUCTS_QUERY = gql`
                     title
                     handle
                     description
+                    variants(first: 10) {
+                        edges {
+                            node {
+                                id
+                            }
+                        }
+                    }
                     images(first: 1) {
                         edges {
                             node {
@@ -45,6 +52,15 @@ export interface ProductsType {
           title: string;
           handle: string;
           description: string;
+          variants: {
+            edges: [
+              {
+                node: {
+                  id: string;
+                };
+              }
+            ];
+          };
           images: {
             edges: [
               {
