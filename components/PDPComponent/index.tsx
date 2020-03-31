@@ -8,6 +8,9 @@ import { PRODUCT_INFO_QUERY, ProductDetails, TransformedProduct } from './_types
 import ProductDetail from '../ProductDetail';
 import ManualToothbrush from '../pdp/ManualToothbrush';
 import PageContainer, { PageSize } from '../../views/layouts/PageContainer';
+import WhiteningPage from '../pdp/WhiteningPage';
+import products from './customProductPages.json';
+import CustomPDPController from '../CustomPDPController';
 
 type Props = {
   handle: string;
@@ -15,6 +18,8 @@ type Props = {
 
 const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
   let product: TransformedProduct = null;
+  const customPdps = products;
+
   const queryVariables: object = {
     handle: `${handle}`,
   };
@@ -45,14 +50,14 @@ const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
 
   return (
     <>
-      {!loading && !error && product && (
+      {!error && product && (
         <>
           <Head>
             <title>{product.title}</title>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           </Head>
-          { product.handle === 'm1' ? (
-            <ManualToothbrush product={product} />
+          { customPdps.products.includes(product.handle) ? (
+            <CustomPDPController handle={product.handle} PDPprops={{ product }} />
           ) : (
             <PageContainer size={PageSize.medium} paddingTop={45}>
               <Styled.PDPContainer>
