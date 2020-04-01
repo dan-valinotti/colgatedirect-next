@@ -219,6 +219,7 @@ const CartController = () => {
               horizontal: 'right',
             }}
           >
+            ${console.log(getCartData)}
             <CartContent
               cart={getCartData}
               total={total}
