@@ -16,14 +16,14 @@ import {
   CreateCartRequest,
   CHECKOUT_LINE_ITEMS_REPLACE_MUTATION,
 } from '../CartController/_types';
-import { getLineItems } from '../ProductDetail/ProductDetail';
 import withData from '../../lib/apollo';
-import CartController from '../CartController/CartController';
+import CartController from '../CartController/index';
+import CartContentRow from '../CartContentRow/CartContentRow';
 
 
 // Container component for the Cart that handles checking if a cart exists,
 // as well as retrieving the cart info and items.
-const CartData = () => {
+const CartData = (parentComponent) => {
   // State variable declaration
   const [cartToken, setCartToken] = useState<string>(null); // Check for cart token
   // const [open, setOpen] = useState<boolean>(false); // Open/close state of popup
@@ -32,6 +32,7 @@ const CartData = () => {
   const [totalLoading, setTotalLoading] = useState<boolean>(true);
   const [lineItems, setLineItems] = useState<object[]>([]);
   const client = useApolloClient();
+  const [loading, setLoading] = useState<boolean>(false);
 
 
   // Create new cart if token does not exist
@@ -91,9 +92,11 @@ const CartData = () => {
   };
 
   const clearCart = () => {
+    setLoading(true);
     setLineItems([]);
     replaceItems()
       .then((res) => {
+        setLoading(false);
         getTotal([]);
       })
       .catch((error) => console.log(error));
@@ -156,52 +159,24 @@ const CartData = () => {
     getCartData,
   ]); // If one of these variables is changed, useEffect() is run again.
 
+  const cartProps = {
+    cart: getCartData,
+    clearCart,
+    loading,
+    total,
+    getTotal,
+    createCartLoading,
+    getCartLoading,
+    createCartError,
+    getCartError,
+    getCartRefetch,
+  };
   return (
-    <div id="cart-btn">
-      {(createCartLoading || getCartLoading) && (
-        <CircularProgress />
-      )}
-      {(createCartError || getCartError) && (
-        <Typography variant="body2">Error!</Typography>
-      )}
-      {(
-        !getCartLoading && !createCartLoading
-        && !getCartError && !createCartError
-        && getCartData && total !== -1)
-      && (
-        <>
-          <IconButton
-            edge="end"
-            color="inherit"
-            aria-label="cart"
-            onClick={handleOpen}
-          >
-            <ShoppingCartIcon />
-          </IconButton>
-          <Popover
-            open={open}
-            onClose={handleClose}
-            disableScrollLock
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'right',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-          >
-            ${console.log(getCartData)}
-            <CartContent
-              cart={getCartData}
-              total={total}
-              clearCart={clearCart}
-            />
-          </Popover>
-        </>
-      )}
-    </div>
+    <>
+      {parentComponent.parentComponent === 'NavBar' && cartProps.cart && <CartController {...cartProps} />}
+      {parentComponent.parentComponent === 'CartOverview' && cartProps.cart && <CartContentRow {...cartProps} />}
+    </>
+
   );
 };
 
