@@ -157,19 +157,51 @@ const CartData = () => {
   ]); // If one of these variables is changed, useEffect() is run again.
 
   return (
-    <>
-      <CartController
-        cart={getCartData}
-        clearCart={clearCart}
-        getTotal={getTotal}
-        createCartLoading={createCartLoading}
-        getCartLoading={getCartLoading}
-        createCartError={createCartError}
-        getCartError={getCartError}
-        getCartRefetch={getCartRefetch}
-      />
-    </>
-
+    <div id="cart-btn">
+      {(createCartLoading || getCartLoading) && (
+        <CircularProgress />
+      )}
+      {(createCartError || getCartError) && (
+        <Typography variant="body2">Error!</Typography>
+      )}
+      {(
+        !getCartLoading && !createCartLoading
+        && !getCartError && !createCartError
+        && getCartData && total !== -1)
+      && (
+        <>
+          <IconButton
+            edge="end"
+            color="inherit"
+            aria-label="cart"
+            onClick={handleOpen}
+          >
+            <ShoppingCartIcon />
+          </IconButton>
+          <Popover
+            open={open}
+            onClose={handleClose}
+            disableScrollLock
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+          >
+            ${console.log(getCartData)}
+            <CartContent
+              cart={getCartData}
+              total={total}
+              clearCart={clearCart}
+            />
+          </Popover>
+        </>
+      )}
+    </div>
   );
 };
 
