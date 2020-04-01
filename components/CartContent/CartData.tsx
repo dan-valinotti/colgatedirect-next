@@ -1,33 +1,43 @@
+// Has main cart data which is passed to CartController for the cart popup
+// and CartContentRow for the cart overview page
 import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery, useApolloClient } from '@apollo/react-hooks';
 import {
-  Button, List, ListItem, Typography, Grid, CircularProgress,
+  Button,
+  CircularProgress,
+  IconButton, Popover, Typography,
 } from '@material-ui/core';
-import withData from '../../lib/apollo';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import {
   CREATE_CART,
   CreateCartResponse,
-  GetCartResponse,
   GetCartRequest,
   GET_CART_QUERY,
   CreateCartRequest,
   CHECKOUT_LINE_ITEMS_REPLACE_MUTATION,
 } from '../CartController/_types';
-import { Styled } from './_styles';
+import { getLineItems } from '../ProductDetail/ProductDetail';
+import withData from '../../lib/apollo';
+import CartController from '../CartController/CartController';
 
-const CartContentRow = () => {
+
+// Container component for the Cart that handles checking if a cart exists,
+// as well as retrieving the cart info and items.
+const CartData = () => {
+  // State variable declaration
   const [cartToken, setCartToken] = useState<string>(null); // Check for cart token
-  const [anchorEl, setAnchorEl] = React.useState(null); // Anchor element
+  // const [open, setOpen] = useState<boolean>(false); // Open/close state of popup
+  // const [anchorEl, setAnchorEl] = React.useState(null); // Anchor element
   const [total, setTotal] = useState<number>(0); // Total cart price
   const [totalLoading, setTotalLoading] = useState<boolean>(true);
   const [lineItems, setLineItems] = useState<object[]>([]);
   const client = useApolloClient();
 
+
   // Create new cart if token does not exist
   const createVars: CreateCartRequest = {
     input: {},
   };
-
   const [createCart, {
     data: createCartData,
     loading: createCartLoading,
@@ -51,6 +61,18 @@ const CartContentRow = () => {
     pollInterval: 750,
   });
 
+  // Mutation replaces items in cart
+  const [replaceItems, {
+    data: replaceItemsData,
+    loading: replaceItemsLoading,
+    error: replaceItemsError,
+  }] = useMutation(CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, {
+    variables: {
+      checkoutId: cartToken,
+      lineItems,
+    },
+  });
+
   // Loops through lineItems to get total price of cart
   const getTotal = (items) => {
     let t = 0;
@@ -67,6 +89,20 @@ const CartContentRow = () => {
       setTotal(0);
     }
   };
+
+  const clearCart = () => {
+    setLineItems([]);
+    replaceItems()
+      .then((res) => {
+        getTotal([]);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  // Function run to progressively check status of GraphQL queries
+  // Necessary to run logic for cart status checking and check status
+  // of localStorage (can't be accessed until page is rendered on browser)
+  // Example: check localStorage -> no cartToken -> createCart
   useEffect(() => {
     // If cart data is retrieved, write that data to the Apollo cache
     if (getCartData) {
@@ -121,48 +157,20 @@ const CartContentRow = () => {
   ]); // If one of these variables is changed, useEffect() is run again.
 
   return (
-    <div id="cart-btn">
-      {(createCartLoading || getCartLoading) && (
-      <CircularProgress />
-      )}
-      {(createCartError || getCartError) && (
-      <Typography variant="body2">Error!</Typography>
-      )}
-      ${console.log(getCartLoading)}${console.log(getCartError)}${console.log(getCartData)}{(
-        !getCartLoading && !createCartLoading
-      && !getCartError && !createCartError
-      && getCartData && total !== -1)
-    && (
-    <Styled.Container>
-      <Typography variant="h6">Cart</Typography>
-      <List className="cart-popover-list">
-        {getCartData.node.lineItems.edges.map((item, key) => (
-          <>
-            <ListItem button key={key}>
-              <Styled.ItemContainer>
-                <Typography variant="h6">{item.node.title}</Typography>
-                <Typography variant="h6">
-                  ${item.node.variant.priceV2.amount * item.node.quantity}
-                </Typography>
-              </Styled.ItemContainer>
-            </ListItem>
-            {key === getCartData.node.lineItems.edges.length - 1 && (
-            <Styled.CartListItem>
-              <Styled.ItemContainer>
-                <Typography variant="h6">Total:</Typography>
-                <Typography variant="h6">
-                  ${total}
-                </Typography>
-              </Styled.ItemContainer>
-            </Styled.CartListItem>
-            )}
-          </>
-        ))}
-      </List>
-    </Styled.Container>
-    )}
-    </div>
+    <>
+      <CartController
+        cart={getCartData}
+        clearCart={clearCart}
+        getTotal={getTotal}
+        createCartLoading={createCartLoading}
+        getCartLoading={getCartLoading}
+        createCartError={createCartError}
+        getCartError={getCartError}
+        getCartRefetch={getCartRefetch}
+      />
+    </>
+
   );
 };
 
-export default withData(CartContentRow);
+export default withData(CartData);
