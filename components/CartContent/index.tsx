@@ -14,6 +14,7 @@ type Props = {
 
 const CartContent: FunctionComponent<Props> = ({ cart, total, clearCart }: Props) => (
   <>
+    { console.log(cart.node.lineItems.edges) }
     {cart && (
       <Styled.Container>
         <Typography variant="h6">Cart</Typography>
@@ -46,7 +47,7 @@ const CartContent: FunctionComponent<Props> = ({ cart, total, clearCart }: Props
             </Styled.ItemContainer>
           </Styled.CartListItem>
         </List>
-        <Link href="/cart">
+        <Link href={{ pathname: '/cart', query: { total } }}>
           <Button variant="contained" color="secondary">Cart Overview</Button>
         </Link>
         {total > 0 && (
