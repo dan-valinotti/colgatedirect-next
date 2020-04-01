@@ -17,7 +17,7 @@ import {
   COLLECTIONS_QUERY, Collections,
 } from './_types';
 import './_style.scss';
-import CartController from '../CartController';
+import CartData from '../CartContent/CartData';
 import NavItems from './navItems.json';
 import NavBarItem, { ProductItem } from '../NavBarItem';
 import AccountPopup from '../AccountPopup';
@@ -75,10 +75,7 @@ const NavBar: FunctionComponent<Props> = () => {
               Colgate Connect
             </HomeLink>
           </Link>
-          <div className="icon-btns-container">
-            <AccountPopup />
-            <CartController />
-          </div>
+          <CartData />
         </Toolbar>
       </AppBar>
       <Drawer
