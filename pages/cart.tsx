@@ -17,6 +17,7 @@ import {
 // import { GET_CART_QUERY , GetCartResponse } from '../components/CartContentRow/_types';
 
 import CartContentRow from '../components/CartContentRow/CartContentRow';
+import CartData from '../components/CartContent/CartData';
 import PageContainer, { PageSize } from '../views/layouts/PageContainer';
 import { withMuiApp } from '../hocs/withMui';
 
@@ -38,7 +39,7 @@ const CartPage = () => {
       <NavBar items={['test']} />
       <PageContainer paddingTop={30} size={PageSize.medium}>
         <Typography variant="h3">Cart</Typography>
-        <CartContentRow />
+        <CartData parentComponent="CartOverview" />
       </PageContainer>
     </>
   );
