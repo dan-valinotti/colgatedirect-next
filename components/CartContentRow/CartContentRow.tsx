@@ -128,7 +128,7 @@ const CartContentRow = () => {
       {(createCartError || getCartError) && (
       <Typography variant="body2">Error!</Typography>
       )}
-      ${console.log(getCartLoading)}${console.log(getCartError)}${console.log(getCartData)}{(
+      {(
         !getCartLoading && !createCartLoading
       && !getCartError && !createCartError
       && getCartData && total !== -1)
