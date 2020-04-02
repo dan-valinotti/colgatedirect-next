@@ -8,6 +8,7 @@ import {
   IconButton, Popover, Typography,
 } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { gql } from 'apollo-boost';
 import {
   CREATE_CART,
   CreateCartResponse,
@@ -20,6 +21,7 @@ import { getLineItems } from '../ProductDetail/index';
 import withData from '../../lib/apollo';
 import CartController from '../CartController/index';
 import CartContentRow from '../CartContentRow/CartContentRow';
+import cart from '../../pages/cart';
 
 
 // Container component for the Cart that handles checking if a cart exists,
@@ -34,6 +36,15 @@ const CartData = () => {
   const [lineItems, setLineItems] = useState<object[]>([]);
   const client = useApolloClient();
 
+  const {
+    data: cartTokenData,
+    loading: cartTokenLoading,
+    error: cartTokenError,
+  } = useQuery(gql`
+      query GetCartToken {
+          cartToken @client
+      }
+  `);
 
   // Create new cart if token does not exist
   const createVars: CreateCartRequest = {
@@ -111,20 +122,21 @@ const CartData = () => {
       client.writeData({
         data: {
           lineItems: getCartData.node.lineItems.edges.filter((item) => item.variantId),
+          cartToken: getCartData.node.id, // write cartToken to cache
         },
       });
     }
 
-    // If localStorage exists and getCart did not give a response yet
-    if (window.localStorage && !getCartData) {
-      // Set 'shopifyCartToken' item in localStorage
-      setCartToken(window.localStorage.getItem('shopifyCartToken'));
+    // If cartToken was successfully retrieved from cache
+    if (cartTokenData && !cartToken) {
+      setCartToken(cartTokenData.cartToken);
+    }
 
-      // If value applied was undefined, create new token
-      if (!window.localStorage.getItem('shopifyCartToken')) {
-        createCart()
-          .catch((error) => console.log(error));
-      }
+    // If retrieving cart data from cache failed
+    // (most likely becasuse it doesn't exist yet)
+    if (cartTokenError) {
+      createCart()
+        .catch((error) => console.log(error));
     }
 
     // To be executed after new cart is created
@@ -132,7 +144,11 @@ const CartData = () => {
       // If response is OK, set localStorage and state cartTokens
       if (res) {
         setCartToken(res.checkoutCreate.checkout.id);
-        localStorage.setItem('shopifyCartToken', cartToken);
+        client.writeData({
+          data: {
+            cartToken: res.checkoutCreate.checkout.id,
+          },
+        });
       }
     };
 
@@ -149,6 +165,9 @@ const CartData = () => {
     }
   }, [
     cartToken,
+    cartTokenData,
+    cartTokenError,
+    cartTokenLoading,
     client,
     createCart,
     createCartData,

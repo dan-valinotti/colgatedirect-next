@@ -3,7 +3,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 import {
   Button, CircularProgress, Dialog, DialogContent, Typography,
 } from '@material-ui/core';
-import { useMutation, useQuery } from '@apollo/react-hooks';
+import { useApolloClient, useMutation, useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { LineItem, LineItemShort, TransformedProduct } from '../PDPComponent/_types';
 import {
@@ -42,6 +42,16 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
   const [cartToken, setCartToken] = useState<string>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [lineItems, setLineItems] = useState<any[]>(null);
+
+  const {
+    data: cartTokenData,
+    loading: cartTokenLoading,
+    error: cartTokenError,
+  } = useQuery(gql`
+        query GetCartToken {
+            cartToken @client
+        }
+    `);
 
   // Gets cart info to replace item if added to cart
   const {
@@ -96,13 +106,14 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
 
   // Waits for 'window' object to be availble for localStorage
   useEffect(() => {
-    if (window.localStorage) {
-      setCartToken(window.localStorage.getItem('shopifyCartToken'));
+    if (!cartToken && cartTokenData) {
+      // setCartToken(window.localStorage.getItem('shopifyCartToken'));
+      setCartToken(cartTokenData.cartToken);
     }
     if (getCartData && !lineItems) {
       setLineItems(getLineItems(getCartData.node.lineItems.edges));
     }
-  }, [cartToken, getCartData, lineItems]);
+  }, [cartToken, cartTokenData, getCartData, lineItems]);
 
   return (
     <Styled.ProductDetailContainer>

@@ -3,6 +3,7 @@ import { useMutation, useQuery } from '@apollo/react-hooks';
 import {
   Grid, CircularProgress, Typography, DialogContent, Dialog,
 } from '@material-ui/core';
+import { gql } from 'apollo-boost';
 import featuredProducts from './featured.json';
 import { ProductSortKeys } from '../../models';
 import { ProductsType, PRODUCTS_QUERY } from './_types';
@@ -25,6 +26,16 @@ function ProductsGrid({ variables }: Props) {
   const [lineItems, setLineItems] = useState<any[]>(null);
   const [cartToken, setCartToken] = useState<string>(null);
   const [loading, setLoading] = useState<boolean>(false);
+
+  const {
+    data: cartTokenData,
+    loading: cartTokenLoading,
+    error: cartTokenError,
+  } = useQuery(gql`
+        query GetCartToken {
+            cartToken @client
+        }
+    `);
 
   // Gets cart info to replace item if added to cart
   const {
@@ -109,13 +120,13 @@ function ProductsGrid({ variables }: Props) {
 
   // Waits for 'window' object to be availble for localStorage
   useEffect(() => {
-    if (window.localStorage) {
-      setCartToken(window.localStorage.getItem('shopifyCartToken'));
+    if (!cartToken && cartTokenData) {
+      setCartToken(cartTokenData.cartToken);
     }
     if (getCartData && !lineItems) {
       setLineItems(getLineItems(getCartData.node.lineItems.edges));
     }
-  }, [cartToken, getCartData, lineItems]);
+  }, [cartToken, cartTokenData, getCartData, lineItems]);
 
   return (
     <Styled.Container>
