@@ -16,9 +16,9 @@ import {
   CreateCartRequest,
   CHECKOUT_LINE_ITEMS_REPLACE_MUTATION,
 } from '../CartController/_types';
-import { getLineItems } from '../ProductDetail/ProductDetail';
+import { getLineItems } from '../ProductDetail/index';
 import withData from '../../lib/apollo';
-import CartController from '../CartController/CartController';
+import CartController from '../CartController/index';
 
 
 // Container component for the Cart that handles checking if a cart exists,

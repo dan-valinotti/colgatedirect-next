@@ -10,7 +10,7 @@ import {
 } from './_types';
 import './_style.scss';
 import withData from '../../lib/apollo';
-import CartContent from '../CartContent';
+import CartContent from '../CartContent/index';
 
 type Props = {
   cart: GetCartResponse;
