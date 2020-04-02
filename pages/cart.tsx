@@ -37,7 +37,7 @@ const CartPage = () => {
       </Head>
       <NavBar items={['test']} />
       <PageContainer paddingTop={30} size={PageSize.medium}>
-        <Typography variant="h3">Cart${total}</Typography>
+        <Typography variant="h3">Cart</Typography>
         <CartContentRow />
       </PageContainer>
     </>

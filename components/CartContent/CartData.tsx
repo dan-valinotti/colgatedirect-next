@@ -19,6 +19,7 @@ import {
 import { getLineItems } from '../ProductDetail/index';
 import withData from '../../lib/apollo';
 import CartController from '../CartController/index';
+import CartContentRow from '../CartContentRow/CartContentRow';
 
 
 // Container component for the Cart that handles checking if a cart exists,
@@ -158,7 +159,6 @@ const CartData = (parentComponent) => {
     createCartLoading,
     getCartData,
   ]); // If one of these variables is changed, useEffect() is run again.
-
   const cartProps = {
     cart: getCartData,
     clearCart,

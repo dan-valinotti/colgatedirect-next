@@ -15,6 +15,7 @@ import CartContent from '../CartContent/index';
 type Props = {
   cart: GetCartResponse;
   clearCart: Function;
+  total: number;
   getTotal: Function;
   createCartLoading: boolean;
   getCartLoading: boolean;
@@ -26,12 +27,12 @@ type Props = {
 // Container component for the Cart that handles checking if a cart exists,
 // as well as retrieving the cart info and items.
 const CartController = ({
-  cart, getTotal, clearCart, createCartLoading, getCartLoading, createCartError, getCartError,
-  getCartRefetch,
+  cart, total, getTotal, clearCart, createCartLoading, getCartLoading, createCartError,
+  getCartError, getCartRefetch,
 }: Props) => {
   // State variable declaration
   const [open, setOpen] = useState<boolean>(false); // Open/close state of popup
-  const [total, setTotal] = useState<number>(0); // Total cart price
+  // const [total, setTotal] = useState<number>(0); // Total cart price
   const [anchorEl, setAnchorEl] = React.useState(null); // Anchor element
   const [totalLoading, setTotalLoading] = useState<boolean>(true);
 
@@ -42,6 +43,7 @@ const CartController = ({
         if (!getCartLoading && !getCartError && cart) {
           // Recalculate total
           getTotal(cart.node.lineItems.edges);
+          console.log(total);
         }
       })
       .catch((error) => console.log(error));
@@ -98,7 +100,7 @@ const CartController = ({
                 horizontal: 'right',
               }}
             >
-              ${console.log(cart)}
+              {console.log(cart)}
               <CartContent
                 cart={cart}
                 total={total}
