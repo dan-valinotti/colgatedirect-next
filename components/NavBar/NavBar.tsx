@@ -18,6 +18,7 @@ import {
 } from './_types';
 import './_style.scss';
 import CartData from '../CartContent/CartData';
+import CartController from '../CartController/index';
 import NavItems from './navItems.json';
 import NavBarItem, { ProductItem } from '../NavBarItem';
 
@@ -54,6 +55,7 @@ const NavBar: FunctionComponent<Props> = () => {
     setOpen(!open);
   };
 
+  // create component with data
   return (
     <>
       <AppBar
@@ -74,7 +76,7 @@ const NavBar: FunctionComponent<Props> = () => {
               Colgate Connect
             </HomeLink>
           </Link>
-          <CartData />
+          <CartData parentComponent="NavBar" />
         </Toolbar>
       </AppBar>
       <Drawer

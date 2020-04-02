@@ -24,7 +24,7 @@ import CartContentRow from '../CartContentRow/CartContentRow';
 
 // Container component for the Cart that handles checking if a cart exists,
 // as well as retrieving the cart info and items.
-const CartData = () => {
+const CartData = (parentComponent) => {
   // State variable declaration
   const [cartToken, setCartToken] = useState<string>(null); // Check for cart token
   // const [open, setOpen] = useState<boolean>(false); // Open/close state of popup
@@ -169,8 +169,8 @@ const CartData = () => {
   };
   return (
     <>
-      {console.log(total)}
-      <CartController {...cartProps} />
+      {parentComponent.parentComponent === 'NavBar' && <CartController {...cartProps} />}
+      {parentComponent.parentComponent === 'CartOverview' && <CartContentRow {...cartProps} />}
     </>
 
   );
