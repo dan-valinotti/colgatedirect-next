@@ -38,7 +38,7 @@ function ProductThumbnail({
           className="atc-btn"
           variant="contained"
           color="secondary"
-          onClick={() => addToCart({ variantId, quantity: 1})}
+          onClick={() => addToCart({ variantId, quantity: 1 })}
         >
           Add to cart
         </Styled.ProductButton>
