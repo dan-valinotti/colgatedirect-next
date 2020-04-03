@@ -20,6 +20,7 @@ import './_style.scss';
 import CartController from '../CartController';
 import NavItems from './navItems.json';
 import NavBarItem, { ProductItem } from '../NavBarItem';
+import AccountPopup from "../AccountPopup";
 
 type Props = {
   /** Navigation items to be displayed in NavBar */
@@ -74,6 +75,7 @@ const NavBar: FunctionComponent<Props> = () => {
               Colgate Connect
             </HomeLink>
           </Link>
+          <AccountPopup />
           <CartController />
         </Toolbar>
       </AppBar>
