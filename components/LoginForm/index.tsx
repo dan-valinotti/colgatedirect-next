@@ -1,13 +1,21 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
+import Router from 'next/router';
 import validator from 'validator';
 import {
-  Button, CircularProgress, Dialog, DialogContent, DialogTitle, InputAdornment, TextField, Typography
+  CircularProgress,
+  Dialog, DialogContent,
+  DialogTitle, IconButton,
+  InputAdornment,
+  Snackbar, SnackbarContent,
+  TextField,
+  Typography,
 } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
 import { useMutation } from '@apollo/react-hooks';
-import { AccountCircle, VpnKey } from '@material-ui/icons';
+import { AccountCircle, VpnKey, Close } from '@material-ui/icons';
 import { Styled } from './_styles';
 import {
-  CustomerLoginQuery, CustomerLoginRequest, CustomerLoginResponse,
+  CustomerLoginQuery, CustomerLoginRequest, CustomerLoginResponse, ErrorStatus,
 } from './_types';
 
 const LoginForm: FunctionComponent = () => {
@@ -15,14 +23,16 @@ const LoginForm: FunctionComponent = () => {
   const [password, setPassword] = useState<string>('');
   const [fieldUpdated, setFieldUpdated] = useState<boolean>(false);
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+  const [errorStatus, setErrorStatus] = useState<ErrorStatus>({
+    status: false,
+  });
   const [variables, setVariables] = useState<CustomerLoginRequest>({
     email,
     password,
   });
 
-  console.log(email, validator.isEmail(email));
-
-  const [submitLoginRequest, { data }] = useMutation<CustomerLoginResponse>(
+  // GraphQL Requests
+  const [submitLoginRequest, { data: submitLoginData }] = useMutation<CustomerLoginResponse>(
     CustomerLoginQuery,
     {
       variables: {
@@ -31,26 +41,59 @@ const LoginForm: FunctionComponent = () => {
     },
   );
 
+  const handleSnackbarClose = () => {
+    setErrorStatus({ ...errorStatus, status: false });
+  };
+
+  // onChange event for email TextField
   const updateEmail = (event) => {
     setEmail(event.target.value);
     setVariables({ email: event.target.value, password });
   };
 
+  // onChange event for password TextField
   const updatePassword = (event) => {
     setPassword(event.target.value);
     setVariables({ email, password: event.target.value });
     setFieldUpdated(true);
   };
 
+  // Attempt customer login
   const submitLogin = () => {
     setDialogOpen(true);
     submitLoginRequest()
       .then((res) => {
         setDialogOpen(false);
-        console.log(res);
+        // Check if access token was returned from API
+        if (res.data.customerAccessTokenCreate.customerAccessToken) {
+          window.localStorage.setItem(
+            'customerAccessToken',
+            res.data.customerAccessTokenCreate.customerAccessToken.accessToken,
+          );
+          // Go to homepage
+          Router.push('/');
+        } else {
+          // If access token is null, there was an error - set error status
+          setErrorStatus({
+            status: true,
+            code: res.data.customerAccessTokenCreate.customerUserErrors[0].code,
+            message: res.data.customerAccessTokenCreate.customerUserErrors[0].message,
+          });
+        }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        // This error only occurs due to network events, not a login failure
+        setDialogOpen(false);
+        console.log(error);
+      });
   };
+
+  useEffect(() => {
+    // If user is already logged in, go to home page
+    if (window && window.localStorage.getItem('customerAccessToken')) {
+      Router.push('/');
+    }
+  }, []);
 
   return (
     <Styled.Container>
@@ -104,6 +147,15 @@ const LoginForm: FunctionComponent = () => {
           <CircularProgress />
         </DialogContent>
       </Dialog>
+      <Snackbar
+        open={errorStatus.status}
+        autoHideDuration={4000}
+        onClose={handleSnackbarClose}
+      >
+        <MuiAlert severity="error" onClose={handleSnackbarClose}>
+          {errorStatus.message ? errorStatus.message : 'An unknown error occurred.'}
+        </MuiAlert>
+      </Snackbar>
     </Styled.Container>
   );
 };
