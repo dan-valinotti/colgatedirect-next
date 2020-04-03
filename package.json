@@ -92,7 +92,8 @@
     "typeface-roboto": "0.0.75",
     "typesafe-actions": "^5.1.0",
     "typescript": "^3.7.5",
-    "typescript-plugin-styled-components": "^1.4.4"
+    "typescript-plugin-styled-components": "^1.4.4",
+    "validator": "^13.0.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.13.1",
