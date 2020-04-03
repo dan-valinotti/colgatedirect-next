@@ -1,18 +1,22 @@
 import { gql } from 'apollo-boost';
 
+export interface ErrorStatus {
+  status: boolean;
+  code?: string;
+  message?: string;
+}
+
 export interface CustomerLoginRequest {
   email: string;
   password: string;
 }
 
 export interface CustomerLoginResponse {
-  data: {
-    customerAccessTokenCreate: {
-      customerUserErrors: any[];
-      customerAccessToken: {
-        accessToken: string;
-        expiresAt: string;
-      };
+  customerAccessTokenCreate: {
+    customerUserErrors: any[];
+    customerAccessToken: {
+      accessToken: string;
+      expiresAt: string;
     };
   };
 }
