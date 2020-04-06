@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery, useApolloClient } from '@apollo/react-hooks';
 import {
-  Button, List, ListItem, Typography, Grid, CircularProgress,
+  Button, List, ListItem, Typography, CircularProgress, ButtonGroup,
 } from '@material-ui/core';
 import withData from '../../lib/apollo';
 import { GetCartResponse } from '../CartController/_types';
@@ -30,13 +30,13 @@ const CartContentRow = ({
 
   // returns image source url
   const getImage = (num) => cart.node.lineItems.edges[num].node.variant.image.transformedSrc;
-
+  // const des = cart.node.lineItems.edges[0].node.handle.description;
   const incrementCount = () => {
     count += 1;
     return count;
   };
   return (
-    <div id="cart-btn">
+    <div>
       {(createCartLoading || getCartLoading) && (
         <CircularProgress />
       )}
@@ -49,7 +49,7 @@ const CartContentRow = ({
         && cart && total !== -1)
         && (
           <Styled.Container>
-            <List className="cart-popover-list">
+            <List className="cart-overview-list">
               {cart.node.lineItems.edges.map((item, key) => (
                 <>
                   <ListItem button key={key}>
@@ -61,8 +61,17 @@ const CartContentRow = ({
                           alt="Thumbnail"
                         />
                       </Styled.ProductImgThumbnail>
-                      <Typography variant="h6">{item.node.title}</Typography>
-                      <Typography variant="h6">
+                      <Typography variant="h6" className="itemName">{item.node.title}</Typography>
+                      <ButtonGroup>
+                        <Button variant="outlined">+</Button>
+                        <Button variant="outlined" disabled>
+                          <Typography variant="body2" style={{ color: 'black' }}>
+                            {item.node.quantity}
+                          </Typography>
+                        </Button>
+                        <Button variant="outlined">-</Button>
+                      </ButtonGroup>
+                      <Typography variant="h6" className="itemPrice">
                         ${item.node.variant.priceV2.amount * item.node.quantity}
                       </Typography>
                     </Styled.ItemContainer>
