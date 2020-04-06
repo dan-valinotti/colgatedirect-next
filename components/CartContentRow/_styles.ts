@@ -4,6 +4,8 @@ import { ListItem } from '@material-ui/core';
 const Container = styled.div`
   padding: 15px;
   width: min-content;
+  margin-right: auto;
+  margin-left: auto;
 `;
 
 const ItemContainer = styled.div`
@@ -26,8 +28,15 @@ const CartListItem = styled(ListItem)`
 }
 `;
 
+const ProductImg = styled.img`
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
+`;
+
 export const Styled = {
   Container,
   ItemContainer,
   CartListItem,
+  ProductImg,
 };
