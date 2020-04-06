@@ -156,6 +156,7 @@ const CartData = (parentComponent) => {
     createCartLoading,
     getCartData,
   ]); // If one of these variables is changed, useEffect() is run again.
+
   const cartProps = {
     cart: getCartData,
     clearCart,
@@ -169,8 +170,8 @@ const CartData = (parentComponent) => {
   };
   return (
     <>
-      {parentComponent.parentComponent === 'NavBar' && <CartController {...cartProps} />}
-      {parentComponent.parentComponent === 'CartOverview' && <CartContentRow {...cartProps} />}
+      {parentComponent.parentComponent === 'NavBar' && cartProps.cart && <CartController {...cartProps} />}
+      {parentComponent.parentComponent === 'CartOverview' && cartProps.cart && <CartContentRow {...cartProps} />}
     </>
 
   );
