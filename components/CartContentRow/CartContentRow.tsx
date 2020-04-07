@@ -90,24 +90,27 @@ const CartContentRow = ({
             </List>
             {total > 0 && (
               <>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  style={{ marginLeft: '1rem' }}
-                  onClick={() => clearCart()}
-                >
-                  Clear Cart
-                </Button>
-                {console.log(cart.node.webUrl)}
-                <a href={cart.node.webUrl} rel="noopener noreferrer" target="_blank">
+                <Styled.ButtonContainer>
                   <Button
                     variant="contained"
                     color="secondary"
+                    size="large"
                     style={{ marginLeft: '1rem' }}
+                    onClick={() => clearCart()}
                   >
-                    Checkout
+                    Clear Cart
                   </Button>
-                </a>
+                  <a href={cart.node.webUrl} rel="noopener noreferrer" target="_blank">
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      size="large"
+                      style={{ marginLeft: '1rem' }}
+                    >
+                      Checkout
+                    </Button>
+                  </a>
+                </Styled.ButtonContainer>
 
               </>
             )}
