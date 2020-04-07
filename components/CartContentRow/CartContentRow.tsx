@@ -22,7 +22,7 @@ type Props = {
 
 
 const CartContentRow = ({
-  cart, total, createCartLoading, getCartLoading, createCartError,
+  cart, clearCart, total, createCartLoading, getCartLoading, createCartError,
   getCartError,
 }: Props) => {
   // index of current item in edges array
@@ -79,7 +79,7 @@ const CartContentRow = ({
                   {key === cart.node.lineItems.edges.length - 1 && (
                     <Styled.CartListItem>
                       <Styled.ItemContainer>
-                        <Typography variant="h6">Total:</Typography>
+                        <Typography variant="h6" className="total">Total:</Typography>
                         <Typography variant="h6">
                           ${total}
                         </Typography>
@@ -89,6 +89,16 @@ const CartContentRow = ({
                 </>
               ))}
             </List>
+            {total > 0 && (
+              <Button
+                variant="contained"
+                color="secondary"
+                style={{ marginLeft: '1rem' }}
+                onClick={() => clearCart()}
+              >
+                Clear cart
+              </Button>
+            )}
           </Styled.Container>
         )}
     </div>
