@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery, useApolloClient } from '@apollo/react-hooks';
 import {
-  Button, List, ListItem, Typography, CircularProgress, ButtonGroup,
+  Button, List, ListItem, Typography, CircularProgress, ButtonGroup, Dialog, DialogContent,
 } from '@material-ui/core';
 import withData from '../../lib/apollo';
 import { GetCartResponse } from '../CartController/_types';
@@ -11,6 +11,7 @@ import { Styled } from './_styles';
 type Props = {
   cart: GetCartResponse;
   clearCart: Function;
+  loading: boolean;
   total: number;
   getTotal: Function;
   createCartLoading: boolean;
@@ -22,12 +23,11 @@ type Props = {
 
 
 const CartContentRow = ({
-  cart, clearCart, total, createCartLoading, getCartLoading, createCartError,
+  cart, clearCart, total, loading, createCartLoading, getCartLoading, createCartError,
   getCartError,
 }: Props) => {
   // index of current item in edges array
   let count = -1;
-
   // returns image source url
   const getImage = (num) => cart.node.lineItems.edges[num].node.variant.image.transformedSrc;
   // const des = cart.node.lineItems.edges[0].node.handle.description;
@@ -81,7 +81,7 @@ const CartContentRow = ({
                       <Styled.ItemContainer>
                         <Typography variant="h6" className="total">Total:</Typography>
                         <Typography variant="h6">
-                          ${total}
+                          ${total.toFixed(2)}
                         </Typography>
                       </Styled.ItemContainer>
                     </Styled.CartListItem>
@@ -96,9 +96,17 @@ const CartContentRow = ({
                 style={{ marginLeft: '1rem' }}
                 onClick={() => clearCart()}
               >
-                Clear cart
+                Clear Cart
               </Button>
             )}
+            <Dialog open={loading}>
+              <DialogContent>
+                <Typography variant="h6">Removing items...</Typography>
+                <Styled.ProgressContainer>
+                  <CircularProgress />
+                </Styled.ProgressContainer>
+              </DialogContent>
+            </Dialog>
           </Styled.Container>
         )}
     </div>

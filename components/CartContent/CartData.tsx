@@ -33,6 +33,7 @@ const CartData = (parentComponent) => {
   const [totalLoading, setTotalLoading] = useState<boolean>(true);
   const [lineItems, setLineItems] = useState<object[]>([]);
   const client = useApolloClient();
+  const [loading, setLoading] = useState<boolean>(false);
 
 
   // Create new cart if token does not exist
@@ -92,9 +93,11 @@ const CartData = (parentComponent) => {
   };
 
   const clearCart = () => {
+    setLoading(true);
     setLineItems([]);
     replaceItems()
       .then((res) => {
+        setLoading(false);
         getTotal([]);
       })
       .catch((error) => console.log(error));
@@ -160,6 +163,7 @@ const CartData = (parentComponent) => {
   const cartProps = {
     cart: getCartData,
     clearCart,
+    loading,
     total,
     getTotal,
     createCartLoading,
