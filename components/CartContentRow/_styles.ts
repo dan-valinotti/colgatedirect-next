@@ -59,6 +59,12 @@ const ProgressContainer = styled.div`
   padding: 30px 0 15px;
 `;
 
+const ButtonContainer = styled.div`
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`;
+
 export const Styled = {
   Container,
   ItemContainer,
@@ -66,4 +72,5 @@ export const Styled = {
   ProductImg,
   ProductImgThumbnail,
   ProgressContainer,
+  ButtonContainer,
 };
