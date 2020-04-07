@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useMutation, useQuery, useApolloClient } from '@apollo/react-hooks';
 import {
   Button, List, ListItem, Typography, CircularProgress, ButtonGroup, Dialog, DialogContent,
 } from '@material-ui/core';
@@ -90,14 +89,27 @@ const CartContentRow = ({
               ))}
             </List>
             {total > 0 && (
-              <Button
-                variant="contained"
-                color="secondary"
-                style={{ marginLeft: '1rem' }}
-                onClick={() => clearCart()}
-              >
-                Clear Cart
-              </Button>
+              <>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  style={{ marginLeft: '1rem' }}
+                  onClick={() => clearCart()}
+                >
+                  Clear Cart
+                </Button>
+                {console.log(cart.node.webUrl)}
+                <a href={cart.node.webUrl} rel="noopener noreferrer" target="_blank">
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    style={{ marginLeft: '1rem' }}
+                  >
+                    Checkout
+                  </Button>
+                </a>
+
+              </>
             )}
             <Dialog open={loading}>
               <DialogContent>
@@ -108,6 +120,7 @@ const CartContentRow = ({
               </DialogContent>
             </Dialog>
           </Styled.Container>
+
         )}
     </div>
   );
