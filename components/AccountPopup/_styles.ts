@@ -3,6 +3,8 @@ import { Typography } from '@material-ui/core';
 
 const Container = styled.div`
   display: flex;
+  justify-content: center;
+  width: 100%;
 `;
 
 const PopoverContentContainer = styled.div`
