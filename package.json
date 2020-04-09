@@ -27,7 +27,7 @@
     "eslint:fix": "eslint . --ext .ts,.tsx --fix --ignore-path .gitignore"
   },
   "engines": {
-    "node": "^10.16.0",
+    "node": "^12.14.0",
     "npm": ">6"
   },
   "dependencies": {
