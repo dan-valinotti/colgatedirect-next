@@ -75,8 +75,10 @@ const NavBar: FunctionComponent<Props> = () => {
               Colgate Connect
             </HomeLink>
           </Link>
-          <AccountPopup />
-          <CartController />
+          <div className="icon-btns-container">
+            <AccountPopup />
+            <CartController />
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer

@@ -5,10 +5,6 @@ const Container = styled.div`
   display: flex;
 `;
 
-const IconContainer = styled.div`
-  margin-left: auto;
-`;
-
 const PopoverContentContainer = styled.div`
   padding: 1.5rem;
   display: flex;
@@ -52,7 +48,6 @@ const AccountActions = styled.div`
 
 export const Styled = {
   Container,
-  IconContainer,
   PopoverContentContainer,
   AccountInfo,
   PopoverTitle,

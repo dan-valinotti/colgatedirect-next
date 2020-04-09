@@ -1,3 +1,6 @@
-export interface TestInterface {
-  default: string;
+export interface CustomerData {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
 }
