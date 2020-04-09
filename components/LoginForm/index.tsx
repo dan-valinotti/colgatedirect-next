@@ -75,7 +75,6 @@ const LoginForm: FunctionComponent = () => {
     setDialogOpen(true);
     submitLoginRequest()
       .then((res) => {
-        setDialogOpen(false);
         // Check if access token was returned from API
         if (res.data.customerAccessTokenCreate.customerAccessToken) {
           window.localStorage.setItem(
@@ -86,6 +85,7 @@ const LoginForm: FunctionComponent = () => {
           Router.push('/')
             .catch((error) => console.log(error));
         } else {
+          setDialogOpen(false);
           // If access token is null, there was an error - set error status
           setErrorStatus({
             status: true,
