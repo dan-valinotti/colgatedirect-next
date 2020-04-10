@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button } from '@material-ui/core';
+import {Button, Typography} from '@material-ui/core';
 
 const Container = styled.div`
   display: flex;
@@ -39,9 +39,20 @@ const SubmitButton = styled(Button)`
   width: 10rem;
 `;
 
+const LinkText = styled(Typography)`
+&&& {
+  font-size: 0.9rem;
+  a {
+    color: #3b6999;
+    text-decoration: none;
+  }
+}
+`;
+
 export const Styled = {
   Container,
   FormContainer,
   FormFieldContainer,
   SubmitButton,
+  LinkText,
 };

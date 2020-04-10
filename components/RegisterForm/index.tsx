@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import { useMutation } from '@apollo/react-hooks';
-import { AccountCircle, VpnKey } from '@material-ui/icons';
+import { AccountCircle, VpnKey, Email } from '@material-ui/icons';
 import { Styled } from './_styles';
 import {
   CustomerCreateQuery,
@@ -226,7 +226,7 @@ const RegisterForm: FunctionComponent = () => {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start" style={{ width: '2rem' }}>
-                  <AccountCircle />
+                  <Email />
                 </InputAdornment>
               ),
             }}
