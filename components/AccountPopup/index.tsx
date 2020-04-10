@@ -8,17 +8,9 @@ import { useQuery } from '@apollo/react-hooks';
 import { Styled } from './_styles';
 import LogoutButton from '../LogoutButton';
 import {
-  withCustomerInfo,
   CUSTOMER_INFO_QUERY,
   GetCustomerInfoResponse,
-  GetCustomerInfoVariables,
 } from '../../hocs/withCustomerInfo';
-import { CustomerData } from './_types';
-
-
-interface Props {
-  data: any;
-}
 
 const renderPopoverContent = (
   customerData: GetCustomerInfoResponse,
