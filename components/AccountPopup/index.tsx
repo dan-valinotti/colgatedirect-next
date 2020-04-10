@@ -4,38 +4,43 @@ import {
 } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 import Link from 'next/link';
+import { useQuery } from '@apollo/react-hooks';
 import { Styled } from './_styles';
 import LogoutButton from '../LogoutButton';
-import { withCustomerInfo } from '../../hocs/withCustomerInfo';
+import {
+  withCustomerInfo,
+  CUSTOMER_INFO_QUERY,
+  GetCustomerInfoResponse,
+  GetCustomerInfoVariables,
+} from '../../hocs/withCustomerInfo';
 import { CustomerData } from './_types';
+
 
 interface Props {
   data: any;
 }
 
 const renderPopoverContent = (
-  customerData: CustomerData,
+  customerData: GetCustomerInfoResponse,
   error?: any,
 ) => {
   if (error) {
-    return (
-      <>
-        <Typography variant="body2">An error has occurred.</Typography>
-      </>
-    );
-  } if (customerData) {
+    console.log(error);
+  }
+  if (customerData) {
+    const { customer } = customerData;
     return (
       <>
         <Styled.AccountInfo>
           <Styled.PopoverTitle variant="h6">Account</Styled.PopoverTitle>
           <AccountCircle />
-          {(customerData.firstName || customerData.lastName) && (
-            <Typography variant="body1">
-              {customerData.firstName} {customerData.lastName}
-            </Typography>
+          {(customer.firstName || customer.lastName) && (
+          <Typography variant="body1">
+            {customer.firstName} {customer.lastName}
+          </Typography>
           )}
           <Styled.EmailText variant="body2">
-            { customerData.email }
+            { customer.email }
           </Styled.EmailText>
         </Styled.AccountInfo>
         <Styled.AccountActions>
@@ -60,12 +65,24 @@ const renderPopoverContent = (
   );
 };
 
-const AccountPopup: FunctionComponent<Props> = ({ data }: Props) => {
-  const { error, refetch } = data;
+const AccountPopup: FunctionComponent = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState(null); // Anchor element
   const [accessToken, setAccessToken] = useState<string>('');
-  const [customerData, setCustomerData] = useState<CustomerData>(null);
+
+  /*
+  * GraphQL Queries
+  * */
+  const {
+    data: getCustomerData,
+    error: getCustomerError,
+    refetch: refetchCustomerData,
+  } = useQuery<GetCustomerInfoResponse>(CUSTOMER_INFO_QUERY, {
+    variables: {
+      customerAccessToken: accessToken,
+    },
+    skip: (!accessToken || accessToken === ''),
+  });
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -79,13 +96,10 @@ const AccountPopup: FunctionComponent<Props> = ({ data }: Props) => {
       setAccessToken(window.localStorage.getItem('customerAccessToken'));
     }
     if (accessToken && accessToken !== '') {
-      refetch({
-        customerAccessToken: accessToken,
-      })
-        .then((res) => setCustomerData(res.data.customer))
+      refetchCustomerData()
         .catch((err) => console.log(err));
     }
-  }, [accessToken, refetch]);
+  }, [accessToken, refetchCustomerData]);
 
   return (
     <>
@@ -113,7 +127,7 @@ const AccountPopup: FunctionComponent<Props> = ({ data }: Props) => {
           }}
         >
           <Styled.PopoverContentContainer>
-            {renderPopoverContent(customerData, error)}
+            {renderPopoverContent(getCustomerData, getCustomerError)}
           </Styled.PopoverContentContainer>
         </Popover>
       </div>
@@ -121,4 +135,4 @@ const AccountPopup: FunctionComponent<Props> = ({ data }: Props) => {
   );
 };
 
-export default withCustomerInfo(AccountPopup);
+export default AccountPopup;
