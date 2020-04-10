@@ -2,7 +2,7 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { graphql } from '@apollo/react-hoc';
 
-const CUSTOMER_INFO_QUERY = gql`
+export const CUSTOMER_INFO_QUERY = gql`
     query GetCustomerInfo($customerAccessToken:String!){
         customer(customerAccessToken: $customerAccessToken){
             id
