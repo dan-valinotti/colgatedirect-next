@@ -12,6 +12,7 @@ import {
 import MuiAlert from '@material-ui/lab/Alert';
 import { useMutation } from '@apollo/react-hooks';
 import { AccountCircle, VpnKey } from '@material-ui/icons';
+import Link from 'next/link';
 import { Styled } from './_styles';
 import {
   CustomerLoginQuery, CustomerLoginRequest, CustomerLoginResponse, ErrorStatus,
@@ -144,6 +145,12 @@ const LoginForm: FunctionComponent = () => {
               ),
             }}
           />
+          <Styled.LinkText variant="body1">
+            {'Don\'t have an account? '}
+            <Link href="/register">
+              Click here to register.
+            </Link>
+          </Styled.LinkText>
           <Styled.SubmitButton
             variant="outlined"
             color="secondary"
