@@ -12,14 +12,17 @@ import {
   GetCustomerInfoResponse,
 } from '../../hocs/withCustomerInfo';
 
+/*
+* Function - renderPopoverContent
+* Returns nodes to be rendered on AccountPopup depending on login status.
+*   @param customerData: data response from GraphQL API
+*   @param error: error response from GraphQL API
+* */
 const renderPopoverContent = (
   customerData: GetCustomerInfoResponse,
   error?: any,
 ) => {
-  if (error) {
-    console.log(error);
-  }
-  if (customerData) {
+  if (!error && customerData) {
     const { customer } = customerData;
     return (
       <>
@@ -57,6 +60,13 @@ const renderPopoverContent = (
   );
 };
 
+/*
+* Component - AccountPopup <FunctionComponent>
+*   @state open <boolean> - Handle popup open state
+*   @state anchorEl <node> - HTML element popup is anchored to
+*   @state accessToken <string> - customerAccessToken from GraphQL API
+*   @query getCustomer <GetCustomerInfoResponse>
+* */
 const AccountPopup: FunctionComponent = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState(null); // Anchor element
@@ -64,6 +74,10 @@ const AccountPopup: FunctionComponent = () => {
 
   /*
   * GraphQL Queries
+  * getCustomer: retrieves customer data from Shopify GraphQL API
+  *   using 'customerAccessToken' variable
+  *   - Request interface: none
+  *   - Response interface: GetCustomerInfoResponse
   * */
   const {
     data: getCustomerData,
@@ -73,9 +87,12 @@ const AccountPopup: FunctionComponent = () => {
     variables: {
       customerAccessToken: accessToken,
     },
+    // Skip query execution if accessToken is not retrieved from
+    //  localStorage, or if user is not logged in
     skip: (!accessToken || accessToken === ''),
   });
 
+  // Handler functions for IconButton
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleClick = (event) => {
@@ -83,6 +100,11 @@ const AccountPopup: FunctionComponent = () => {
     setAnchorEl(event.currentTarget);
   };
 
+  /*
+  * useEffect() - monitor 'window' variable to wait for client browser to be
+  *   detected, then retrieve 'customerAccessToken' from localStorage. If value
+  *   is not empty, attempt to retrieve customer data
+  * */
   useEffect(() => {
     if (window && window.localStorage) {
       setAccessToken(window.localStorage.getItem('customerAccessToken'));
