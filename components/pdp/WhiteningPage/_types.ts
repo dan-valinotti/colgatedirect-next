@@ -1,3 +1,3 @@
-export interface TestInterface {
-  default: string;
+export interface WhiteningPageProps {
+  //
 }
