@@ -59,7 +59,9 @@ const BannerTitle = styled(Typography)`
 &&& {
   color: ${(props) => props.fontcolor};
   text-align: ${(props) => props.textalign};
-  font-weight: 700;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  font-size: 1.25em;
 }
 `;
 
@@ -67,6 +69,7 @@ const BannerSubtitle = styled(Typography)`
 &&& {
   color: ${(props) => props.fontcolor};
   text-align: ${(props) => props.textalign};
+  font-size: 0.85em;
 }
 `;
 
@@ -74,7 +77,13 @@ const ShopNowButton = styled(Button)`
 &&& {
   position: absolute;
   left: calc(50% - 45px);
-  bottom: -16px;
+  bottom: -40px;
+  border-radius: 45px;
+  font-weight: 500;
+  font-size: 18px;
+  width: 250px;
+  height: 80px;
+  margin-top: 3em;
 }
 `;
 

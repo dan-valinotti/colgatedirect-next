@@ -3,6 +3,7 @@ import ReactFromJSON from 'react-from-json/dist';
 import ManualToothbrush from '../pdp/ManualToothbrush';
 import WhiteningPage from '../pdp/WhiteningPage';
 import { TransformedProduct } from '../PDPComponent/_types';
+import product from 'pages/product';
 
 interface Props {
   handle: string;
@@ -37,8 +38,8 @@ const mapping = {
   ManualToothbrush: ({ product }: ManualToothbrushProps) => (
     <ManualToothbrush product={product} />
   ),
-  WhiteningPage: () => (
-    <WhiteningPage test="" />
+  WhiteningPage: ({ product }: ManualToothbrushProps) => (
+    <WhiteningPage product={product} />
   ),
 };
 
