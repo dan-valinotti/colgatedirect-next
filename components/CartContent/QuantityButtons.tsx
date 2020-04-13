@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Button, List, ListItem, Typography, CircularProgress, ButtonGroup, Dialog, DialogContent,
 } from '@material-ui/core';
@@ -41,6 +41,7 @@ const QuantityButtons = ({
 }: Props) => {
   const [cartToken, setCartToken] = useState<string>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [quantity, setQuantity] = useState<number>(cart.node.lineItems.edges[index].node.quantity);
   const [lineItems, setLineItems] = useState<any[]>(null);
 
   // onClick function for Add to Cart button
@@ -49,14 +50,17 @@ const QuantityButtons = ({
   const addToCart = () => {
     if (cart) {
       setLoading(true);
-      console.log('hi');
       cart.node.lineItems.edges[index].node.quantity += 1;
+      setQuantity(cart.node.lineItems.edges[index].node.quantity);
+
 
     } else {
       console.log("Error");
     }
   };
+  useEffect(() => {
 
+  })
   /*
     const addToCart = () => {
       if (cart) {
@@ -88,7 +92,7 @@ const QuantityButtons = ({
         <Button variant="outlined" onClick={() => addToCart()}>+</Button>
         <Button variant="outlined" disabled>
           <Typography variant="body2" style={{ color: 'black' }}>
-            {cart.node.lineItems.edges[index].node.quantity}
+            {quantity}
           </Typography>
         </Button>
         <Button variant="outlined">-</Button>
