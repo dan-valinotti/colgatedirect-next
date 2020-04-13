@@ -16,7 +16,7 @@ const ManualToothbrush: FunctionComponent<Props> = ({ product }: Props) => (
     <HeroBanner
       title="Brush Smarter"
       subtitle="Our first non-electric connected toothbrush tracks your brushing to help you get a complete clean."
-      bgColor="#d2d6df"
+      bgColor="#69d2f9"
       bgUrl="https://cdn.shopify.com/s/files/1/2524/0600/files/M1_model_hero_image_web_2_compressed.png"
       fontColor="#FFFFFF"
       textAlign="left"
