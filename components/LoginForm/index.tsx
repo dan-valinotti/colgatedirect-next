@@ -13,9 +13,11 @@ import MuiAlert from '@material-ui/lab/Alert';
 import { useMutation } from '@apollo/react-hooks';
 import { AccountCircle, VpnKey } from '@material-ui/icons';
 import Link from 'next/link';
+import jwt from 'jsonwebtoken';
+import fetch from 'node-fetch';
 import { Styled } from './_styles';
 import {
-  CustomerLoginQuery, CustomerLoginRequest, CustomerLoginResponse, ErrorStatus,
+  CustomerLoginRequest, ErrorStatus,
 } from './_types';
 
 /*
@@ -38,21 +40,6 @@ const LoginForm: FunctionComponent = () => {
     password,
   });
 
-  /*
-  * GraphQL Requests:
-  * submitLoginRequest - mutation that attempts to create a customerAccessToken
-  *   - Request interface:  CustomerLoginRequest
-  *   - Response interface: CustomerLoginResponse
-  * */
-  const [submitLoginRequest, { data: submitLoginData }] = useMutation<CustomerLoginResponse>(
-    CustomerLoginQuery,
-    {
-      variables: {
-        input: variables,
-      },
-    },
-  );
-
   // onClose event for error Snackbar component
   const handleSnackbarClose = () => {
     setErrorStatus({ ...errorStatus, status: false });
@@ -74,14 +61,27 @@ const LoginForm: FunctionComponent = () => {
   // Attempt customer login
   const submitLogin = () => {
     setDialogOpen(true);
-    submitLoginRequest()
-      .then((res) => {
-        // Check if access token was returned from API
-        if (res.data.customerAccessTokenCreate.customerAccessToken) {
+    // Sign user login variables with JWT to mask user data in network tab
+    const signed = jwt.sign(variables, process.env.JWT_SECRET);
+
+    // Send HTTP POST request to Next.js API endpoint /auth/login
+    fetch('/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        accessToken: signed,
+      }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        // If login was successful, customerAccessToken will have a value
+        if (json.data.customerAccessTokenCreate.customerAccessToken) {
+          // Store customerAccessToken in localStorage
           window.localStorage.setItem(
             'customerAccessToken',
-            res.data.customerAccessTokenCreate.customerAccessToken.accessToken,
+            json.data.customerAccessTokenCreate.customerAccessToken.accessToken,
           );
+
           // Go to homepage
           Router.push('/')
             .catch((error) => console.log(error));
@@ -90,16 +90,47 @@ const LoginForm: FunctionComponent = () => {
           // If access token is null, there was an error - set error status
           setErrorStatus({
             status: true,
-            code: res.data.customerAccessTokenCreate.customerUserErrors[0].code,
-            message: res.data.customerAccessTokenCreate.customerUserErrors[0].message,
+            code: json.data.customerAccessTokenCreate.customerUserErrors[0].code,
+            message: 'Incorrect email / password.',
           });
         }
       })
       .catch((error) => {
-        // This error only occurs due to network events, not a login failure
-        setDialogOpen(false);
         console.log(error);
+        setDialogOpen(false);
+        setErrorStatus({
+          status: true,
+          code: 'UNIDENTIFIED_ERROR',
+          message: 'Internal server error.',
+        });
       });
+
+    // submitLoginRequest()
+    //   .then((res) => {
+    //     // Check if access token was returned from API
+    //     if (res.data.customerAccessTokenCreate.customerAccessToken) {
+    //       window.localStorage.setItem(
+    //         'customerAccessToken',
+    //         res.data.customerAccessTokenCreate.customerAccessToken.accessToken,
+    //       );
+    //       // Go to homepage
+    //       Router.push('/')
+    //         .catch((error) => console.log(error));
+    //     } else {
+    //       setDialogOpen(false);
+    //       // If access token is null, there was an error - set error status
+    //       setErrorStatus({
+    //         status: true,
+    //         code: res.data.customerAccessTokenCreate.customerUserErrors[0].code,
+    //         message: res.data.customerAccessTokenCreate.customerUserErrors[0].message,
+    //       });
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     // This error only occurs due to network events, not a login failure
+    //     setDialogOpen(false);
+    //     console.log(error);
+    //   });
   };
 
   useEffect(() => {
@@ -148,7 +179,9 @@ const LoginForm: FunctionComponent = () => {
           <Styled.LinkText variant="body1">
             {'Don\'t have an account? '}
             <Link href="/register">
-              Click here to register.
+              <a>
+                Click here to register.
+              </a>
             </Link>
           </Styled.LinkText>
           <Styled.SubmitButton
