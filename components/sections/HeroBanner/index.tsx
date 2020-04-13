@@ -30,7 +30,7 @@ const HeroBanner: FunctionComponent<Props> = ({
         </Styled.TextContainer>
       </Styled.BannerContent>
       {shopNow && (
-        <Styled.ShopNowButton variant="contained" color="primary">ADD TO CART</Styled.ShopNowButton>
+        <Styled.ShopNowButton variant="contained" color="primary">SHOP NOW</Styled.ShopNowButton>
       )}
     </Styled.Banner>
   </SectionContainer>
