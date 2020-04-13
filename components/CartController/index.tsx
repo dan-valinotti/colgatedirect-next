@@ -43,7 +43,6 @@ const CartController = ({
         if (!getCartLoading && !getCartError && cart) {
           // Recalculate total
           getTotal(cart.node.lineItems.edges);
-          console.log(total);
         }
       })
       .catch((error) => console.log(error));
