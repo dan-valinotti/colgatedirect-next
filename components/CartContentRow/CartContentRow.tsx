@@ -6,6 +6,7 @@ import withData from '../../lib/apollo';
 import { GetCartResponse } from '../CartController/_types';
 import './_style.scss';
 import { Styled } from './_styles';
+import QuantityButtons from '../CartContent/QuantityButtons';
 
 type Props = {
   cart: GetCartResponse;
@@ -27,13 +28,16 @@ const CartContentRow = ({
 }: Props) => {
   // index of current item in edges array
   let count = -1;
+
   // returns image source url
   const getImage = (num) => cart.node.lineItems.edges[num].node.variant.image.transformedSrc;
+
   // const des = cart.node.lineItems.edges[0].node.handle.description;
   const incrementCount = () => {
     count += 1;
     return count;
   };
+
   return (
     <div>
       {(createCartLoading || getCartLoading) && (
@@ -61,15 +65,7 @@ const CartContentRow = ({
                         />
                       </Styled.ProductImgThumbnail>
                       <Typography variant="h6" className="itemName">{item.node.title}</Typography>
-                      <ButtonGroup>
-                        <Button variant="outlined">+</Button>
-                        <Button variant="outlined" disabled>
-                          <Typography variant="body2" style={{ color: 'black' }}>
-                            {item.node.quantity}
-                          </Typography>
-                        </Button>
-                        <Button variant="outlined">-</Button>
-                      </ButtonGroup>
+                      <QuantityButtons index={count} cart={cart} />
                       <Typography variant="h6" className="itemPrice">
                         ${item.node.variant.priceV2.amount * item.node.quantity}
                       </Typography>
