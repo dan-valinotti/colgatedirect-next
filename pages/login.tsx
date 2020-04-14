@@ -9,6 +9,7 @@ import NavBar from '../components/NavBar/NavBar';
 import { theme } from '../views/theme';
 import { withMuiApp } from '../hocs/withMui';
 import LoginForm from '../components/LoginForm';
+import FooterNav from "../components/FooterNav";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -21,6 +22,7 @@ const LoginPage = () => {
       </Head>
       <NavBar items={['test']} />
       <LoginForm />
+      <FooterNav />
     </ThemeProvider>
   );
 };
