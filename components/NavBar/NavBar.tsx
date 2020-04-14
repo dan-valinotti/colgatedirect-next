@@ -13,6 +13,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { useQuery } from '@apollo/react-hooks';
 import Link from 'next/link';
 import styled from 'styled-components';
+import NavBarLinks from 'components/NavBarLinks';
 import {
   COLLECTIONS_QUERY, Collections,
 } from './_types';
@@ -20,7 +21,7 @@ import './_style.scss';
 import CartController from '../CartController';
 import NavItems from './navItems.json';
 import NavBarItem, { ProductItem } from '../NavBarItem';
-import AccountPopup from "../AccountPopup";
+import AccountPopup from '../AccountPopup';
 
 type Props = {
   /** Navigation items to be displayed in NavBar */
@@ -75,6 +76,7 @@ const NavBar: FunctionComponent<Props> = () => {
               Colgate Connect
             </HomeLink>
           </Link>
+          <NavBarLinks />
           <div className="icon-btns-container">
             <AccountPopup />
             <CartController />

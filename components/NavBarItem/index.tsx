@@ -22,9 +22,24 @@ const NavBarItem = ({ title, products }: Props) => {
     setOpen(!open);
   };
 
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <>
-      <ListItem button onClick={toggleOpen} className="nav-list-item">
+    <div
+      onMouseEnter={handleOpen}
+      onMouseLeave={handleClose}
+      onFocus={() => console.log('FOCUS')}
+    >
+      <ListItem
+        button
+        onClick={toggleOpen}
+        className="nav-list-item"
+      >
         <ListItemText primary={title} />
       </ListItem>
       {products.length > 0 && (
@@ -40,7 +55,7 @@ const NavBarItem = ({ title, products }: Props) => {
           </Styled.NavList>
         </Collapse>
       )}
-    </>
+    </div>
   );
 };
 
