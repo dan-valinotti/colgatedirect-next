@@ -8,6 +8,7 @@ import PageContainer, { PageSize } from '../views/layouts/PageContainer';
 import NavBar from '../components/NavBar/NavBar';
 import HeroBanner from '../components/sections/HeroBanner';
 import { withMuiApp } from '../hocs/withMui';
+import FooterNav from '../components/FooterNav';
 
 interface Props {
   query: string;
@@ -40,6 +41,7 @@ function ProductsPage({
       <PageContainer paddingTop={30} size={PageSize.large}>
         <ProductsGrid query={query} reverse={reverse} sortKey={sortKey} variables={variables} />
       </PageContainer>
+      <FooterNav />
     </>
   );
 }
