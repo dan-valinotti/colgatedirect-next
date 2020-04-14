@@ -8,9 +8,11 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
 import routes from './core/nextRoutes';
 
 import apollo from '~server/core/apollo';
+import { login } from './services/auth';
 
 require('dotenv').config();
 
@@ -20,7 +22,7 @@ const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({ dev });
 // const handle = nextApp.getRequestHandler();
 // if you want to use nextRoutes
-const handle = routes.getRequestHandler(nextApp)
+const handle = routes.getRequestHandler(nextApp);
 
 nextApp.prepare().then(() => {
   const server = express();
@@ -30,6 +32,9 @@ nextApp.prepare().then(() => {
 
   // cookies
   server.use(cookieParser());
+
+  // body parser
+  server.use(bodyParser.json());
 
   // Generate logs
   server.use(
@@ -41,6 +46,12 @@ nextApp.prepare().then(() => {
   apollo.applyMiddleware({ app: server });
 
   server.get('*', (req, res) => handle(req, res));
+
+  server.post(
+    '/auth/login', 
+    (req, res) => login(req, res)
+  );
+
   // express().use(handler).listen(3000) //routes handle way
   server.listen(port, (err) => {
     if (err) throw err;
