@@ -5,8 +5,9 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 1000px;
   margin: 0 auto;
+  max-width: 1000px;
+  min-height: 600px;
 `;
 
 const FormContainer = styled.div`

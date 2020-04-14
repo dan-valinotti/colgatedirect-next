@@ -104,33 +104,6 @@ const LoginForm: FunctionComponent = () => {
           message: 'Internal server error.',
         });
       });
-
-    // submitLoginRequest()
-    //   .then((res) => {
-    //     // Check if access token was returned from API
-    //     if (res.data.customerAccessTokenCreate.customerAccessToken) {
-    //       window.localStorage.setItem(
-    //         'customerAccessToken',
-    //         res.data.customerAccessTokenCreate.customerAccessToken.accessToken,
-    //       );
-    //       // Go to homepage
-    //       Router.push('/')
-    //         .catch((error) => console.log(error));
-    //     } else {
-    //       setDialogOpen(false);
-    //       // If access token is null, there was an error - set error status
-    //       setErrorStatus({
-    //         status: true,
-    //         code: res.data.customerAccessTokenCreate.customerUserErrors[0].code,
-    //         message: res.data.customerAccessTokenCreate.customerUserErrors[0].message,
-    //       });
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     // This error only occurs due to network events, not a login failure
-    //     setDialogOpen(false);
-    //     console.log(error);
-    //   });
   };
 
   useEffect(() => {
