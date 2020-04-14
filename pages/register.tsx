@@ -10,6 +10,7 @@ import { theme } from '../views/theme';
 import { withMuiApp } from '../hocs/withMui';
 import LoginForm from '../components/LoginForm';
 import RegisterForm from '../components/RegisterForm';
+import FooterNav from "../components/FooterNav";
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -22,6 +23,7 @@ const RegisterPage = () => {
       </Head>
       <NavBar items={['test']} />
       <RegisterForm />
+      <FooterNav />
     </ThemeProvider>
   );
 };
