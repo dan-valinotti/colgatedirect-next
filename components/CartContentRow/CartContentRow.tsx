@@ -65,8 +65,17 @@ const CartContentRow = ({
                         />
                       </Styled.ProductImgThumbnail>
                       <Typography variant="h6" className="itemName">{item.node.title}</Typography>
-                      <QuantityButtons index={count} cart={cart} />
+                      <ButtonGroup>
+                        <Button variant="outlined">+</Button>
+                        <Button variant="outlined" disabled>
+                          <Typography variant="body2" style={{ color: 'black' }}>
+                            1
+                          </Typography>
+                        </Button>
+                        <Button variant="outlined">-</Button>
+                      </ButtonGroup>
                       <Typography variant="h6" className="itemPrice">
+                        {console.log(item.node.quantity)}
                         ${item.node.variant.priceV2.amount * item.node.quantity}
                       </Typography>
                     </Styled.ItemContainer>
