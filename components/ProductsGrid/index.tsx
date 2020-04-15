@@ -31,6 +31,7 @@ function ProductsGrid({ variables }: Props) {
     data: getCartData,
     loading: getCartLoading,
     error: getCartError,
+    refetch: refetchCartData,
   } = useQuery(GET_CART_QUERY, {
     skip: !cartToken,
     variables: {
@@ -63,22 +64,46 @@ function ProductsGrid({ variables }: Props) {
   const addToCart = (input: LineItemsInput) => {
     if (cartToken && getCartData) {
       setLoading(true);
-      const currentItems = lineItems;
-      if (currentItems.some((item) => item.variantId === input.variantId)) {
-        const index = currentItems.findIndex(
-          (item) => item.variantId === input.variantId,
-        );
-        currentItems[index].quantity += 1;
-      } else {
-        currentItems.push({
-          variantId: input.variantId,
-          quantity: 1,
+      /* Updated:
+       * Add refetchCartData function call to get current cart information before adding
+       * new item to list. Previous implementation was using lineItems value from initial
+       * render, not taking into account the cart clearing or other items changing.
+       * */
+      refetchCartData({ checkoutId: cartToken })
+        .then((res) => {
+          /*
+           * Map data returned from GraphQL query to only include values necessary for
+           * checkoutLineItemsReplace mutation (variantId and quantity)
+           */
+          const currentItems = res.data.node.lineItems.edges.map((item) => ({
+            variantId: item.node.variant.id,
+            quantity: item.node.quantity,
+          }));
+          /*
+          * Check if item exists in cart already
+          * If true, increment quantity of item by 1
+          * Else, push new item to lineItems
+          * */
+          if (currentItems.some((item) => item.variantId === input.variantId)) {
+            const index = currentItems.findIndex(
+              (item) => item.variantId === input.variantId,
+            );
+            currentItems[index].quantity += 1;
+          } else {
+            currentItems.push({
+              variantId: input.variantId,
+              quantity: 1,
+            });
+          }
+          // Set state variable lineItems to new list and run replacement query
+          setLineItems(currentItems);
+          replaceItems().then(() => {
+            setLoading(false);
+          }).catch((error) => console.log(error));
+        })
+        .catch((err) => {
+          console.log(err);
         });
-      }
-      setLineItems(currentItems);
-      replaceItems().then((res) => {
-        setLoading(false);
-      }).catch((error) => console.log(error));
     } else if (getCartError) {
       console.log(getCartError);
     }
