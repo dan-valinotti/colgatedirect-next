@@ -4,7 +4,7 @@ import {
 } from '@material-ui/core';
 import withData from '../../lib/apollo';
 import { GetCartResponse } from '../CartController/_types';
-import './_style.scss';
+// import './_style.scss';
 import { Styled } from './_styles';
 import QuantityButtons from '../CartContent/QuantityButtons';
 
