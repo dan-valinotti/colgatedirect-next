@@ -99,6 +99,8 @@ const CartData = (parentComponent) => {
       .then((res) => {
         setLoading(false);
         getTotal([]);
+        console.log("Clear Cart: ");
+        console.log(res);
       })
       .catch((error) => console.log(error));
   };
