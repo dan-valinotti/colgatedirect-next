@@ -54,7 +54,7 @@ const FooterNav: FunctionComponent = () => (
           <Styled.FooterSocialIcon color={fontColor} className="fab fa-youtube" />
           <Styled.FooterSocialIcon color={fontColor} className="fab fa-instagram" />
         </Styled.FooterSocialIconGrid>
-        <Styled.FooterLegalCopy variant="body" color={fontColor}>
+        <Styled.FooterLegalCopy variant="body1" color={fontColor}>
           © 2020 Colgate-Palmolive Company. All Rights Reserved.
           You are viewing the US English site.
         </Styled.FooterLegalCopy>
