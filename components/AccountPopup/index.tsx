@@ -50,6 +50,7 @@ const renderPopoverContent = (
     <Styled.Container>
       <Link href="/login">
         <Button
+          id="login-btn"
           variant="outlined"
           color="secondary"
         >
@@ -119,6 +120,7 @@ const AccountPopup: FunctionComponent = () => {
     <>
       <div>
         <IconButton
+          id="account-btn"
           edge="end"
           color="inherit"
           aria-label="cart"
