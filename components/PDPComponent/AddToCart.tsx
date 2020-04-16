@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import {
-  Grid, CircularProgress, Typography, DialogContent, Dialog,
+  CircularProgress, Typography, DialogContent, Dialog,
 } from '@material-ui/core';
 import { ProductsType, PRODUCTS_QUERY } from '../ProductsGrid/_types';
 import { CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY, GetCartRequest } from '../CartController/_types';
 import { getLineItems } from '../ProductDetail';
-import { Styled as StyledThumbnail} from '../ProductThumbnail/_styles';
-import { Styled as StyledGrid} from '../ProductsGrid/_styles';
-import { LineItemsInput } from '../ProductThumbnail/_types';
+import { Styled as StyledThumbnail } from '../ProductThumbnail/_styles';
+import { Styled as StyledGrid } from '../ProductsGrid/_styles';
 
 type Props = {
   variantId: string;
   quantity: number;
 };
-function AddToCart({ variantId, quantity, }: Props) {
+function AddToCart({ variantId, quantity }: Props) {
   const [lineItems, setLineItems] = useState<any[]>(null);
   const [cartToken, setCartToken] = useState<string>(null);
   const [loading, setLoading] = useState<boolean>(false);
