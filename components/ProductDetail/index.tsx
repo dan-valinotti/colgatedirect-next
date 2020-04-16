@@ -10,6 +10,7 @@ import {
   CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY, GetCartResponse, PriceV2,
 } from '../CartController/_types';
 import { Styled } from './_styles';
+import AddToCart from '../PDPComponent/addToCart';
 import { Metafield, ProductVariant } from '../../models';
 
 type Props = {
@@ -116,17 +117,9 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
           <Typography variant="body1">
             Price: ${parseFloat(product.price).toFixed(2)}
           </Typography>
-          <Button onClick={addToCart} variant="contained" color="secondary">Add to cart</Button>
+          <AddToCart variantId={product.id} quantity={1} />
         </Styled.ATCContainer>
       </Styled.DescriptionContainer>
-      <Dialog open={loading}>
-        <DialogContent>
-          <Typography variant="h6">Adding item to cart...</Typography>
-          <Styled.ProgressContainer>
-            <CircularProgress />
-          </Styled.ProgressContainer>
-        </DialogContent>
-      </Dialog>
     </Styled.ProductDetailContainer>
   );
 };
