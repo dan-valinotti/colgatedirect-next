@@ -12,7 +12,7 @@ import FeaturedProducts from '../sections/FeaturedProducts';
 
 import { CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY } from '../CartController/_types';
 import { getLineItems } from '../ProductDetail';
-import { LineItemsInput } from '../ProductThumbnail/_types';
+
 
 type Props = {
   query: string;
@@ -61,54 +61,6 @@ function ProductsGrid({ variables }: Props) {
     },
   });
 
-  const addToCart = (input: LineItemsInput) => {
-    if (cartToken && getCartData) {
-      setLoading(true);
-      /* Updated:
-       * Add refetchCartData function call to get current cart information before adding
-       * new item to list. Previous implementation was using lineItems value from initial
-       * render, not taking into account the cart clearing or other items changing.
-       * */
-      refetchCartData({ checkoutId: cartToken })
-        .then((res) => {
-          /*
-           * Map data returned from GraphQL query to only include values necessary for
-           * checkoutLineItemsReplace mutation (variantId and quantity)
-           */
-          const currentItems = res.data.node.lineItems.edges.map((item) => ({
-            variantId: item.node.variant.id,
-            quantity: item.node.quantity,
-          }));
-          /*
-          * Check if item exists in cart already
-          * If true, increment quantity of item by 1
-          * Else, push new item to lineItems
-          * */
-          if (currentItems.some((item) => item.variantId === input.variantId)) {
-            const index = currentItems.findIndex(
-              (item) => item.variantId === input.variantId,
-            );
-            currentItems[index].quantity += 1;
-          } else {
-            currentItems.push({
-              variantId: input.variantId,
-              quantity: 1,
-            });
-          }
-          // Set state variable lineItems to new list and run replacement query
-          setLineItems(currentItems);
-          replaceItems().then(() => {
-            setLoading(false);
-          }).catch((error) => console.log(error));
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else if (getCartError) {
-      console.log(getCartError);
-    }
-  };
-
   function renderGridItems({ node }, key) {
     const images = node.images.edges;
     const imageSrc = images.length ? images[0].node.transformedSrc : '';
@@ -125,7 +77,6 @@ function ProductsGrid({ variables }: Props) {
             imageSrc={imageSrc}
             altText={altText}
             variantId={node.variants.edges[0].node.id}
-            addToCart={addToCart}
           />
         </Grid>
       );
