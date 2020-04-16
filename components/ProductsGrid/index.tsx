@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useMutation, useQuery } from '@apollo/react-hooks';
+import React, { useState } from 'react';
+import { useQuery } from '@apollo/react-hooks';
 import {
-  Grid, CircularProgress, Typography, DialogContent, Dialog,
+  Grid, Typography,
 } from '@material-ui/core';
 import featuredProducts from './featured.json';
 import { ProductSortKeys } from '../../models';
@@ -9,10 +9,6 @@ import { ProductsType, PRODUCTS_QUERY } from './_types';
 import ProductThumbnail from '../ProductThumbnail';
 import { Styled } from './_styles';
 import FeaturedProducts from '../sections/FeaturedProducts';
-
-import { CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY } from '../CartController/_types';
-import { getLineItems } from '../ProductDetail';
-
 
 type Props = {
   query: string;
@@ -22,10 +18,6 @@ type Props = {
 };
 
 function ProductsGrid({ variables }: Props) {
-  const [lineItems, setLineItems] = useState<any[]>(null);
-  const [cartToken, setCartToken] = useState<string>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-
 
   // Query gets list of products and information
   const {
