@@ -125,6 +125,7 @@ const LoginForm: FunctionComponent = () => {
             value={email}
             error={email !== '' && validator.isEmail(email)}
             onChange={(event) => updateEmail(event)}
+            inputRef={(input) => input && input.focus()}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start" style={{ width: '2rem' }}>

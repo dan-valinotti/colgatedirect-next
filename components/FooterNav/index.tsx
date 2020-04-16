@@ -17,32 +17,32 @@ const FooterNav: FunctionComponent = () => (
         <Styled.FooterEmailField type="text" placeholder="SHARE YOUR EMAIL" borderColor={fontColor} />
       </Styled.FooterEmailContainer>
       <Styled.FooterLinksContainer>
-        <Styled.FooterFont fontColor={fontColor} variant="body">
+        <Styled.FooterFont fontColor={fontColor} variant="body1">
           <Link href="/">
             About our Ads
           </Link>
         </Styled.FooterFont>
-        <Styled.FooterFont fontColor={fontColor} variant="body">
+        <Styled.FooterFont fontColor={fontColor} variant="body1">
           <Link href="/">
             Terms of Sale
           </Link>
         </Styled.FooterFont>
-        <Styled.FooterFont fontColor={fontColor} variant="body">
+        <Styled.FooterFont fontColor={fontColor} variant="body1">
           <Link href="/">
             Privacy Policy
           </Link>
         </Styled.FooterFont>
-        <Styled.FooterFont fontColor={fontColor} variant="body">
+        <Styled.FooterFont fontColor={fontColor} variant="body1">
           <Link href="/">
             Terms of Sale
           </Link>
         </Styled.FooterFont>
-        <Styled.FooterFont fontColor={fontColor} variant="body">
+        <Styled.FooterFont fontColor={fontColor} variant="body1">
           <Link href="/">
             Returns & Warranty
           </Link>
         </Styled.FooterFont>
-        <Styled.FooterFont fontColor={fontColor} variant="body">
+        <Styled.FooterFont fontColor={fontColor} variant="body1">
           <Link href="/">
             Support
           </Link>
