@@ -26,18 +26,6 @@ function ProductsGrid({ variables }: Props) {
   const [cartToken, setCartToken] = useState<string>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
-  // Gets cart info to replace item if added to cart
-  const {
-    data: getCartData,
-    loading: getCartLoading,
-    error: getCartError,
-    refetch: refetchCartData,
-  } = useQuery(GET_CART_QUERY, {
-    skip: !cartToken,
-    variables: {
-      checkoutId: cartToken,
-    },
-  });
 
   // Query gets list of products and information
   const {
@@ -48,18 +36,6 @@ function ProductsGrid({ variables }: Props) {
     PRODUCTS_QUERY,
     { variables },
   );
-
-  // Mutation replaces items in cart
-  const [replaceItems, {
-    data: replaceItemsData,
-    loading: replaceItemsLoading,
-    error: replaceItemsError,
-  }] = useMutation(CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, {
-    variables: {
-      checkoutId: cartToken,
-      lineItems,
-    },
-  });
 
   function renderGridItems({ node }, key) {
     const images = node.images.edges;
@@ -83,16 +59,6 @@ function ProductsGrid({ variables }: Props) {
     }
   }
 
-  // Waits for 'window' object to be availble for localStorage
-  useEffect(() => {
-    if (window.localStorage) {
-      setCartToken(window.localStorage.getItem('shopifyCartToken'));
-    }
-    if (getCartData && !lineItems) {
-      setLineItems(getLineItems(getCartData.node.lineItems.edges));
-    }
-  }, [cartToken, getCartData, lineItems]);
-
   return (
     <Styled.Container>
       {productsError && (
@@ -110,14 +76,6 @@ function ProductsGrid({ variables }: Props) {
           <Grid container spacing={2}>
             {data.products.edges.map(renderGridItems)}
           </Grid>
-          <Dialog open={replaceItemsLoading}>
-            <DialogContent>
-              <Typography variant="h6">Adding item to cart...</Typography>
-              <Styled.ProgressContainer>
-                <CircularProgress />
-              </Styled.ProgressContainer>
-            </DialogContent>
-          </Dialog>
         </>
       )}
     </Styled.Container>
