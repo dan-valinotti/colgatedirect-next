@@ -14,37 +14,37 @@ const FooterNav: FunctionComponent = () => (
     <Styled.FooterContainerGrid>
       <Styled.FooterEmailContainer>
         <Styled.FooterFont fontColor={fontColor} variant="h4">Stay up to date with Colgate</Styled.FooterFont>
-        <Styled.FooterEmailField type="text" placeholder="SHARE YOUR EMAIL" borderColor={fontColor} />
+        <Styled.FooterEmailField type="text" placeholder="SHARE YOUR EMAIL" bordercolor={fontColor} />
       </Styled.FooterEmailContainer>
       <Styled.FooterLinksContainer>
         <Styled.FooterFont fontColor={fontColor} variant="body1">
           <Link href="/">
-            About our Ads
+            <a>About our Ads</a>
           </Link>
         </Styled.FooterFont>
         <Styled.FooterFont fontColor={fontColor} variant="body1">
           <Link href="/">
-            Terms of Sale
+            <a>Terms of Sale</a>
           </Link>
         </Styled.FooterFont>
         <Styled.FooterFont fontColor={fontColor} variant="body1">
           <Link href="/">
-            Privacy Policy
+            <a>Privacy Policy</a>
           </Link>
         </Styled.FooterFont>
         <Styled.FooterFont fontColor={fontColor} variant="body1">
           <Link href="/">
-            Terms of Sale
+            <a>Terms of Sale</a>
           </Link>
         </Styled.FooterFont>
         <Styled.FooterFont fontColor={fontColor} variant="body1">
           <Link href="/">
-            Returns & Warranty
+            <a>Returns & Warranty</a>
           </Link>
         </Styled.FooterFont>
         <Styled.FooterFont fontColor={fontColor} variant="body1">
           <Link href="/">
-            Support
+            <a>Support</a>
           </Link>
         </Styled.FooterFont>
       </Styled.FooterLinksContainer>

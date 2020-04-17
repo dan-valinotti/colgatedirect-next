@@ -39,10 +39,10 @@ const FooterEmailField = styled(TextField)`
     padding-top: 1rem;
     
     div input {
-      color: ${(props) => props.borderColor} !important;
+      color: ${(props) => props.bordercolor} !important;
     }
     div::before {
-      border-color: ${(props) => props.borderColor} !important;
+      border-color: ${(props) => props.bordercolor} !important;
     }
   }
 `;

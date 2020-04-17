@@ -17,13 +17,11 @@ describe('Login form tests', () => {
   it('Test email validation', () => {
     // Valid email input
     cy.get('#email').type('test@test.com');
-    cy.get('#password').click();
     cy.get('#email-label')
       .should('not.have.class', 'Mui-error');
 
     // Invalid email input
     cy.get('#email').clear().type('fake.email');
-    cy.get('#password').click();
     cy.get('#email-label')
       .should('have.class', 'Mui-error');
   });
@@ -35,7 +33,7 @@ describe('Login form tests', () => {
     cy.get('#password').type('password');
     cy.get('#form-submit').click();
     cy.get('[class*="MuiAlert-message"]')
-      .contains('Please enter a valid email and password.');
+      .should('contain', 'Please enter a valid email and password.');
   });
 
   // Test: Does login form successfully submit, both correct and incorrect login?
@@ -51,7 +49,7 @@ describe('Login form tests', () => {
     cy.get('#password').type('wrongPassword');
     cy.get('#form-submit').click();
     cy.get('[class*="MuiAlert-message"]')
-      .contains('Incorrect email / password.');
+      .should('contain', 'Incorrect email / password.');
   });
 
   // Test: Does 'register' link correctly lead to Register page?

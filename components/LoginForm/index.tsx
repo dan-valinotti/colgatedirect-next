@@ -130,7 +130,7 @@ const LoginForm: FunctionComponent = () => {
   }, []);
 
   return (
-    <Styled.Container>
+    <Styled.Container id="login-form">
       <Styled.FormContainer>
         <Typography variant="h4">Log In</Typography>
         <Styled.FormFieldContainer>
