@@ -6,13 +6,10 @@ type Props = {
   test?: string;
 };
 
-const WhiteningPage : FunctionComponent<Props> = ({ test }: Props) => {
-  return (
-    <Styled.Container>
-      <h1>{`Hello WhiteningPage!`}</h1>
-    </Styled.Container>
-  );
-};
+const WhiteningPage: FunctionComponent<Props> = ({ test }: Props) => (
+  <Styled.Container id="custom-pdp-component">
+    <h1>Hello WhiteningPage!</h1>
+  </Styled.Container>
+);
 
 export default WhiteningPage;
-  

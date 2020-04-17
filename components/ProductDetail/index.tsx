@@ -105,7 +105,7 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
   }, [cartToken, getCartData, lineItems]);
 
   return (
-    <Styled.ProductDetailContainer>
+    <Styled.ProductDetailContainer id="product-detail-component">
       <Styled.ImageContainer>
         <Styled.ProductImage src={product.imageSrc} alt="PDP" />
       </Styled.ImageContainer>
