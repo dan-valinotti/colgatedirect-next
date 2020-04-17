@@ -126,56 +126,71 @@ const RegisterForm: FunctionComponent = () => {
     setFieldUpdated(true);
   };
 
+  const validateInput = () => (
+    (validator.isEmail(email) && email !== '')
+    && password !== ''
+    && firstName !== ''
+    && lastName !== ''
+  );
+
   // Attempt customer login
   const submitRegister = () => {
-    setDialogOpen(true);
-    submitRegisterRequest()
-      .then((res) => {
-        console.log(res);
-        setDialogOpen(false);
-        // Check if access token was returned from API
-        if (res.data.customerCreate.customer.id) {
-          // Register successful, then attempt login
-          setDialogMessage('Success. Loggin in...');
-          submitLoginRequest()
-            .then((loginRes) => {
-              console.log(loginRes);
-              // If customerAccessToken exists (login succeeded)...
-              if (loginRes.data.customerAccessTokenCreate.customerAccessToken) {
-                window.localStorage.setItem(
-                  'customerAccessToken',
-                  loginRes.data.customerAccessTokenCreate.customerAccessToken.accessToken,
-                );
-                // Redirect to homepage
-                Router.push('/')
-                  .catch((error) => console.log(error));
-              } else {
-                // If access token is null, there was an error - set error status
-                setErrorStatus({
-                  status: true,
-                  code: loginRes.data.customerAccessTokenCreate.customerUserErrors[0].code,
-                  message: loginRes.data.customerAccessTokenCreate.customerUserErrors[0].message,
-                });
-              }
-            }).catch((error) => {
-              // This error only occurs due to network events, not a login failure
-              setDialogOpen(false);
-              console.log(error);
+    if (validateInput()) {
+      setDialogOpen(true);
+      submitRegisterRequest()
+        .then((res) => {
+          console.log(res);
+          setDialogOpen(false);
+          // Check if access token was returned from API
+          if (res.data.customerCreate.customer.id) {
+            // Register successful, then attempt login
+            setDialogMessage('Success. Loggin in...');
+            submitLoginRequest()
+              .then((loginRes) => {
+                console.log(loginRes);
+                // If customerAccessToken exists (login succeeded)...
+                if (loginRes.data.customerAccessTokenCreate.customerAccessToken) {
+                  window.localStorage.setItem(
+                    'customerAccessToken',
+                    loginRes.data.customerAccessTokenCreate.customerAccessToken.accessToken,
+                  );
+                  // Redirect to homepage
+                  Router.push('/')
+                    .catch((error) => console.log(error));
+                } else {
+                  // If access token is null, there was an error - set error status
+                  setErrorStatus({
+                    status: true,
+                    code: loginRes.data.customerAccessTokenCreate.customerUserErrors[0].code,
+                    message: loginRes.data.customerAccessTokenCreate.customerUserErrors[0].message,
+                  });
+                }
+              }).catch((error) => {
+                // This error only occurs due to network events, not a login failure
+                setDialogOpen(false);
+                console.log(error);
+              });
+          } else {
+            // If customer ID is null, there was an error - set error status
+            setErrorStatus({
+              status: true,
+              code: res.data.customerCreate.userErrors[0].field,
+              message: res.data.customerCreate.userErrors[0].message,
             });
-        } else {
-          // If customer ID is null, there was an error - set error status
-          setErrorStatus({
-            status: true,
-            code: res.data.customerCreate.userErrors[0].field,
-            message: res.data.customerCreate.userErrors[0].message,
-          });
-        }
-      })
-      .catch((error) => {
-        // This error only occurs due to network events, not a login failure
-        setDialogOpen(false);
-        console.log(error);
+          }
+        })
+        .catch((error) => {
+          // This error only occurs due to network events, not a login failure
+          setDialogOpen(false);
+          console.log(error);
+        });
+    } else {
+      setErrorStatus({
+        status: true,
+        code: 'INVALID_INPUT',
+        message: 'Please correctly fill out all fields.',
       });
+    }
   };
 
   useEffect(() => {
@@ -187,7 +202,7 @@ const RegisterForm: FunctionComponent = () => {
   }, []);
 
   return (
-    <Styled.Container>
+    <Styled.Container id="register-form">
       <Styled.FormContainer>
         <Typography variant="h4">Register</Typography>
         <Styled.FormFieldContainer>
@@ -196,6 +211,7 @@ const RegisterForm: FunctionComponent = () => {
             label="First Name"
             value={firstName}
             onChange={(event) => updateFirstName(event)}
+            autoFocus
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start" style={{ width: '2rem' }}>
@@ -221,7 +237,7 @@ const RegisterForm: FunctionComponent = () => {
             id="email"
             label="Email"
             value={email}
-            error={email !== '' && validator.isEmail(email)}
+            error={email !== '' && !validator.isEmail(email)}
             onChange={(event) => updateEmail(event)}
             InputProps={{
               startAdornment: (
@@ -237,7 +253,7 @@ const RegisterForm: FunctionComponent = () => {
             type="password"
             autoComplete="current-password"
             value={password}
-            error={!fieldUpdated && password === ''}
+            error={fieldUpdated && password === ''}
             onChange={(event) => updatePassword(event)}
             InputProps={{
               startAdornment: (
@@ -248,6 +264,7 @@ const RegisterForm: FunctionComponent = () => {
             }}
           />
           <Styled.SubmitButton
+            id="form-submit"
             variant="outlined"
             color="secondary"
             onClick={() => submitRegister()}
