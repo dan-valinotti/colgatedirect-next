@@ -1,4 +1,6 @@
-// Main tests
+/*
+* RegisterForm Test Suite
+* */
 describe('Register form tests', () => {
   beforeEach(() => {
     cy.visit('/register');
