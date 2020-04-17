@@ -1,3 +1,6 @@
+/*
+* LoginForm Test Suite
+* */
 describe('Login form tests', () => {
   // Load page before each test
   beforeEach(() => {
