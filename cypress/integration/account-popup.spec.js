@@ -9,22 +9,22 @@ describe('AccountPopup component tests', () => {
       .click();
   });
 
-  it.skip('Does component render properly?', () => {
+  it('Does component render properly?', () => {
     cy.get('#account-popup')
       .should('be.visible');
   });
 
-  it.skip('Does popup content window open onClick?', () => {
+  it('Does popup content window open onClick?', () => {
     cy.get('#popup-content')
       .should('be.visible');
   });
 
-  it.skip('Does popup window show "Log in" button when user is NOT logged in?', () => {
+  it('Does popup window show "Log in" button when user is NOT logged in?', () => {
     cy.get('#login-btn')
       .should('be.visible');
   });
 
-  it.skip('Does "Log in" button redirect to /login onClick?', () => {
+  it('Does "Log in" button redirect to /login onClick?', () => {
     cy.get('#login-btn')
       .click();
     cy.url()
