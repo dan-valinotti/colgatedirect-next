@@ -26,15 +26,15 @@ const renderPopoverContent = (
     const { customer } = customerData;
     return (
       <>
-        <Styled.AccountInfo>
+        <Styled.AccountInfo id="popup-content">
           <Styled.PopoverTitle variant="h6">Account</Styled.PopoverTitle>
           <AccountCircle />
           {(customer.firstName || customer.lastName) && (
-          <Typography variant="body1">
+          <Typography variant="body1" id="account-name">
             {customer.firstName} {customer.lastName}
           </Typography>
           )}
-          <Styled.EmailText variant="body2">
+          <Styled.EmailText variant="body2" id="account-email">
             { customer.email }
           </Styled.EmailText>
         </Styled.AccountInfo>
@@ -47,7 +47,7 @@ const renderPopoverContent = (
       </>
     );
   } return (
-    <Styled.Container>
+    <Styled.Container id="popup-content">
       <Link href="/login">
         <Button
           id="login-btn"
@@ -118,9 +118,10 @@ const AccountPopup: FunctionComponent = () => {
 
   return (
     <>
-      <div>
+      <div id="account-popup">
         <IconButton
           id="account-btn"
+          className="account-btn"
           edge="end"
           color="inherit"
           aria-label="cart"

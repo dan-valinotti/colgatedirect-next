@@ -186,6 +186,7 @@ const LoginForm: FunctionComponent = () => {
         </Styled.FormFieldContainer>
       </Styled.FormContainer>
       <Dialog
+        id="loading-dialog"
         open={dialogOpen}
         onClose={() => setDialogOpen(false)}
       >
