@@ -57,7 +57,7 @@ describe('Login form tests', () => {
 
   // Test: Does 'register' link correctly lead to Register page?
   it('Test user registration link', () => {
-    cy.get('a[href="/register"').click();
+    cy.get('a[href="/register"]').click();
     cy.url()
       .should('include', '/register');
   });
