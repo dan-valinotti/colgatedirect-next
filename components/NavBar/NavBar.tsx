@@ -77,7 +77,10 @@ const NavBar: FunctionComponent<Props> = () => {
               Colgate Connect
             </HomeLink>
           </Link>
-          <CartData parentComponent="NavBar" />
+          <div className="icon-btns-container">
+            <AccountPopup />
+            <CartData parentComponent="NavBar" />
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer
