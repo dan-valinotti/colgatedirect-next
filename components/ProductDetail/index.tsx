@@ -90,7 +90,7 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
           <Typography variant="body1">
             Price: ${parseFloat(product.price).toFixed(2)}
           </Typography>
-          <AddToCart variantId={product.id} quantityButton={false} />
+          <AddToCart variantId={product.id} quantityButton={false} quantity={0} />
         </Styled.ATCContainer>
       </Styled.DescriptionContainer>
     </Styled.ProductDetailContainer>
