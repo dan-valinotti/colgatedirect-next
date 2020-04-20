@@ -4,9 +4,8 @@ import { useLazyQuery, useQuery } from '@apollo/react-hooks';
 import { ProductPriceRange } from '../../models';
 import { Styled } from './_styles';
 import { GET_CART_QUERY } from '../CartController/_types';
-import { getLineItems } from '../ProductDetail';
 import { GetCartResponse, LineItems, LineItemsInput } from './_types';
-import AddToCart from '../PDPComponent/addToCart';
+import AddToCart from '../PDPComponent/AddToCart';
 
 type Props = {
   id: string;

@@ -5,7 +5,7 @@ import {
 } from '@material-ui/core';
 import { ProductsType, PRODUCTS_QUERY } from '../ProductsGrid/_types';
 import { CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY, GetCartRequest } from '../CartController/_types';
-import { getLineItems } from '../ProductDetail';
+import { getLineItems } from './_types';
 import { Styled as StyledThumbnail } from '../ProductThumbnail/_styles';
 import { Styled as StyledGrid } from '../ProductsGrid/_styles';
 
