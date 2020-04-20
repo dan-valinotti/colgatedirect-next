@@ -5,7 +5,7 @@ import { ProductPriceRange } from '../../models';
 import { Styled } from './_styles';
 import { GET_CART_QUERY } from '../CartController/_types';
 import { GetCartResponse, LineItems, LineItemsInput } from './_types';
-import AddToCart from '../PDPComponent/AddToCart';
+import AddToCart from '../PDPComponent/AddAndRemoveProduct';
 
 type Props = {
   id: string;
