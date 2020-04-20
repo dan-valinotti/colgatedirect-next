@@ -25,7 +25,11 @@ const CartContent: FunctionComponent<Props> = ({ cart, total, clearCart }: Props
               <Styled.ItemContainer>
                 <Typography variant="h6">{item.node.title}</Typography>
                 {console.log(item)}
-                <AddToCart variantId={item.node.variant.id} quantityButton quantity={item.node.quantity} />
+                <AddToCart
+                  variantId={item.node.variant.id}
+                  quantityButton
+                  quantity={item.node.quantity}
+                />
                 <Typography variant="h6">
                   ${(item.node.variant.priceV2.amount * item.node.quantity).toFixed(2)}
                 </Typography>

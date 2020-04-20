@@ -18,7 +18,6 @@ type Props = {
 };
 
 function ProductsGrid({ variables }: Props) {
-
   // Query gets list of products and information
   const {
     data,
