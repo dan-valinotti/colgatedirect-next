@@ -6,7 +6,7 @@ import withData from '../../lib/apollo';
 import { GetCartResponse } from '../CartController/_types';
 // import './_style.scss';
 import { Styled } from './_styles';
-import QuantityButtons from '../CartContent/QuantityButtons';
+import AddToCart from '../PDPComponent/addToCart';
 
 type Props = {
   cart: GetCartResponse;
@@ -65,17 +65,8 @@ const CartContentRow = ({
                         />
                       </Styled.ProductImgThumbnail>
                       <Typography variant="h6" className="itemName">{item.node.title}</Typography>
-                      <ButtonGroup>
-                        <Button variant="outlined">+</Button>
-                        <Button variant="outlined" disabled>
-                          <Typography variant="body2" style={{ color: 'black' }}>
-                            1
-                          </Typography>
-                        </Button>
-                        <Button variant="outlined">-</Button>
-                      </ButtonGroup>
+                      <AddToCart variantId={item.node.variant.id} quantityButton />
                       <Typography variant="h6" className="itemPrice">
-                        {console.log(item.node.quantity)}
                         ${item.node.variant.priceV2.amount * item.node.quantity}
                       </Typography>
                     </Styled.ItemContainer>
