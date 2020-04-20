@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import {
-  CircularProgress, Typography, DialogContent, Dialog,
+  CircularProgress, Typography, DialogContent, Dialog, ButtonGroup, Button,
 } from '@material-ui/core';
 import { ProductsType, PRODUCTS_QUERY } from '../ProductsGrid/_types';
 import { CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY, GetCartRequest } from '../CartController/_types';
@@ -11,12 +11,13 @@ import { Styled as StyledGrid } from '../ProductsGrid/_styles';
 
 type Props = {
   variantId: string;
-  quantity: number;
+  quantityButton: boolean;
 };
-function AddToCart({ variantId, quantity }: Props) {
+function AddToCart({ variantId, quantityButton }: Props) {
   const [lineItems, setLineItems] = useState<any[]>(null);
   const [cartToken, setCartToken] = useState<string>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [quantity, setQuantity] = useState<number>(1);
 
   // Gets cart info to replace item if added to cart
   const variables: GetCartRequest = {
@@ -83,6 +84,7 @@ function AddToCart({ variantId, quantity }: Props) {
               (item) => item.variantId === variantId,
             );
             currentItems[index].quantity += 1;
+            setQuantity(currentItems[index].quantity);
           } else {
             currentItems.push({
               variantId,
@@ -116,14 +118,28 @@ function AddToCart({ variantId, quantity }: Props) {
 
   return (
     <>
-      <StyledThumbnail.ProductButton
-        className="atc-btn"
-        variant="contained"
-        color="secondary"
-        onClick={() => addToCartFunc()}
-      >
-        Add to cart
-      </StyledThumbnail.ProductButton>
+      {(!quantityButton
+        && (
+          <StyledThumbnail.ProductButton
+            className="atc-btn"
+            variant="contained"
+            color="secondary"
+            onClick={() => addToCartFunc()}
+          >
+            Add to cart
+          </StyledThumbnail.ProductButton>
+        ))}
+      {(quantityButton && (
+        <ButtonGroup>
+          <Button variant="outlined" onClick={() => addToCartFunc()}>+</Button>
+          <Button variant="outlined" disabled>
+            <Typography variant="body2" style={{ color: 'black' }}>
+              {quantity}{console.log(variantId)}
+            </Typography>
+          </Button>
+          <Button variant="outlined">-</Button>
+        </ButtonGroup>
+      ))}
       <Dialog open={replaceItemsLoading}>
         <DialogContent>
           <Typography variant="h6">Adding item to cart...</Typography>
