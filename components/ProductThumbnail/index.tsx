@@ -35,7 +35,7 @@ function ProductThumbnail({
         {parseFloat(priceRange.minVariantPrice.amount).toFixed(2)}
       </Styled.ProductPrice>
       <Styled.ProductATCContainer>
-        <AddToCart variantId={variantId} quantity={1} />
+        <AddToCart variantId={variantId} quantityButton={false} quantity={0} />
         <Link href={{ pathname: '/product', query: { handle } }} as={`/products/${handle}`} passHref>
           <Styled.ProductButton className="details-btn" variant="contained" color="primary">
             Details
