@@ -21,6 +21,7 @@
     "build": "next build && tsc --project tsconfig.server.json",
     "start": "next start",
     "test": "cypress open",
+    "test:cmd": "cypress run",
     "cypress:open": "cypress open",
     "test:unit": "jest --config tests/jest.unit.config.js",
     "test:integration": "jest --config tests/jest.integration.config.js",
