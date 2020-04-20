@@ -14,37 +14,37 @@ const FooterNav: FunctionComponent = () => (
     <Styled.FooterContainerGrid>
       <Styled.FooterEmailContainer>
         <Styled.FooterFont fontColor={fontColor} variant="h4">Stay up to date with Colgate</Styled.FooterFont>
-        <Styled.FooterEmailField type="text" placeholder="SHARE YOUR EMAIL" borderColor={fontColor} />
+        <Styled.FooterEmailField type="text" placeholder="SHARE YOUR EMAIL" bordercolor={fontColor} />
       </Styled.FooterEmailContainer>
       <Styled.FooterLinksContainer>
-        <Styled.FooterFont fontColor={fontColor} variant="body">
+        <Styled.FooterFont fontColor={fontColor} variant="body1">
           <Link href="/">
-            About our Ads
+            <a>About our Ads</a>
           </Link>
         </Styled.FooterFont>
-        <Styled.FooterFont fontColor={fontColor} variant="body">
+        <Styled.FooterFont fontColor={fontColor} variant="body1">
           <Link href="/">
-            Terms of Sale
+            <a>Terms of Sale</a>
           </Link>
         </Styled.FooterFont>
-        <Styled.FooterFont fontColor={fontColor} variant="body">
+        <Styled.FooterFont fontColor={fontColor} variant="body1">
           <Link href="/">
-            Privacy Policy
+            <a>Privacy Policy</a>
           </Link>
         </Styled.FooterFont>
-        <Styled.FooterFont fontColor={fontColor} variant="body">
+        <Styled.FooterFont fontColor={fontColor} variant="body1">
           <Link href="/">
-            Terms of Sale
+            <a>Terms of Sale</a>
           </Link>
         </Styled.FooterFont>
-        <Styled.FooterFont fontColor={fontColor} variant="body">
+        <Styled.FooterFont fontColor={fontColor} variant="body1">
           <Link href="/">
-            Returns & Warranty
+            <a>Returns & Warranty</a>
           </Link>
         </Styled.FooterFont>
-        <Styled.FooterFont fontColor={fontColor} variant="body">
+        <Styled.FooterFont fontColor={fontColor} variant="body1">
           <Link href="/">
-            Support
+            <a>Support</a>
           </Link>
         </Styled.FooterFont>
       </Styled.FooterLinksContainer>
@@ -54,7 +54,7 @@ const FooterNav: FunctionComponent = () => (
           <Styled.FooterSocialIcon color={fontColor} className="fab fa-youtube" />
           <Styled.FooterSocialIcon color={fontColor} className="fab fa-instagram" />
         </Styled.FooterSocialIconGrid>
-        <Styled.FooterLegalCopy variant="body" color={fontColor}>
+        <Styled.FooterLegalCopy variant="body1" color={fontColor}>
           © 2020 Colgate-Palmolive Company. All Rights Reserved.
           You are viewing the US English site.
         </Styled.FooterLegalCopy>
