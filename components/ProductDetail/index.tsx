@@ -12,7 +12,7 @@ import {
   CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY, GetCartResponse, PriceV2,
 } from '../CartController/_types';
 import { Styled } from './_styles';
-import AddToCart from '../PDPComponent/AddToCart';
+import AddToCart from '../PDPComponent/AddAndRemoveProduct';
 import { Metafield, ProductVariant } from '../../models';
 
 
