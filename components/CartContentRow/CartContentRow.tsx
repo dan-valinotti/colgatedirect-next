@@ -6,7 +6,7 @@ import withData from '../../lib/apollo';
 import { GetCartResponse } from '../CartController/_types';
 // import './_style.scss';
 import { Styled } from './_styles';
-import AddToCart from '../PDPComponent/addToCart';
+import AddToCart from '../PDPComponent/AddToCart';
 
 type Props = {
   cart: GetCartResponse;

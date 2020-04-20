@@ -5,39 +5,20 @@ import {
 } from '@material-ui/core';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
-import { LineItem, LineItemShort, TransformedProduct } from '../PDPComponent/_types';
+import {
+  LineItem, LineItemShort, TransformedProduct, getLineItems,
+} from '../PDPComponent/_types';
 import {
   CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY, GetCartResponse, PriceV2,
 } from '../CartController/_types';
 import { Styled } from './_styles';
-import AddToCart from '../PDPComponent/addToCart';
+import AddToCart from '../PDPComponent/AddToCart';
 import { Metafield, ProductVariant } from '../../models';
+
 
 type Props = {
   product: TransformedProduct;
 };
-
-// Map line items to array for cart replacement
-export function getLineItems(lineItems): object[] {
-  if (lineItems) {
-    return lineItems.map((item): object => {
-      if (item.node) {
-        // console.log(`Item with node:`, item.node);
-        return {
-          variantId: item.node.variant.id,
-          quantity: item.node.quantity,
-        };
-      }
-      // console.log(`Item:`, item);
-      return {
-        variantId: item.id,
-        quantity: item.quantity,
-      };
-    });
-  }
-
-  return [];
-}
 
 const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
   const [cartToken, setCartToken] = useState<string>(null);
