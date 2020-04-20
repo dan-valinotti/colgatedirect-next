@@ -19,6 +19,9 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
   const [cartToken, setCartToken] = useState<string>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
+  // determines what loading dialog text should render
+  const [addButton, setAddButton] = useState<boolean>(false);
+
   // Gets cart info to replace item if added to cart
   const variables: GetCartRequest = {
     checkoutId: cartToken,
@@ -58,6 +61,7 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
 
   const addToCartFunc = () => {
     if (cartToken && getCartData) {
+      setAddButton(true);
       setLoading(true);
       /* Updated:
              * Add refetchCartData function call to get current cart information before adding
@@ -105,6 +109,40 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
     }
   };
 
+  const removeFromCart = () => {
+    if (cartToken && getCartData) {
+      setAddButton(false);
+      setLoading(true);
+      refetchCartData({ checkoutId: cartToken })
+        .then((res) => {
+          let currentItems = res.data.node.lineItems.edges.map((item) => ({
+            variantId: item.node.variant.id,
+            quantity: item.node.quantity,
+          }));
+
+          const index = currentItems.findIndex(
+            (item) => item.variantId === variantId,
+          );
+          currentItems[index].quantity -= 1;
+
+          // remove item once it's quantity equals zero
+          currentItems = currentItems.filter((item) => item.quantity !== 0);
+
+          // Set state variable lineItems to new list and run replacement query
+          setLineItems(currentItems);
+          replaceItems().then(() => {
+            setLoading(false);
+            console.log(lineItems);
+          }).catch((error) => console.log(error));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else if (getCartError) {
+      console.log(getCartError);
+    }
+  };
+
   // Waits for 'window' object to be availble for localStorage
   useEffect(() => {
     if (window.localStorage) {
@@ -136,12 +174,13 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
               {quantity}{console.log(variantId)}
             </Typography>
           </Button>
-          <Button variant="outlined">-</Button>
+          <Button variant="outlined" onClick={() => removeFromCart()}>-</Button>
         </ButtonGroup>
       ))}
       <Dialog open={replaceItemsLoading}>
         <DialogContent>
-          <Typography variant="h6">Adding item to cart...</Typography>
+          {(addButton && <Typography variant="h6">Adding item to cart...</Typography>)}
+          {(!addButton && <Typography variant="h6">Removing item...</Typography>)}
           <StyledGrid.ProgressContainer>
             <CircularProgress />
           </StyledGrid.ProgressContainer>
