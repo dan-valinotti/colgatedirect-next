@@ -12,12 +12,12 @@ import { Styled as StyledGrid } from '../ProductsGrid/_styles';
 type Props = {
   variantId: string;
   quantityButton: boolean;
+  quantity: number;
 };
-function AddToCart({ variantId, quantityButton }: Props) {
+function AddToCart({ variantId, quantityButton, quantity }: Props) {
   const [lineItems, setLineItems] = useState<any[]>(null);
   const [cartToken, setCartToken] = useState<string>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [quantity, setQuantity] = useState<number>(1);
 
   // Gets cart info to replace item if added to cart
   const variables: GetCartRequest = {
@@ -84,7 +84,6 @@ function AddToCart({ variantId, quantityButton }: Props) {
               (item) => item.variantId === variantId,
             );
             currentItems[index].quantity += 1;
-            setQuantity(currentItems[index].quantity);
           } else {
             currentItems.push({
               variantId,
