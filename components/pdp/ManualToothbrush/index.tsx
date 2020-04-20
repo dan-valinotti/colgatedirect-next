@@ -12,7 +12,7 @@ type Props = {
 };
 
 const ManualToothbrush: FunctionComponent<Props> = ({ product }: Props) => (
-  <Styled.Container>
+  <Styled.Container id="custom-pdp-component">
     <HeroBanner
       title="Brush Smarter"
       subtitle="Our first non-electric connected toothbrush tracks your brushing to help you get a complete clean."

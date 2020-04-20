@@ -51,7 +51,7 @@ const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
   return (
     <>
       {!error && product && (
-        <>
+        <div id="pdp-component">
           <Head>
             <title>{product.title}</title>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -63,14 +63,14 @@ const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
               <Styled.PDPContainer>
                 <Styled.PDPMain>
                   <Link href="/">
-                    <Button variant="outlined" color="secondary">Back</Button>
+                    <Button id="back-btn" variant="outlined" color="secondary">Back</Button>
                   </Link>
                   <ProductDetail product={product} />
                 </Styled.PDPMain>
               </Styled.PDPContainer>
             </PageContainer>
           )}
-        </>
+        </div>
       )}
     </>
   );
