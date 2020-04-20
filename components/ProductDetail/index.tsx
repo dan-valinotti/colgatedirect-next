@@ -68,33 +68,6 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
     },
   });
 
-  // onClick function for Add to Cart button
-  //  Gets cart items first, turns into an array,
-  //  pushes new item and replaces items in cart
-  const addToCart = () => {
-    if (cartToken && getCartData) {
-      setLoading(true);
-      const currentItems = lineItems;
-      if (currentItems.some((item) => item.variantId === product.variant.id)) {
-        const index = currentItems.findIndex(
-          (item) => item.variantId === product.variant.id,
-        );
-        currentItems[index].quantity += 1;
-      } else {
-        currentItems.push({
-          variantId: product.variant.id,
-          quantity: 1,
-        });
-      }
-      setLineItems(currentItems);
-      replaceItems().then((res) => {
-        setLoading(false);
-      }).catch((error) => console.log(error));
-    } else {
-      // console.log("Can't add to cart.");
-    }
-  };
-
   // Waits for 'window' object to be availble for localStorage
   useEffect(() => {
     if (window.localStorage) {
@@ -117,7 +90,7 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
           <Typography variant="body1">
             Price: ${parseFloat(product.price).toFixed(2)}
           </Typography>
-          <AddToCart variantId={product.id} quantity={1} />
+          <AddToCart variantId={product.id} quantityButton={false} />
         </Styled.ATCContainer>
       </Styled.DescriptionContainer>
     </Styled.ProductDetailContainer>
