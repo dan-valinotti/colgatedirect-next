@@ -5,6 +5,7 @@ import {
 import Link from 'next/link';
 import { GetCartResponse } from '../CartController/_types';
 import { Styled } from './_styles';
+import AddToCart from '../PDPComponent/AddAndRemoveProduct';
 
 type Props = {
   cart: GetCartResponse;
@@ -14,7 +15,7 @@ type Props = {
 
 const CartContent: FunctionComponent<Props> = ({ cart, total, clearCart }: Props) => (
   <>
-    { console.log(cart.node.lineItems.edges) }
+    {console.log(cart.node.lineItems.edges)}
     {cart && (
       <Styled.Container>
         <Typography variant="h6">Cart</Typography>
@@ -23,15 +24,8 @@ const CartContent: FunctionComponent<Props> = ({ cart, total, clearCart }: Props
             <ListItem key={key}>
               <Styled.ItemContainer>
                 <Typography variant="h6">{item.node.title}</Typography>
-                <ButtonGroup>
-                  <Button variant="outlined">+</Button>
-                  <Button variant="outlined" disabled>
-                    <Typography variant="body2" style={{ color: 'black' }}>
-                      {item.node.quantity}
-                    </Typography>
-                  </Button>
-                  <Button variant="outlined">-</Button>
-                </ButtonGroup>
+                {console.log(item)}
+                <AddToCart variantId={item.node.variant.id} quantityButton quantity={item.node.quantity} />
                 <Typography variant="h6">
                   ${(item.node.variant.priceV2.amount * item.node.quantity).toFixed(2)}
                 </Typography>
