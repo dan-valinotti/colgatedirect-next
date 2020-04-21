@@ -22,6 +22,8 @@ const NavBarItem = ({ title, products }: Props) => {
     setOpen(!open);
   };
 
+  const cleanHandle = (handle) => handle.substring(10, handle.length);
+
   return (
     <>
       <ListItem button onClick={toggleOpen} className="nav-list-item">
@@ -31,7 +33,15 @@ const NavBarItem = ({ title, products }: Props) => {
         <Collapse in={open} timeout="auto" unmountOnExit>
           <Styled.NavList component="div" classes={{ root: 'nav-list-item--inner' }} disablePadding>
             {products.map((product, index) => (
-              <Link href={`${product.handle}`} key={index}>
+              <Link
+                href={{
+                  pathname: '/product',
+                  query: { handle: cleanHandle(product.handle) },
+                }}
+                as={`/products/${cleanHandle(product.handle)}`}
+                passHref
+                key={index}
+              >
                 <ListItem button>
                   <ListItemText primary={product.title} />
                 </ListItem>
