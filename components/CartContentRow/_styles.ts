@@ -2,34 +2,72 @@ import styled from 'styled-components';
 import { ListItem } from '@material-ui/core';
 
 const Container = styled.div`
-  padding: 15px;
+  
   width: 100%;
   margin-right: auto;
   margin-left: auto;
+  display: grid; 
   align-items: center;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  
 `;
 
+// grid-template-columns: 100%;
+// grid-template-rows: 100%;
 const ItemContainer = styled.div`
-  display: flex; 
   align-items: center;
   width: 100%;
-  min-width: 500px;
+  display: grid; 
+  grid-template-columns: repeat(4, 1fr);
+  text-align: left;
+  grid-gap: 1em;
+  flex-wrap: wrap;
   
   h6 {
     font-size: 1rem;
-    text-align: right;
   }
 
   .itemName {
-    flex-basis: 50%;
     text-align: left;
-    margin-left: 4rem;
   }
 
   .itemPrice {
-    text-align: right;
-    margin-left: 4rem;
+    text-align: center;
+
   }
+
+  .quantityButtons {
+    text-align: right;
+    
+  }
+
+  @media only screen and (max-width: 500px) {
+    display: grid; 
+    grid-gap: 1 em;
+    grid-template-columns: repeat(2, 1fr);
+
+    .itemName {
+      grid-column: 2;
+      grid-row: 1 / 2;
+      text-align: left;
+    }
+
+    .itemPrice {
+      grid-column: 2;
+      grid-row: 2 / 2;
+      text-align: left;
+    }
+  
+    .quantityButtons {
+      grid-column: 1;
+      grid-row: 2 / 2;
+      text-align: left;
+    }
+
+  }
+
 `;
 
 const CartListItem = styled(ListItem)`
@@ -47,9 +85,9 @@ const ProductImg = styled.img`
 `;
 const ProductImgThumbnail = styled.div`
   height: 50%;
-  width: 20%;
-  display: flex;
+  width: 80%;
   margin-bottom: 15px;
+ 
 `;
 
 const ProgressContainer = styled.div`
@@ -58,7 +96,9 @@ const ProgressContainer = styled.div`
   align-items: center;
   padding: 30px 0 15px;
 `;
-
+const QuantityButtons = styled.div`
+ justify-content: center;
+ `;
 const ButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
@@ -73,4 +113,5 @@ export const Styled = {
   ProductImgThumbnail,
   ProgressContainer,
   ButtonContainer,
+  QuantityButtons,
 };
