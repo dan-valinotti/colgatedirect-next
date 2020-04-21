@@ -1,6 +1,6 @@
 import { ApolloClient, gql } from "apollo-boost";
 import jwt from 'jsonwebtoken';
-import httpConfig from '../../apollo.config';
+import httpConfig from '../apollo.config';
 import { HttpLink, createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import {fetch} from 'cross-fetch/polyfill';
