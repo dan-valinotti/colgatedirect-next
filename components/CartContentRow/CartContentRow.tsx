@@ -64,21 +64,29 @@ const CartContentRow = ({
                           alt="Thumbnail"
                         />
                       </Styled.ProductImgThumbnail>
+
                       <Typography variant="h6" className="itemName">{item.node.title}</Typography>
-                      <AddToCart variantId={item.node.variant.id} quantityButton quantity={item.node.quantity} />
+                      <div className="quantityButtons">
+                        <AddToCart
+                          variantId={item.node.variant.id}
+                          quantityButton
+                          quantity={item.node.quantity}
+                        />
+                      </div>
                       <Typography variant="h6" className="itemPrice">
                         ${(item.node.variant.priceV2.amount * item.node.quantity).toFixed(2)}
                       </Typography>
+                      <div />
                     </Styled.ItemContainer>
                   </ListItem>
                   {key === cart.node.lineItems.edges.length - 1 && (
                     <Styled.CartListItem>
-                      <Styled.ItemContainer>
-                        <Typography variant="h6" className="total">Total:</Typography>
-                        <Typography variant="h6">
-                          ${total.toFixed(2)}
-                        </Typography>
-                      </Styled.ItemContainer>
+
+                      <Typography variant="h6">Total:</Typography>
+                      <Typography variant="h6" className="total">
+                        ${total.toFixed(2)}
+                      </Typography>
+
                     </Styled.CartListItem>
                   )}
                 </>
