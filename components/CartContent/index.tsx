@@ -23,26 +23,27 @@ const CartContent: FunctionComponent<Props> = ({ cart, total, clearCart }: Props
           {cart.node.lineItems.edges.map((item, key) => (
             <ListItem key={key}>
               <Styled.ItemContainer>
-                <Typography variant="h6">{item.node.title}</Typography>
+                <Typography variant="h6" className="itemName">{item.node.title}</Typography>
                 {console.log(item)}
-                <AddToCart
-                  variantId={item.node.variant.id}
-                  quantityButton
-                  quantity={item.node.quantity}
-                />
-                <Typography variant="h6">
+                <div className="quantityButton">
+                  <AddToCart
+                    variantId={item.node.variant.id}
+                    quantityButton
+                    quantity={item.node.quantity}
+                  />
+                </div>
+                <Typography variant="h6" className="itemPrice">
                   ${(item.node.variant.priceV2.amount * item.node.quantity).toFixed(2)}
                 </Typography>
+                
               </Styled.ItemContainer>
             </ListItem>
           ))}
           <Styled.CartListItem>
-            <Styled.ItemContainer>
-              <Typography variant="h6">Total:</Typography>
-              <Typography variant="h6">
-                ${total.toFixed(2)}
-              </Typography>
-            </Styled.ItemContainer>
+            <Typography variant="h6" className="totalTitle">Total:</Typography>
+            <Typography variant="h6" className="total">
+              ${total.toFixed(2)}
+            </Typography>
           </Styled.CartListItem>
         </List>
         <Link href={{ pathname: '/cart', query: { total } }}>
