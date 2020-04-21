@@ -35,7 +35,7 @@ const CartContent: FunctionComponent<Props> = ({ cart, total, clearCart }: Props
                 <Typography variant="h6" className="itemPrice">
                   ${(item.node.variant.priceV2.amount * item.node.quantity).toFixed(2)}
                 </Typography>
-                
+
               </Styled.ItemContainer>
             </ListItem>
           ))}
@@ -46,18 +46,20 @@ const CartContent: FunctionComponent<Props> = ({ cart, total, clearCart }: Props
             </Typography>
           </Styled.CartListItem>
         </List>
-        <Link href={{ pathname: '/cart', query: { total } }}>
-          <Button variant="contained" color="secondary">Cart Overview</Button>
-        </Link>
         {total > 0 && (
-          <Button
-            variant="contained"
-            color="secondary"
-            style={{ marginLeft: '1rem' }}
-            onClick={() => clearCart()}
-          >
-            Clear cart
-          </Button>
+          <>
+            <Link href={{ pathname: '/cart', query: { total } }}>
+              <Button variant="contained" color="secondary">Cart Overview</Button>
+            </Link>
+            <Button
+              variant="contained"
+              color="secondary"
+              style={{ marginLeft: '1rem' }}
+              onClick={() => clearCart()}
+            >
+              Clear cart
+            </Button>
+          </>
         )}
       </Styled.Container>
     )}
