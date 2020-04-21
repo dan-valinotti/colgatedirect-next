@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   Button, List, ListItem, Typography, CircularProgress, ButtonGroup, Dialog, DialogContent,
 } from '@material-ui/core';
+import Link from 'next/link';
 import withData from '../../lib/apollo';
 import { GetCartResponse } from '../CartController/_types';
 // import './_style.scss';
@@ -92,6 +93,18 @@ const CartContentRow = ({
                 </>
               ))}
             </List>
+            {total < 1 && (
+              <Styled.EmptyCartButton>
+                <Link href="/">
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    style={{ alignItems: 'center' }}
+                  >Back To Main Page
+                  </Button>
+                </Link>
+              </Styled.EmptyCartButton>
+            )}
             {total > 0 && (
               <>
                 <Styled.ButtonContainer>
