@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ListItem } from '@material-ui/core';
+import { ListItem, Button } from '@material-ui/core';
 
 const Container = styled.div`
   
@@ -98,11 +98,18 @@ const ProgressContainer = styled.div`
 `;
 const QuantityButtons = styled.div`
  justify-content: center;
+ flex-wrap: wrap;
  `;
 const ButtonContainer = styled.div`
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  display: flex;
+
+`;
+
+const EmptyCartButton = styled(Button)`
+&&& {
+  margin: 0 auto 15px;
+  flex-basis: 46%;
+}
 `;
 
 export const Styled = {
@@ -114,4 +121,5 @@ export const Styled = {
   ProgressContainer,
   ButtonContainer,
   QuantityButtons,
+  EmptyCartButton,
 };
