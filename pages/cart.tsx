@@ -12,7 +12,7 @@ const CartPage = () => (
       <title>Products</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <NavBar items={['test']} />
+    <NavBar />
     <PageContainer paddingTop={30} size={PageSize.medium}>
       <Typography variant="h3">Cart</Typography>
     </PageContainer>

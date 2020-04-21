@@ -28,7 +28,7 @@ function ProductsPage({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
       </Head>
-      <NavBar items={['test']} />
+      <NavBar/>
       <HeroBanner
         title="ShopSmiles by Colgate®"
         subtitle="The next generation of dental care is here."
