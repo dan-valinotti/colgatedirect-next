@@ -66,7 +66,7 @@ const LoginForm: FunctionComponent = () => {
       const signed = jwt.sign(variables, process.env.JWT_SECRET);
 
       // Send HTTP POST request to Next.js API endpoint /auth/login
-      fetch('/auth/login', {
+      fetch('/api/auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

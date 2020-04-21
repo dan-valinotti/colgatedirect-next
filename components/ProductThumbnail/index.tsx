@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { useLazyQuery, useQuery } from '@apollo/react-hooks';
 import { ProductPriceRange } from '../../models';
 import { Styled } from './_styles';
-import { GET_CART_QUERY } from '../CartController/_types';
-import { getLineItems } from '../ProductDetail';
-import { GetCartResponse, LineItems, LineItemsInput } from './_types';
 
 type Props = {
   id: string;
@@ -38,7 +34,7 @@ function ProductThumbnail({
           className="atc-btn"
           variant="contained"
           color="secondary"
-          onClick={() => addToCart({ variantId, quantity: 1})}
+          onClick={() => addToCart({ variantId, quantity: 1 })}
         >
           Add to cart
         </Styled.ProductButton>
