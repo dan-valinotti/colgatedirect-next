@@ -5,12 +5,12 @@ const Banner = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-height: 450px;
+  height: 250px;
   width: 100%;
   margin-bottom: 15px;
   background-image: url(${(props) => props.imageUrl});
-  background-size: 170%;
-  background-position-x: 30%;
+  background-size: contain;
+  background-position-x: 60%;
   background-position-y: bottom;
   background-repeat: no-repeat;
   background-color: ${(props) => props.bgColor};
@@ -18,12 +18,15 @@ const Banner = styled.div`
     
   @media (min-width: 768px) {
     align-items: center;
-    background-size: contain;
+    background-position-y: center;
+    height: auto;
+    min-height: 80vh;
+    background-size: cover;
     background-position-x: ${(props) => (props.textalign === 'left' ? 'right' : 'left')};
   }
   
   @media (min-width: 1024px) {
-    min-height: 630px;
+   
   }
 `;
 
@@ -59,7 +62,8 @@ const TextContainer = styled.div`
   }};
   justify-content: flex-start;
   padding-right: ${(props) => (props.textalign === 'center' ? '0' : '5%')};;
-  margin-top: 2rem;
+  padding-left: 5%;
+  width: 50%;
   
   @media (min-width: 768px) {
     margin-top: 0;

@@ -11,7 +11,7 @@ export enum PageSize {
 
 type Props = {
   size: PageSize;
-  paddingTop: number;
+  paddingTop?: number;
   children: ReactNode;
 };
 
