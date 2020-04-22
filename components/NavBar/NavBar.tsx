@@ -23,17 +23,6 @@ import NavItems from './navItems.json';
 import NavBarItem, { ProductItem } from '../NavBarItem';
 import AccountPopup from '../AccountPopup';
 
-type Props = {
-  /** Navigation items to be displayed in NavBar */
-  items: string[];
-};
-
-interface NavItems {
-  title: string;
-  handle: string;
-  products: ProductItem[];
-}
-
 const HomeLink = styled(Typography)`
 &&& {
   &:hover {
@@ -45,7 +34,7 @@ const HomeLink = styled(Typography)`
 /**
  * General component description.
  */
-const NavBar: FunctionComponent<Props> = () => {
+const NavBar: FunctionComponent = () => {
   const [open, setOpen] = React.useState<boolean>(false);
   const { data, loading, error } = useQuery<Collections, object>(
     COLLECTIONS_QUERY,
