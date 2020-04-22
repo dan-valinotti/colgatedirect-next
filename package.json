@@ -19,7 +19,7 @@
   "scripts": {
     "dev": "nodemon",
     "build": "next build && tsc --project tsconfig.server.json",
-    "start": "next start",
+    "start": "NODE_ENV=production node dist/index.js",
     "test": "cypress open",
     "test:cmd": "cypress run",
     "cypress:open": "cypress open",

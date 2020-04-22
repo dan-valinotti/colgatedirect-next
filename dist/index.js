@@ -13,13 +13,14 @@ const helmet_1 = __importDefault(require("helmet"));
 const compression_1 = __importDefault(require("compression"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const body_parser_1 = __importDefault(require("body-parser"));
+const nextRoutes_1 = __importDefault(require("./core/nextRoutes"));
 require('dotenv').config();
 const port = parseInt(process.env.PORT || '3000', 10);
 const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next_1.default({ dev });
-const handle = nextApp.getRequestHandler();
+// const handle = nextApp.getRequestHandler();
 // if you want to use nextRoutes
-// const handle = routes.getRequestHandler(nextApp);
+const handle = nextRoutes_1.default.getRequestHandler(nextApp);
 nextApp.prepare().then(() => {
     // Init server instance
     const server = express();
@@ -34,6 +35,8 @@ nextApp.prepare().then(() => {
     server.use(compression_1.default());
     // Fallback handler
     server.get('*', (req, res) => handle(req, res));
+    // nextRoutes handling
+    server.use(handle);
     // Start custom server
-    express().use(handle).listen(3000);
+    server.listen(port);
 });
