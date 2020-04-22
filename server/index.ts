@@ -2,17 +2,13 @@
 // if you want to use nextRoutes
 // const routes = require('~server/core/nextRoutes')
 
-import express from 'express';
+const express = require('express');
 import next from 'next';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import routes from './core/nextRoutes';
-
-import apollo from '~server/core/apollo';
-import { login } from './services/auth';
 
 require('dotenv').config();
 
@@ -20,40 +16,32 @@ const port = parseInt(process.env.PORT || '3000', 10);
 const dev = process.env.NODE_ENV !== 'production';
 
 const nextApp = next({ dev });
-// const handle = nextApp.getRequestHandler();
+const handle = nextApp.getRequestHandler();
 // if you want to use nextRoutes
-const handle = routes.getRequestHandler(nextApp);
+// const handle = routes.getRequestHandler(nextApp);
 
 nextApp.prepare().then(() => {
+  // Init server instance
   const server = express();
 
-  // security
+  // Security middleware - Helmet
   server.use(helmet());
 
-  // cookies
+  // Cookie middleware - cookieParser
   server.use(cookieParser());
 
-  // body parser
+  // BodyParser
   server.use(bodyParser.json());
 
-  // Generate logs
+  // Logging middleware - morgan
   server.use(
     morgan(':method :url :status :res[content-length] - :response-time ms'),
   );
   server.use(compression());
 
-  // start apollo server
-  apollo.applyMiddleware({ app: server });
-
+  // Fallback handler
   server.get('*', (req, res) => handle(req, res));
 
-  server.post(
-    '/auth/login', 
-    (req, res) => login(req, res)
-  );
-
-  // express().use(handler).listen(3000) //routes handle way
-  server.listen(port, (err) => {
-    if (err) throw err;
-  });
+  // Start custom server
+  express().use(handle).listen(3000);
 });

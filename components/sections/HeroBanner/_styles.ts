@@ -29,7 +29,13 @@ const Banner = styled.div`
 
 const BannerContent = styled.div`
   display: flex;
-  justify-content: ${(props) => (props.textalign === 'left' ? 'flex-start' : 'flex-end')};
+  justify-content: ${(props) => {
+    switch (props.textalign) {
+      case 'left': return 'flex-start';
+      case 'right': return 'flex-end';
+      default: return 'center';
+    }
+  }};
   align-items: center;
   margin: 0 auto;
   width: 100%;
@@ -44,9 +50,15 @@ const BannerContent = styled.div`
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: ${(props) => (props.textalign === 'left' ? 'flex-start' : 'flex-end')};
+  align-items: ${(props) => {
+    switch (props.textalign) {
+      case 'left': return 'flex-start';
+      case 'right': return 'flex-end';
+      default: return 'center';
+    }
+  }};
   justify-content: flex-start;
-  padding-right: 5%;
+  padding-right: ${(props) => (props.textalign === 'center' ? '0' : '5%')};;
   margin-top: 2rem;
   
   @media (min-width: 768px) {
