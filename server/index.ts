@@ -2,6 +2,8 @@
 // if you want to use nextRoutes
 // const routes = require('~server/core/nextRoutes')
 
+import {parse} from "url";
+
 const express = require('express');
 import next from 'next';
 import morgan from 'morgan';
@@ -9,6 +11,7 @@ import helmet from 'helmet';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
+import routes from './core/nextRoutes';
 
 require('dotenv').config();
 
@@ -16,9 +19,9 @@ const port = parseInt(process.env.PORT || '3000', 10);
 const dev = process.env.NODE_ENV !== 'production';
 
 const nextApp = next({ dev });
-const handle = nextApp.getRequestHandler();
+// const handle = nextApp.getRequestHandler();
 // if you want to use nextRoutes
-// const handle = routes.getRequestHandler(nextApp);
+const handle = routes.getRequestHandler(nextApp);
 
 nextApp.prepare().then(() => {
   // Init server instance
@@ -39,9 +42,12 @@ nextApp.prepare().then(() => {
   );
   server.use(compression());
 
+  
   // Fallback handler
   server.get('*', (req, res) => handle(req, res));
-
+  
+  // nextRoutes handling
+  server.use(handle);
   // Start custom server
-  express().use(handle).listen(3000);
+  server.listen(port);
 });
