@@ -1,16 +1,17 @@
-import { ApolloClient, gql } from "apollo-boost";
+import { ApolloClient, gql } from 'apollo-boost';
 import jwt from 'jsonwebtoken';
-import httpConfig from '../apollo.config';
 import { HttpLink, createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import {fetch} from 'cross-fetch/polyfill';
+import { fetch } from 'cross-fetch/polyfill';
+import httpConfig from '../apollo.config';
+
 require('dotenv').config();
 
 interface LoginQueryVariables {
   input: {
     email: string;
     password: string;
-  }
+  };
 }
 interface CustomerLoginResponse {
   customerAccessTokenCreate: {
@@ -27,7 +28,7 @@ const client = new ApolloClient({
   link: createHttpLink({
     uri: httpConfig.client.service.url,
     headers: httpConfig.client.service.headers,
-    fetch: fetch,
+    fetch,
   }),
   cache: new InMemoryCache(),
 });
@@ -57,13 +58,15 @@ export async function login(req, res) {
     } else {
       client.mutate<CustomerLoginResponse, LoginQueryVariables>({
         mutation: LOGIN_QUERY,
-        variables: { input: {
-          email: user.email,
-          password: user.password,
-        } },
+        variables: {
+          input: {
+            email: user.email,
+            password: user.password,
+          },
+        },
       })
-      .then((result) => res.json(result))
-      .catch((error) => res.json(error));
+        .then((result) => res.json(result))
+        .catch((error) => res.json(error));
     }
   });
 }
