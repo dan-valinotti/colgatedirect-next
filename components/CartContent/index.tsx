@@ -5,6 +5,7 @@ import {
 import Link from 'next/link';
 import { GetCartResponse } from '../CartController/_types';
 import { Styled } from './_styles';
+import AddToCart from '../PDPComponent/AddAndRemoveProduct';
 
 type Props = {
   cart: GetCartResponse;
@@ -14,6 +15,7 @@ type Props = {
 
 const CartContent: FunctionComponent<Props> = ({ cart, total, clearCart }: Props) => (
   <>
+    {console.log(cart.node.lineItems.edges)}
     {cart && (
       <Styled.Container>
         <Typography variant="h6">Cart</Typography>
@@ -21,43 +23,43 @@ const CartContent: FunctionComponent<Props> = ({ cart, total, clearCart }: Props
           {cart.node.lineItems.edges.map((item, key) => (
             <ListItem key={key}>
               <Styled.ItemContainer>
-                <Typography variant="h6">{item.node.title}</Typography>
-                <ButtonGroup>
-                  <Button variant="outlined">+</Button>
-                  <Button variant="outlined" disabled>
-                    <Typography variant="body2" style={{ color: 'black' }}>
-                      {item.node.quantity}
-                    </Typography>
-                  </Button>
-                  <Button variant="outlined">-</Button>
-                </ButtonGroup>
-                <Typography variant="h6">
+                <Typography variant="h6" className="itemName">{item.node.title}</Typography>
+                {console.log(item)}
+                <div className="quantityButton">
+                  <AddToCart
+                    variantId={item.node.variant.id}
+                    quantityButton
+                    quantity={item.node.quantity}
+                  />
+                </div>
+                <Typography variant="h6" className="itemPrice">
                   ${(item.node.variant.priceV2.amount * item.node.quantity).toFixed(2)}
                 </Typography>
+
               </Styled.ItemContainer>
             </ListItem>
           ))}
           <Styled.CartListItem>
-            <Styled.ItemContainer>
-              <Typography variant="h6">Total:</Typography>
-              <Typography variant="h6">
-                ${total.toFixed(2)}
-              </Typography>
-            </Styled.ItemContainer>
+            <Typography variant="h6" className="totalTitle">Total:</Typography>
+            <Typography variant="h6" className="total">
+              ${total.toFixed(2)}
+            </Typography>
           </Styled.CartListItem>
         </List>
-        <Link href="/cart">
-          <Button variant="contained" color="secondary">Cart Overview</Button>
-        </Link>
         {total > 0 && (
-          <Button
-            variant="contained"
-            color="secondary"
-            style={{ marginLeft: '1rem' }}
-            onClick={() => clearCart()}
-          >
-            Clear cart
-          </Button>
+          <>
+            <Link href={{ pathname: '/cart', query: { total } }}>
+              <Button variant="contained" color="secondary">Cart Overview</Button>
+            </Link>
+            <Button
+              variant="contained"
+              color="secondary"
+              style={{ marginLeft: '1rem' }}
+              onClick={() => clearCart()}
+            >
+              Clear cart
+            </Button>
+          </>
         )}
       </Styled.Container>
     )}
