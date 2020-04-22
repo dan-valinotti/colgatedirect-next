@@ -28,7 +28,8 @@ const routes = nextRoutes()
     page: 'cart',
   })
   .add({
-    name: 'AuthLogin',
-    pattern: '/auth/login'
+    name: 'Auth',
+    pattern: '/auth/login',
+    page: 'api/auth',
   });
 export default routes;
