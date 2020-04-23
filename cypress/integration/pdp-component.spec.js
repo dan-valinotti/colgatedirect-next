@@ -36,6 +36,6 @@ describe('PDPComponent Test Suite', () => {
     cy.get('#back-btn')
       .click();
     cy.url()
-      .should('equal', 'http://localhost:3000/');
+      .should('equal', Cypress.config().baseUrl + '/');
   });
 });
