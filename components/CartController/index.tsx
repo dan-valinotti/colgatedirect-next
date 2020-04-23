@@ -8,7 +8,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import {
   GetCartResponse,
 } from './_types';
-import './_style.scss';
+// import './_style.scss';
 import withData from '../../lib/apollo';
 import CartContent from '../CartContent/index';
 
@@ -67,7 +67,7 @@ const CartController = ({
 
 
   return (
-    <div id="cart-btn">
+    <div style={{ marginLeft: '1rem' }}>
       {(createCartError || getCartError) && (
         <Typography variant="body2">Error!</Typography>
       )}

@@ -16,7 +16,6 @@ import styled from 'styled-components';
 import {
   COLLECTIONS_QUERY, Collections,
 } from './_types';
-import './_style.scss';
 import CartData from '../CartContent/CartData';
 import CartController from '../CartController/index';
 import NavItems from './navItems.json';

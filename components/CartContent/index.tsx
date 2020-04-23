@@ -19,7 +19,7 @@ const CartContent: FunctionComponent<Props> = ({ cart, total, clearCart }: Props
     {cart && (
       <Styled.Container>
         <Typography variant="h6">Cart</Typography>
-        <List className="cart-popover-list">
+        <List style={{ minWidth: '250px' }}>
           {cart.node.lineItems.edges.map((item, key) => (
             <ListItem key={key}>
               <Styled.ItemContainer>
