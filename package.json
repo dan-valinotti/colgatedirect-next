@@ -26,10 +26,12 @@
     "test:unit": "jest --config tests/jest.unit.config.js",
     "test:integration": "jest --config tests/jest.integration.config.js",
     "test:watch": "jest --watch --no-cache",
-    "eslint:fix": "eslint . --ext .ts,.tsx --fix --ignore-path .gitignore"
+    "eslint:fix": "eslint . --ext .ts,.tsx --fix --ignore-path .gitignore",
+    "deploy": "gcloud --project cp-sandbox-dan-vali830 app deploy app.yaml --version main --verbosity=debug",
+    "gcp-build": "npm install && npm run build"
   },
   "engines": {
-    "node": "^12.14.0",
+    "node": "12.x.x",
     "npm": ">6"
   },
   "dependencies": {
@@ -37,6 +39,7 @@
     "@apollo/react-hooks": "^3.1.5",
     "@apollo/react-ssr": "^3.1.5",
     "@cypress/code-coverage": "^3.2.4",
+    "@google-cloud/debug-agent": "^4.2.2",
     "@material-ui/core": "^4.9.10",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.47",
@@ -79,6 +82,7 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
     "merge-graphql-schemas": "^1.7.7",
+    "morgan": "^1.10.0",
     "next": "9.3.3",
     "next-apollo": "^3.1.10",
     "next-cookies": "^2.0.3",
@@ -139,7 +143,6 @@
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^24.9.0",
-    "morgan": "^1.10.0",
     "nodemon": "^1.19.4",
     "nyc": "^15.0.1",
     "prettier": "^1.15.3",

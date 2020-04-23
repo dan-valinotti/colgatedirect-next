@@ -14,6 +14,8 @@ import bodyParser from 'body-parser';
 import routes from './core/nextRoutes';
 import { login } from '../services/auth';
 
+require('@google-cloud/debug-agent').start();
+
 require('dotenv').config();
 
 const port = parseInt(process.env.PORT || '3000', 10);
