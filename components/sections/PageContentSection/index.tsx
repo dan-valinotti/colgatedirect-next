@@ -15,12 +15,14 @@ type Props = {
   headlineColor?: string;
   imageUrl: string;
   subtitle?: string;
-  title: string;
   sectionColor: string;
+  title: string;
+  titleColor?: string;
 };
 
 const PageContentSection: FunctionComponent<Props> = ({
   alignContent,
+  alignWithEdge,
   backgroundColor,
   ctaButton,
   ctaButtonText,
@@ -29,9 +31,9 @@ const PageContentSection: FunctionComponent<Props> = ({
   headlineColor,
   imageUrl,
   subtitle,
-  alignWithEdge,
-  title,
   sectionColor,
+  title,
+  titleColor,
 }: Props) => (
   <Styled.Container backgroundColor={backgroundColor}>
     <Styled.ContentContainer aligncontent={alignContent}>
@@ -45,7 +47,11 @@ const PageContentSection: FunctionComponent<Props> = ({
             {headline}
           </Styled.SectionHeadline>
         )}
-        <Styled.SectionTitle fontcolor={!headline ? sectionColor : '#535353'}>
+        <Styled.SectionTitle
+          fontcolor={
+            (!headline ? (titleColor || sectionColor) : '#535353')
+          }
+        >
           {title}
         </Styled.SectionTitle>
         {subtitle && (

@@ -3,7 +3,6 @@ import { theme } from '../../../views/theme';
 
 const Container = styled.div`
   display: flex;
-  margin-bottom: 4rem;
   background-color: ${(props) => props.backgroundColor};
   padding: 3rem 1.5rem;
   
@@ -28,7 +27,7 @@ const ContentContainer = styled.div`
 
 const ImageContainer = styled.div`
   width: 100%;
-  max-width: 300px;
+  max-width: 90%;
   height: auto;
   margin: auto ${(props) => (props.alignWithEdge ? '0' : '1rem')};
   padding-bottom: 2rem;
@@ -44,6 +43,7 @@ const ImageContainer = styled.div`
   
   @media (min-width: 768px) {
     padding-bottom: 0;
+    max-width: 300px;
   }
 `;
 
@@ -76,8 +76,10 @@ const SectionHeadline = styled.p`
 
 const SectionTitle = styled.h3`
   color: ${(props) => {
-    if (props.fontcolor && (props.fontcolor === 'primary' || props.fontcolor === 'secondary')) {
-      return theme.palette[props.fontcolor].main;
+    if (props.fontcolor) {
+      if (props.fontcolor === 'primary' || props.fontcolor === 'secondary') {
+        return theme.palette[props.fontcolor].main;
+      } return props.fontcolor;
     } return props.fontcolor;
   }};
   font-size: 1.55rem;
