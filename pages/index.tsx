@@ -60,7 +60,18 @@ function ProductsPage({
           title="The future looks bright"
           subtitle="That’s because we’ve been busy creating smarter, better devices to get your teeth shining brighter and whiter."
           alignWithEdge
-          titleColor="primary"
+          sectionColor="primary"
+        />
+        <PageContentSection
+          alignContent="left"
+          backgroundColor="#fafafa"
+          ctaButton
+          ctaButtonText="Learn more"
+          ctaOnClick={() => goToRoute('/login')}
+          imageUrl="https://cdn.shopify.com/s/files/1/2524/0600/files/Copy_of_guard_posing.png?v=1556822784"
+          title="The augmented reality toothbrushing adventure your kids never knew they wanted."
+          alignWithEdge={false}
+          sectionColor="secondary"
         />
         <ProductsGrid query={query} reverse={reverse} sortKey={sortKey} variables={variables} />
       </PageContainer>

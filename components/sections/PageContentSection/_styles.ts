@@ -21,7 +21,7 @@ const ImageContainer = styled.div`
   width: 100%;
   max-width: 300px;
   height: auto;
-  margin: auto ${(props) => (props.alignWithEdge ? '0' : '1rem')};
+  margin: auto ${(props) => (props.alignWithEdge ? '0' : '2rem')};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,12 +34,13 @@ const ImageContainer = styled.div`
 `;
 
 const TextContainer = styled.div`
-  display: grid;
-  grid-template-rows: 25% 50% 25%;
-  grid-template-columns: 100%;
-  grid-row-gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   flex-basis: 50%;
   margin: 0 1rem;
+  text-align: ${(props) => (props.align === 'left' ? 'right' : 'left')};
 `;
 
 const SectionTitle = styled.h3`
@@ -47,14 +48,21 @@ const SectionTitle = styled.h3`
   font-size: 2.25rem;
   font-weight: 700;
   font-family: "Colgate Ready", serif;
-  text-align: left;
-  margin-bottom: 0;
+  margin-bottom: 1rem;
 `;
 
 const SectionSubtitle = styled.p`
   color: #535353;
   font-size: 1.25rem;
   font-family: "Colgate Ready", serif;
+  margin-bottom: 1rem;
+`;
+
+const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: ${(props) => (props.align === 'left' ? 'flex-end' : 'flex-start')};
 `;
 
 export const Styled = {
@@ -64,4 +72,5 @@ export const Styled = {
   TextContainer,
   SectionTitle,
   SectionSubtitle,
+  ButtonContainer,
 };
