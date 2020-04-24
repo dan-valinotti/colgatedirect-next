@@ -49,7 +49,7 @@ function ProductsPage({
         textAlign="right"
         shopNow={false}
       />
-      <PageContainer paddingTop={30} size={PageSize.large}>
+      <PageContainer fullWidth paddingTop={30} size={PageSize.large}>
         <PageContentSection
           alignContent="right"
           backgroundColor="#fafafa"
@@ -64,10 +64,11 @@ function ProductsPage({
         />
         <PageContentSection
           alignContent="left"
-          backgroundColor="#fafafa"
+          backgroundColor="#efefef"
           ctaButton
           ctaButtonText="Learn more"
           ctaOnClick={() => goToRoute('/login')}
+          headline="NEW! MAGIK TOOTHBRUSHING EXPERIENCE"
           imageUrl="https://cdn.shopify.com/s/files/1/2524/0600/files/Copy_of_guard_posing.png?v=1556822784"
           title="The augmented reality toothbrushing adventure your kids never knew they wanted."
           alignWithEdge={false}

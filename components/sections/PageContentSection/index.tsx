@@ -40,7 +40,12 @@ const PageContentSection: FunctionComponent<Props> = ({
         <img src={imageUrl} alt="Section Image" />
       </Styled.ImageContainer>
       <Styled.TextContainer align={alignContent}>
-        <Styled.SectionTitle fontcolor={sectionColor}>
+        {headline && (
+          <Styled.SectionHeadline fontcolor={sectionColor}>
+            {headline}
+          </Styled.SectionHeadline>
+        )}
+        <Styled.SectionTitle fontcolor={!headline ? sectionColor : '#535353'}>
           {title}
         </Styled.SectionTitle>
         {subtitle && (
