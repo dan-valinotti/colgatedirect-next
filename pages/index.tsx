@@ -9,6 +9,7 @@ import NavBar from '../components/NavBar/NavBar';
 import HeroBanner from '../components/sections/HeroBanner';
 import { withMuiApp } from '../hocs/withMui';
 import FooterNav from '../components/FooterNav';
+import PageContentSection from '../components/sections/PageContentSection';
 
 interface Props {
   query: string;
@@ -28,7 +29,7 @@ function ProductsPage({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
       </Head>
-      <NavBar/>
+      <NavBar />
       <HeroBanner
         title="ShopSmiles by Colgate®"
         subtitle="The next generation of dental care is here."
@@ -39,6 +40,7 @@ function ProductsPage({
         shopNow={false}
       />
       <PageContainer paddingTop={30} size={PageSize.large}>
+        <PageContentSection />
         <ProductsGrid query={query} reverse={reverse} sortKey={sortKey} variables={variables} />
       </PageContainer>
       <FooterNav />
