@@ -6,11 +6,12 @@ type Props = {
   color: string;
   text: string;
   onClick: Function;
+  id: string;
 };
 
-const CTAButton: FunctionComponent<Props> = ({ color, text, onClick }: Props) => (
+const CTAButton: FunctionComponent<Props> = ({ id, color, text, onClick }: Props) => (
   <Styled.Container>
-    <Styled.Button color={color} onClick={() => onClick()}>
+    <Styled.Button id={id} color={color} onClick={() => onClick()}>
       <Styled.ButtonText>
         {text}
       </Styled.ButtonText>
