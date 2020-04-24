@@ -16,7 +16,7 @@ type Props = {
   imageUrl: string;
   subtitle?: string;
   title: string;
-  titleColor: string;
+  sectionColor: string;
 };
 
 const PageContentSection: FunctionComponent<Props> = ({
@@ -31,7 +31,7 @@ const PageContentSection: FunctionComponent<Props> = ({
   subtitle,
   alignWithEdge,
   title,
-  titleColor,
+  sectionColor,
 }: Props) => (
   <Styled.Container backgroundColor={backgroundColor}>
     <Styled.ContentContainer aligncontent={alignContent}>
@@ -39,8 +39,8 @@ const PageContentSection: FunctionComponent<Props> = ({
         {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
         <img src={imageUrl} alt="Section Image" />
       </Styled.ImageContainer>
-      <Styled.TextContainer>
-        <Styled.SectionTitle fontcolor={titleColor}>
+      <Styled.TextContainer align={alignContent}>
+        <Styled.SectionTitle fontcolor={sectionColor}>
           {title}
         </Styled.SectionTitle>
         {subtitle && (
@@ -49,7 +49,9 @@ const PageContentSection: FunctionComponent<Props> = ({
           </Styled.SectionSubtitle>
         )}
         {ctaButton && (
-          <CTAButton color="primary" text={ctaButtonText} onClick={ctaOnClick} />
+          <Styled.ButtonContainer align={alignContent}>
+            <CTAButton color={sectionColor} text={ctaButtonText} onClick={ctaOnClick} />
+          </Styled.ButtonContainer>
         )}
       </Styled.TextContainer>
     </Styled.ContentContainer>
