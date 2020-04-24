@@ -12,13 +12,29 @@ export enum PageSize {
 type Props = {
   size: PageSize;
   paddingTop: number;
+  fullWidth?: boolean;
   children: ReactNode;
 };
 
-const PageContainer: FunctionComponent<Props> = ({ size, paddingTop, children }: Props) => (
-  <Container maxWidth={size} style={{ paddingTop }}>
-    { children }
-  </Container>
-);
+const PageContainer: FunctionComponent<Props> = ({
+  size,
+  paddingTop,
+  children,
+  fullWidth = false,
+}: Props) => {
+  const widthStyle = fullWidth ? {
+    paddingTop,
+    paddingLeft: 0,
+    paddingRight: 0,
+  } : {
+    paddingTop,
+  };
+
+  return (
+    <Container maxWidth={size} style={widthStyle}>
+      { children }
+    </Container>
+  );
+};
 
 export default PageContainer;
