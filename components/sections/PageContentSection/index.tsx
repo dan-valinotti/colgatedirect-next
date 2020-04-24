@@ -5,6 +5,7 @@ import CTAButton from '../../CTAButton';
 import { theme } from '../../../views/theme';
 
 type Props = {
+  id: string;
   alignContent: string;
   alignWithEdge: boolean;
   backgroundColor: string;
@@ -21,6 +22,7 @@ type Props = {
 };
 
 const PageContentSection: FunctionComponent<Props> = ({
+  id,
   alignContent,
   alignWithEdge,
   backgroundColor,
@@ -35,7 +37,7 @@ const PageContentSection: FunctionComponent<Props> = ({
   title,
   titleColor,
 }: Props) => (
-  <Styled.Container backgroundColor={backgroundColor}>
+  <Styled.Container id={id} backgroundColor={backgroundColor}>
     <Styled.ContentContainer aligncontent={alignContent}>
       <Styled.ImageContainer alignWithEdge={alignWithEdge}>
         {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
@@ -61,7 +63,7 @@ const PageContentSection: FunctionComponent<Props> = ({
         )}
         {ctaButton && (
           <Styled.ButtonContainer align={alignContent}>
-            <CTAButton color={sectionColor} text={ctaButtonText} onClick={ctaOnClick} />
+            <CTAButton id={`${id}-cta`} color={sectionColor} text={ctaButtonText} onClick={ctaOnClick} />
           </Styled.ButtonContainer>
         )}
       </Styled.TextContainer>

@@ -52,6 +52,7 @@ function ProductsPage({
       />
       <PageContainer fullWidth paddingTop={30} size={PageSize.large}>
         <PageContentSection
+          id="home-content-1"
           alignContent="right"
           backgroundColor="#fafafa"
           ctaButton={false}
@@ -62,6 +63,7 @@ function ProductsPage({
           sectionColor="primary"
         />
         <PageContentSection
+          id="home-content-2"
           alignContent="left"
           backgroundColor="#efefef"
           ctaButton
@@ -74,6 +76,7 @@ function ProductsPage({
           sectionColor="secondary"
         />
         <PageContentSection
+          id="home-content-3"
           alignContent="right"
           backgroundColor="#efefef"
           ctaButton
@@ -86,6 +89,7 @@ function ProductsPage({
           sectionColor="secondary"
         />
         <PageContentSection
+          id="home-content-4"
           alignContent="left"
           backgroundColor="#efefef"
           ctaButton
@@ -98,6 +102,7 @@ function ProductsPage({
           sectionColor="secondary"
         />
         <PageContentSection
+          id="home-content-5"
           alignContent="right"
           backgroundColor="#fafafa"
           ctaButton
