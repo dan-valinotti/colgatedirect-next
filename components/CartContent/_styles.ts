@@ -10,14 +10,20 @@ const Container = styled.div`
 `;
 
 const ItemContainer = styled.div`
-  display: flex; 
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 3rem;
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1em;
+  justify-items: right;
+
+  height: 6rem;
   min-width: 500px;
   
-  h6 {
+  .itemPrice {
+    align-text: left;
+    font-size: 1.1rem;
+  }
+
+  .itemName {
     font-size: 1rem;
     flex-basis: 15%;
     text-align: right;
@@ -30,6 +36,10 @@ const ItemContainer = styled.div`
   
   div {
     flex-basis: 15%;
+  }
+
+  .quantityButton {
+    align-text: right:
   }
 
   @media only screen and (max-width: 500px) {
@@ -95,9 +105,18 @@ const CartListItem = styled.div`
   }
 `;
 
+const RemoveItemButton = styled.div`
+  padding-top: 3px;
+  text-decoration: underline;
+  color: red;
+  @media only screen and (max-width: 400px) {
+    width: 70%;
+  }
+`;
 export const Styled = {
   Container,
   ItemContainer,
   TotalContainer,
   CartListItem,
+  RemoveItemButton,
 };
