@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { withTheme } from '@material-ui/core';
+import { useRouter } from 'next/router';
 import ProductsGrid from '../components/ProductsGrid';
 import { ProductSortKeys } from '../models';
 import withData from '../lib/apollo';
@@ -22,6 +23,15 @@ interface Props {
 function ProductsPage({
   query, reverse, sortKey, variables,
 }: Props) {
+  const router = useRouter();
+
+  const goToRoute = (href: string) => {
+    router.push(href)
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <Head>
@@ -45,7 +55,7 @@ function ProductsPage({
           backgroundColor="#fafafa"
           ctaButton
           ctaButtonText="Learn more"
-          ctaOnClick={() => console.log('Clicked!')}
+          ctaOnClick={() => goToRoute('/login')}
           imageUrl="https://cdn.shopify.com/s/files/1/2524/0600/files/colgate_the_future_looks_bright.png?v=1553689448"
           title="The future looks bright"
           subtitle="That’s because we’ve been busy creating smarter, better devices to get your teeth shining brighter and whiter."
