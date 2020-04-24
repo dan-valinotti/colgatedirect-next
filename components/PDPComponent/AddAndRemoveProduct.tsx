@@ -3,11 +3,13 @@ import { useMutation, useQuery } from '@apollo/react-hooks';
 import {
   CircularProgress, Typography, DialogContent, Dialog, ButtonGroup, Button,
 } from '@material-ui/core';
+import { StylesContext } from '@material-ui/styles';
 import { ProductsType, PRODUCTS_QUERY } from '../ProductsGrid/_types';
 import { CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY, GetCartRequest } from '../CartController/_types';
 import { getLineItems } from './_types';
 import { Styled as StyledThumbnail } from '../ProductThumbnail/_styles';
 import { Styled as StyledGrid } from '../ProductsGrid/_styles';
+import { Styled as StyledRemoveButton } from '../CartContent/_styles';
 
 type Props = {
   variantId: string;
@@ -109,7 +111,7 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
     }
   };
 
-  const removeFromCart = () => {
+  const removeFromCart = (removeButton) => {
     if (cartToken && getCartData) {
       setAddButton(false);
       setLoading(true);
@@ -123,7 +125,11 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
           const index = currentItems.findIndex(
             (item) => item.variantId === variantId,
           );
-          currentItems[index].quantity -= 1;
+          if (removeButton) {
+            currentItems[index].quantity = 0;
+          } else {
+            currentItems[index].quantity -= 1;
+          }
 
           // remove item once it's quantity equals zero
           currentItems = currentItems.filter((item) => item.quantity !== 0);
@@ -174,8 +180,13 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
               {quantity}{console.log(variantId)}
             </Typography>
           </Button>
-          <Button variant="outlined" onClick={() => removeFromCart()}>-</Button>
+          <Button variant="outlined" onClick={() => removeFromCart(false)}>-</Button>
         </ButtonGroup>
+      ))}
+      {(quantityButton && (
+        <StyledRemoveButton.RemoveItemButton>
+          <Button color="primary" size="small" onClick={() => removeFromCart(true)}>Remove</Button>
+        </StyledRemoveButton.RemoveItemButton>
       ))}
       <Dialog open={replaceItemsLoading}>
         <DialogContent>
