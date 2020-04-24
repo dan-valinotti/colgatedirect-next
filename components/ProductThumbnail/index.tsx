@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { useLazyQuery, useQuery } from '@apollo/react-hooks';
 import { ProductPriceRange } from '../../models';
 import { Styled } from './_styles';
 import { GET_CART_QUERY } from '../CartController/_types';

@@ -16,7 +16,7 @@ const ProductPage = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <NavBar items={['test']} />
+      <NavBar />
       <PDPComponent handle={handle.toString()} />
       <FooterNav />
     </ThemeProvider>
