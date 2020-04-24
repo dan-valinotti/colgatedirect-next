@@ -16,6 +16,7 @@ const FooterFont = styled(Typography)`
   &&& {
     color: ${(props) => props.fontColor};
     font-weight: 700;
+    text-align: center;
   }
 `;
 
