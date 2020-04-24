@@ -40,7 +40,18 @@ function ProductsPage({
         shopNow={false}
       />
       <PageContainer paddingTop={30} size={PageSize.large}>
-        <PageContentSection />
+        <PageContentSection
+          alignContent="right"
+          backgroundColor="#fafafa"
+          ctaButton
+          ctaButtonText="Learn more"
+          ctaOnClick={() => console.log('Clicked!')}
+          imageUrl="https://cdn.shopify.com/s/files/1/2524/0600/files/colgate_the_future_looks_bright.png?v=1553689448"
+          title="The future looks bright"
+          subtitle="That’s because we’ve been busy creating smarter, better devices to get your teeth shining brighter and whiter."
+          alignWithEdge
+          titleColor="primary"
+        />
         <ProductsGrid query={query} reverse={reverse} sortKey={sortKey} variables={variables} />
       </PageContainer>
       <FooterNav />

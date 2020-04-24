@@ -13,6 +13,7 @@ const Button = styled.div`
   border: 2px solid ${(props) => theme.palette[props.color].main};
   border-radius: 0.5rem;
   min-width: 270px;
+  height: min-content;
   transition: 
    color 0.25s ease,
    border-color 0.25s ease,
