@@ -65,18 +65,19 @@ const renderPopoverContent = (
 * login button or account info/logout button.
 * @visibleName AccountPopup
 */
-const AccountPopup: FunctionComponent = () => {
+const AccountPopup: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState(null); // Anchor element
   const [accessToken, setAccessToken] = useState<string>('');
 
   /**
-  * GraphQL Queries
-  * getCustomer: retrieves customer data from Shopify GraphQL API
-  *   using 'customerAccessToken' variable
-  *   - Request interface: none
-  *   - Response interface: GetCustomerInfoResponse
-  */
+   * GraphQL Queries
+   * getCustomer: retrieves customer data from Shopify GraphQL API
+   *   using 'customerAccessToken' variable
+   *   - Request interface: none
+   *   - Response interface: GetCustomerInfoResponse
+   * @public
+   */
   const {
     data: getCustomerData,
     error: getCustomerError,
@@ -99,10 +100,10 @@ const AccountPopup: FunctionComponent = () => {
   };
 
   /**
-  * useEffect() - monitor 'window' variable to wait for client browser to be
-  *   detected, then retrieve 'customerAccessToken' from localStorage. If value
-  *   is not empty, attempt to retrieve customer data
-  */
+   * useEffect() - monitor 'window' variable to wait for client browser to be
+   *   detected, then retrieve 'customerAccessToken' from localStorage. If value
+   *   is not empty, attempt to retrieve customer data
+   */
   useEffect(() => {
     if (window && window.localStorage) {
       setAccessToken(window.localStorage.getItem('customerAccessToken'));
