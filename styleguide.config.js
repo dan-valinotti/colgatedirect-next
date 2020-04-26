@@ -4,12 +4,8 @@ module.exports = {
   sections: [
     {
       name: 'Components',
-      components: 'components/*/index.{ts,tsx}',
-      exampleMode: 'expand',
-      usageMode: 'expand'
-    }, {
-      name: 'Page Sections',
-      components: 'components/sections/*/index.tsx',
+      components: 'components/**/*/index.{ts,tsx}',
+      exclude: 'components/pdp/*',
       exampleMode: 'expand',
       usageMode: 'expand'
     }, {

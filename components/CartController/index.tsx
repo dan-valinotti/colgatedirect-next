@@ -9,6 +9,7 @@ import CartContent from '../CartContent/index';
  * properties
  */
 interface Props {
+  /** Cart data retrieved from Shopfy GraphQL API. */
   cart: GetCartResponse;
   clearCart: Function;
   total: number;
@@ -21,7 +22,6 @@ interface Props {
 }
 
 /**
- * @component
  * Container component for the Cart that handles checking if a cart exists,
  * as well as retrieving the cart info and items.
  * @visibleName CartController
