@@ -13,10 +13,9 @@ import {
 } from '../../hocs/withCustomerInfo';
 
 /*
-* Function - renderPopoverContent
 * Returns nodes to be rendered on AccountPopup depending on login status.
-*   @param customerData: data response from GraphQL API
-*   @param error: error response from GraphQL API
+* @param {GetCustomerInfoResponse} customerData
+* @param {error} any;
 * */
 const renderPopoverContent = (
   customerData: GetCustomerInfoResponse,
@@ -61,25 +60,24 @@ const renderPopoverContent = (
   );
 };
 
-/*
-* Component - AccountPopup <FunctionComponent>
-*   @state open <boolean> - Handle popup open state
-*   @state anchorEl <node> - HTML element popup is anchored to
-*   @state accessToken <string> - customerAccessToken from GraphQL API
-*   @query getCustomer <GetCustomerInfoResponse>
-* */
-const AccountPopup: FunctionComponent = () => {
+/**
+* Account navigation bar button that opens popup window with
+* login button or account info/logout button.
+* @visibleName AccountPopup
+*/
+const AccountPopup: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState(null); // Anchor element
   const [accessToken, setAccessToken] = useState<string>('');
 
-  /*
-  * GraphQL Queries
-  * getCustomer: retrieves customer data from Shopify GraphQL API
-  *   using 'customerAccessToken' variable
-  *   - Request interface: none
-  *   - Response interface: GetCustomerInfoResponse
-  * */
+  /**
+   * GraphQL Queries
+   * getCustomer: retrieves customer data from Shopify GraphQL API
+   *   using 'customerAccessToken' variable
+   *   - Request interface: none
+   *   - Response interface: GetCustomerInfoResponse
+   * @public
+   */
   const {
     data: getCustomerData,
     error: getCustomerError,
@@ -101,11 +99,11 @@ const AccountPopup: FunctionComponent = () => {
     setAnchorEl(event.currentTarget);
   };
 
-  /*
-  * useEffect() - monitor 'window' variable to wait for client browser to be
-  *   detected, then retrieve 'customerAccessToken' from localStorage. If value
-  *   is not empty, attempt to retrieve customer data
-  * */
+  /**
+   * useEffect() - monitor 'window' variable to wait for client browser to be
+   *   detected, then retrieve 'customerAccessToken' from localStorage. If value
+   *   is not empty, attempt to retrieve customer data
+   */
   useEffect(() => {
     if (window && window.localStorage) {
       setAccessToken(window.localStorage.getItem('customerAccessToken'));

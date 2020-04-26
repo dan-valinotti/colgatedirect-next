@@ -17,7 +17,7 @@ import {
   CHECKOUT_LINE_ITEMS_REPLACE_MUTATION,
 } from '../CartController/_types';
 import withData from '../../lib/apollo';
-import CartController from '../CartController/index';
+import CartController from '../CartController';
 import CartContentRow from '../CartContentRow/CartContentRow';
 
 

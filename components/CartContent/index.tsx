@@ -7,13 +7,29 @@ import { GetCartResponse } from '../CartController/_types';
 import { Styled } from './_styles';
 import AddToCart from '../PDPComponent/AddAndRemoveProduct';
 
+/**
+ * properties
+ */
 type Props = {
+  /**
+   * Cart data retrieved from Shopify GraphQL API.
+   */
   cart: GetCartResponse;
+  /**
+   * Total cost of all items in cart.
+   */
   total: number;
+  /**
+   * Function to be executed when user clicks "Clear Cart" button.
+   */
   clearCart: Function;
 };
 
-const CartContent: FunctionComponent<Props> = ({ cart, total, clearCart }: Props) => (
+/**
+ * Displays content of Cart popup window.
+ * @visibleName CartContent
+ */
+const CartContent: React.FC<Props> = ({ cart, total, clearCart }: Props) => (
   <>
     {console.log(cart.node.lineItems.edges)}
     {cart && (
