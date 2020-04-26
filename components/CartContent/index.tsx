@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import {
-  Button, ButtonGroup, List, ListItem, Typography,
+  Button, List, ListItem, Typography,
 } from '@material-ui/core';
 import Link from 'next/link';
 import { GetCartResponse } from '../CartController/_types';

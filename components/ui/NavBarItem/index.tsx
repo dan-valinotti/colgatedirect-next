@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Collapse, List, ListItem, ListItemText,
+  Collapse, ListItem, ListItemText,
 } from '@material-ui/core';
 import Link from 'next/link';
 import { Styled } from './_styles';

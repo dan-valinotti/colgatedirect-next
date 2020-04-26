@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
-  Button, List, ListItem, Typography, CircularProgress, ButtonGroup, Dialog, DialogContent,
+  Button, List, ListItem, Typography, CircularProgress, Dialog, DialogContent,
 } from '@material-ui/core';
 import Link from 'next/link';
 import withData from '../../lib/apollo';
 import { GetCartResponse } from '../CartController/_types';
-// import './_style.scss';
 import { Styled } from './_styles';
 import AddToCart from '../PDPComponent/AddAndRemoveProduct';
 
