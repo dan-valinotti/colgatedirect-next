@@ -21,7 +21,6 @@ const ManualToothbrush: FunctionComponent<Props> = ({ product }: Props) => (
       fontColor="#FFFFFF"
       textAlign="left"
       shopNow
-      productId={product.id}
     />
     <IconDescription
       icons={[
