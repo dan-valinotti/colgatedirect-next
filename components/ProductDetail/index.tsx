@@ -5,42 +5,27 @@ import {
 } from '@material-ui/core';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
-import { LineItem, LineItemShort, TransformedProduct } from '../PDPComponent/_types';
+import {
+  LineItem, LineItemShort, TransformedProduct, getLineItems,
+} from '../PDPComponent/_types';
 import {
   CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY, GetCartResponse, PriceV2,
 } from '../CartController/_types';
 import { Styled } from './_styles';
+import AddToCart from '../PDPComponent/AddAndRemoveProduct';
 import { Metafield, ProductVariant } from '../../models';
 
+
 type Props = {
+  /** Product data retrieved from Shopify GraphQL API. */
   product: TransformedProduct;
 };
 
-// Map line items to array for cart replacement
-export function getLineItems(lineItems): object[] {
-  if (lineItems) {
-    return lineItems.map((item): object => {
-      if (item.node) {
-        // console.log(`Item with node:`, item.node);
-        return {
-          variantId: item.node.variant.id,
-          quantity: item.node.quantity,
-        };
-      }
-      // console.log(`Item:`, item);
-      return {
-        variantId: item.id,
-        quantity: item.quantity,
-      };
-    });
-  }
-
-  return [];
-}
-
+/**
+ * Renders the default PDP layout of a product.
+ */
 const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
   const [cartToken, setCartToken] = useState<string>(null);
-  const [loading, setLoading] = useState<boolean>(false);
   const [lineItems, setLineItems] = useState<any[]>(null);
 
   // Gets cart info to replace item if added to cart
@@ -67,33 +52,6 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
     },
   });
 
-  // onClick function for Add to Cart button
-  //  Gets cart items first, turns into an array,
-  //  pushes new item and replaces items in cart
-  const addToCart = () => {
-    if (cartToken && getCartData) {
-      setLoading(true);
-      const currentItems = lineItems;
-      if (currentItems.some((item) => item.variantId === product.variant.id)) {
-        const index = currentItems.findIndex(
-          (item) => item.variantId === product.variant.id,
-        );
-        currentItems[index].quantity += 1;
-      } else {
-        currentItems.push({
-          variantId: product.variant.id,
-          quantity: 1,
-        });
-      }
-      setLineItems(currentItems);
-      replaceItems().then((res) => {
-        setLoading(false);
-      }).catch((error) => console.log(error));
-    } else {
-      // console.log("Can't add to cart.");
-    }
-  };
-
   // Waits for 'window' object to be availble for localStorage
   useEffect(() => {
     if (window.localStorage) {
@@ -105,7 +63,7 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
   }, [cartToken, getCartData, lineItems]);
 
   return (
-    <Styled.ProductDetailContainer>
+    <Styled.ProductDetailContainer id="product-detail-component">
       <Styled.ImageContainer>
         <Styled.ProductImage src={product.imageSrc} alt="PDP" />
       </Styled.ImageContainer>
@@ -116,17 +74,9 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
           <Typography variant="body1">
             Price: ${parseFloat(product.price).toFixed(2)}
           </Typography>
-          <Button onClick={addToCart} variant="contained" color="secondary">Add to cart</Button>
+          <AddToCart variantId={product.id} quantityButton={false} quantity={0} />
         </Styled.ATCContainer>
       </Styled.DescriptionContainer>
-      <Dialog open={loading}>
-        <DialogContent>
-          <Typography variant="h6">Adding item to cart...</Typography>
-          <Styled.ProgressContainer>
-            <CircularProgress />
-          </Styled.ProgressContainer>
-        </DialogContent>
-      </Dialog>
     </Styled.ProductDetailContainer>
   );
 };

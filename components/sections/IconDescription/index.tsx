@@ -5,10 +5,17 @@ import SectionContainer from '../../SectionContainer';
 import { IconConfig } from './_types';
 
 type Props = {
+  /** Set of config info for each icon+description. */
   icons: IconConfig[];
+  /** URL for video framed by iPhone. */
   videoUrl: string;
 };
 
+/**
+ * Renders section layout for video framed by iPhone on left with 4 icon+descriptions to right.
+ *
+ * Used on M1 PDP.
+ */
 const IconDescription: FunctionComponent<Props> = ({ icons, videoUrl }: Props) => (
   <Styled.Container>
     <Styled.VideoContainer>

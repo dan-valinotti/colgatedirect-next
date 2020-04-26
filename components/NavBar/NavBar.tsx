@@ -17,20 +17,11 @@ import {
   COLLECTIONS_QUERY, Collections,
 } from './_types';
 import './_style.scss';
-import CartController from '../CartController';
+import CartData from '../CartContent/CartData';
+import CartController from '../CartController/index';
 import NavItems from './navItems.json';
 import NavBarItem, { ProductItem } from '../NavBarItem';
-
-type Props = {
-  /** Navigation items to be displayed in NavBar */
-  items: string[];
-};
-
-interface NavItems {
-  title: string;
-  handle: string;
-  products: ProductItem[];
-}
+import AccountPopup from '../AccountPopup';
 
 const HomeLink = styled(Typography)`
 &&& {
@@ -43,7 +34,7 @@ const HomeLink = styled(Typography)`
 /**
  * General component description.
  */
-const NavBar: FunctionComponent<Props> = () => {
+const NavBar: FunctionComponent = () => {
   const [open, setOpen] = React.useState<boolean>(false);
   const { data, loading, error } = useQuery<Collections, object>(
     COLLECTIONS_QUERY,
@@ -54,6 +45,7 @@ const NavBar: FunctionComponent<Props> = () => {
     setOpen(!open);
   };
 
+  // create component with data
   return (
     <>
       <AppBar
@@ -74,7 +66,10 @@ const NavBar: FunctionComponent<Props> = () => {
               Colgate Connect
             </HomeLink>
           </Link>
-          <CartController />
+          <div className="icon-btns-container">
+            <AccountPopup />
+            <CartData parentComponent="NavBar" />
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer

@@ -13,9 +13,16 @@ import products from './customProductPages.json';
 import CustomPDPController from '../CustomPDPController';
 
 type Props = {
+  /**
+   * Product handle used as a reference to retrieve the data from Shopify's API.
+   * */
   handle: string;
 };
 
+/**
+ * Wrapper component that renders either a custom PDP if the product is
+ * included in the list of custom PDP products, or the default PDP layout.
+ */
 const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
   let product: TransformedProduct = null;
   const customPdps = products;
@@ -51,7 +58,7 @@ const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
   return (
     <>
       {!error && product && (
-        <>
+        <div id="pdp-component">
           <Head>
             <title>{product.title}</title>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -63,14 +70,14 @@ const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
               <Styled.PDPContainer>
                 <Styled.PDPMain>
                   <Link href="/">
-                    <Button variant="outlined" color="secondary">Back</Button>
+                    <Button id="back-btn" variant="outlined" color="secondary">Back</Button>
                   </Link>
                   <ProductDetail product={product} />
                 </Styled.PDPMain>
               </Styled.PDPContainer>
             </PageContainer>
           )}
-        </>
+        </div>
       )}
     </>
   );

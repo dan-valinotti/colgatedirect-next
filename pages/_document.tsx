@@ -1,7 +1,7 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
-import { theme } from '~views/theme';
+import { theme } from '../views/theme';
 
 export default class MyDocument extends Document {
   render() {
@@ -14,6 +14,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
+          <script src="https://kit.fontawesome.com/8db316f1e4.js" crossOrigin="anonymous" />
         </Head>
         <body>
           <Main />
