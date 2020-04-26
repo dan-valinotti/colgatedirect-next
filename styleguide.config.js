@@ -1,6 +1,7 @@
 const path = require('path');
 module.exports = {
   resolver: require('react-docgen').resolver.findAllComponentDefinitions,
+  styleguideDir: 'docs',
   sections: [
     {
       name: 'Components',
