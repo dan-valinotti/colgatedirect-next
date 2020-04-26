@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/styles';
 import { Button, withTheme } from '@material-ui/core';
 import Link from 'next/link';
-import NavBar from '../components/NavBar/NavBar';
+import NavBar from '../components/ui/NavBar/NavBar';
 import HeroBanner from '../components/sections/HeroBanner';
 import { theme } from '../views/theme';
 import { withMuiApp } from '../hocs/withMui';

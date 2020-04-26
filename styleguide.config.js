@@ -4,14 +4,19 @@ module.exports = {
   styleguideDir: 'docs',
   sections: [
     {
-      name: 'Components',
-      components: 'components/**/*/index.{ts,tsx}',
-      exclude: 'components/pdp/*',
+      name: 'UI Components',
+      components: 'components/ui/*/index.tsx',
       exampleMode: 'expand',
       usageMode: 'expand'
     }, {
       name: 'Custom PDP Components',
       components: 'components/pdp/*/index.tsx',
+      exampleMode: 'expand',
+      usageMode: 'expand'
+    }, {
+      name: 'Other Components',
+      components: 'components/*/index.{ts,tsx}',
+      exclude: ['components/pdp/*', 'components/ui/*'],
       exampleMode: 'expand',
       usageMode: 'expand'
     }

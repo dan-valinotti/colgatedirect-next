@@ -3,12 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery, useApolloClient } from '@apollo/react-hooks';
 import {
-  Button,
-  CircularProgress,
-  IconButton, Popover, Typography,
-} from '@material-ui/core';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import {
   CREATE_CART,
   CreateCartResponse,
   GetCartRequest,

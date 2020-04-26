@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import { Styled } from './_styles';
-import { TestInterface } from './_types';
 
 type Props = {
   /**
