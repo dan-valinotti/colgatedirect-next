@@ -18,9 +18,8 @@ import {
 } from './_types';
 import './_style.scss';
 import CartData from '../../CartContent/CartData';
-import CartController from '../../CartController';
 import NavItems from './navItems.json';
-import NavBarItem, { ProductItem } from '../NavBarItem';
+import NavBarItem from '../NavBarItem';
 import AccountPopup from '../../AccountPopup';
 
 const HomeLink = styled(Typography)`
