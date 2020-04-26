@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Button, CircularProgress } from '@material-ui/core';
-import { withLogout } from '../../hocs/withLogout';
+import { withLogout } from '../../../hocs/withLogout';
 
 /* LogoutButton component props */
 interface Props {

@@ -1,5 +1,5 @@
 import styled, { injectGlobal } from 'styled-components';
-import { theme } from '../../views/theme';
+import { theme } from '~views/theme';
 
 const Container = styled.div`
   display: flex;

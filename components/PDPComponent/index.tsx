@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { Styled } from './_styles';
 import { PRODUCT_INFO_QUERY, ProductDetails, TransformedProduct } from './_types';
-import ProductDetail from '../ProductDetail';
+import ProductDetail from '../sections/ProductDetail';
 import ManualToothbrush from '../pdp/ManualToothbrush';
 import PageContainer, { PageSize } from '../../views/layouts/PageContainer';
 import WhiteningPage from '../pdp/WhiteningPage';
