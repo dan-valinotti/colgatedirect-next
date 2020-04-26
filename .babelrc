@@ -1,5 +1,7 @@
 {
-  "presets": ["next/babel", ["@babel/env", { "modules": false, "useBuiltIns": "usage" }], "@babel/react"],
+  "presets": ["next/babel", ["@babel/env", { "modules": false, "useBuiltIns": "usage",
+    "corejs": "3.x"
+  }], "@babel/react"],
   "plugins": [
     [
       "styled-components",
