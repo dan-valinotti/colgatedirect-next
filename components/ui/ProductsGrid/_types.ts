@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { ProductPriceRange } from '../../models';
+import { ProductPriceRange } from '../../../models';
 
 export const PRODUCTS_QUERY = gql`
     query ProductsQuery($cursor: String){
