@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Button, IconButton, Popover, Typography,
 } from '@material-ui/core';
@@ -6,7 +6,7 @@ import { AccountCircle } from '@material-ui/icons';
 import Link from 'next/link';
 import { useQuery } from '@apollo/react-hooks';
 import { Styled } from './_styles';
-import LogoutButton from '../LogoutButton';
+import LogoutButton from '../ui/LogoutButton';
 import {
   CUSTOMER_INFO_QUERY,
   GetCustomerInfoResponse,

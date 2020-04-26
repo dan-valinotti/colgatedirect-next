@@ -7,13 +7,13 @@ import { useMutation, useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import {
   LineItem, LineItemShort, TransformedProduct, getLineItems,
-} from '../PDPComponent/_types';
+} from '../../PDPComponent/_types';
 import {
   CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY, GetCartResponse, PriceV2,
-} from '../CartController/_types';
+} from '../../CartController/_types';
 import { Styled } from './_styles';
-import AddToCart from '../PDPComponent/AddAndRemoveProduct';
-import { Metafield, ProductVariant } from '../../models';
+import AddToCart from '../../PDPComponent/AddAndRemoveProduct';
+import { Metafield, ProductVariant } from '../../../models';
 
 
 type Props = {

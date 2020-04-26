@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import {
   Grid, Typography,
 } from '@material-ui/core';
 import featuredProducts from './featured.json';
-import { ProductSortKeys } from '../../models';
+import { ProductSortKeys } from '../../../models';
 import { ProductsType, PRODUCTS_QUERY } from './_types';
 import ProductThumbnail from '../ProductThumbnail';
 import { Styled } from './_styles';
-import FeaturedProducts from '../sections/FeaturedProducts';
+import FeaturedProducts from '../../sections/FeaturedProducts';
 
 type Props = {
   query: string;
