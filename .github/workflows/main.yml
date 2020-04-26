@@ -1,0 +1,18 @@
+name: Cypress Test
+on: [pull_request]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-16.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Cypress run
+        uses: cypress-io/github-action@v1
+        with:
+          working-directory: ./
+          browser: chrome
+          env: JWT_SECRET=Lk4paP9xFozBw2y0wjpXYQx+IgyWgrkbMSWc28KbeaqOHqWZkYyeeQtMjiXZLETbp/mJAaBn/UZHVF/hnHGQF0WQz1TupC2OrVnt1I03BielRoCjrft2gOPxb2WNRSmpuMCzKA2HZVtevRjbr4x++9MMIrLthM/CGPRawSOJyj6TEmmJC1eCzvbpvu++CPb07Sc7pSQtJIW8vWdpHirYOCFeuHrP+1zYlmKzWtZgb3QV1x0zU+5olbn+Pad7bipU70DksRXEVbtHBpIVM9y/UZqleWdTx4AUcBeJCEThHnB2y9o25+1yJKePWSYBBbxUQ/uYKRVWfSbZ+lpxJaZ9Fg==
+          config-file: cypress.json
+          build: npm run build
+          start: npm run start
+          wait-on: 'http://localhost:3000'
