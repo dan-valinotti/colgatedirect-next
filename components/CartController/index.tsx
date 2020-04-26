@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from 'react';
-// import { useMutation, useQuery, useApolloClient } from '@apollo/react-hooks';
-import {
-  CircularProgress,
-  IconButton, Popover, Typography,
-} from '@material-ui/core';
+import React, { useState } from 'react';
+import { IconButton, Popover, Typography } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import {
-  GetCartResponse,
-} from './_types';
-import './_style.scss';
+import { GetCartResponse } from './_types';
 import withData from '../../lib/apollo';
 import CartContent from '../CartContent/index';
 
-type Props = {
+/**
+ * properties
+ */
+interface Props {
+  /** Cart data retrieved from Shopfy GraphQL API. */
   cart: GetCartResponse;
   clearCart: Function;
   total: number;
@@ -22,19 +19,21 @@ type Props = {
   createCartError: boolean;
   getCartError: boolean;
   getCartRefetch: Function;
-};
+}
 
-// Container component for the Cart that handles checking if a cart exists,
-// as well as retrieving the cart info and items.
-const CartController = ({
-  cart, total, getTotal, clearCart, createCartLoading, getCartLoading, createCartError,
+/**
+ * Container component for the Cart that handles checking if a cart exists,
+ * as well as retrieving the cart info and items.
+ * @visibleName CartController
+ */
+const CartController: React.FC<Props> = ({
+  cart, total, getTotal, clearCart, createCartLoading,
+  getCartLoading, createCartError,
   getCartError, getCartRefetch,
 }: Props) => {
   // State variable declaration
   const [open, setOpen] = useState<boolean>(false); // Open/close state of popup
-  // const [total, setTotal] = useState<number>(0); // Total cart price
   const [anchorEl, setAnchorEl] = React.useState(null); // Anchor element
-  const [totalLoading, setTotalLoading] = useState<boolean>(true);
 
   // Refresh data when popup is opened
   const handleClick = (event) => {
@@ -112,4 +111,5 @@ const CartController = ({
   );
 };
 
+/** @component */
 export default withData(CartController);

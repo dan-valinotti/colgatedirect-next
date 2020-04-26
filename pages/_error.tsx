@@ -39,7 +39,6 @@ function Error({ statusCode }: Props) {
         subtitle={subtitleMessage()}
         bgColor="#fafafa"
         fontColor="rgba(0,0,0,0.8)"
-        textAlign="center"
         shopNow={false}
       />
       <div
