@@ -1,21 +1,14 @@
-import React, { useEffect, useState, FunctionComponent } from 'react';
-// import { useMutation, useQuery, useApolloClient } from '@apollo/react-hooks';
-import {
-  CircularProgress,
-  IconButton, Popover, Typography,
-} from '@material-ui/core';
+import React, { useState } from 'react';
+import { IconButton, Popover, Typography } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import {
-  GetCartResponse,
-} from './_types';
-// import './_style.scss';
+import { GetCartResponse } from './_types';
 import withData from '../../lib/apollo';
 import CartContent from '../CartContent/index';
 
 /**
  * properties
  */
-type Props = {
+interface Props {
   cart: GetCartResponse;
   clearCart: Function;
   total: number;
@@ -25,14 +18,15 @@ type Props = {
   createCartError: boolean;
   getCartError: boolean;
   getCartRefetch: Function;
-};
+}
 
 /**
+ * @component
  * Container component for the Cart that handles checking if a cart exists,
  * as well as retrieving the cart info and items.
  * @visibleName CartController
  */
-const CartController: FunctionComponent<Props> = ({
+const CartController: React.FC<Props> = ({
   cart, total, getTotal, clearCart, createCartLoading,
   getCartLoading, createCartError,
   getCartError, getCartRefetch,
@@ -117,4 +111,5 @@ const CartController: FunctionComponent<Props> = ({
   );
 };
 
+/** @component */
 export default withData(CartController);

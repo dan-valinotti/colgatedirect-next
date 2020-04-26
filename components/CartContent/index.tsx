@@ -11,8 +11,17 @@ import AddToCart from '../PDPComponent/AddAndRemoveProduct';
  * properties
  */
 type Props = {
+  /**
+   * Cart data retrieved from Shopify GraphQL API.
+   */
   cart: GetCartResponse;
+  /**
+   * Total cost of all items in cart.
+   */
   total: number;
+  /**
+   * Function to be executed when user clicks "Clear Cart" button.
+   */
   clearCart: Function;
 };
 

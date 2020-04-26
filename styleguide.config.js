@@ -1,9 +1,20 @@
+const path = require('path');
 module.exports = {
   resolver: require('react-docgen').resolver.findAllComponentDefinitions,
   sections: [
     {
       name: 'Components',
       components: 'components/*/index.{ts,tsx}',
+      exampleMode: 'expand',
+      usageMode: 'expand'
+    }, {
+      name: 'Page Sections',
+      components: 'components/sections/*/index.tsx',
+      exampleMode: 'expand',
+      usageMode: 'expand'
+    }, {
+      name: 'Custom PDP Components',
+      components: 'components/pdp/*/index.tsx',
       exampleMode: 'expand',
       usageMode: 'expand'
     }

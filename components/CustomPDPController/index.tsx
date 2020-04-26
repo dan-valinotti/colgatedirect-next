@@ -5,7 +5,13 @@ import WhiteningPage from '../pdp/WhiteningPage';
 import { TransformedProduct } from '../PDPComponent/_types';
 
 interface Props {
+  /**
+   * URL handle attached to custom PDP component.
+   */
   handle: string;
+  /**
+   * Props to be passed to PDP component.
+   */
   PDPprops: ManualToothbrushProps;
 }
 
