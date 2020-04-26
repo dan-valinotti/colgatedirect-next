@@ -13,9 +13,16 @@ import products from './customProductPages.json';
 import CustomPDPController from '../CustomPDPController';
 
 type Props = {
+  /**
+   * Product handle used as a reference to retrieve the data from Shopify's API.
+   * */
   handle: string;
 };
 
+/**
+ * Wrapper component that renders either a custom PDP if the product is
+ * included in the list of custom PDP products, or the default PDP layout.
+ */
 const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
   let product: TransformedProduct = null;
   const customPdps = products;

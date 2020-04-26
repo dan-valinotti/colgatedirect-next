@@ -4,18 +4,24 @@ import { Styled } from './_styles';
 import SectionContainer from '../../SectionContainer';
 
 type Props = {
+  /** Large text shown on banner. */
   title: string;
+  /** Small text shown on banner. */
   subtitle: string;
+  /** Color of background not reach by background image. */
   bgColor: string;
+  /** Image used as background for banner. */
   bgUrl: string;
+  /** Color of font used by title and subtitle. */
   fontColor: string;
-  textAlign: string;
+  /** Determines if text is aligned to left or right. */
+  textAlign: 'left' | 'right';
+  /** Flag to set if "Shop Now" button is placed at bottom of banner. */
   shopNow: boolean;
-  productId?: string;
 };
 
 const HeroBanner: FunctionComponent<Props> = ({
-  title, subtitle, bgColor, bgUrl, fontColor, textAlign, shopNow, productId,
+  title, subtitle, bgColor, bgUrl, fontColor, textAlign, shopNow,
 }: Props) => (
   <SectionContainer>
     <Styled.Banner imageUrl={bgUrl} bgColor={bgColor} textalign={textAlign}>

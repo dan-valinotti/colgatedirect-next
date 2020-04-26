@@ -17,12 +17,15 @@ import { Metafield, ProductVariant } from '../../models';
 
 
 type Props = {
+  /** Product data retrieved from Shopify GraphQL API. */
   product: TransformedProduct;
 };
 
+/**
+ * Renders the default PDP layout of a product.
+ */
 const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
   const [cartToken, setCartToken] = useState<string>(null);
-  const [loading, setLoading] = useState<boolean>(false);
   const [lineItems, setLineItems] = useState<any[]>(null);
 
   // Gets cart info to replace item if added to cart
