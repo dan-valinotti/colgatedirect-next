@@ -1,3 +1,5 @@
-export interface TestInterface {
-  default: string;
+import { TransformedProduct } from '../../PDPComponent/_types';
+
+export interface WhiteningPageProps {
+  product: TransformedProduct;
 }

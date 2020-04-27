@@ -4,7 +4,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-height: 250px;
+  min-height: 450px;
   width: 100%;
   margin-bottom: 15px;
   background-image: url(${(props) => props.imageUrl});
