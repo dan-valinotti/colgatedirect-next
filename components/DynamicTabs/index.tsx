@@ -1,11 +1,15 @@
 import React, { FunctionComponent } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Tabs, Tab, Typography, Box } from '@material-ui/core';
+import {
+  Tabs, Tab, Typography, Box,
+} from '@material-ui/core';
 import { TabPanelProps, FullWidthTabsProps } from './_types';
 
 function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
+  const {
+    children, value, index, ...other
+  } = props;
 
   return (
     <Typography
@@ -31,10 +35,10 @@ function tabProps(index: any) {
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
-    textAlign: "left",
+    textAlign: 'left',
   },
   tabsIndicator: {
-    
+
   },
   tabRoot: {
     marginBottom: 5,
@@ -49,19 +53,19 @@ const useStyles = makeStyles((theme: Theme) => ({
       fontWeight: theme.typography.fontWeightMedium,
     },
     '& span': {
-      alignItems: 'flex-start'
+      alignItems: 'flex-start',
     },
     '&:not($tabSelected):hover': {
-      color: '#d9291c'
-    }
+      color: '#d9291c',
+    },
   },
   tabSelected: {},
   tabPanelContent: {
     padding: '0 20px',
     '& p': {
-      marginBottom: '1em'
-    }
-  }
+      marginBottom: '1em',
+    },
+  },
 }));
 
 const FullWidthTabs: FunctionComponent<FullWidthTabsProps> = (props: FullWidthTabsProps) => {
@@ -86,14 +90,14 @@ const FullWidthTabs: FunctionComponent<FullWidthTabsProps> = (props: FullWidthTa
         indicatorColor="primary"
         classes={{ indicator: classes.tabsIndicator }}
       >
-      {props.items.map((item, itemIndex) => (
-        <Tab
-          key={itemIndex}
-          label={item.title}
-          {...tabProps(itemIndex)}
-          classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
-        />
-      ))}
+        {props.items.map((item, itemIndex) => (
+          <Tab
+            key={itemIndex}
+            label={item.title}
+            {...tabProps(itemIndex)}
+            classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
+          />
+        ))}
       </Tabs>
       <SwipeableViews
         index={value}
@@ -106,13 +110,14 @@ const FullWidthTabs: FunctionComponent<FullWidthTabsProps> = (props: FullWidthTa
             index={itemIndex}
           >
             <div
-              className={ classes.tabPanelContent }
-              dangerouslySetInnerHTML={{__html: item.content}} />
+              className={classes.tabPanelContent}
+              dangerouslySetInnerHTML={{ __html: item.content }}
+            />
           </TabPanel>
         ))}
       </SwipeableViews>
     </div>
   );
-}
+};
 
 export default FullWidthTabs;
