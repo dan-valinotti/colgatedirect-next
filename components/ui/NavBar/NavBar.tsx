@@ -7,6 +7,9 @@ import {
   Drawer,
   Divider,
   List,
+  useScrollTrigger,
+  Slide,
+  CssBaseline,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -30,10 +33,32 @@ const HomeLink = styled(Typography)`
 }
 `;
 
+interface HideProps {
+  children: React.ReactElement;
+  window?: () => Window;
+}
+
+interface MainProps {
+  window?: () => Window;
+}
+
+const HideOnScroll = ({ children, window }: HideProps) => {
+  // Note that you normally won't need to set the window ref as useScrollTrigger
+  // will default to window.
+  // This is only being set here because the demo is in an iframe.
+  const trigger = useScrollTrigger({ target: window ? window() : undefined });
+
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+};
+
 /**
  * General component description.
  */
-const NavBar: FunctionComponent = () => {
+const NavBar: FunctionComponent<MainProps> = ({ window }: MainProps) => {
   const [open, setOpen] = React.useState<boolean>(false);
   const { data, loading, error } = useQuery<Collections, object>(
     COLLECTIONS_QUERY,
@@ -47,30 +72,34 @@ const NavBar: FunctionComponent = () => {
   // create component with data
   return (
     <>
-      <AppBar
-        position="static"
-      >
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className="navbar-button"
-            color="inherit"
-            aria-label="menu"
-            onClick={toggleDrawer}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Link href="/">
-            <HomeLink variant="h6">
-              Colgate Connect
-            </HomeLink>
-          </Link>
-          <div className="icon-btns-container">
-            <AccountPopup />
-            <CartData parentComponent="NavBar" />
-          </div>
-        </Toolbar>
-      </AppBar>
+      <CssBaseline />
+      <HideOnScroll window={window}>
+        <AppBar
+          position="fixed"
+        >
+          <Toolbar>
+            <IconButton
+              edge="start"
+              className="navbar-button"
+              color="inherit"
+              aria-label="menu"
+              onClick={toggleDrawer}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Link href="/">
+              <HomeLink variant="h6">
+                Colgate Connect
+              </HomeLink>
+            </Link>
+            <div className="icon-btns-container">
+              <AccountPopup />
+              <CartData parentComponent="NavBar" />
+            </div>
+          </Toolbar>
+        </AppBar>
+
+      </HideOnScroll>
       <Drawer
         className="navbar-drawer"
         variant="persistent"
