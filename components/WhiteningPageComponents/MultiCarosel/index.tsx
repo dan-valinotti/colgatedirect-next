@@ -47,7 +47,7 @@ const MultiCarosel: FunctionComponent<MultiCaroselProps> = ({ carouselImg }: Mul
       >
         {carouselImg.map((avatar, key) => (
           <div>
-            <Styled.SocialImage src={avatar.avatar} />
+            <Styled.SocialImage key={key} src={avatar.avatar} />
           </div>
         ))}
       </Carousel>

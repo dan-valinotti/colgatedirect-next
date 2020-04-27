@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import { Button } from '@material-ui/core';
 import { Styled } from './_styles';
 import SectionContainer from '../../SectionContainer';
 

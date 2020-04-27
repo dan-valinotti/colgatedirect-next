@@ -4,7 +4,6 @@ import StarRatings from 'react-star-ratings';
 import { CheckCircleOutline } from '@material-ui/icons';
 import ImageGallery from 'react-image-gallery';
 import { Styled } from './_styles';
-import { TransformedProduct } from '../../PDPComponent/_types';
 import HeroBanner from '../../sections/HeroBanner';
 import product from './data.json';
 import { WhiteningPageProps } from './_types';
@@ -28,7 +27,7 @@ const WhiteningPage: FunctionComponent<WhiteningPageProps> = (props: WhiteningPa
     <Styled.ContainerSec1>
       <Grid container spacing={2} alignItems="center">
         {product.advlinks.map(({ src, link }, key) => (
-          <Styled.Sec1Grid item xs={12} sm={6} md={4} lg={4}>
+          <Styled.Sec1Grid key={key} item xs={12} sm={6} md={4} lg={4}>
             <Styled.Sec1Link href={link}>
               <Styled.Img item src={src} />
             </Styled.Sec1Link>
@@ -42,7 +41,7 @@ const WhiteningPage: FunctionComponent<WhiteningPageProps> = (props: WhiteningPa
     <Styled.ContainerSec3>
       <Grid container spacing={2}>
         {product.gridItemData.map(({ src, title }, key) => (
-          <Styled.Sec3Grid item xs={12} sm={6} md={4} lg={3}>
+          <Styled.Sec3Grid key={key} item xs={12} sm={6} md={4} lg={3}>
             {/* <div> */}
             <Styled.GridItemDiv>
               <Styled.Sec3Img item src={src} />

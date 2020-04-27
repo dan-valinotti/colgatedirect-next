@@ -1,13 +1,11 @@
 import React, { FunctionComponent } from 'react';
-import { Button } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/styles';
 import clsx from 'clsx';
-import { MDBCol, MDBIcon } from 'mdbreact';
 import { AddToCartProps } from './_types';
 import { Styled } from './_styles';
 
-const AddToCart: FunctionComponent<AddToCartProps> = (props: AddToCartProps) => {
+const AddToCart: FunctionComponent<AddToCartProps> = ({ details }: AddToCartProps) => {
   const useSpanStyle = makeStyles({
     root: {
       color: '#d2010d',
@@ -39,7 +37,8 @@ const AddToCart: FunctionComponent<AddToCartProps> = (props: AddToCartProps) => 
         <Styled.OneTimeText>
           <Styled.OneTimeRadio checked={isRadio} onClick={oneTimeRadioClick} />
           <Styled.OneTimePurchaseText>
-            <Styled.SpanStyle>One Time Purchase </Styled.SpanStyle> <span>{props.details.oneTimePurchasePrice}</span>
+            <Styled.SpanStyle>One Time Purchase </Styled.SpanStyle>
+            <span>{details.oneTimePurchasePrice}</span>
           </Styled.OneTimePurchaseText>
         </Styled.OneTimeText>
       </Styled.OnePurchaseTrigger>
@@ -51,8 +50,8 @@ const AddToCart: FunctionComponent<AddToCartProps> = (props: AddToCartProps) => 
             <br />
             <Styled.RecommendSpanStyle>Recommended</Styled.RecommendSpanStyle>
           </Styled.SubscribeText>
-          <Styled.PaymentSubSpan>{props.details.subPrice}</Styled.PaymentSubSpan>
-          <Styled.OnePurchaseSpan>{props.details.oneTimePurchasePrice}</Styled.OnePurchaseSpan>
+          <Styled.PaymentSubSpan>{details.subPrice}</Styled.PaymentSubSpan>
+          <Styled.OnePurchaseSpan>{details.oneTimePurchasePrice}</Styled.OnePurchaseSpan>
         </Styled.SubText>
       </Styled.SubscribeTrigger>
       { !isRadio && (
@@ -65,13 +64,15 @@ const AddToCart: FunctionComponent<AddToCartProps> = (props: AddToCartProps) => 
           id="demo-simple-select"
           onChange={handleChange}
         >
-          {props.details.everyImmonths.map((label, key) => (
-            <MenuItem value={label.number}>{label.months}</MenuItem>
+          {details.everyImmonths.map((label, key) => (
+            <MenuItem key={key} value={label.number}>{label.months}</MenuItem>
           ))}
         </Styled.SelectBox>
         <h3>starting <span>{monthTitle}</span> months from now.</h3>
         <Styled.LineDiv />
-        <h5>You will Receive a <span className={className}>10-day</span> Serum supply at a cost of $45.00 every <span className={className}>{monthTitle}</span> months.</h5>
+        <h5>You will Receive a <span className={className}>10-day</span> Serum supply at a
+          cost of $45.00 every <span className={className}>{monthTitle}</span> months.
+        </h5>
         <h6 className={className1}>Note: You can cancel or skip a shipment at any time.</h6>
       </Styled.ReviewBox>
       )}

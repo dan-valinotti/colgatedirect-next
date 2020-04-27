@@ -1,11 +1,11 @@
 export interface AddToCartProps {
   details: {
-    oneTimePurchasePrice?: string,
-    subPrice?: string,
+    oneTimePurchasePrice?: string;
+    subPrice?: string;
     everyImmonths?: {
-      number: number,
-      months: number
-    }[],
-    [k: string]: any
+      number: number;
+      months: number;
+    }[];
+    [k: string]: any;
   };
 }
