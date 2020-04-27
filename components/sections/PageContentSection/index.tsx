@@ -1,8 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Styled } from './_styles';
-import { TestInterface } from './_types';
 import CTAButton from '../../ui/CTAButton';
-import { theme } from '../../../views/theme';
 
 type Props = {
   /** CSS ID assigned to component root element. */

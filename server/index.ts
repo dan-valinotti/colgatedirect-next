@@ -54,10 +54,9 @@ nextApp.prepare().then(() => {
   // Fallback handler
   server.get('*', (req, res) => handle(req, res));
 
-
   // nextRoutes handling
   server.use(handle);
-  // Does this fix it? Also fallback for POST.. ?
+
   // Start custom server
   server.listen(port, (err?: any) => {
     if (err) throw err;
