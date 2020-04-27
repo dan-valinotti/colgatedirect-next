@@ -3,6 +3,7 @@ import ReactFromJSON from 'react-from-json/dist';
 import ManualToothbrush from '../pdp/ManualToothbrush';
 import WhiteningPage from '../pdp/WhiteningPage';
 import { TransformedProduct } from '../PDPComponent/_types';
+import { WhiteningPageProps } from '../pdp/WhiteningPage/_types';
 
 interface Props {
   /**
@@ -19,7 +20,7 @@ interface ManualToothbrushProps {
   product: TransformedProduct;
 }
 
-function getEntry(handle, props: ManualToothbrushProps) {
+function getEntry(handle, props: ManualToothbrushProps | WhiteningPageProps) {
   switch (handle) {
     case 'm1':
       return {
@@ -28,7 +29,7 @@ function getEntry(handle, props: ManualToothbrushProps) {
           product: props.product,
         },
       };
-    case 'teeth-whitening-led-device-kit-165':
+    case 'teeth-whitening-led-device-kit':
       return {
         type: 'WhiteningPage',
         props: {
@@ -43,9 +44,10 @@ const mapping = {
   ManualToothbrush: ({ product }: ManualToothbrushProps) => (
     <ManualToothbrush product={product} />
   ),
-  WhiteningPage: () => (
-    <WhiteningPage test="" />
+  WhiteningPage: ({ product }: WhiteningPageProps) => (
+    <WhiteningPage product={product} />
   ),
+
 };
 
 const CustomPDPController = ({ handle, PDPprops }: Props) => (
