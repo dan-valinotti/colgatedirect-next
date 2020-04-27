@@ -19,8 +19,9 @@
   "scripts": {
     "dev": "nodemon",
     "build": "next build && tsc --project tsconfig.server.json",
-    "start": "next start",
-    "test": "jest",
+    "start": "NODE_ENV=production node dist/server/index.js",
+    "test": "cypress open",
+    "test:cmd": "cypress run",
     "cypress:open": "cypress open",
     "test:unit": "jest --config tests/jest.unit.config.js",
     "test:integration": "jest --config tests/jest.integration.config.js",
