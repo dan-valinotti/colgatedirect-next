@@ -19,6 +19,7 @@ interface Props {
   createCartError: boolean;
   getCartError: boolean;
   getCartRefetch: Function;
+  stopPolling: Function;
 }
 
 /**
@@ -30,6 +31,7 @@ const CartController: React.FC<Props> = ({
   cart, total, getTotal, clearCart, createCartLoading,
   getCartLoading, createCartError,
   getCartError, getCartRefetch,
+  stopPolling,
 }: Props) => {
   // State variable declaration
   const [open, setOpen] = useState<boolean>(false); // Open/close state of popup
@@ -39,6 +41,8 @@ const CartController: React.FC<Props> = ({
   const handleClick = (event) => {
     getCartRefetch()
       .then(() => {
+        stopPolling();
+        console.log('stop polling');
         if (!getCartLoading && !getCartError && cart) {
           // Recalculate total
           getTotal(cart.node.lineItems.edges);
@@ -80,7 +84,7 @@ const CartController: React.FC<Props> = ({
               edge="end"
               color="inherit"
               aria-label="cart"
-              onClick={handleOpen}
+              onClick={(e) => handleOpen(e)}
             >
               <ShoppingCartIcon />
             </IconButton>
