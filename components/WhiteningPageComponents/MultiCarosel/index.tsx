@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { Styled } from './_styles';
 import { MultiCaroselProps } from './_types';
 import Carousel from 'react-multi-carousel';
-import "react-multi-carousel/lib/styles.css";
+
 
 const MultiCarosel: FunctionComponent<MultiCaroselProps> = (props: MultiCaroselProps) => {
 

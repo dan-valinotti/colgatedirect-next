@@ -5,6 +5,11 @@ export interface TabPanelProps {
   value: any;
 }
 
+export interface TabItem {
+  title: string;
+  content: string;
+}
+
 export interface FullWidthTabsProps {
-  items: Array;
+  items: Array<TabItem>;
 }
