@@ -1,6 +1,6 @@
 // Has main cart data which is passed to CartController for the cart popup
 // and CartContentRow for the cart overview page
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useMutation, useQuery, useApolloClient } from '@apollo/react-hooks';
 import {
   CREATE_CART,
@@ -22,7 +22,7 @@ const CartData = (parentComponent) => {
   const [cartToken, setCartToken] = useState<string>(null); // Check for cart token
   // const [open, setOpen] = useState<boolean>(false); // Open/close state of popup
   // const [anchorEl, setAnchorEl] = React.useState(null); // Anchor element
-  const [total, setTotal] = useState<number>(0); // Total cart price
+  const [total, setTotal] = useState<number>(-1); // Total cart price
   const [totalLoading, setTotalLoading] = useState<boolean>(true);
   const [lineItems, setLineItems] = useState<object[]>([]);
   const client = useApolloClient();
@@ -50,10 +50,10 @@ const CartData = (parentComponent) => {
     loading: getCartLoading,
     error: getCartError,
     refetch: getCartRefetch,
+    stopPolling,
   } = useQuery(GET_CART_QUERY, {
     skip: !cartToken,
     variables,
-    pollInterval: 750,
   });
 
   // Mutation replaces items in cart
@@ -69,7 +69,7 @@ const CartData = (parentComponent) => {
   });
 
   // Loops through lineItems to get total price of cart
-  const getTotal = (items) => {
+  const getTotal = useCallback((items) => {
     let t = 0;
     setTotalLoading(true);
     if (items && items.length > 0) {
@@ -83,17 +83,23 @@ const CartData = (parentComponent) => {
     } else {
       setTotal(0);
     }
-  };
+  }, [setTotalLoading, setTotal]);
 
   const clearCart = () => {
     setLoading(true);
     setLineItems([]);
     replaceItems()
       .then((res) => {
-        setLoading(false);
-        getTotal([]);
-      })
-      .catch((error) => console.log(error));
+        getCartRefetch()
+          .then(() => {
+            setLoading(false);
+            getTotal([]);
+          })
+          .catch((error) => {
+            setLoading(false);
+            console.log(error);
+          });
+      });
   };
 
   // Function run to progressively check status of GraphQL queries
@@ -110,7 +116,6 @@ const CartData = (parentComponent) => {
         },
       });
     }
-
     // If localStorage exists and getCart did not give a response yet
     if (window.localStorage && !getCartData) {
       // Set 'shopifyCartToken' item in localStorage
@@ -118,8 +123,7 @@ const CartData = (parentComponent) => {
 
       // If value applied was undefined, create new token
       if (!window.localStorage.getItem('shopifyCartToken')) {
-        createCart()
-          .catch((error) => console.log(error));
+        createCart();
       }
     }
 
@@ -151,6 +155,7 @@ const CartData = (parentComponent) => {
     createCartError,
     createCartLoading,
     getCartData,
+    getTotal,
   ]); // If one of these variables is changed, useEffect() is run again.
 
   const cartProps = {
@@ -164,6 +169,7 @@ const CartData = (parentComponent) => {
     createCartError,
     getCartError,
     getCartRefetch,
+    stopPolling,
   };
   return (
     <>

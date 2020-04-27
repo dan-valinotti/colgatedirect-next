@@ -26,16 +26,6 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
   const variables: GetCartRequest = {
     checkoutId: cartToken,
   };
-  const {
-    data: getCartData,
-    loading: getCartLoading,
-    error: getCartError,
-    refetch: refetchCartData,
-  } = useQuery(GET_CART_QUERY, {
-    skip: !cartToken,
-    variables,
-    pollInterval: 750,
-  });
 
   // Query gets list of products and information
   const {
@@ -46,6 +36,15 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
     PRODUCTS_QUERY,
     { variables },
   );
+  const {
+    data: getCartData,
+    loading: getCartLoading,
+    error: getCartError,
+    refetch: refetchCartData,
+  } = useQuery(GET_CART_QUERY, {
+    skip: (!cartToken || productsLoading),
+    variables,
+  });
 
   // Mutation replaces items in cart
   const [replaceItems, {
@@ -97,8 +96,14 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
           // Set state variable lineItems to new list and run replacement query
           setLineItems(currentItems);
           replaceItems().then(() => {
-            setLoading(false);
-            console.log(lineItems);
+            refetchCartData()
+              .then(() => {
+                setLoading(false);
+              })
+              .catch((error) => {
+                console.log(error);
+                setLoading(false);
+              });
           }).catch((error) => console.log(error));
         })
         .catch((err) => {
@@ -132,8 +137,10 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
           setLineItems(currentItems);
           replaceItems().then(() => {
             setLoading(false);
-            console.log(lineItems);
-          }).catch((error) => console.log(error));
+          }).catch((error) => {
+            setLoading(false);
+            console.log(error);
+          });
         })
         .catch((err) => {
           console.log(err);
