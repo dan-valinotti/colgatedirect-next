@@ -11,14 +11,14 @@ export enum PageSize {
 
 type Props = {
   size: PageSize;
-  paddingTop: number;
+  paddingTop?: number;
   fullWidth?: boolean;
   children: ReactNode;
 };
 
 const PageContainer: FunctionComponent<Props> = ({
   size,
-  paddingTop,
+  paddingTop = 0,
   children,
   fullWidth = false,
 }: Props) => {
