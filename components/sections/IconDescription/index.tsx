@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Typography } from '@material-ui/core';
 import { Styled } from './_styles';
-import SectionContainer from '../../SectionContainer';
 import { IconConfig } from './_types';
 
 type Props = {

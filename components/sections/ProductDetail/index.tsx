@@ -1,19 +1,15 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import {
-  Button, CircularProgress, Dialog, DialogContent, Typography,
-} from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { useMutation, useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
 import {
-  LineItem, LineItemShort, TransformedProduct, getLineItems,
+  TransformedProduct, getLineItems,
 } from '../../PDPComponent/_types';
 import {
-  CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY, GetCartResponse, PriceV2,
+  CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY,
 } from '../../CartController/_types';
 import { Styled } from './_styles';
 import AddToCart from '../../PDPComponent/AddAndRemoveProduct';
-import { Metafield, ProductVariant } from '../../../models';
 
 
 type Props = {

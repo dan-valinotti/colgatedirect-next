@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useState, useEffect } from 'react';
-import { Grid, Typography, Fade } from '@material-ui/core';
+import React, { FunctionComponent } from 'react';
+import { Grid } from '@material-ui/core';
 import StarRatings from 'react-star-ratings';
 import { Styled } from './_styles';
 import { ProductDetailsProps } from './_types';
@@ -7,23 +7,25 @@ import DynamicTabs from '../../DynamicTabs';
 import AddToCart from '../../sections/AddToCart';
 
 
-const ColgateDescription: FunctionComponent<ProductDetailsProps> = (props: ProductDetailsProps) => {
+const ColgateDescription: FunctionComponent<ProductDetailsProps> = (
+  { details }: ProductDetailsProps,
+) => {
   const DynamicTabsItems = [
     {
       title: 'Description',
-      content: props.details.description,
+      content: details.description,
     },
     {
       title: 'Ingredients',
-      content: props.details.ingredients,
+      content: details.ingredients,
     },
   ];
   return (
     <Styled.ColgateBody>
-      <Styled.ColgateTitle>{props.details.title}</Styled.ColgateTitle>
+      <Styled.ColgateTitle>{details.title}</Styled.ColgateTitle>
       <Styled.DescriptionWrap>
         <Styled.SubtitleDiv>
-          <Styled.Ingredients>{props.details.subTitle}</Styled.Ingredients>
+          <Styled.Ingredients>{details.subTitle}</Styled.Ingredients>
           <Styled.RateDiv>
             <Styled.PrReviewSnippet>
               <StarRatings editable={false} name="rating" rating={4.25} starRatedColor="#d9291c" starDimension="20px" starSpacing="3px" />
@@ -31,7 +33,7 @@ const ColgateDescription: FunctionComponent<ProductDetailsProps> = (props: Produ
               <a href="#">Write a Review</a>
             </Styled.PrReviewSnippet>
             <Styled.WrapperAfterPay>
-              <Styled.WrapperAfterPayImg src={props.details.afterPayImgURL} />
+              <Styled.WrapperAfterPayImg src={details.afterPayImgURL} />
               <a href="https://www.afterpay.com/purchase-payment-agreement">ⓘ</a>
             </Styled.WrapperAfterPay>
           </Styled.RateDiv>
@@ -42,7 +44,7 @@ const ColgateDescription: FunctionComponent<ProductDetailsProps> = (props: Produ
                   <DynamicTabs items={DynamicTabsItems} />
                 </Grid>
                 <Grid item xs={12} md={6} spacing={1}>
-                  <AddToCart details={props.details} />
+                  <AddToCart details={details} />
                 </Grid>
               </Styled.DesGrid>
             </Grid>

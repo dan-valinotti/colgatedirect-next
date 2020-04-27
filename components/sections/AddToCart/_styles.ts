@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button, Radio, Select} from '@material-ui/core';
+import { Button, Radio, Select } from '@material-ui/core';
 
 const AddToCart = styled.div`
   margin-bottom: -280px;
@@ -16,12 +16,12 @@ const OnePurchaseTrigger = styled.div`
   border: 2px solid#D2D6DF;
   border-radius: 12px;
   :hover {
-		border: 2px solid#52ACDB;
-		cursor: pointer;
-	}
+    border: 2px solid#52ACDB;
+    cursor: pointer;
+  }
 `;
 const OneTimeText = styled.div`
-  display: flex; !important
+  display: flex !important;
   margin-bottom: .5em;
 `;
 const OneTimePurchaseText = styled.p`
@@ -45,7 +45,7 @@ const SubscribeText = styled.p`
   letter-spacing: -0.01em;
   line-height: 158%;
   font-size: 1em;
-  display: block; !important
+  display: block !important;
 `;
 const OneTimeRadio = styled(Radio)`
 &&& {
@@ -62,9 +62,9 @@ const SubscribeTrigger = styled.div`
   border: 2px solid#D2D6DF;
   border-radius: 12px;
   :hover {
-		border: 2px solid#52ACDB;
-		cursor: pointer;
-	}
+    border: 2px solid#52ACDB;
+    cursor: pointer;
+  }
 `;
 const SubText = styled.div`
   margin-bottom: .5em;

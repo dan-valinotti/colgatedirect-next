@@ -6,11 +6,13 @@ import {
 } from '@material-ui/core';
 import { TabPanelProps, FullWidthTabsProps } from './_types';
 
-function TabPanel(props: TabPanelProps) {
-  const {
-    children, value, index, ...other
-  } = props;
-
+function TabPanel({
+  children,
+  dir,
+  index,
+  value,
+  ...other
+}: TabPanelProps) {
   return (
     <Typography
       component="div"
@@ -68,7 +70,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const FullWidthTabs: FunctionComponent<FullWidthTabsProps> = (props: FullWidthTabsProps) => {
+const FullWidthTabs: FunctionComponent<FullWidthTabsProps> = ({ items }: FullWidthTabsProps) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -90,7 +92,7 @@ const FullWidthTabs: FunctionComponent<FullWidthTabsProps> = (props: FullWidthTa
         indicatorColor="primary"
         classes={{ indicator: classes.tabsIndicator }}
       >
-        {props.items.map((item, itemIndex) => (
+        {items.map((item, itemIndex) => (
           <Tab
             key={itemIndex}
             label={item.title}
@@ -103,7 +105,7 @@ const FullWidthTabs: FunctionComponent<FullWidthTabsProps> = (props: FullWidthTa
         index={value}
         onChangeIndex={handleChangeIndex}
       >
-        {props.items.map((item, itemIndex) => (
+        {items.map((item, itemIndex) => (
           <TabPanel
             value={value}
             key={itemIndex}
