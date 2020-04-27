@@ -140,8 +140,12 @@ const LoginForm: FunctionComponent = () => {
             value={email}
             error={email !== '' && !validator.isEmail(email)}
             onChange={(event) => updateEmail(event)}
+<<<<<<< HEAD
             onKeyDown={handleKeyPress}
             autoFocus
+=======
+            inputRef={(input) => input && input.focus()}
+>>>>>>> Install cypress + config, write first test
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start" style={{ width: '2rem' }}>
