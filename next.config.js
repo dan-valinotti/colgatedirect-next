@@ -1,8 +1,6 @@
 require('dotenv').config();
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
-const withCSS = require('@zeit/next-css');
-const withSass = require('@zeit/next-sass');
 const withImages = require('next-images');
 const withFonts = require('next-fonts');
 
@@ -66,12 +64,8 @@ const configureWebpack = (config, { dev }) => {
 
 
 module.exports = withImages(
-	withSass(
-		withCSS(
-			withFonts({
-				assetPrefix: 'http://localhost:3000',
-				webpack: configureWebpack
-			})
-		)
-	)
+	withFonts({
+		assetPrefix: 'http://localhost:3000',
+		webpack: configureWebpack
+	})
 );
