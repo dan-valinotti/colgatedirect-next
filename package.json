@@ -84,6 +84,7 @@
     "next": "9.3.4",
     "next-apollo": "^3.1.10",
     "next-cookies": "^2.0.3",
+    "next-fonts": "^1.1.0",
     "next-images": "^1.4.0",
     "next-routes": "^1.4.2",
     "node-fetch": "^2.6.0",
