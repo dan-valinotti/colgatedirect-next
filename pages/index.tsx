@@ -4,7 +4,6 @@ import { withTheme } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import ProductsGrid from '../components/ui/ProductsGrid';
 import { ProductSortKeys } from '../models';
-import withData from '../lib/apollo';
 import PageContainer, { PageSize } from '../views/layouts/PageContainer';
 import NavBar from '../components/ui/NavBar/NavBar';
 import HeroBanner from '../components/sections/HeroBanner';
@@ -123,4 +122,4 @@ function ProductsPage({
   );
 }
 
-export default withMuiApp(withTheme(withData(ProductsPage)));
+export default withMuiApp(withTheme(ProductsPage));

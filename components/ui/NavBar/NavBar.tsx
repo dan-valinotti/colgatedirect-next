@@ -20,6 +20,7 @@ import {
   COLLECTIONS_QUERY, Collections,
 } from './_types';
 import './_style.scss';
+import withData from '../../../lib/apollo';
 import CartData from '../../CartContent/CartData';
 import NavItems from './navItems.json';
 import NavBarItem from '../NavBarItem';
@@ -128,4 +129,4 @@ const NavBar: FunctionComponent<MainProps> = ({ window }: MainProps) => {
   );
 };
 
-export default NavBar;
+export default withData(NavBar);
