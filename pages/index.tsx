@@ -43,7 +43,7 @@ function ProductsPage({
         title="ShopSmiles by Colgate®"
         subtitle="The next generation of dental care is here."
         bgColor="#a2c1d3"
-        bgUrl="https://cdn.shopify.com/s/files/1/2524/0600/files/colgate_smile_like_you_mean_it2.jpg?v=1553710726"
+        bgUrl="/static/images/colgate_smile_like_you_mean_it2.jpg?v=1553710726"
         fontColor="#ffffff"
         textAlign="right"
         shopNow={false}
@@ -54,7 +54,7 @@ function ProductsPage({
           alignContent="right"
           backgroundColor="#fafafa"
           ctaButton={false}
-          imageUrl="https://cdn.shopify.com/s/files/1/2524/0600/files/colgate_the_future_looks_bright.png?v=1553689448"
+          imageUrl="/static/images/colgate_the_future_looks_bright.png?v=1553689448"
           title="The future looks bright"
           subtitle="That’s because we’ve been busy creating smarter, better devices to get your teeth shining brighter and whiter."
           alignWithEdge
@@ -68,7 +68,7 @@ function ProductsPage({
           ctaButtonText="Learn more"
           ctaOnClick={() => goToRoute('/products/magik')}
           headline="NEW! MAGIK TOOTHBRUSHING EXPERIENCE"
-          imageUrl="https://cdn.shopify.com/s/files/1/2524/0600/files/Copy_of_guard_posing.png?v=1556822784"
+          imageUrl="/static/images/Copy_of_guard_posing.png?v=1556822784"
           title="The augmented reality toothbrushing adventure your kids never knew they wanted."
           alignWithEdge={false}
           sectionColor="secondary"
@@ -81,7 +81,7 @@ function ProductsPage({
           ctaButtonText="Learn more"
           ctaOnClick={() => goToRoute('/products/teeth-whitening-led-device-kit')}
           headline="TEETH WHITENING DEVICE & TREATMENT"
-          imageUrl="https://cdn.shopify.com/s/files/1/2524/0600/files/colgate_teeth_whitening_device-b_180x.jpg?v=1553690080"
+          imageUrl="/static/images/colgate_teeth_whitening_device-b_180x.jpg?v=1553690080"
           title="Light up your life with our best, blue light, teeth whitening technology."
           alignWithEdge
           sectionColor="secondary"
@@ -94,7 +94,7 @@ function ProductsPage({
           ctaButtonText="Learn more"
           ctaOnClick={() => goToRoute('/products/smart-electric-toothbrush')}
           headline="SMART ELECTRIC TOOTHBRUSH"
-          imageUrl="https://cdn.shopify.com/s/files/1/2524/0600/files/colgate_smart_electric_toothbrush_540x.png?v=1553689447"
+          imageUrl="/static/images/colgate_smart_electric_toothbrush_540x.png?v=1553689447"
           title="Get a complete clean every time with our app-connected Smart Electric Toothbrush."
           alignWithEdge
           sectionColor="secondary"
@@ -106,7 +106,7 @@ function ProductsPage({
           ctaButton
           ctaButtonText="Let's Chat"
           ctaOnClick={() => goToRoute('/')}
-          imageUrl="https://cdn.shopify.com/s/files/1/2524/0600/files/colgate_smiles_are_contagious-b_900x.jpg?v=1553689901"
+          imageUrl="/static/images/colgate_smiles_are_contagious-b_900x.jpg?v=1553689901"
           title="Smiles are contagious"
           titleColor={theme.palette.primary.main}
           subtitle="Our dental care products are designed with real input from people like you. Send us your thoughts, feedback, and big ideas so we can keep creating."
