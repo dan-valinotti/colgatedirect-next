@@ -9,7 +9,7 @@ import NavBar from '../components/ui/NavBar/NavBar';
 import { theme } from '../views/theme';
 import { withMuiApp } from '../hocs/withMui';
 import LoginForm from '../components/LoginForm';
-import FooterNav from "../components/FooterNav";
+import FooterNav from '../components/FooterNav';
 
 const LoginPage = () => {
   const router = useRouter();
