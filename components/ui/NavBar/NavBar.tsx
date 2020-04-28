@@ -19,7 +19,7 @@ import styled from 'styled-components';
 import {
   COLLECTIONS_QUERY, Collections,
 } from './_types';
-import './_style.scss';
+import { Styled } from './_styles';
 import withData from '../../../lib/apollo';
 import CartData from '../../CartContent/CartData';
 import NavItems from './navItems.json';
@@ -93,15 +93,15 @@ const NavBar: FunctionComponent<MainProps> = ({ window }: MainProps) => {
                 Colgate Connect
               </HomeLink>
             </Link>
-            <div className="icon-btns-container">
+            <Styled.IconButtonsContainer>
               <AccountPopup />
               <CartData parentComponent="NavBar" />
-            </div>
+            </Styled.IconButtonsContainer>
           </Toolbar>
         </AppBar>
 
       </HideOnScroll>
-      <Drawer
+      <Styled.CustomDrawer
         className="navbar-drawer"
         variant="persistent"
         anchor="left"
@@ -124,7 +124,7 @@ const NavBar: FunctionComponent<MainProps> = ({ window }: MainProps) => {
           ))}
         </List>
         )}
-      </Drawer>
+      </Styled.CustomDrawer>
     </>
   );
 };
