@@ -50,7 +50,8 @@ describe('Register form test (field focused)', () => {
   // Test: Is "First Name" field focused on load?
   it('Focused first name field on load', () => {
     cy.visit('/');
-    cy.get('#account-btn').click();
+    cy.scrollTo(0,0); // NavBar hidden because view scrolls down, scroll to top
+    cy.get('.account-btn').click();
     cy.get('#login-btn').click();
     cy.get('a[href="/register"]').click();
     cy.focused()
