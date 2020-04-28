@@ -10,7 +10,7 @@ describe('AccountPopup component tests', () => {
   });
 
   it('Does component render properly?', () => {
-    cy.get('#account-popup')
+    cy.get('#popup-content')
       .should('be.visible');
   });
 
@@ -41,7 +41,8 @@ describe('AccountPopup component tests', () => {
       .should('include', '/');
     cy.get('#loading-dialog')
       .should('not.be.visible', { timeout: 5000 });
-    cy.get('#account-btn')
+    cy.scrollTo(0,0)  // NavBar hidden because view scrolls down, scroll to top
+    cy.get('.account-btn')
       .click() ;
     cy.get('#account-name')
       .should('contain', 'Dan Valinotti');

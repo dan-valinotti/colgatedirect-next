@@ -4,6 +4,7 @@ const Dotenv = require('dotenv-webpack');
 const withCSS = require('@zeit/next-css');
 const withSass = require('@zeit/next-sass');
 const withImages = require('next-images');
+const withFonts = require('next-fonts');
 
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
@@ -27,14 +28,23 @@ const configureWebpack = (config, { dev }) => {
 	}
 	
 	config.module.rules.push({
-		test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
-		use: {
+		test: /\.(eot|woff|woff2|otf|ttf|svg|png|jpg|gif)$/,
+		use: [
+			{
+				loader: 'emit-file-loader',
+				options: {
+					name: 'dist/[path][name].[ext]',
+				},
+			}, {
 			loader: 'url-loader',
-			options: {
-				limit: 100000,
-				name: '[name].[ext]'
+				options: {
+					limit: 100000,
+					outputPath: 'static/',
+					publicPath: '/_next/',
+					name: '[name].[ext]'
+				}
 			}
-		}
+		]
 	});
 	
 	config.module.rules.push({
@@ -55,10 +65,13 @@ const configureWebpack = (config, { dev }) => {
 };
 
 
-module.exports = withSass(
-	withCSS(
-		withImages({
-			webpack: configureWebpack
-		})
+module.exports = withImages(
+	withSass(
+		withCSS(
+			withFonts({
+				assetPrefix: 'http://localhost:3000',
+				webpack: configureWebpack
+			})
+		)
 	)
 );

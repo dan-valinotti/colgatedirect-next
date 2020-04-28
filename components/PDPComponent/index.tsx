@@ -64,7 +64,7 @@ const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
           { customPdps.products.includes(product.handle) ? (
             <CustomPDPController handle={product.handle} PDPprops={{ product }} />
           ) : (
-            <PageContainer size={PageSize.medium} paddingTop={45}>
+            <PageContainer size={PageSize.medium} paddingTop={90}>
               <Styled.PDPContainer>
                 <Styled.PDPMain>
                   <Link href="/">
