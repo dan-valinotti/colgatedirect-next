@@ -1,12 +1,14 @@
 import React from 'react';
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, {
+  Html, Head, Main, NextScript,
+} from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import { theme } from '../views/theme';
 
 export default class MyDocument extends Document {
   render() {
     return (
-      <html lang="en">
+      <Html lang="en">
         <Head>
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
@@ -14,18 +16,18 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
-          <script src="https://kit.fontawesome.com/8db316f1e4.js" crossOrigin="anonymous" />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/unbound-method
+// `getInitialProps` belongs to `_document` (instead of `_app`),
+// it's compatible with server-side generation (SSG).
 MyDocument.getInitialProps = async (ctx) => {
   // Resolution order
   //
@@ -54,7 +56,8 @@ MyDocument.getInitialProps = async (ctx) => {
   const originalRenderPage = ctx.renderPage;
 
   ctx.renderPage = () => originalRenderPage({
-    enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+    // enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+    enhanceComponent: (Component) => (props) => sheets.collect(<Component {...props} />),
   });
 
   const initialProps = await Document.getInitialProps(ctx);

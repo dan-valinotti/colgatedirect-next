@@ -1,10 +1,14 @@
-import App from 'next/app';
+import { AppProps } from 'next/app';
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
+import Head from 'next/head';
+import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import 'isomorphic-unfetch';
 import 'typeface-roboto';
 import 'react-multi-carousel/lib/styles.css';
 import '../styles/main.scss';
+import { theme } from '../views/theme';
 
 const GlobalStyle = createGlobalStyle`
 @font-face {
@@ -29,16 +33,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 `;
 
-interface Props {
-  Component: any;
-  pageProps: any;
+export default function MyApp({ Component, pageProps }: AppProps) {
+  React.useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+      jssStyles.parentElement?.removeChild(jssStyles);
+    }
+  }, []);
+
+  return (
+    <>
+      <Head>
+        <title>My page</title>
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+      </Head>
+      <ThemeProvider theme={theme}>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
+  );
 }
-
-const MyApp = ({ Component, pageProps }: Props) => (
-  <>
-    <GlobalStyle />
-    <Component {...pageProps} />
-  </>
-);
-
-export default MyApp;

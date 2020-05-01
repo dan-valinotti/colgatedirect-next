@@ -6,6 +6,7 @@ import {
 import featuredProducts from './featured.json';
 import { ProductSortKeys } from '../../../models';
 import { ProductsType, PRODUCTS_QUERY } from './_types';
+import withData from '../../../lib/apollo';
 import ProductThumbnail from '../ProductThumbnail';
 import { Styled } from './_styles';
 import FeaturedProducts from '../../sections/FeaturedProducts';
@@ -73,4 +74,4 @@ function ProductsGrid({ variables }: Props) {
   );
 }
 
-export default ProductsGrid;
+export default withData(ProductsGrid);
