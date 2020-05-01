@@ -3,7 +3,6 @@ import { theme } from '../../../views/theme';
 
 const Container = styled.div`
   display: flex;
-  width: 100%;
   height: 100%;
   position: relative;
   z-index: 2;
@@ -17,14 +16,12 @@ const Container = styled.div`
 const RootNavButton = styled.button`
   border: none;
   background: transparent;
-  width: 100%;
   height: 100%;
-  margin: auto 0;
-  padding: 0;
   text-align: center;
   position: relative;
   z-index: 2;
   background-color: #fafafa;
+  padding: 0.5rem 2rem;
 
   &:hover {
     cursor: pointer;
@@ -67,13 +64,16 @@ const SubItemContainer = styled.div`
 
 const SubItem = styled.button`
   width: 100%;
-  height: 3rem;
+  height: 4rem;
   background-color: #ffffff;
   border: none;
   text-align: center;
+  padding: 0 1.5rem;
   
   * {
     transition: color 0.25s ease-in-out;
+    text-transform: uppercase;
+    font-size: 0.8rem;
   }
 
   &:hover {

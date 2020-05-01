@@ -12,9 +12,10 @@ const FlexContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  padding: 0 1rem;
+  margin: 0 1rem;
+  background-color: #fafafa;
 `;
 
 const Logo = styled.div`
