@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import { TransitionGroup, Transition } from 'react-transition-group';
-import { useRouter } from 'next/router';
-
+import Link from 'next/link';
 import { Styled } from './_styles';
 import { TestInterface } from './_types';
 
@@ -18,7 +17,6 @@ type Props = {
 
 const NewNavBarItem: FunctionComponent<Props> = ({ title, handle, products }: Props) => {
   const [hover, setHover] = useState<boolean>(false);
-  const router = useRouter();
 
   const handleMouseOver = () => {
     setHover(true);
@@ -27,25 +25,23 @@ const NewNavBarItem: FunctionComponent<Props> = ({ title, handle, products }: Pr
     setHover(false);
   };
 
-  const onItemClick = (destination: string) => {
-    if (destination !== 'null') {
-      router.push(destination)
-        .catch((error) => console.log(error));
-    }
-  };
-
   return (
     <Styled.Container
       onFocus={handleMouseOver}
       onMouseOver={handleMouseOver}
       onMouseLeave={handleMouseLeave}
     >
-      <Styled.RootNavButton
-        hovered={hover}
-        onClick={() => onItemClick(handle)}
+      <Link
+        href={handle !== 'null' ? { pathname: '/product', query: { handle } } : '#'}
+        as={handle !== 'null' ? `/products/${handle}` : '#'}
+        passHref
       >
-        <h4>{title}</h4>
-      </Styled.RootNavButton>
+        <Styled.RootNavButton
+          hovered={hover}
+        >
+          <h4>{title}</h4>
+        </Styled.RootNavButton>
+      </Link>
       {products.length > 0 && (
         <Styled.SubItemContainer
           onFocus={handleMouseOver}
@@ -54,11 +50,16 @@ const NewNavBarItem: FunctionComponent<Props> = ({ title, handle, products }: Pr
           hovered={hover}
         >
           {products.map(({ title: subItemTitle, handle: subItemHandle }, key) => (
-            <Styled.SubItem
-              onClick={() => onItemClick(subItemHandle)}
+            <Link
+              href={{ pathname: '/product', query: { handle: subItemHandle } }}
+              as={`/products/${subItemHandle}`}
+              passHref
+              key={key}
             >
-              <span>{subItemTitle}</span>
-            </Styled.SubItem>
+              <Styled.SubItem>
+                <span>{subItemTitle}</span>
+              </Styled.SubItem>
+            </Link>
           ))}
         </Styled.SubItemContainer>
       )}

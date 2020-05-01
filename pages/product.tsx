@@ -14,6 +14,7 @@ import NewNavBar from '../components/ui/NewNavBar/index';
 const ProductPage = () => {
   const router = useRouter();
   const { handle }: ParsedUrlQuery = router.query;
+  console.log(router.query);
 
   return (
     <ThemeProvider theme={theme}>
