@@ -9,6 +9,7 @@ import PDPComponent from '../components/PDPComponent';
 import { theme } from '../views/theme';
 import { withMuiApp } from '../hocs/withMui';
 import FooterNav from '../components/FooterNav';
+import NewNavBar from '../components/ui/NewNavBar/index';
 
 const ProductPage = () => {
   const router = useRouter();
@@ -16,7 +17,7 @@ const ProductPage = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <NavBar />
+      <NewNavBar />
       <PDPComponent handle={handle.toString()} />
       <FooterNav />
     </ThemeProvider>
