@@ -22,6 +22,7 @@ const RootNavButton = styled.button`
   z-index: 2;
   background-color: #fafafa;
   padding: 0.5rem 2rem;
+  font-size: 0.6rem;
 
   &:hover {
     cursor: pointer;
@@ -39,6 +40,10 @@ const RootNavButton = styled.button`
       color 0.25s ease-in-out,
       background-color 0.25s ease-in-out;
     text-transform: uppercase;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 0.8rem;
   }
 `;
 

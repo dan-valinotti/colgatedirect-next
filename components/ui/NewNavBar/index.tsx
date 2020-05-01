@@ -4,6 +4,7 @@ import { Styled } from './_styles';
 import { TestInterface } from './_types';
 import NavItems from './navItems.json';
 import NewNavBarItem from '../NewNavBarItem';
+import NavIconButtons from '../NavIconButtons/index';
 
 type Props = {
   test?: string;
@@ -19,7 +20,7 @@ const NewNavBar: FunctionComponent<Props> = ({ test }: Props) => {
 
   return (
     <Styled.Container>
-      <Styled.FlexContainer>
+      <Styled.FlexContainer style={{ maxWidth: 1100, margin: '0 auto' }}>
         <Styled.LogoWrapper>
           <Styled.Logo onClick={toIndex}>
             <img src="/static/images/nav-logo.png" alt="ShopSmiles by Colgate" />
@@ -34,6 +35,9 @@ const NewNavBar: FunctionComponent<Props> = ({ test }: Props) => {
               key={key}
             />
           ))}
+        </Styled.FlexContainer>
+        <Styled.FlexContainer>
+          <NavIconButtons />
         </Styled.FlexContainer>
       </Styled.FlexContainer>
     </Styled.Container>
