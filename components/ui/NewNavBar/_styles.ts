@@ -4,12 +4,11 @@ const Container = styled.div`
   position: fixed;
   width: 100%;
   height: 4rem;
-  background-color: #ffffff;
+  background-color: #fafafa;
   z-index: 1;
 `;
 
 const FlexContainer = styled.div`
-  width: 100%;
   height: 100%;
   display: flex;
   justify-content: space-around;
@@ -24,6 +23,7 @@ const Logo = styled.div`
   top: 0;
   width: 12.5rem;
   height: 12.5rem;
+  z-index: 4;
 
   &:hover {
     ::before {
