@@ -4,6 +4,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { ThemeProvider } from '@material-ui/styles';
 import { withTheme } from '@material-ui/core';
 import Head from 'next/head';
+import NewNavBar from 'components/ui/NewNavBar';
 import withData from '../lib/apollo';
 import NavBar from '../components/ui/NavBar/NavBar';
 import { theme } from '../views/theme';
@@ -20,7 +21,7 @@ const LoginPage = () => {
         <title>Log In | ShopSmiles® by Colgate</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <NavBar />
+      <NewNavBar />
       <LoginForm />
       <FooterNav />
     </ThemeProvider>
