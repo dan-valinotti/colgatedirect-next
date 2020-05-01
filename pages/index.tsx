@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { withTheme } from '@material-ui/core';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 import ProductsGrid from '../components/ui/ProductsGrid';
 import { ProductSortKeys } from '../models';
 import PageContainer, { PageSize } from '../views/layouts/PageContainer';
@@ -9,8 +10,9 @@ import NavBar from '../components/ui/NavBar/NavBar';
 import HeroBanner from '../components/sections/HeroBanner';
 import { withMuiApp } from '../hocs/withMui';
 import FooterNav from '../components/FooterNav';
-import PageContentSection from '../components/sections/PageContentSection';
 import { theme } from '../views/theme';
+
+const PageContentSection = dynamic(import('../components/sections/PageContentSection'));
 
 interface Props {
   query: string;
