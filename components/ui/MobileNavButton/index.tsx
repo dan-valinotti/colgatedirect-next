@@ -12,18 +12,41 @@ type ItemProps = {
   title: string;
   handle: string;
   products: any[];
+  closeWindow: Function;
 };
 
-const NavItem: FunctionComponent<ItemProps> = ({ title, handle, products }: ItemProps) => (
-  <li>
-    <Link href="/">
+const NavItem: FunctionComponent<ItemProps> = ({
+  title,
+  handle,
+  products,
+  closeWindow,
+}: ItemProps) => (
+  <li
+    onClick={() => closeWindow()}
+    role="presentation"
+  >
+    <Link
+      href={handle !== 'null' ? { pathname: '/product', query: { handle } } : '#'}
+      as={handle !== 'null' ? `/products/${handle}` : '#'}
+      passHref
+    >
       {title}
     </Link>
     {products.length > 0 && (
       <ul>
         {products.map((subItem, key) => (
-          <li key={key}>
-            <Link href="/">
+          <li
+            key={key}
+            onClick={() => closeWindow()}
+            role="presentation"
+          >
+            <Link
+              href={subItem.handle !== 'null'
+                ? { pathname: '/product', query: { handle: subItem.handle } }
+                : '#'}
+              as={subItem.handle !== 'null' ? `/products/${subItem.handle}` : '#'}
+              passHref
+            >
               {subItem.title}
             </Link>
           </li>
@@ -58,6 +81,7 @@ const MobileNavButton: FunctionComponent<Props> = ({ onClick }: Props) => {
                 title={item.title}
                 handle={item.handle}
                 products={item.products}
+                closeWindow={toggleOpen}
               />
             ))}
           </Styled.NavItems>
