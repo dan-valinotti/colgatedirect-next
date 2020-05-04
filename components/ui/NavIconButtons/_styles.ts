@@ -24,15 +24,13 @@ const IconContainer = styled.div`
     z-index: 5;
     transition: color 0.25s ease-in-out;
 
+    :nth-child(2) {
+      padding-left: 1rem;
+    }
+
     &:hover {
       cursor: pointer;
       color: ${theme.palette.primary.main};
-    }
-  }
-  
-  @media screen and (max-width: 1023px) {
-    .fa-user-circle {
-      display: none;
     }
   }
 `;

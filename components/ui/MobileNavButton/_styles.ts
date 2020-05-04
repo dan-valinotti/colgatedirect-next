@@ -3,6 +3,7 @@ import { theme } from '../../../views/theme';
 
 const Container = styled.div`
   display: flex;
+  width: 3rem;
   @media screen and (min-width: 1024px) {
     display: none;
   }
