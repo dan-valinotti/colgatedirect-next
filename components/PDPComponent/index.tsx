@@ -67,16 +67,6 @@ const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
             <PageContainer size={PageSize.medium} paddingTop={90}>
               <Styled.PDPContainer>
                 <Styled.PDPMain>
-                  <Link href="/">
-                    <Button
-                      id="back-btn"
-                      variant="outlined"
-                      color="secondary"
-                      style={{ marginLeft: 90 }}
-                    >
-                      Back
-                    </Button>
-                  </Link>
                   <ProductDetail product={product} />
                 </Styled.PDPMain>
               </Styled.PDPContainer>
