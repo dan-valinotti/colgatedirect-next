@@ -3,12 +3,12 @@ import { Styled } from './_styles';
 import { TestInterface } from './_types';
 
 type Props = {
-  test?: string;
+  mobileOpen: boolean;
 };
 
-const NavIconButtons: FunctionComponent<Props> = ({ test }: Props) => (
+const NavIconButtons: FunctionComponent<Props> = ({ mobileOpen }: Props) => (
   <Styled.Container>
-    <Styled.IconContainer>
+    <Styled.IconContainer mobileOpen={mobileOpen}>
       <i className="far fa-user-circle" />
       <i className="fas fa-shopping-cart" />
     </Styled.IconContainer>
