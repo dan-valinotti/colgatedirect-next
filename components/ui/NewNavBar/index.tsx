@@ -1,19 +1,15 @@
 import React, { FunctionComponent } from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Styled } from './_styles';
-import { TestInterface } from './_types';
 import NavItems from './navItems.json';
 import NewNavBarItem from '../NewNavBarItem';
 import NavIconButtons from '../NavIconButtons/index';
+import MobileNavButton from '../MobileNavButton/index';
 
-type Props = {
-  test?: string;
-};
-
-const NewNavBar: FunctionComponent<Props> = ({ test }: Props) => (
+const NewNavBar: FunctionComponent = () => (
   <Styled.Container>
-    <Styled.FlexContainer style={{ maxWidth: 1100, margin: '0 auto' }}>
+    <Styled.MainContainer>
+      <MobileNavButton />
       <Styled.LogoWrapper>
         <Styled.Logo>
           <Link href="/">
@@ -21,7 +17,7 @@ const NewNavBar: FunctionComponent<Props> = ({ test }: Props) => (
           </Link>
         </Styled.Logo>
       </Styled.LogoWrapper>
-      <Styled.FlexContainer>
+      <Styled.NavItemsContainer>
         {NavItems.navigationItems.map(({ title, handle, products }, key) => (
           <NewNavBarItem
             title={title}
@@ -30,11 +26,11 @@ const NewNavBar: FunctionComponent<Props> = ({ test }: Props) => (
             key={key}
           />
         ))}
-      </Styled.FlexContainer>
+      </Styled.NavItemsContainer>
       <Styled.FlexContainer>
         <NavIconButtons />
       </Styled.FlexContainer>
-    </Styled.FlexContainer>
+    </Styled.MainContainer>
   </Styled.Container>
 );
 
