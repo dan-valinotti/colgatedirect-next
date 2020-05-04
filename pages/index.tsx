@@ -3,10 +3,10 @@ import Head from 'next/head';
 import { withTheme } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
+import NewNavBar from 'components/ui/NewNavBar';
 import ProductsGrid from '../components/ui/ProductsGrid';
 import { ProductSortKeys } from '../models';
 import PageContainer, { PageSize } from '../views/layouts/PageContainer';
-import NavBar from '../components/ui/NavBar/NavBar';
 import HeroBanner from '../components/sections/HeroBanner';
 import { withMuiApp } from '../hocs/withMui';
 import FooterNav from '../components/FooterNav';
@@ -40,7 +40,7 @@ function ProductsPage({
         <title>Products</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <NavBar />
+      <NewNavBar />
       <HeroBanner
         title="ShopSmiles by Colgate®"
         subtitle="The next generation of dental care is here."
