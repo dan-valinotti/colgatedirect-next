@@ -22,7 +22,7 @@ const NavItem: FunctionComponent<ItemProps> = ({
   closeWindow,
 }: ItemProps) => (
   <li
-    onClick={() => closeWindow()}
+    onClick={() => (products.length === 0 ? closeWindow() : null)}
     role="presentation"
   >
     <Link
