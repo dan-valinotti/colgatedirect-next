@@ -1,8 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
-import { TransitionGroup, Transition } from 'react-transition-group';
 import Link from 'next/link';
 import { Styled } from './_styles';
-import { TestInterface } from './_types';
 
 type SubItem = {
   title: string;

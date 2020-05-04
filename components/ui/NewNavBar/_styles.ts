@@ -8,12 +8,26 @@ const Container = styled.div`
   z-index: 1;
 `;
 
+const MainContainer = styled.div`
+  height: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 2rem;
+  background-color: #fafafa;
+
+  @media screen and (max-width: 1024px) {
+    justify-content: space-between;
+  }
+`;
+
 const FlexContainer = styled.div`
   height: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 0 1rem;
   background-color: #fafafa;
 `;
 
@@ -57,7 +71,7 @@ const Logo = styled.div`
 `;
 
 const LogoWrapper = styled.div`
-  width: 200px;
+  width: 175px;
   height: 100%;
   position: relative;
   text-align: center;
@@ -67,9 +81,24 @@ const LogoWrapper = styled.div`
   }
 `;
 
+const NavItemsContainer = styled.div`
+  height: 100%;
+  display: none;
+  margin: 0 1rem;
+  background-color: #fafafa;
+
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+`;
+
 export const Styled = {
   Container,
+  MainContainer,
   FlexContainer,
   LogoWrapper,
   Logo,
+  NavItemsContainer,
 };

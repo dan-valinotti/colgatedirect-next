@@ -3,8 +3,12 @@ import { theme } from '../../../views/theme';
 
 const Container = styled.div`
   display: flex;
-  width: 8rem;
+  width: min-content;
   height: 100%;
+
+  @media screen and (min-width: 1024px) {
+    width: 8rem;
+  }
 `;
 
 const IconContainer = styled.div`
@@ -22,6 +26,12 @@ const IconContainer = styled.div`
     &:hover {
       cursor: pointer;
       color: ${theme.palette.primary.main};
+    }
+  }
+  
+  @media screen and (max-width: 1024px) {
+    .fa-user-circle {
+      display: none;
     }
   }
 `;
