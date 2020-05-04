@@ -25,10 +25,10 @@ type Props = {
  * @visibleName CTAButton
  */
 const CTAButton: FunctionComponent<Props> = ({
-  id, color, text, onClick,
+  id, color, text, onClick = () => '',
 }: Props) => (
   <Styled.Container>
-    <Styled.Button id={id} color={color} onClick={() => onClick()}>
+    <Styled.Button id={id} color={color} onClick={onClick}>
       <Styled.ButtonText>
         {text}
       </Styled.ButtonText>
