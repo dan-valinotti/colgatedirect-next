@@ -41,17 +41,24 @@ const AccountButtonContainer = styled.div`
 `;
 
 const AccountPopupContainer = styled.div`
-  position: absolute;
+  position: fixed;
   right: 0;
-  top: 200%;
+  top: 10%;
   transition: all 0.25s ease-in-out;
   z-index: 1;
-  transform: ${(props) => (props.open ? 'translateY(0) scaleY(1)' : 'translateY(-100%) scaleY(0)')};
+  transform: ${(props) => (props.open ? 'translateX(0) scaleX(1)' : 'translateX(100%) scaleX(0)')};
   opacity: ${(props) => (props.open ? '1' : '0')};
   width: 450px;
+  max-width: 100vw;
   height: 300px;
   background-color: #fafafa;
   box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.33);
+
+  @media screen and (min-width: 1024px) {
+    position: absolute;
+    top: 200%;
+    transform: ${(props) => (props.open ? 'translateY(0) scaleY(1)' : 'translateY(-100%) scaleY(0)')};
+  }
 `;
 
 const AccountPopup = styled.div`
