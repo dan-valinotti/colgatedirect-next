@@ -46,11 +46,12 @@ const AccountPopupContainer = styled.div`
   top: 200%;
   transition: all 0.25s ease-in-out;
   z-index: 1;
-  transform: ${(props) => (props.open ? 'translateY(0)' : 'translateY(-100%)')};
+  transform: ${(props) => (props.open ? 'translateY(0) scaleY(1)' : 'translateY(-100%) scaleY(0)')};
   opacity: ${(props) => (props.open ? '1' : '0')};
-  width: 400px;
-  height: 150px;
+  width: 450px;
+  height: 200px;
   background-color: #fafafa;
+  box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.33);
 `;
 
 const AccountPopup = styled.div`
@@ -62,6 +63,10 @@ const AccountPopup = styled.div`
   justify-content: center;
   align-items: center;
   font-family: 'Colgate Ready', serif;
+
+  #login-btn {
+    margin-bottom: 1rem;
+  }
 `;
 
 export const Styled = {
