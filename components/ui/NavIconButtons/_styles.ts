@@ -20,7 +20,8 @@ const IconContainer = styled.div`
 
   i {
     font-size: 1.25rem;
-    color: rgba(0,0,0,0.8);
+    color: ${(props) => (props.mobileOpen ? '#fafafa' : 'rgba(0,0,0,0.8)')};
+    z-index: 5;
     transition: color 0.25s ease-in-out;
 
     &:hover {

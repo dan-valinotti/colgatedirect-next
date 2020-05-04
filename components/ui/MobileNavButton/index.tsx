@@ -5,7 +5,7 @@ import { TestInterface } from './_types';
 import NavItems from '../NewNavBar/navItems.json';
 
 type Props = {
-  test?: string;
+  onClick?: Function;
 };
 
 type ItemProps = {
@@ -33,11 +33,12 @@ const NavItem: FunctionComponent<ItemProps> = ({ title, handle, products }: Item
   </li>
 );
 
-const MobileNavButton: FunctionComponent<Props> = ({ test }: Props) => {
+const MobileNavButton: FunctionComponent<Props> = ({ onClick }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
 
   console.log(open);
   const toggleOpen = () => {
+    if (onClick) onClick();
     setOpen(!open);
   };
 
