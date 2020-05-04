@@ -59,7 +59,6 @@ const NavItem: FunctionComponent<ItemProps> = ({
 const MobileNavButton: FunctionComponent<Props> = ({ onClick }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
 
-  console.log(open);
   const toggleOpen = () => {
     if (onClick) onClick();
     setOpen(!open);

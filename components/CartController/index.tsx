@@ -42,7 +42,6 @@ const CartController: React.FC<Props> = ({
     getCartRefetch()
       .then(() => {
         stopPolling();
-        console.log('stop polling');
         if (!getCartLoading && !getCartError && cart) {
           // Recalculate total
           getTotal(cart.node.lineItems.edges);

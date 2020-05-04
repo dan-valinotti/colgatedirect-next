@@ -31,7 +31,6 @@ type Props = {
  */
 const CartContent: React.FC<Props> = ({ cart, total, clearCart }: Props) => (
   <>
-    {console.log(cart.node.lineItems.edges)}
     {cart && (
       <Styled.Container>
         <Typography variant="h6">Cart</Typography>
@@ -40,7 +39,6 @@ const CartContent: React.FC<Props> = ({ cart, total, clearCart }: Props) => (
             <ListItem key={key}>
               <Styled.ItemContainer>
                 <Typography variant="h6" className="itemName">{item.node.title}</Typography>
-                {console.log(item)}
                 <div className="quantityButton">
                   <AddToCart
                     variantId={item.node.variant.id}
