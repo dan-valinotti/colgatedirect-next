@@ -49,7 +49,7 @@ const AccountPopupContainer = styled.div`
   transform: ${(props) => (props.open ? 'translateY(0) scaleY(1)' : 'translateY(-100%) scaleY(0)')};
   opacity: ${(props) => (props.open ? '1' : '0')};
   width: 450px;
-  height: 200px;
+  height: 300px;
   background-color: #fafafa;
   box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.33);
 `;
@@ -69,10 +69,45 @@ const AccountPopup = styled.div`
   }
 `;
 
+const AccountDetails = styled.div`
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 20% 40% 40%;
+
+  h3 {
+    font-weight: bold;
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  * {
+    text-align: center;
+    font-family: 'Colgate Ready', serif;
+  }
+
+  div {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      margin-bottom: 1rem;
+      :first-child {
+      }
+    }
+  }
+`;
+
 export const Styled = {
   Container,
   IconContainer,
   AccountButtonContainer,
   AccountPopupContainer,
   AccountPopup,
+  AccountDetails,
 };

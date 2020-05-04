@@ -5,6 +5,7 @@ import NavItems from './navItems.json';
 import NewNavBarItem from '../NewNavBarItem';
 import NavIconButtons from '../NavIconButtons/index';
 import MobileNavButton from '../MobileNavButton/index';
+import withData from '../../../lib/apollo';
 
 const NewNavBar: FunctionComponent = () => {
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
@@ -42,4 +43,4 @@ const NewNavBar: FunctionComponent = () => {
   );
 };
 
-export default NewNavBar;
+export default withData(NewNavBar);
