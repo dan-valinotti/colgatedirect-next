@@ -13,6 +13,7 @@ import {
 import withData from '../../lib/apollo';
 import CartController from '../CartController';
 import CartContentRow from '../CartContentRow/CartContentRow';
+import CartPopup from '../ui/CartPopup/index';
 
 
 // Container component for the Cart that handles checking if a cart exists,
@@ -175,6 +176,7 @@ const CartData = (parentComponent) => {
     <>
       {parentComponent.parentComponent === 'NavBar' && cartProps.cart && <CartController {...cartProps} />}
       {parentComponent.parentComponent === 'CartOverview' && cartProps.cart && <CartContentRow {...cartProps} />}
+      {parentComponent.parentComponent === 'NavIconButtons' && cartProps.cart && <CartPopup {...cartProps} />}
     </>
 
   );
