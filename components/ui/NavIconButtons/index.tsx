@@ -46,8 +46,8 @@ const AccountButton: FunctionComponent = () => {
   }, [accessToken, refetchCustomerData]);
 
   return (
-    <Styled.AccountButtonContainer onClick={toggleOpen}>
-      <i className="far fa-user-circle" />
+    <Styled.AccountButtonContainer>
+      <i className="far fa-user-circle" role="presentation" onClick={toggleOpen} />
       <Styled.AccountPopupContainer open={open}>
         <Styled.AccountPopup>
           {getCustomerData ? (
