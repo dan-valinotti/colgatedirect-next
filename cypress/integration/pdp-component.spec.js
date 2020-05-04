@@ -32,10 +32,11 @@ describe('PDPComponent Test Suite', () => {
       .should('be.visible');
   });
 
-  it('Does the "Back" button redirect to "/"?', () => {
-    cy.get('#back-btn')
-      .click();
-    cy.url()
-      .should('equal', 'http://localhost:3000/');
-  });
+  // Removed - going to replace or remove back button 
+  // it('Does the "Back" button redirect to "/"?', () => {
+  //   cy.get('#back-btn')
+  //     .click();
+  //   cy.url()
+  //     .should('equal', 'http://localhost:3000/');
+  // });
 });

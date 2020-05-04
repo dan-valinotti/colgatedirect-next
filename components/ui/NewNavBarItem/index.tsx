@@ -28,10 +28,11 @@ const NewNavBarItem: FunctionComponent<Props> = ({ title, handle, products }: Pr
       onFocus={handleMouseOver}
       onMouseOver={handleMouseOver}
       onMouseLeave={handleMouseLeave}
+      className={handle !== '#' ? handle : title.toLowerCase().replace(' ', '-')}
     >
       <Link
-        href={handle !== 'null' ? { pathname: '/product', query: { handle } } : '#'}
-        as={handle !== 'null' ? `/products/${handle}` : '#'}
+        href={handle !== '#' ? { pathname: '/product', query: { handle } } : '#'}
+        as={handle !== '#' ? `/products/${handle}` : '#'}
         passHref
       >
         <Styled.RootNavButton

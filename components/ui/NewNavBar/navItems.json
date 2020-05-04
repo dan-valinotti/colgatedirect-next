@@ -2,7 +2,7 @@
   "navigationItems": [
     {
       "title": "Teeth Whitening",
-      "handle": "null",
+      "handle": "#",
       "products": [
         {
           "title": "Teeth Whitening Device & Kit",
@@ -14,7 +14,7 @@
       ]
     }, {
       "title": "Smart Toothbrushes",
-      "handle": "null",
+      "handle": "#",
       "products": [
         {
           "title": "Smart Electric Toothbrush",
