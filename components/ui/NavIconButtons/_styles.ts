@@ -30,7 +30,7 @@ const IconContainer = styled.div`
     }
   }
   
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1023px) {
     .fa-user-circle {
       display: none;
     }
