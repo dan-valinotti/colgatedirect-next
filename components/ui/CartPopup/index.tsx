@@ -56,9 +56,9 @@ const CartPopup: FunctionComponent<Props> = ({
   }, [cart, getTotal]);
 
   return (
-    <Styled.AccountButtonContainer>
+    <Styled.CartButtonContainer>
       <i className="fas fa-shopping-cart" role="presentation" onClick={toggleOpen} />
-      <Styled.AccountPopupContainer open={open}>
+      <Styled.CartPopupContainer open={open}>
         <Styled.CartPopup>
           {cart && (
             <CartContent
@@ -68,8 +68,8 @@ const CartPopup: FunctionComponent<Props> = ({
             />
           )}
         </Styled.CartPopup>
-      </Styled.AccountPopupContainer>
-    </Styled.AccountButtonContainer>
+      </Styled.CartPopupContainer>
+    </Styled.CartButtonContainer>
   );
 };
 

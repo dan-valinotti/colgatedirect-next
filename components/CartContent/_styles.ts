@@ -3,9 +3,10 @@ import { ListItem } from '@material-ui/core';
 
 const Container = styled.div`
   padding: 15px;
-  width: min-content;
-  @media only screen and (max-width: 500px) {
-    height: 50%;
+  width: 100%;
+
+  * {
+    max-width: 100%;
   }
 `;
 
@@ -46,7 +47,7 @@ const ItemContainer = styled.div`
     .quantityButton {
       grid-column: 1;
       grid-row: 2 / 2;
-      align-text: left:
+      align-text: left
     }
     .itemPrice {
       grid-column: 2;
