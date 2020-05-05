@@ -178,7 +178,7 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
           <Button variant="outlined" onClick={() => addToCartFunc()}>+</Button>
           <Button variant="outlined" disabled>
             <Typography variant="body2" style={{ color: 'black' }}>
-              {quantity}{console.log(variantId)}
+              {quantity}
             </Typography>
           </Button>
           <Button variant="outlined" onClick={() => removeFromCart()}>-</Button>

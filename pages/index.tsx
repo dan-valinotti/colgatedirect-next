@@ -3,16 +3,16 @@ import Head from 'next/head';
 import { withTheme } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
+import NavBar from 'components/ui/NavBar';
 import ProductsGrid from '../components/ui/ProductsGrid';
 import { ProductSortKeys } from '../models';
 import PageContainer, { PageSize } from '../views/layouts/PageContainer';
-import NavBar from '../components/ui/NavBar/NavBar';
 import HeroBanner from '../components/sections/HeroBanner';
 import { withMuiApp } from '../hocs/withMui';
 import FooterNav from '../components/FooterNav';
 import { theme } from '../views/theme';
-
-const PageContentSection = dynamic(import('../components/sections/PageContentSection'));
+import PageContentSection from '../components/sections/PageContentSection';
+import { withApollo } from '../lib/apollo';
 
 interface Props {
   query: string;
@@ -124,4 +124,4 @@ function ProductsPage({
   );
 }
 
-export default withMuiApp(withTheme(ProductsPage));
+export default withApollo({ ssr: true })(withMuiApp(withTheme(ProductsPage)));

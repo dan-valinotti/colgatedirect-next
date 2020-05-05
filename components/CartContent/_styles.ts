@@ -3,9 +3,23 @@ import { ListItem } from '@material-ui/core';
 
 const Container = styled.div`
   padding: 15px;
-  width: min-content;
-  @media only screen and (max-width: 500px) {
-    height: 50%;
+  width: 100%;
+
+  * {
+    max-width: 100%;
+    font-family: 'Colgate Ready', serif;
+  }
+  
+  h6 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  ul > li {
+    height: min-content;
+    > div {
+      height: 100%;
+    }
   }
 `;
 
@@ -14,13 +28,17 @@ const ItemContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 95vw;
   height: 3rem;
-  min-width: 500px;
   
   h6 {
-    font-size: 1rem;
+    font-size: 0.9rem;
     flex-basis: 15%;
     text-align: right;
+    
+    @media screen and (min-width: 375px) {
+      font-size: 1rem;
+    }
   }
   
   h6:first-child {
@@ -31,14 +49,17 @@ const ItemContainer = styled.div`
   div {
     flex-basis: 15%;
   }
+  
+  @media screen and (min-width: 1024px) {
+    min-width: 500px; 
+  }
 
   @media only screen and (max-width: 500px) {
-    display: grid; 
-    min-width: 400px;
-    grid-gap: 1 em;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-columns: 200px;
-    align-items: left;
+    display: grid;
+    width: 100%; 
+    grid-row-gap: 1em;
+    grid-template-columns: 75% 25%;
+    align-items: flex-start;
     justify-content: left;
     margin-bottom: 35px;
 
@@ -46,12 +67,13 @@ const ItemContainer = styled.div`
     .quantityButton {
       grid-column: 1;
       grid-row: 2 / 2;
-      align-text: left:
+      text-align: left
     }
     .itemPrice {
       grid-column: 2;
-      grid-row: 2 / 2;
-      align-text: right;
+      grid-row: 1 / 2;
+      text-align: right;
+      font-weight: bold;
     }
     .itemName{
       grid-column: 1;
@@ -77,7 +99,7 @@ const TotalContainer = styled.div`
 
 const CartListItem = styled.div`
   padding-top: 15px;
-
+  width: 100%;
   border-top: 1px solid rgba(0,0,0,0.4);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -90,8 +112,18 @@ const CartListItem = styled.div`
     grid-column: 2 / 2;
     text-align: right;
   }
-  @media only screen and (max-width: 400px) {
-    width: 70%;
+`;
+
+const ButtonContainer = styled.div`
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  button {
+    width: 100%;
+    margin-bottom: 0.5rem;
   }
 `;
 
@@ -100,4 +132,5 @@ export const Styled = {
   ItemContainer,
   TotalContainer,
   CartListItem,
+  ButtonContainer,
 };
