@@ -25,10 +25,8 @@ const IconContainer = styled.div`
 
   i {
     font-size: 1.25rem;
-    color: ${(props) => (props.mobileOpen ? '#fafafa' : 'rgba(0,0,0,0.8)')};
     position: relative;
-    z-index: 5;
-    transition: color 0.25s ease-in-out;
+    z-index: 3;
 
     :nth-child(2) {
       padding-left: 1rem;
