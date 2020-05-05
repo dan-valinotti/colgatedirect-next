@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState } from 'react';
 import Link from 'next/link';
 import { Styled } from './_styles';
 import { TestInterface } from './_types';
-import NavItems from '../NewNavBar/navItems.json';
+import NavItems from '../NavBar/navItems.json';
 
 type Props = {
   onClick?: Function;

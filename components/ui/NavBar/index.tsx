@@ -2,11 +2,11 @@ import React, { FunctionComponent, useState } from 'react';
 import Link from 'next/link';
 import { Styled } from './_styles';
 import NavItems from './navItems.json';
-import NewNavBarItem from '../NewNavBarItem';
+import NavBarItem from '../NavBarItem';
 import NavIconButtons from '../NavIconButtons/index';
 import MobileNavButton from '../MobileNavButton/index';
 
-const NewNavBar: FunctionComponent = () => {
+const NavBar: FunctionComponent = () => {
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
 
   const toggleMobileOpen = () => {
@@ -26,7 +26,7 @@ const NewNavBar: FunctionComponent = () => {
         </Styled.LogoWrapper>
         <Styled.NavItemsContainer id="navigation-items">
           {NavItems.navigationItems.map(({ title, handle, products }, key) => (
-            <NewNavBarItem
+            <NavBarItem
               title={title}
               handle={handle}
               products={products}
@@ -42,4 +42,4 @@ const NewNavBar: FunctionComponent = () => {
   );
 };
 
-export default NewNavBar;
+export default NavBar;
