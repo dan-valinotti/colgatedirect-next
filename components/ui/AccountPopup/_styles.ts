@@ -38,6 +38,15 @@ const IconContainer = styled.div`
 
 const AccountButtonContainer = styled.div`
   position: relative;
+  padding-right: 1rem;
+
+  @media screen and (max-width: 374px) {
+    display: none;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding-right: 0;
+  }
 `;
 
 const AccountPopupContainer = styled.div`

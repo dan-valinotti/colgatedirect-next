@@ -36,11 +36,11 @@ const IconContainer = styled.div`
   }
 `;
 
-const AccountButtonContainer = styled.div`
+const CartButtonContainer = styled.div`
   position: relative;
 `;
 
-const AccountPopupContainer = styled.div`
+const CartPopupContainer = styled.div`
   position: fixed;
   right: 0;
   top: 10%;
@@ -48,8 +48,8 @@ const AccountPopupContainer = styled.div`
   z-index: 1;
   transform: ${(props) => (props.open ? 'translateX(0) scaleX(1)' : 'translateX(100%) scaleX(0)')};
   opacity: ${(props) => (props.open ? '1' : '0')};
-  width: 450px;
-  min-width: min-content;
+  width: 100%;
+  min-width: 320px;
   max-width: 100vw;
   height: 300px;
   background-color: #fafafa;
@@ -77,7 +77,7 @@ const CartPopup = styled.div`
   }
 `;
 
-const AccountDetails = styled.div`
+const CartDetails = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
@@ -114,8 +114,8 @@ const AccountDetails = styled.div`
 export const Styled = {
   Container,
   IconContainer,
-  AccountButtonContainer,
-  AccountPopupContainer,
+  CartButtonContainer,
+  CartPopupContainer,
   CartPopup,
-  AccountDetails,
+  CartDetails,
 };
