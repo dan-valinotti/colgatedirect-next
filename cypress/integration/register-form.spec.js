@@ -2,6 +2,8 @@
 * RegisterForm Test Suite
 * */
 describe('Register form tests', () => {
+  // Note: Cypress has a weird behavior with scrolling that causes
+  //  most elements to be hidden behind the nav bar. Used { force: true } to fix
   beforeEach(() => {
     cy.visit('/register');
   });
@@ -15,12 +17,15 @@ describe('Register form tests', () => {
   // Test: Is email input validation working?
   it('Email validation tests', () => {
     // Correct email input
-    cy.get('#email').type('test@test.com');
+    cy.get('#email')
+      .type('test@test.com',{ force: true });
     cy.get('#email-label')
       .should('not.have.class', 'Mui-error');
 
     // Incorrect email input
-    cy.get('#email').clear().type('test@test');
+    cy.get('#email')
+      .clear({ force: true })
+      .type('test@test',{ force: true });
     cy.get('#email-label')
       .should('have.class', 'Mui-error');
   });
@@ -28,17 +33,25 @@ describe('Register form tests', () => {
   // Test: Is form validated correctly before submission?
   it('Test full form validation', () => {
     // Fields missing values
-    cy.get('#lastname').type('TestLast');
-    cy.get('#email').type('test@test.com');
-    cy.get('#email').type('Testing123');
-    cy.get('#form-submit').click();
+    cy.get('#lastname')
+      .type('TestLast',{ force: true });
+    cy.get('#email')
+      .type('test@test.com',{ force: true });
+    cy.get('#email')
+      .type('Testing123',{ force: true });
+    cy.get('#form-submit')
+      .click({ force: true });
     cy.get('[class*="MuiAlert-message"]')
       .should('contain','Please correctly fill out all fields.');
 
     // Invalid email input
-    cy.get('#firstname').type('TestFirst');
-    cy.get('#email').clear().type('test@test');
-    cy.get('#form-submit').click();
+    cy.get('#firstname')
+      .type('TestFirst',{ force: true });
+    cy.get('#email')
+      .clear({ force: true })
+      .type('test@test',{ force: true });
+    cy.get('#form-submit')
+      .click({ force: true });
     cy.get('[class*="MuiAlert-message"]')
       .should('contain', 'Please correctly fill out all fields.');
   });
@@ -51,9 +64,12 @@ describe('Register form test (field focused)', () => {
   it('Focused first name field on load', () => {
     cy.visit('/');
     cy.scrollTo(0,0); // NavBar hidden because view scrolls down, scroll to top
-    cy.get('.account-btn').click();
-    cy.get('#login-btn').click();
-    cy.get('a[href="/register"]').click();
+    cy.get('.account-btn')
+      .click({ force: true });
+    cy.get('#login-btn')
+      .click({ force: true });
+    cy.get('a[href="/register"]')
+      .click({ force: true });
     cy.focused()
       .should('have.id', 'firstname');
   });
