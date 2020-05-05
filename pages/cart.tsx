@@ -2,11 +2,10 @@ import React from 'react';
 import Head from 'next/head';
 import { Typography, withTheme } from '@material-ui/core';
 import NewNavBar from 'components/ui/NewNavBar';
-import withData from '../lib/apollo';
 import CartData from '../components/CartContent/CartData';
 import PageContainer, { PageSize } from '../views/layouts/PageContainer';
 import { withMuiApp } from '../hocs/withMui';
-
+import { withApollo } from '../lib/apollo';
 
 const CartPage = () => (
   <>
@@ -22,4 +21,4 @@ const CartPage = () => (
   </>
 );
 
-export default withMuiApp(withTheme(withData(CartPage)));
+export default withMuiApp(withTheme(withApollo({ ssr: true })(CartPage)));

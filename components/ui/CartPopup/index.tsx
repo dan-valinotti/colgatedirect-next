@@ -34,16 +34,19 @@ const CartPopup: FunctionComponent<Props> = ({
   const [open, setOpen] = useState<boolean>(false);
   // Handler functions for IconButton
   const toggleOpen = () => {
-    getCartRefetch()
-      .then(() => {
-        stopPolling();
-        if (!getCartLoading && !getCartError && cart) {
-          // Recalculate total
-          getTotal(cart.node.lineItems.edges);
-          setOpen(!open);
-        }
-      })
-      .catch((error) => console.log(error));
+    if (!open) {
+      getCartRefetch()
+        .then(() => {
+          if (!getCartLoading && !getCartError && cart) {
+            // Recalculate total
+            getTotal(cart.node.lineItems.edges);
+            setOpen(true);
+          }
+        })
+        .catch((error) => console.log(error));
+    } else {
+      setOpen(false);
+    }
   };
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from 'apollo-boost';
 import { LineItem } from '../../PDPComponent/_types';
 
 export const CUSTOMER_INFO_QUERY = gql`
