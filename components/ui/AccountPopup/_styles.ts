@@ -91,6 +91,8 @@ const AccountDetails = styled.div`
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 20% 40% 40%;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
 
   h3 {
     font-weight: bold;
@@ -116,6 +118,10 @@ const AccountDetails = styled.div`
       :first-child {
       }
     }
+  }
+  
+  @media screen and (min-width: 768px) {
+    padding-top: 1rem;
   }
 `;
 
