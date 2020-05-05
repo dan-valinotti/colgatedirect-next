@@ -10,10 +10,10 @@ import {
   CreateCartRequest,
   CHECKOUT_LINE_ITEMS_REPLACE_MUTATION,
 } from '../CartController/_types';
-import withData from '../../lib/apollo';
 import CartController from '../CartController';
 import CartContentRow from '../CartContentRow/CartContentRow';
-
+import CartPopup from '../ui/CartPopup/index';
+import { withApollo } from '../../lib/apollo';
 
 // Container component for the Cart that handles checking if a cart exists,
 // as well as retrieving the cart info and items.
@@ -175,9 +175,10 @@ const CartData = (parentComponent) => {
     <>
       {parentComponent.parentComponent === 'NavBar' && cartProps.cart && <CartController {...cartProps} />}
       {parentComponent.parentComponent === 'CartOverview' && cartProps.cart && <CartContentRow {...cartProps} />}
+      {parentComponent.parentComponent === 'NavIconButtons' && cartProps.cart && <CartPopup {...cartProps} />}
     </>
 
   );
 };
 
-export default withData(CartData);
+export default withApollo({ ssr: true })(CartData);

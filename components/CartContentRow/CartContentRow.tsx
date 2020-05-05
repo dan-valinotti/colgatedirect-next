@@ -3,7 +3,7 @@ import {
   Button, List, ListItem, Typography, CircularProgress, Dialog, DialogContent,
 } from '@material-ui/core';
 import Link from 'next/link';
-import withData from '../../lib/apollo';
+import { ApolloError } from 'apollo-boost';
 import { GetCartResponse } from '../CartController/_types';
 import { Styled } from './_styles';
 import AddToCart from '../PDPComponent/AddAndRemoveProduct';
@@ -16,8 +16,8 @@ type Props = {
   getTotal: Function;
   createCartLoading: boolean;
   getCartLoading: boolean;
-  createCartError: boolean;
-  getCartError: boolean;
+  createCartError: ApolloError;
+  getCartError: ApolloError;
   getCartRefetch: Function;
 };
 
@@ -145,4 +145,4 @@ const CartContentRow = ({
   );
 };
 
-export default withData(CartContentRow);
+export default CartContentRow;

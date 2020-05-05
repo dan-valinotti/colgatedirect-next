@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Button, CircularProgress } from '@material-ui/core';
 import { withLogout } from '../../../hocs/withLogout';
+import CTAButton from '../CTAButton/index';
 
 /* LogoutButton component props */
 interface Props {
@@ -49,21 +50,12 @@ const LogoutButton: FunctionComponent<Props> = (
   };
 
   return (
-    <Button
-      onClick={submitLogoutRequest}
-      variant="outlined"
+    <CTAButton
+      id="logout-btn"
+      text="LOG OUT"
       color="secondary"
-    >
-      {!processing ? (
-        <span>Log out</span>
-      ) : (
-        <CircularProgress
-          variant="indeterminate"
-          color="secondary"
-          size={24}
-        />
-      )}
-    </Button>
+      onClick={submitLogoutRequest}
+    />
   );
 };
 
