@@ -55,7 +55,7 @@ const AccountPopupContainer = styled.div`
   top: 10%;
   transition: all 0.25s ease-in-out;
   z-index: 1;
-  transform: ${(props) => (props.open ? 'translateX(0) scaleX(1)' : 'translateX(100%) scaleX(0)')};
+  transform: ${(props) => (props.open ? 'translateX(0)' : 'translateX(100%)')};
   opacity: ${(props) => (props.open ? '1' : '0')};
   width: 450px;
   max-width: 100vw;
@@ -66,7 +66,7 @@ const AccountPopupContainer = styled.div`
   @media screen and (min-width: 1024px) {
     position: absolute;
     top: 200%;
-    transform: ${(props) => (props.open ? 'translateY(0) scaleY(1)' : 'translateY(-100%) scaleY(0)')};
+    transform: ${(props) => (props.open ? 'translateY(0)' : 'translateY(-100%)')};
   }
 `;
 
