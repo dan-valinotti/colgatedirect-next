@@ -11,8 +11,7 @@ import HeroBanner from '../components/sections/HeroBanner';
 import { withMuiApp } from '../hocs/withMui';
 import FooterNav from '../components/FooterNav';
 import { theme } from '../views/theme';
-
-const PageContentSection = dynamic(import('../components/sections/PageContentSection'));
+import PageContentSection from '../components/sections/PageContentSection';
 
 interface Props {
   query: string;
