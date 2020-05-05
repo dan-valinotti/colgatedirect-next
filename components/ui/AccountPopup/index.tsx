@@ -43,13 +43,13 @@ const AccountPopup: FunctionComponent = () => {
 
   return (
     <Styled.AccountButtonContainer>
-      <i className="far fa-user-circle" role="presentation" onClick={toggleOpen} />
+      <i className="far fa-user-circle account-btn" role="presentation" onClick={toggleOpen} />
       <Styled.AccountPopupContainer open={open}>
-        <Styled.AccountPopup>
+        <Styled.AccountPopup id="popup-content">
           {getCustomerData ? (
             <Styled.AccountDetails>
               <h3>Account</h3>
-              <p>
+              <p id="account-name">
                 {getCustomerData.customer.firstName} {getCustomerData.customer.lastName}
                 <br />
                 {getCustomerData.customer.email}
