@@ -35,12 +35,12 @@ const CartPopup: FunctionComponent<Props> = ({
   // Handler functions for IconButton
   const toggleOpen = () => {
     if (!open) {
+      setOpen(true);
       getCartRefetch()
         .then(() => {
           if (!getCartLoading && !getCartError && cart) {
             // Recalculate total
             getTotal(cart.node.lineItems.edges);
-            setOpen(true);
           }
         })
         .catch((error) => console.log(error));
