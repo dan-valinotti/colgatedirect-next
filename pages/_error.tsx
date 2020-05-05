@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/styles';
 import { Button, withTheme } from '@material-ui/core';
 import Link from 'next/link';
-import NewNavBar from 'components/ui/NewNavBar';
+import NavBar from 'components/ui/NavBar';
 import HeroBanner from '../components/sections/HeroBanner';
 import { theme } from '../views/theme';
 import { withMuiApp } from '../hocs/withMui';
@@ -31,7 +31,7 @@ function Error({ statusCode }: Props) {
         <title>Page Not Found | Colgate</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <NewNavBar />
+      <NavBar />
       <HeroBanner
         bgUrl=""
         title={titleMessage()}

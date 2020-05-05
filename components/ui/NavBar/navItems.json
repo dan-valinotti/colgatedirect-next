@@ -2,41 +2,41 @@
   "navigationItems": [
     {
       "title": "Teeth Whitening",
-      "handle": "null",
+      "handle": "#",
       "products": [
         {
           "title": "Teeth Whitening Device & Kit",
-          "handle": "/products/teeth-whitening-led-device-kit"
+          "handle": "teeth-whitening-led-device-kit"
         }, {
           "title": "Teeth Whitening Refill Serum",
-          "handle": "/products/teeth-whitening-refill"
+          "handle": "teeth-whitening-refill"
         }
       ]
     }, {
       "title": "Smart Toothbrushes",
-      "handle": "null",
+      "handle": "#",
       "products": [
         {
           "title": "Smart Electric Toothbrush",
-          "handle": "/products/smart-electric-toothbrush"
+          "handle": "smart-electric-toothbrush"
         }, {
           "title": "Smart Electric Toothbrush Refill Heads",
-          "handle": "/products/smart-electric-toothbrush-refill"
+          "handle": "smart-electric-toothbrush-refill"
         }, {
           "title": "Magik AR Toothbrush & App",
-          "handle": "/products/magik-augmented-reality-toothbrush"
+          "handle": "magik-augmented-reality-toothbrush"
         }, {
           "title": "Smart Manual Toothbrush",
-          "handle": "/products/m1"
+          "handle": "m1"
         }
       ]
     }, {
       "title": "Get Connected",
-      "handle": "/pages/get-connected",
+      "handle": "get-connected",
       "products": []
     }, {
       "title": "Support",
-      "handle": "/pages/support",
+      "handle": "support",
       "products": []
     }
   ]
