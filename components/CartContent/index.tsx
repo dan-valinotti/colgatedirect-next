@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { GetCartResponse } from '../CartController/_types';
 import { Styled } from './_styles';
 import AddToCart from '../PDPComponent/AddAndRemoveProduct';
+import CTAButton from "../ui/CTAButton";
 
 /**
  * properties
@@ -33,12 +34,12 @@ const CartContent: React.FC<Props> = ({ cart, total, clearCart }: Props) => (
   <>
     {cart && (
       <Styled.Container>
-        <Typography variant="h6">Cart</Typography>
-        <List className="cart-popover-list">
+        <h6>Cart</h6>
+        <ul className="cart-popover-list">
           {cart.node.lineItems.edges.map((item, key) => (
-            <ListItem key={key}>
+            <li key={key}>
               <Styled.ItemContainer>
-                <Typography variant="h6" className="itemName">{item.node.title}</Typography>
+                <h6 className="itemName">{item.node.title}</h6>
                 <div className="quantityButton">
                   <AddToCart
                     variantId={item.node.variant.id}
@@ -46,40 +47,43 @@ const CartContent: React.FC<Props> = ({ cart, total, clearCart }: Props) => (
                     quantity={item.node.quantity}
                   />
                 </div>
-                <Typography variant="h6" className="itemPrice">
+                <h6 className="itemPrice">
                   ${(item.node.variant.priceV2.amount * item.node.quantity).toFixed(2)}
-                </Typography>
+                </h6>
 
               </Styled.ItemContainer>
-            </ListItem>
+            </li>
           ))}
           <Styled.CartListItem>
-            <Typography variant="h6" className="totalTitle">Total:</Typography>
-            <Typography variant="h6" className="total">
+            <h6 className="totalTitle">Total:</h6>
+            <h6 className="total">
               ${total.toFixed(2)}
-            </Typography>
+            </h6>
           </Styled.CartListItem>
-        </List>
+        </ul>
         {total > 0 && (
-          <>
+          <Styled.ButtonContainer>
             <Link href={{ pathname: '/cart', query: { total } }}>
-              <Button variant="contained" color="secondary">Cart Overview</Button>
+              <CTAButton
+                color="primary"
+                text="Cart Overview"
+                id="cart-overview-btn"
+                onClick={() => null}
+              />
             </Link>
-            <Button
-              variant="contained"
+            <CTAButton
               color="secondary"
-              style={{ marginLeft: '1rem' }}
+              text="Clear Cart"
+              id="clear-cart-btn"
               onClick={() => clearCart()}
-            >
-              Clear cart
-            </Button>
-          </>
+            />
+          </Styled.ButtonContainer>
         )}
       </Styled.Container>
     )}
     {!cart && (
       <div id="cart-content">
-        <Typography variant="body2">Loading...</Typography>
+        <p>Loading...</p>
       </div>
     )}
   </>

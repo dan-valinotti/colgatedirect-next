@@ -35,8 +35,8 @@ const Logo = styled.div`
   position: absolute;
   left: 0;
   top: 0;
-  width: 12.5rem;
-  height: 12.5rem;
+  width: 11rem;
+  height: 8rem;
   z-index: 4;
 
   &:hover {

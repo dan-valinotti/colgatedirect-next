@@ -5,6 +5,11 @@ const Container = styled.div`
   display: flex;
   width: min-content;
   height: 100%;
+  margin-left: 1rem;
+  
+  @media screen and (min-width: 375px) {
+    margin-left: 0;
+  }
 
   @media screen and (min-width: 1024px) {
     width: 8rem;

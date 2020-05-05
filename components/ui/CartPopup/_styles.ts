@@ -51,11 +51,16 @@ const CartPopupContainer = styled.div`
   width: 100%;
   min-width: 320px;
   max-width: 100vw;
-  height: 300px;
+  height: min-content;
   background-color: #fafafa;
   box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.33);
+  
+  @media screen and (min-width: 768px) {
+    max-width: 80vw;
+  }
 
   @media screen and (min-width: 1024px) {
+    width: min-content;
     position: absolute;
     top: 200%;
     transform: ${(props) => (props.open ? 'translateY(0) scaleY(1)' : 'translateY(-100%) scaleY(0)')};
