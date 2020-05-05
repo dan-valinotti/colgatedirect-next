@@ -7,8 +7,8 @@ import NewNavBar from 'components/ui/NewNavBar';
 import HeroBanner from '../components/sections/HeroBanner';
 import { theme } from '../views/theme';
 import { withMuiApp } from '../hocs/withMui';
-import withData from '../lib/apollo';
 import FooterNav from '../components/FooterNav';
+import { withApollo } from '../lib/apollo';
 
 type Props = {
   statusCode: string;
@@ -69,4 +69,4 @@ Error.getInitialProps = ({ res, err }) => {
   return { statusCode };
 };
 
-export default withMuiApp(withTheme(withData(Error)));
+export default withMuiApp(withTheme(withApollo({ ssr: true })(Error)));

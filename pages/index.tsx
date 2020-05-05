@@ -12,6 +12,7 @@ import { withMuiApp } from '../hocs/withMui';
 import FooterNav from '../components/FooterNav';
 import { theme } from '../views/theme';
 import PageContentSection from '../components/sections/PageContentSection';
+import { withApollo } from '../lib/apollo';
 
 interface Props {
   query: string;
@@ -123,4 +124,4 @@ function ProductsPage({
   );
 }
 
-export default withMuiApp(withTheme(ProductsPage));
+export default withApollo({ ssr: true })(withMuiApp(withTheme(ProductsPage)));

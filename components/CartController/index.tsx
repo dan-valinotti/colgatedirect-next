@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { IconButton, Popover, Typography } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { ApolloError } from 'apollo-boost';
 import { GetCartResponse } from './_types';
-import withData from '../../lib/apollo';
 import CartContent from '../CartContent/index';
 
 /**
@@ -16,8 +16,8 @@ interface Props {
   getTotal: Function;
   createCartLoading: boolean;
   getCartLoading: boolean;
-  createCartError: boolean;
-  getCartError: boolean;
+  createCartError: ApolloError;
+  getCartError: ApolloError;
   getCartRefetch: Function;
   stopPolling: Function;
 }
@@ -115,4 +115,4 @@ const CartController: React.FC<Props> = ({
 };
 
 /** @component */
-export default withData(CartController);
+export default CartController;

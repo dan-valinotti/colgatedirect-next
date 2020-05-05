@@ -5,12 +5,12 @@ import { ThemeProvider } from '@material-ui/styles';
 import { withTheme } from '@material-ui/core';
 import Head from 'next/head';
 import NewNavBar from 'components/ui/NewNavBar';
-import withData from '../lib/apollo';
 import { theme } from '../views/theme';
 import { withMuiApp } from '../hocs/withMui';
 import LoginForm from '../components/LoginForm';
 import RegisterForm from '../components/RegisterForm';
 import FooterNav from '../components/FooterNav';
+import { withApollo } from '../lib/apollo';
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -28,4 +28,4 @@ const RegisterPage = () => {
   );
 };
 
-export default withMuiApp(withTheme(withData(RegisterPage)));
+export default withMuiApp(withTheme(withApollo({ ssr: true })(RegisterPage)));
