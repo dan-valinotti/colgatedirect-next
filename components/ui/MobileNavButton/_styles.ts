@@ -20,6 +20,7 @@ const NavWindowContainer = styled.div`
   position: fixed;
   left: 0;
   top: 0;
+  transform: ${(props) => (props.open ? 'translateX(0)' : 'translateX(-100%)')};
   z-index: ${(props) => (props.open ? '4' : '-1')};
   background-color: ${(props) => (props.open ? theme.palette.primary.main : 'transparent')};
   transition: all 0.25s ease-in-out;
@@ -52,13 +53,18 @@ const NavItems = styled.ul`
   align-items: flex-start;
   width: 100%;
   height: 100%;
+  padding-top: 4rem;
+  
+  @media screen and (min-width: 425px) {
+    padding-top: 0;
+  }
 
   * {
     font-family: 'Colgate Ready', serif;
     font-size: 1rem;
     text-transform: uppercase;
 
-    @media (min-width: 425px) {
+    @media (min-width: 376px) {
       font-size: 1.25rem
     }
 
@@ -72,7 +78,7 @@ const NavItems = styled.ul`
     margin-bottom: 1.5rem;
 
     > ul {
-      margin-top: 1.5rem;
+      margin-top: 1rem;
       li {
         margin-bottom: 1.5rem;
         margin-left: 1.5rem;
