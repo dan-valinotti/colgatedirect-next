@@ -30,7 +30,9 @@ const NavItem: FunctionComponent<ItemProps> = ({
       as={handle !== 'null' ? `/products/${handle}` : '#'}
       passHref
     >
-      {title}
+      <a>
+        {title}
+      </a>
     </Link>
     {products.length > 0 && (
       <ul>
@@ -47,7 +49,9 @@ const NavItem: FunctionComponent<ItemProps> = ({
               as={subItem.handle !== 'null' ? `/products/${subItem.handle}` : '#'}
               passHref
             >
-              {subItem.title}
+              <a>
+                {subItem.title}
+              </a>
             </Link>
           </li>
         ))}
