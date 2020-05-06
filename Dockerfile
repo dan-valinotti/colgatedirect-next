@@ -40,6 +40,7 @@ COPY --from=build /src/dist /usr/app/dist
 COPY --from=build /src/node_modules /usr/app/node_modules
 COPY --from=build /src/package.json /usr/app/package.json
 COPY --from=build /src/.next /usr/app/.next
+COPY --from=build /src/public /usr/app/public
 
 # Set ENV variables
 ENV NODE_ENV production
