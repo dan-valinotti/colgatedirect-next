@@ -45,7 +45,7 @@ function ProductsPage({
         title="ShopSmiles by Colgate®"
         subtitle="The next generation of dental care is here."
         bgColor="#a2c1d3"
-        bgImage={require('./images/colgate_smile_like_you_mean_it2.jpg?v=1553710726')}
+        bgImage={require('./images/colgate_smile_like_you_mean_it2.jpg')}
         fontColor="#ffffff"
         textAlign="right"
         shopNow={false}
@@ -70,7 +70,7 @@ function ProductsPage({
           ctaButtonText="Learn more"
           ctaOnClick={() => goToRoute('/products/magik')}
           headline="NEW! MAGIK TOOTHBRUSHING EXPERIENCE"
-          image={require('./images/Copy_of_guard_posing.png?v=1556822784')}
+          image={require('./images/Copy_of_guard_posing.png')}
           title="The augmented reality toothbrushing adventure your kids never knew they wanted."
           alignWithEdge={false}
           sectionColor="secondary"
@@ -83,7 +83,7 @@ function ProductsPage({
           ctaButtonText="Learn more"
           ctaOnClick={() => goToRoute('/products/teeth-whitening-led-device-kit')}
           headline="TEETH WHITENING DEVICE & TREATMENT"
-          image={require('./images/colgate_teeth_whitening_device-b_180x.jpg?v=1553690080')}
+          image={require('./images/colgate_teeth_whitening_device-b_180x.jpg')}
           title="Light up your life with our best, blue light, teeth whitening technology."
           alignWithEdge
           sectionColor="secondary"
@@ -96,7 +96,7 @@ function ProductsPage({
           ctaButtonText="Learn more"
           ctaOnClick={() => goToRoute('/products/smart-electric-toothbrush')}
           headline="SMART ELECTRIC TOOTHBRUSH"
-          image={require('./images/colgate_smart_electric_toothbrush_540x.png?v=1553689447')}
+          image={require('./images/colgate_smart_electric_toothbrush_540x.png')}
           title="Get a complete clean every time with our app-connected Smart Electric Toothbrush."
           alignWithEdge
           sectionColor="secondary"
@@ -108,7 +108,7 @@ function ProductsPage({
           ctaButton
           ctaButtonText="Let's Chat"
           ctaOnClick={() => goToRoute('/')}
-          image={require('./images/colgate_smiles_are_contagious-b_900x.jpg?v=1553689901')}
+          image={require('./images/colgate_smiles_are_contagious-b_900x.jpg')}
           title="Smiles are contagious"
           titleColor={theme.palette.primary.main}
           subtitle="Our dental care products are designed with real input from people like you. Send us your thoughts, feedback, and big ideas so we can keep creating."

@@ -47,6 +47,22 @@ const configureWebpack = (config, { dev }) => {
 	});
 
 	config.module.rules.push({
+		test: /\.(jpe?g|png|svg|gif)$/,
+		use: [
+			{
+				loader: "url-loader",
+				options: {
+					limit: 8192,
+					fallback: "file-loader",
+					publicPath: "static/images",
+					outputPath: "static/images/",
+					name: "[name]-[hash].[ext]"
+				}
+			}
+		]
+	});
+
+	config.module.rules.push({
 		test: /\.(graphql|gql)$/,
 		exclude: /node_modules/,
 		loader: 'graphql-tag/loader'
