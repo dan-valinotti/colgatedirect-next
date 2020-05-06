@@ -33,7 +33,7 @@ function Error({ statusCode }: Props) {
       </Head>
       <NavBar />
       <HeroBanner
-        bgUrl=""
+        bgImage=""
         title={titleMessage()}
         subtitle={subtitleMessage()}
         bgColor="#fafafa"

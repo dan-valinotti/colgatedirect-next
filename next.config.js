@@ -3,6 +3,7 @@ const path = require('path');
 const Dotenv = require('dotenv-webpack');
 const withImages = require('next-images');
 const withFonts = require('next-fonts');
+const withOptimizedImages = require('next-optimized-images');
 
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
@@ -17,16 +18,16 @@ const configureWebpack = (config, { dev }) => {
 			systemvars: true
 		})
   );
-	
-	
+
+
 	if (config.resolve.plugins) {
 		config.resolve.plugins.push(new TsconfigPathsPlugin());
 	} else {
 		config.resolve.plugins = [new TsconfigPathsPlugin()];
 	}
-	
+
 	config.module.rules.push({
-		test: /\.(eot|woff|woff2|otf|ttf|svg|png|jpg|gif)$/,
+		test: /\.(eot|woff|woff2|otf|ttf)$/,
 		use: [
 			{
 				loader: 'emit-file-loader',
@@ -44,7 +45,7 @@ const configureWebpack = (config, { dev }) => {
 			}
 		]
 	});
-	
+
 	config.module.rules.push({
 		test: /\.(graphql|gql)$/,
 		exclude: /node_modules/,
@@ -63,9 +64,10 @@ const configureWebpack = (config, { dev }) => {
 };
 
 
-module.exports = withImages(
+module.exports = withOptimizedImages(
 	withFonts({
-		assetPrefix: 'http://localhost:3000',
+		imagesPublicPath: '/_next/static/images/',
+		imagesOutputPath: 'static/images/',
 		webpack: configureWebpack
 	})
 );

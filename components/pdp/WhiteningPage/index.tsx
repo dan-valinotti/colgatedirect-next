@@ -19,7 +19,7 @@ const WhiteningPage: FunctionComponent<WhiteningPageProps> = (props: WhiteningPa
       title={product.heroBannerDetails.heroBannerTitle}
       subtitle={product.heroBannerDetails.heroBannerSubTitle}
       bgColor="#d2d6df"
-      bgUrl={product.heroBannerDetails.heroBannerImgSrc}
+      bgImage={product.heroBannerDetails.heroBannerImgSrc}
       fontColor="#FF0000"
       textAlign="left"
       shopNow
