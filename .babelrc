@@ -12,7 +12,7 @@
       "file-loader", {
         "extensions": ["png", "jpg", "jpeg", "gif", "svg"],
         "publicPath": "static/images",
-        "outputPath": "public/static/images/"
+        "outputPath": "static/images"
       }
     ]
   ]
