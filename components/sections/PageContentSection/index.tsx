@@ -20,7 +20,7 @@ type Props = {
   /** Medium-size text displayed above title. */
   headline?: string;
   /** URL of image displayed in banner. */
-  imageUrl: string;
+  image: any;
   /** Subtitle text. */
   subtitle?: string;
   /** Color of title/subtitle/CTAButton. Overridden when using headline. */
@@ -44,7 +44,7 @@ const PageContentSection: FunctionComponent<Props> = ({
   ctaButtonText = '',
   ctaOnClick = () => null,
   headline = undefined,
-  imageUrl,
+  image,
   subtitle = undefined,
   sectionColor,
   title,
@@ -54,7 +54,7 @@ const PageContentSection: FunctionComponent<Props> = ({
     <Styled.ContentContainer aligncontent={alignContent}>
       <Styled.ImageContainer alignWithEdge={alignWithEdge}>
         {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-        <img src={imageUrl} alt="Section Image" />
+        <img src={image} alt="Section Image" />
       </Styled.ImageContainer>
       <Styled.TextContainer align={alignContent}>
         {headline && (

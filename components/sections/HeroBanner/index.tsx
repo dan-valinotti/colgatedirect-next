@@ -10,7 +10,7 @@ type Props = {
   /** Color of background not reach by background image. */
   bgColor: string;
   /** Image used as background for banner. */
-  bgUrl: string;
+  bgImage: any;
   /** Color of font used by title and subtitle. */
   fontColor: string;
   /** Determines if text is aligned to left or right. */
@@ -20,10 +20,10 @@ type Props = {
 };
 
 const HeroBanner: FunctionComponent<Props> = ({
-  title, subtitle, bgColor, bgUrl, fontColor, textAlign = 'center', shopNow,
+  title, subtitle, bgColor, bgImage, fontColor, textAlign = 'center', shopNow,
 }: Props) => (
   <SectionContainer>
-    <Styled.Banner imageUrl={bgUrl} bgColor={bgColor} textalign={textAlign}>
+    <Styled.Banner imageUrl={bgImage} bgColor={bgColor} textalign={textAlign}>
       <Styled.BannerContent textalign={textAlign}>
         <Styled.TextContainer textalign={textAlign}>
           <Styled.BannerTitle variant="h6" fontcolor={fontColor} textalign={textAlign}>
