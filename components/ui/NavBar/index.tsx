@@ -20,7 +20,7 @@ const NavBar: FunctionComponent = () => {
         <Styled.LogoWrapper>
           <Styled.Logo>
             <Link href="/">
-              <img id="nav-logo" src="/static/images/nav-logo.png" alt="ShopSmiles by Colgate" />
+              <img id="nav-logo" src={require('../../../pages/images/nav-logo.png')} alt="ShopSmiles by Colgate" />
             </Link>
           </Styled.Logo>
         </Styled.LogoWrapper>
