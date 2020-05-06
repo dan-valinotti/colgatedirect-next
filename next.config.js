@@ -8,7 +8,7 @@ const withOptimizedImages = require('next-optimized-images');
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 
-const configureWebpack = (config, { dev }) => {
+const configureWebpack = (config, { dev, isServer }) => {
 	config.plugins = config.plugins || [];
 
 	config.plugins.push(
@@ -50,12 +50,11 @@ const configureWebpack = (config, { dev }) => {
 		test: /\.(jpe?g|png|svg|gif)$/,
 		use: [
 			{
-				loader: "url-loader",
+				loader: "file-loader",
 				options: {
-					limit: 8192,
-					fallback: "file-loader",
-					publicPath: "static/images",
-					outputPath: "static/images/",
+					emitFile: isServer,
+					publicPath: `/_next/static/`,
+					outputPath: `${isServer ? '../' : ''}static/`,
 					name: "[name]-[hash].[ext]"
 				}
 			}
@@ -82,8 +81,6 @@ const configureWebpack = (config, { dev }) => {
 
 module.exports = withOptimizedImages(
 	withFonts({
-		imagesPublicPath: '/_next/static/images/',
-		imagesOutputPath: 'static/images/',
 		webpack: configureWebpack
 	})
 );
