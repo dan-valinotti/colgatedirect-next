@@ -75,6 +75,10 @@ const configureWebpack = (config, { dev, isServer }) => {
 		})
 	}
 
+	// Set absolute import path for components folder
+	// ie: './components/ui' becomse 'components/ui'
+	config.resolve.alias['components'] = path.join(__dirname, 'components');
+
   return config;
 };
 
