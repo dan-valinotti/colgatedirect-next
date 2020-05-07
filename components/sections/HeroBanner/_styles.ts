@@ -60,10 +60,10 @@ const TextContainer = styled.div`
   justify-content: flex-start;
   padding-right: ${(props) => (props.textalign === 'center' ? '0' : '5%')};;
   margin-top: 2rem;
-  
+
   @media (min-width: 768px) {
     margin-top: 0;
-    max-width: 50%;
+    max-width: 60%;
   }
 `;
 

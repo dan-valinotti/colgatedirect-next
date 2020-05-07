@@ -6,6 +6,9 @@ const {
   heading,
   subheading,
   paragraph,
+  heroHeading,
+  heroSubheading,
+  heroBody,
 } = theme.textStyles;
 
 const createTypoComponent = (props) => {
@@ -21,3 +24,6 @@ const createTypoComponent = (props) => {
 export const Heading = createTypoComponent(heading);
 export const Subheading = createTypoComponent(subheading);
 export const Paragraph = createTypoComponent(paragraph);
+export const HeroHeading = createTypoComponent(heroHeading);
+export const HeroSubheading = createTypoComponent(heroSubheading);
+export const HeroBody = createTypoComponent(heroBody);
