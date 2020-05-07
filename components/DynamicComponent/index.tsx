@@ -4,6 +4,7 @@ import {
   fontSize,
   color,
   fontWeight,
+  textAlign,
 } from 'styled-system';
 
 const StyledDynamicComponent = styled.p`
@@ -11,6 +12,7 @@ const StyledDynamicComponent = styled.p`
   ${fontSize}
   ${color}
   ${fontWeight}
+  ${textAlign}
 `;
 
 export default StyledDynamicComponent;

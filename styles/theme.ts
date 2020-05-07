@@ -59,6 +59,36 @@ const theme = {
       fontWeight: 400,
       fontFamily: ColgateReady,
     },
+    heroHeading: {
+      fontSize: [
+        fontSizes.medium,
+        fontSizes.medium,
+        fontSizes.medium,
+        fontSizes.medium,
+        fontSizes.large,
+      ],
+      fontWeight: 700,
+      fontFamily: ColgateReady,
+    },
+    heroSubheading: {
+      fontSize: [
+        fontSizes.medsmall,
+        fontSizes.medsmall,
+        fontSizes.medsmall,
+        fontSizes.medsmall,
+        fontSizes.medium,
+      ],
+      fontWeight: 400,
+      fontFamily: ColgateReady,
+    },
+    heroBody: {
+      fontSize: [
+        fontSizes.xsmall,
+        fontSizes.small,
+      ],
+      fontWeight: 400,
+      fontFamily: ColgateReady,
+    },
   },
 };
 
