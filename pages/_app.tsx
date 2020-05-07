@@ -1,14 +1,14 @@
 import { AppProps } from 'next/app';
 import React from 'react';
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Head from 'next/head';
-import { ThemeProvider } from '@material-ui/core/styles';
+
 import CssBaseline from '@material-ui/core/CssBaseline';
 import 'isomorphic-unfetch';
 import 'typeface-roboto';
 import 'react-multi-carousel/lib/styles.css';
 import '../styles/main.scss';
-import { theme } from '../views/theme';
+import theme from '../styles/theme';
 
 const GlobalStyle = createGlobalStyle`
 @font-face {
