@@ -43,19 +43,20 @@ function ProductsPage({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <NavBar />
-      <HeroBanner
-        title="ShopSmiles by Colgate®"
-        subtitle="The next generation of dental care is here."
-        bgColor="#a2c1d3"
-        bgImage={require('./images/colgate_smile_like_you_mean_it2.jpg')}
-        fontColor="#ffffff"
-        textAlign="right"
-        shopNow={false}
-      />
       <PageContainer
         maxWidth="100%"
         mx="auto"
+        pt={45}
       >
+        <HeroBanner
+          title="ShopSmiles by Colgate®"
+          subtitle="The next generation of dental care is here."
+          bgColor="#a2c1d3"
+          bgImage={require('./images/colgate_smile_like_you_mean_it2.jpg')}
+          fontColor="#ffffff"
+          textAlign="right"
+          shopNow={false}
+        />
         <PageContentSection
           id="home-content-1"
           alignContent="right"
