@@ -3,10 +3,10 @@ import { Button } from '@material-ui/core';
 import { useQuery } from '@apollo/react-hooks';
 import Link from 'next/link';
 import Head from 'next/head';
+import { PageContainer } from 'components/ui/PageContainer';
 import { Styled } from './_styles';
 import { PRODUCT_INFO_QUERY, ProductDetails, TransformedProduct } from './_types';
 import ProductDetail from '../sections/ProductDetail';
-import PageContainer, { PageSize } from '../../views/layouts/PageContainer';
 import products from './customProductPages.json';
 import CustomPDPController from '../CustomPDPController';
 
@@ -64,11 +64,17 @@ const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
           {customPdps.products.includes(product.handle) ? (
             <CustomPDPController handle={product.handle} PDPprops={{ product }} />
           ) : (
-            <Styled.PDPContainer>
-              <Styled.PDPMain>
-                <ProductDetail product={product} />
-              </Styled.PDPMain>
-            </Styled.PDPContainer>
+            <PageContainer
+              maxWidth={900}
+              mx="auto"
+              pt={120}
+            >
+              <Styled.PDPContainer>
+                <Styled.PDPMain>
+                  <ProductDetail product={product} />
+                </Styled.PDPMain>
+              </Styled.PDPContainer>
+            </PageContainer>
           )}
         </>
       )}

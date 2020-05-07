@@ -1,19 +1,20 @@
 const fontSizes = {
   xsmall: '0.8em',
   small: '1em',
+  medsmall: '1.25em',
   medium: '1.75em',
   large: '2em',
   xlarge: '2.5em',
 };
 
-const ColgateReady = 'Colgate Ready, serif';
+const ColgateReady = '"Colgate Ready", serif';
 
 const theme = {
   colors: {
     primary: '#d9291c',
     secondary: '#3b6999',
   },
-  fonts: ['Colgate Ready'],
+  fonts: ['"Colgate Ready", serif'],
   fontSizes,
   breakpoints: [
     '325px',
@@ -34,6 +35,28 @@ const theme = {
         fontSizes.large,
       ],
       fontWeight: 700,
+      color: 'rgba(0,0,0,0.8)',
+      fontFamily: ColgateReady,
+    },
+    subheading: {
+      fontSize: [
+        fontSizes.medsmall,
+        fontSizes.medsmall,
+        fontSizes.medsmall,
+        fontSizes.medsmall,
+        fontSizes.medium,
+      ],
+      color: 'rgba(0,0,0,0.6)',
+      fontWeight: 400,
+      fontFamily: ColgateReady,
+    },
+    paragraph: {
+      fontSize: [
+        fontSizes.xsmall,
+        fontSizes.small,
+      ],
+      color: 'rgba(0,0,0,0.8)',
+      fontWeight: 400,
       fontFamily: ColgateReady,
     },
   },
