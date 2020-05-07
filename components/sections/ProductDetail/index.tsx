@@ -10,6 +10,7 @@ import {
 } from '../../CartController/_types';
 import { Styled } from './_styles';
 import AddToCart from '../../PDPComponent/AddAndRemoveProduct';
+import { Heading } from '../../ui/Typography';
 
 
 type Props = {
@@ -64,7 +65,9 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
         <Styled.ProductImage src={product.imageSrc} alt="PDP" />
       </Styled.ImageContainer>
       <Styled.DescriptionContainer>
-        <Styled.ProductTitle variant="h5">{product.title}</Styled.ProductTitle>
+        <Heading as="h1">
+          {product.title}
+        </Heading>
         <Styled.ProductDescription variant="body2">{product.description}</Styled.ProductDescription>
         <Styled.ATCContainer>
           <Typography variant="body1">
