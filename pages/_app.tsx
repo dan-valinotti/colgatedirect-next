@@ -31,6 +31,10 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   font-family: 'Colgate Ready', serif;
 }
+p {
+  font-weight: 400;
+  font-family: 'Colgate Ready', serif;
+}
 `;
 
 export default function MyApp({ Component, pageProps }: AppProps) {

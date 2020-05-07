@@ -4,6 +4,8 @@ import theme from '../../../styles/theme';
 
 const {
   heading,
+  subheading,
+  paragraph,
 } = theme.textStyles;
 
 const createTypoComponent = (props) => {
@@ -17,4 +19,5 @@ const createTypoComponent = (props) => {
 };
 
 export const Heading = createTypoComponent(heading);
-// export const TextStyle1 = createTypoComponent(textStyle1);
+export const Subheading = createTypoComponent(subheading);
+export const Paragraph = createTypoComponent(paragraph);

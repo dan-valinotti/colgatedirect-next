@@ -9,7 +9,6 @@ import { withMuiApp } from '../hocs/withMui';
 import FooterNav from '../components/FooterNav';
 import NavBar from '../components/ui/NavBar/index';
 import { withApollo } from '../lib/apollo';
-import { PageContainer } from '../components/ui/PageContainer';
 
 const ProductPage = () => {
   const router = useRouter();
@@ -18,13 +17,7 @@ const ProductPage = () => {
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
-      <PageContainer
-        maxWidth={1100}
-        mx="auto"
-        pt={120}
-      >
-        <PDPComponent handle={handle.toString()} />
-      </PageContainer>
+      <PDPComponent handle={handle.toString()} />
       <FooterNav />
     </ThemeProvider>
   );
