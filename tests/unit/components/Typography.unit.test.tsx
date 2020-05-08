@@ -2,7 +2,7 @@
  * @jest-environment jsdom
 */
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { Heading, Subheading, Paragraph } from '../../../components/ui/Typography';
 
