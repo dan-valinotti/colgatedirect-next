@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import DynamicComponent from 'components/DynamicComponent';
+import DynamicComponent from '../../DynamicComponent';
 import theme from '../../../styles/theme';
 
 const {
