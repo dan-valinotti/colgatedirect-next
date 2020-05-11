@@ -24,16 +24,16 @@ type Props = {
  * Button used globally in site design.
  * @visibleName CTAButton
  */
-const CTAButton: FunctionComponent<Props> = ({
+const CTAButton: FunctionComponent<Props> = React.forwardRef(({
   id, color, text, onClick = () => '',
-}: Props) => (
-  <Styled.Container>
+}: Props, ref: any) => (
+  <Styled.Container ref={ref}>
     <Styled.Button id={id} color={color} onClick={onClick}>
       <Styled.ButtonText>
         {text}
       </Styled.ButtonText>
     </Styled.Button>
   </Styled.Container>
-);
+));
 
 export default CTAButton;

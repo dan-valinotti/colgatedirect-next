@@ -5,7 +5,7 @@ const Banner = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-height: 450px;
+  min-height: 500px;
   width: 100%;
   margin-bottom: 15px;
   background-image: url(${(props) => props.imageUrl});
@@ -15,8 +15,10 @@ const Banner = styled.div`
   background-repeat: no-repeat;
   background-color: ${(props) => props.bgColor};
   position: relative;
+  padding-top: 4em;
     
   @media (min-width: 768px) {
+    padding-top: 0;
     align-items: center;
     background-size: contain;
     background-position-x: ${(props) => (props.textalign === 'left' ? 'right' : 'left')};
@@ -60,10 +62,10 @@ const TextContainer = styled.div`
   justify-content: flex-start;
   padding-right: ${(props) => (props.textalign === 'center' ? '0' : '5%')};;
   margin-top: 2rem;
-  
+
   @media (min-width: 768px) {
     margin-top: 0;
-    max-width: 50%;
+    width: 60%;
   }
 `;
 

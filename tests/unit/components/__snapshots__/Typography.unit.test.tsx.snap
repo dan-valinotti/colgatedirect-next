@@ -1,0 +1,310 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Heading /> Does the rendered component match the Snapshot? 1`] = `
+<Styled(styled.p)
+  as="h1"
+  color="rgba(0,0,0,1)"
+  fontFamily="\\"Colgate Ready\\", serif"
+  fontSize={
+    Array [
+      "1.75em",
+      "1.75em",
+      "1.75em",
+      "1.75em",
+      "2em",
+    ]
+  }
+  fontWeight={700}
+  textAlign="left"
+>
+  <StyledComponent
+    as="h1"
+    color="rgba(0,0,0,1)"
+    fontFamily="\\"Colgate Ready\\", serif"
+    fontSize={
+      Array [
+        "1.75em",
+        "1.75em",
+        "1.75em",
+        "1.75em",
+        "2em",
+      ]
+    }
+    fontWeight={700}
+    forwardedComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "color": "rgba(0,0,0,0.8)",
+          "fontFamily": "\\"Colgate Ready\\", serif",
+          "fontSize": Array [
+            "1.75em",
+            "1.75em",
+            "1.75em",
+            "1.75em",
+            "2em",
+          ],
+          "fontWeight": 700,
+        },
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "sc-bwzfXH",
+          "isStatic": false,
+          "lastClassName": "OkwrY",
+          "rules": Array [
+            "
+  ",
+            [Function],
+            "
+  ",
+            [Function],
+            "
+  ",
+            [Function],
+            "
+  ",
+            [Function],
+            "
+  ",
+            [Function],
+            "
+",
+          ],
+        },
+        "displayName": "Styled(styled.p)",
+        "foldedComponentIds": Array [
+          "sc-bdVaJa",
+        ],
+        "render": [Function],
+        "styledComponentId": "sc-bwzfXH",
+        "target": "p",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    forwardedRef={null}
+    textAlign="left"
+  >
+    <h1
+      className="sc-bdVaJa sc-bwzfXH OkwrY"
+      color="rgba(0,0,0,1)"
+      fontFamily="\\"Colgate Ready\\", serif"
+      fontSize={
+        Array [
+          "1.75em",
+          "1.75em",
+          "1.75em",
+          "1.75em",
+          "2em",
+        ]
+      }
+      fontWeight={700}
+    >
+      Test
+    </h1>
+  </StyledComponent>
+</Styled(styled.p)>
+`;
+
+exports[`<Paragraph /> Does the rendered component match the Snapshot? 1`] = `
+<Styled(styled.p)
+  as="p"
+  color="rgba(0,0,0,1)"
+  fontFamily="\\"Colgate Ready\\", serif"
+  fontSize={
+    Array [
+      "0.8em",
+      "1em",
+    ]
+  }
+  fontWeight={400}
+  textAlign="left"
+>
+  <StyledComponent
+    as="p"
+    color="rgba(0,0,0,1)"
+    fontFamily="\\"Colgate Ready\\", serif"
+    fontSize={
+      Array [
+        "0.8em",
+        "1em",
+      ]
+    }
+    fontWeight={400}
+    forwardedComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "color": "rgba(0,0,0,0.8)",
+          "fontFamily": "\\"Colgate Ready\\", serif",
+          "fontSize": Array [
+            "0.8em",
+            "1em",
+          ],
+          "fontWeight": 400,
+        },
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "sc-bxivhb",
+          "isStatic": false,
+          "lastClassName": "kueMaz",
+          "rules": Array [
+            "
+  ",
+            [Function],
+            "
+  ",
+            [Function],
+            "
+  ",
+            [Function],
+            "
+  ",
+            [Function],
+            "
+  ",
+            [Function],
+            "
+",
+          ],
+        },
+        "displayName": "Styled(styled.p)",
+        "foldedComponentIds": Array [
+          "sc-bdVaJa",
+        ],
+        "render": [Function],
+        "styledComponentId": "sc-bxivhb",
+        "target": "p",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    forwardedRef={null}
+    textAlign="left"
+  >
+    <p
+      className="sc-bdVaJa sc-bxivhb kueMaz"
+      color="rgba(0,0,0,1)"
+      fontFamily="\\"Colgate Ready\\", serif"
+      fontSize={
+        Array [
+          "0.8em",
+          "1em",
+        ]
+      }
+      fontWeight={400}
+    >
+      Test
+    </p>
+  </StyledComponent>
+</Styled(styled.p)>
+`;
+
+exports[`<Subheading /> Does the rendered component match the Snapshot? 1`] = `
+<Styled(styled.p)
+  as="h6"
+  color="rgba(0,0,0,1)"
+  fontFamily="\\"Colgate Ready\\", serif"
+  fontSize={
+    Array [
+      "1.25em",
+      "1.25em",
+      "1.25em",
+      "1.25em",
+      "1.75em",
+    ]
+  }
+  fontWeight={400}
+  textAlign="left"
+>
+  <StyledComponent
+    as="h6"
+    color="rgba(0,0,0,1)"
+    fontFamily="\\"Colgate Ready\\", serif"
+    fontSize={
+      Array [
+        "1.25em",
+        "1.25em",
+        "1.25em",
+        "1.25em",
+        "1.75em",
+      ]
+    }
+    fontWeight={400}
+    forwardedComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "color": "rgba(0,0,0,0.6)",
+          "fontFamily": "\\"Colgate Ready\\", serif",
+          "fontSize": Array [
+            "1.25em",
+            "1.25em",
+            "1.25em",
+            "1.25em",
+            "1.75em",
+          ],
+          "fontWeight": 400,
+        },
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "sc-htpNat",
+          "isStatic": false,
+          "lastClassName": "euwnsm",
+          "rules": Array [
+            "
+  ",
+            [Function],
+            "
+  ",
+            [Function],
+            "
+  ",
+            [Function],
+            "
+  ",
+            [Function],
+            "
+  ",
+            [Function],
+            "
+",
+          ],
+        },
+        "displayName": "Styled(styled.p)",
+        "foldedComponentIds": Array [
+          "sc-bdVaJa",
+        ],
+        "render": [Function],
+        "styledComponentId": "sc-htpNat",
+        "target": "p",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    forwardedRef={null}
+    textAlign="left"
+  >
+    <h6
+      className="sc-bdVaJa sc-htpNat euwnsm"
+      color="rgba(0,0,0,1)"
+      fontFamily="\\"Colgate Ready\\", serif"
+      fontSize={
+        Array [
+          "1.25em",
+          "1.25em",
+          "1.25em",
+          "1.25em",
+          "1.75em",
+        ]
+      }
+      fontWeight={400}
+    >
+      Test
+    </h6>
+  </StyledComponent>
+</Styled(styled.p)>
+`;

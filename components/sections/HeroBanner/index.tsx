@@ -1,4 +1,9 @@
 import React, { FunctionComponent } from 'react';
+import {
+  HeroHeading,
+  HeroSubheading,
+  HeroBody,
+} from 'components/ui/Typography';
 import { Styled } from './_styles';
 import SectionContainer from '../../SectionContainer';
 
@@ -26,12 +31,12 @@ const HeroBanner: FunctionComponent<Props> = ({
     <Styled.Banner imageUrl={bgImage} bgColor={bgColor} textalign={textAlign}>
       <Styled.BannerContent textalign={textAlign}>
         <Styled.TextContainer textalign={textAlign}>
-          <Styled.BannerTitle variant="h6" fontcolor={fontColor} textalign={textAlign}>
+          <HeroHeading as="h6" color={fontColor} textAlign={textAlign}>
             {title}
-          </Styled.BannerTitle>
-          <Styled.BannerSubtitle variant="body1" fontcolor={fontColor} textalign={textAlign}>
+          </HeroHeading>
+          <HeroBody color={fontColor} textAlign={textAlign}>
             {subtitle}
-          </Styled.BannerSubtitle>
+          </HeroBody>
         </Styled.TextContainer>
       </Styled.BannerContent>
       {shopNow && (

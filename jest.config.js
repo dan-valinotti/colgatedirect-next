@@ -1,6 +1,6 @@
 module.exports = {
   transform: {
-    "^.+\\.(js|jsx)?$": "babel-jest"
+    "^.+\\.(js|jsx)?$": "ts-jest"
   },
   preset: "ts-jest",
   // Test spec file resolution pattern
@@ -24,16 +24,20 @@ module.exports = {
   // when using React Testing Library and adds special
   // extended assertions to Jest
   setupFilesAfterEnv: [
-    "@testing-library/jest-dom/extend-expect"
+    "<rootDir>/tests/setup.ts",
+    // "@testing-library/jest-dom/extend-expect"
   ],
   moduleFileExtensions: [
     "ts",
     "tsx",
     "js",
-    "jsx"
+    "jsx",
+    "json",
+    "node"
   ],
   transformIgnorePatterns: [
-    "<rootDir>/node_modules/"
+    "<rootDir>/node_modules/",
+    "<rootDir>/.next"
   ],
   moduleNameMapper: {
     "~graphql/(.*)": "<rootDir>/graphql/$1",
@@ -47,6 +51,15 @@ module.exports = {
     "~lib/(.*)": "<rootDir>/lib/$1",
     "~assets/(.*)": "<rootDir>/assets/$1",
     "~static/(.*)": "<rootDir>/public/static/$1"
+  },
+  // https://github.com/zeit/next.js/issues/8663#issue-490553899
+  globals: {
+    // we must specify a custom tsconfig for tests because we need the typescript transform
+    // to transform jsx into js rather than leaving it jsx such as the next build requires. you
+    // can see this setting in tsconfig.jest.json -> "jsx": "react"
+    "ts-jest": {
+        tsConfig: "<rootDir>/tsconfig.jest.json"
+    }
   }
 };
 

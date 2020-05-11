@@ -10,6 +10,7 @@ const Container = styled.div`
   * {
     font-family: "Colgate Ready", serif;
     color: rgba(0,0,0,0.7);
+    font-weight: 400;
   }
 `;
 
