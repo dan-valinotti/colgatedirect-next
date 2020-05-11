@@ -7,6 +7,7 @@ dist
 
 .env
 cypress/videos/*
+coverage/
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

@@ -3,10 +3,10 @@ import { Button } from '@material-ui/core';
 import { useQuery } from '@apollo/react-hooks';
 import Link from 'next/link';
 import Head from 'next/head';
+import { PageContainer } from 'components/ui/PageContainer';
 import { Styled } from './_styles';
 import { PRODUCT_INFO_QUERY, ProductDetails, TransformedProduct } from './_types';
 import ProductDetail from '../sections/ProductDetail';
-import PageContainer, { PageSize } from '../../views/layouts/PageContainer';
 import products from './customProductPages.json';
 import CustomPDPController from '../CustomPDPController';
 
@@ -54,17 +54,21 @@ const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
   }
 
   return (
-    <>
+    <Styled.Container id="pdp-component">
       {!error && product && (
-        <div id="pdp-component">
+        <>
           <Head>
             <title>{product.title}</title>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           </Head>
-          { customPdps.products.includes(product.handle) ? (
+          {customPdps.products.includes(product.handle) ? (
             <CustomPDPController handle={product.handle} PDPprops={{ product }} />
           ) : (
-            <PageContainer size={PageSize.medium} paddingTop={90}>
+            <PageContainer
+              maxWidth={900}
+              mx="auto"
+              pt={120}
+            >
               <Styled.PDPContainer>
                 <Styled.PDPMain>
                   <ProductDetail product={product} />
@@ -72,9 +76,9 @@ const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
               </Styled.PDPContainer>
             </PageContainer>
           )}
-        </div>
+        </>
       )}
-    </>
+    </Styled.Container>
   );
 };
 

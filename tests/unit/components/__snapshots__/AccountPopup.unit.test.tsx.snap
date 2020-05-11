@@ -1,0 +1,1125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AccountPopup /> Renders correctly 1`] = `
+<MockedProvider
+  addTypename={false}
+  mocks={
+    Array [
+      Object {
+        "request": Object {
+          "query": Object {
+            "definitions": Array [
+              Object {
+                "directives": Array [],
+                "kind": "OperationDefinition",
+                "name": Object {
+                  "kind": "Name",
+                  "value": "GetCustomerInfo",
+                },
+                "operation": "query",
+                "selectionSet": Object {
+                  "kind": "SelectionSet",
+                  "selections": Array [
+                    Object {
+                      "alias": undefined,
+                      "arguments": Array [
+                        Object {
+                          "kind": "Argument",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "customerAccessToken",
+                          },
+                          "value": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "customerAccessToken",
+                            },
+                          },
+                        },
+                      ],
+                      "directives": Array [],
+                      "kind": "Field",
+                      "name": Object {
+                        "kind": "Name",
+                        "value": "customer",
+                      },
+                      "selectionSet": Object {
+                        "kind": "SelectionSet",
+                        "selections": Array [
+                          Object {
+                            "alias": undefined,
+                            "arguments": Array [],
+                            "directives": Array [],
+                            "kind": "Field",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "id",
+                            },
+                            "selectionSet": undefined,
+                          },
+                          Object {
+                            "alias": undefined,
+                            "arguments": Array [],
+                            "directives": Array [],
+                            "kind": "Field",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "email",
+                            },
+                            "selectionSet": undefined,
+                          },
+                          Object {
+                            "alias": undefined,
+                            "arguments": Array [],
+                            "directives": Array [],
+                            "kind": "Field",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "firstName",
+                            },
+                            "selectionSet": undefined,
+                          },
+                          Object {
+                            "alias": undefined,
+                            "arguments": Array [],
+                            "directives": Array [],
+                            "kind": "Field",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "lastName",
+                            },
+                            "selectionSet": undefined,
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+                "variableDefinitions": Array [
+                  Object {
+                    "defaultValue": undefined,
+                    "directives": Array [],
+                    "kind": "VariableDefinition",
+                    "type": Object {
+                      "kind": "NonNullType",
+                      "type": Object {
+                        "kind": "NamedType",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "String",
+                        },
+                      },
+                    },
+                    "variable": Object {
+                      "kind": "Variable",
+                      "name": Object {
+                        "kind": "Name",
+                        "value": "customerAccessToken",
+                      },
+                    },
+                  },
+                ],
+              },
+            ],
+            "kind": "Document",
+            "loc": Object {
+              "end": 179,
+              "start": 0,
+            },
+          },
+          "variables": Object {
+            "customerAccessToken": "accessTokenMock",
+          },
+        },
+        "result": Object {
+          "data": Object {
+            "customer": Object {
+              "email": "test@user.com",
+              "firstName": "Test",
+              "id": "12345",
+              "lastName": "User",
+            },
+          },
+        },
+      },
+    ]
+  }
+>
+  <ApolloProvider
+    client={
+      ApolloClient {
+        "cache": InMemoryCache {
+          "addTypename": false,
+          "cacheKeyRoot": KeyTrie {
+            "weakness": true,
+          },
+          "config": Object {
+            "addTypename": false,
+            "dataIdFromObject": [Function],
+            "fragmentMatcher": HeuristicFragmentMatcher {},
+            "freezeResults": false,
+            "resultCaching": true,
+          },
+          "data": DepTrackingCache {
+            "data": Object {},
+            "depend": [Function],
+          },
+          "maybeBroadcastWatch": [Function],
+          "optimisticData": DepTrackingCache {
+            "data": Object {},
+            "depend": [Function],
+          },
+          "silenceBroadcast": false,
+          "storeReader": StoreReader {
+            "executeSelectionSet": [Function],
+            "executeStoreQuery": [Function],
+            "executeSubSelectedArray": [Function],
+            "freezeResults": false,
+          },
+          "storeWriter": StoreWriter {},
+          "typenameDocumentCache": Map {},
+          "watches": Set {},
+        },
+        "clearStoreCallbacks": Array [],
+        "defaultOptions": Object {},
+        "disableNetworkFetches": false,
+        "link": MockLink {
+          "addTypename": false,
+          "mockedResponsesByKey": Object {
+            "{\\"query\\":\\"query GetCustomerInfo($customerAccessToken: String!) {\\\\n  customer(customerAccessToken: $customerAccessToken) {\\\\n    id\\\\n    email\\\\n    firstName\\\\n    lastName\\\\n  }\\\\n}\\\\n\\"}": Array [
+              Object {
+                "request": Object {
+                  "query": Object {
+                    "definitions": Array [
+                      Object {
+                        "directives": Array [],
+                        "kind": "OperationDefinition",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "GetCustomerInfo",
+                        },
+                        "operation": "query",
+                        "selectionSet": Object {
+                          "kind": "SelectionSet",
+                          "selections": Array [
+                            Object {
+                              "alias": undefined,
+                              "arguments": Array [
+                                Object {
+                                  "kind": "Argument",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "customerAccessToken",
+                                  },
+                                  "value": Object {
+                                    "kind": "Variable",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "customerAccessToken",
+                                    },
+                                  },
+                                },
+                              ],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "customer",
+                              },
+                              "selectionSet": Object {
+                                "kind": "SelectionSet",
+                                "selections": Array [
+                                  Object {
+                                    "alias": undefined,
+                                    "arguments": Array [],
+                                    "directives": Array [],
+                                    "kind": "Field",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "id",
+                                    },
+                                    "selectionSet": undefined,
+                                  },
+                                  Object {
+                                    "alias": undefined,
+                                    "arguments": Array [],
+                                    "directives": Array [],
+                                    "kind": "Field",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "email",
+                                    },
+                                    "selectionSet": undefined,
+                                  },
+                                  Object {
+                                    "alias": undefined,
+                                    "arguments": Array [],
+                                    "directives": Array [],
+                                    "kind": "Field",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "firstName",
+                                    },
+                                    "selectionSet": undefined,
+                                  },
+                                  Object {
+                                    "alias": undefined,
+                                    "arguments": Array [],
+                                    "directives": Array [],
+                                    "kind": "Field",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "lastName",
+                                    },
+                                    "selectionSet": undefined,
+                                  },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                        "variableDefinitions": Array [
+                          Object {
+                            "defaultValue": undefined,
+                            "directives": Array [],
+                            "kind": "VariableDefinition",
+                            "type": Object {
+                              "kind": "NonNullType",
+                              "type": Object {
+                                "kind": "NamedType",
+                                "name": Object {
+                                  "kind": "Name",
+                                  "value": "String",
+                                },
+                              },
+                            },
+                            "variable": Object {
+                              "kind": "Variable",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "customerAccessToken",
+                              },
+                            },
+                          },
+                        ],
+                      },
+                    ],
+                    "kind": "Document",
+                    "loc": Object {
+                      "end": 179,
+                      "start": 0,
+                    },
+                  },
+                  "variables": Object {
+                    "customerAccessToken": "accessTokenMock",
+                  },
+                },
+                "result": Object {
+                  "data": Object {
+                    "customer": Object {
+                      "email": "test@user.com",
+                      "firstName": "Test",
+                      "id": "12345",
+                      "lastName": "User",
+                    },
+                  },
+                },
+              },
+            ],
+          },
+        },
+        "localState": LocalState {
+          "cache": InMemoryCache {
+            "addTypename": false,
+            "cacheKeyRoot": KeyTrie {
+              "weakness": true,
+            },
+            "config": Object {
+              "addTypename": false,
+              "dataIdFromObject": [Function],
+              "fragmentMatcher": HeuristicFragmentMatcher {},
+              "freezeResults": false,
+              "resultCaching": true,
+            },
+            "data": DepTrackingCache {
+              "data": Object {},
+              "depend": [Function],
+            },
+            "maybeBroadcastWatch": [Function],
+            "optimisticData": DepTrackingCache {
+              "data": Object {},
+              "depend": [Function],
+            },
+            "silenceBroadcast": false,
+            "storeReader": StoreReader {
+              "executeSelectionSet": [Function],
+              "executeStoreQuery": [Function],
+              "executeSubSelectedArray": [Function],
+              "freezeResults": false,
+            },
+            "storeWriter": StoreWriter {},
+            "typenameDocumentCache": Map {},
+            "watches": Set {},
+          },
+          "client": [Circular],
+        },
+        "mutate": [Function],
+        "query": [Function],
+        "queryDeduplication": true,
+        "queryManager": QueryManager {
+          "assumeImmutableResults": false,
+          "clientAwareness": Object {
+            "name": undefined,
+            "version": undefined,
+          },
+          "dataStore": DataStore {
+            "cache": InMemoryCache {
+              "addTypename": false,
+              "cacheKeyRoot": KeyTrie {
+                "weakness": true,
+              },
+              "config": Object {
+                "addTypename": false,
+                "dataIdFromObject": [Function],
+                "fragmentMatcher": HeuristicFragmentMatcher {},
+                "freezeResults": false,
+                "resultCaching": true,
+              },
+              "data": DepTrackingCache {
+                "data": Object {},
+                "depend": [Function],
+              },
+              "maybeBroadcastWatch": [Function],
+              "optimisticData": DepTrackingCache {
+                "data": Object {},
+                "depend": [Function],
+              },
+              "silenceBroadcast": false,
+              "storeReader": StoreReader {
+                "executeSelectionSet": [Function],
+                "executeStoreQuery": [Function],
+                "executeSubSelectedArray": [Function],
+                "freezeResults": false,
+              },
+              "storeWriter": StoreWriter {},
+              "typenameDocumentCache": Map {},
+              "watches": Set {},
+            },
+          },
+          "fetchQueryRejectFns": Map {},
+          "idCounter": 2,
+          "inFlightLinkObservables": Map {},
+          "link": MockLink {
+            "addTypename": false,
+            "mockedResponsesByKey": Object {
+              "{\\"query\\":\\"query GetCustomerInfo($customerAccessToken: String!) {\\\\n  customer(customerAccessToken: $customerAccessToken) {\\\\n    id\\\\n    email\\\\n    firstName\\\\n    lastName\\\\n  }\\\\n}\\\\n\\"}": Array [
+                Object {
+                  "request": Object {
+                    "query": Object {
+                      "definitions": Array [
+                        Object {
+                          "directives": Array [],
+                          "kind": "OperationDefinition",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "GetCustomerInfo",
+                          },
+                          "operation": "query",
+                          "selectionSet": Object {
+                            "kind": "SelectionSet",
+                            "selections": Array [
+                              Object {
+                                "alias": undefined,
+                                "arguments": Array [
+                                  Object {
+                                    "kind": "Argument",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "customerAccessToken",
+                                    },
+                                    "value": Object {
+                                      "kind": "Variable",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "customerAccessToken",
+                                      },
+                                    },
+                                  },
+                                ],
+                                "directives": Array [],
+                                "kind": "Field",
+                                "name": Object {
+                                  "kind": "Name",
+                                  "value": "customer",
+                                },
+                                "selectionSet": Object {
+                                  "kind": "SelectionSet",
+                                  "selections": Array [
+                                    Object {
+                                      "alias": undefined,
+                                      "arguments": Array [],
+                                      "directives": Array [],
+                                      "kind": "Field",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "id",
+                                      },
+                                      "selectionSet": undefined,
+                                    },
+                                    Object {
+                                      "alias": undefined,
+                                      "arguments": Array [],
+                                      "directives": Array [],
+                                      "kind": "Field",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "email",
+                                      },
+                                      "selectionSet": undefined,
+                                    },
+                                    Object {
+                                      "alias": undefined,
+                                      "arguments": Array [],
+                                      "directives": Array [],
+                                      "kind": "Field",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "firstName",
+                                      },
+                                      "selectionSet": undefined,
+                                    },
+                                    Object {
+                                      "alias": undefined,
+                                      "arguments": Array [],
+                                      "directives": Array [],
+                                      "kind": "Field",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "lastName",
+                                      },
+                                      "selectionSet": undefined,
+                                    },
+                                  ],
+                                },
+                              },
+                            ],
+                          },
+                          "variableDefinitions": Array [
+                            Object {
+                              "defaultValue": undefined,
+                              "directives": Array [],
+                              "kind": "VariableDefinition",
+                              "type": Object {
+                                "kind": "NonNullType",
+                                "type": Object {
+                                  "kind": "NamedType",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "String",
+                                  },
+                                },
+                              },
+                              "variable": Object {
+                                "kind": "Variable",
+                                "name": Object {
+                                  "kind": "Name",
+                                  "value": "customerAccessToken",
+                                },
+                              },
+                            },
+                          ],
+                        },
+                      ],
+                      "kind": "Document",
+                      "loc": Object {
+                        "end": 179,
+                        "start": 0,
+                      },
+                    },
+                    "variables": Object {
+                      "customerAccessToken": "accessTokenMock",
+                    },
+                  },
+                  "result": Object {
+                    "data": Object {
+                      "customer": Object {
+                        "email": "test@user.com",
+                        "firstName": "Test",
+                        "id": "12345",
+                        "lastName": "User",
+                      },
+                    },
+                  },
+                },
+              ],
+            },
+          },
+          "localState": LocalState {
+            "cache": InMemoryCache {
+              "addTypename": false,
+              "cacheKeyRoot": KeyTrie {
+                "weakness": true,
+              },
+              "config": Object {
+                "addTypename": false,
+                "dataIdFromObject": [Function],
+                "fragmentMatcher": HeuristicFragmentMatcher {},
+                "freezeResults": false,
+                "resultCaching": true,
+              },
+              "data": DepTrackingCache {
+                "data": Object {},
+                "depend": [Function],
+              },
+              "maybeBroadcastWatch": [Function],
+              "optimisticData": DepTrackingCache {
+                "data": Object {},
+                "depend": [Function],
+              },
+              "silenceBroadcast": false,
+              "storeReader": StoreReader {
+                "executeSelectionSet": [Function],
+                "executeStoreQuery": [Function],
+                "executeSubSelectedArray": [Function],
+                "freezeResults": false,
+              },
+              "storeWriter": StoreWriter {},
+              "typenameDocumentCache": Map {},
+              "watches": Set {},
+            },
+            "client": [Circular],
+          },
+          "mutationStore": MutationStore {
+            "store": Object {},
+          },
+          "onBroadcast": [Function],
+          "pollingInfoByQueryId": Map {},
+          "queries": Map {},
+          "queryDeduplication": true,
+          "queryStore": QueryStore {
+            "store": Object {},
+          },
+          "ssrMode": false,
+          "transformCache": WeakMap {},
+        },
+        "reFetchObservableQueries": [Function],
+        "resetStore": [Function],
+        "resetStoreCallbacks": Array [],
+        "store": DataStore {
+          "cache": InMemoryCache {
+            "addTypename": false,
+            "cacheKeyRoot": KeyTrie {
+              "weakness": true,
+            },
+            "config": Object {
+              "addTypename": false,
+              "dataIdFromObject": [Function],
+              "fragmentMatcher": HeuristicFragmentMatcher {},
+              "freezeResults": false,
+              "resultCaching": true,
+            },
+            "data": DepTrackingCache {
+              "data": Object {},
+              "depend": [Function],
+            },
+            "maybeBroadcastWatch": [Function],
+            "optimisticData": DepTrackingCache {
+              "data": Object {},
+              "depend": [Function],
+            },
+            "silenceBroadcast": false,
+            "storeReader": StoreReader {
+              "executeSelectionSet": [Function],
+              "executeStoreQuery": [Function],
+              "executeSubSelectedArray": [Function],
+              "freezeResults": false,
+            },
+            "storeWriter": StoreWriter {},
+            "typenameDocumentCache": Map {},
+            "watches": Set {},
+          },
+        },
+        "typeDefs": undefined,
+        "version": "2.6.8",
+        "watchQuery": [Function],
+      }
+    }
+  >
+    <AccountPopup>
+      <styled.div>
+        <StyledComponent
+          forwardedComponent={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-htpNat",
+                "isStatic": false,
+                "lastClassName": "jChABh",
+                "rules": Array [
+                  "
+  position: relative;
+  padding-right: 1rem;
+
+  @media screen and (max-width: 374px) {
+    display: none;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding-right: 0;
+  }
+",
+                ],
+              },
+              "displayName": "styled.div",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-htpNat",
+              "target": "div",
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          forwardedRef={null}
+        >
+          <div
+            className="sc-htpNat jChABh"
+          >
+            <i
+              className="far fa-user-circle account-btn"
+              onClick={[Function]}
+              role="presentation"
+            />
+            <styled.div
+              open={false}
+            >
+              <StyledComponent
+                forwardedComponent={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-bxivhb",
+                      "isStatic": false,
+                      "lastClassName": "ksFBIi",
+                      "rules": Array [
+                        "
+  position: fixed;
+  right: 0;
+  top: 10%;
+  transition: all 0.25s ease-in-out;
+  z-index: 1;
+  transform: ",
+                        [Function],
+                        ";
+  opacity: ",
+                        [Function],
+                        ";
+  width: 450px;
+  max-width: 100vw;
+  height: 300px;
+  background-color: #fafafa;
+  box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.33);
+
+  @media screen and (min-width: 1024px) {
+    position: absolute;
+    top: 200%;
+    transform: ",
+                        [Function],
+                        ";
+  }
+",
+                      ],
+                    },
+                    "displayName": "styled.div",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-bxivhb",
+                    "target": "div",
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                open={false}
+              >
+                <div
+                  className="sc-bxivhb ksFBIi"
+                  open={false}
+                >
+                  <styled.div
+                    id="popup-content"
+                  >
+                    <StyledComponent
+                      forwardedComponent={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": Array [],
+                          "componentStyle": ComponentStyle {
+                            "componentId": "sc-ifAKCX",
+                            "isStatic": false,
+                            "lastClassName": "cjfiBc",
+                            "rules": Array [
+                              "
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Colgate Ready', serif;
+
+  #login-btn {
+    margin-bottom: 1rem;
+  }
+",
+                            ],
+                          },
+                          "displayName": "styled.div",
+                          "foldedComponentIds": Array [],
+                          "render": [Function],
+                          "styledComponentId": "sc-ifAKCX",
+                          "target": "div",
+                          "toString": [Function],
+                          "warnTooManyClasses": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      forwardedRef={null}
+                      id="popup-content"
+                    >
+                      <div
+                        className="sc-ifAKCX cjfiBc"
+                        id="popup-content"
+                      >
+                        <Link
+                          href="/login"
+                          passHref={true}
+                        >
+                          <ForwardRef
+                            color="primary"
+                            href="/login"
+                            id="login-btn"
+                            onClick={[Function]}
+                            onMouseEnter={[Function]}
+                            text="Log in"
+                          >
+                            <styled.div>
+                              <StyledComponent
+                                forwardedComponent={
+                                  Object {
+                                    "$$typeof": Symbol(react.forward_ref),
+                                    "attrs": Array [],
+                                    "componentStyle": ComponentStyle {
+                                      "componentId": "sc-bZQynM",
+                                      "isStatic": false,
+                                      "lastClassName": "kzlsZH",
+                                      "rules": Array [
+                                        "
+  display: flex;
+",
+                                      ],
+                                    },
+                                    "displayName": "styled.div",
+                                    "foldedComponentIds": Array [],
+                                    "render": [Function],
+                                    "styledComponentId": "sc-bZQynM",
+                                    "target": "div",
+                                    "toString": [Function],
+                                    "warnTooManyClasses": [Function],
+                                    "withComponent": [Function],
+                                  }
+                                }
+                                forwardedRef={[Function]}
+                              >
+                                <div
+                                  className="sc-bZQynM kzlsZH"
+                                >
+                                  <styled.button
+                                    color="primary"
+                                    id="login-btn"
+                                    onClick={[Function]}
+                                  >
+                                    <StyledComponent
+                                      color="primary"
+                                      forwardedComponent={
+                                        Object {
+                                          "$$typeof": Symbol(react.forward_ref),
+                                          "attrs": Array [],
+                                          "componentStyle": ComponentStyle {
+                                            "componentId": "sc-gzVnrw",
+                                            "isStatic": false,
+                                            "lastClassName": "hvoNeC",
+                                            "rules": Array [
+                                              "
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ",
+                                              [Function],
+                                              ";
+  border: 2px solid ",
+                                              [Function],
+                                              ";
+  border-radius: 0.5rem;
+  min-width: 270px;
+  height: min-content;
+  transition: 
+   color 0.25s ease,
+   border-color 0.25s ease,
+   background-color 0.25s ease;
+  
+  &:hover {
+    cursor: pointer;
+    color: #efefef;
+    background-color: ",
+                                              [Function],
+                                              ";
+    border-color: ",
+                                              [Function],
+                                              ";
+  }
+",
+                                            ],
+                                          },
+                                          "displayName": "styled.button",
+                                          "foldedComponentIds": Array [],
+                                          "render": [Function],
+                                          "styledComponentId": "sc-gzVnrw",
+                                          "target": "button",
+                                          "toString": [Function],
+                                          "warnTooManyClasses": [Function],
+                                          "withComponent": [Function],
+                                        }
+                                      }
+                                      forwardedRef={null}
+                                      id="login-btn"
+                                      onClick={[Function]}
+                                    >
+                                      <button
+                                        className="sc-gzVnrw fZOFjN"
+                                        color="primary"
+                                        id="login-btn"
+                                        onClick={[Function]}
+                                      >
+                                        <styled.p>
+                                          <StyledComponent
+                                            forwardedComponent={
+                                              Object {
+                                                "$$typeof": Symbol(react.forward_ref),
+                                                "attrs": Array [],
+                                                "componentStyle": ComponentStyle {
+                                                  "componentId": "sc-htoDjs",
+                                                  "isStatic": false,
+                                                  "lastClassName": "hZBEql",
+                                                  "rules": Array [
+                                                    "
+  font-family: \\"Colgate Ready\\", serif;
+  padding: 0.75rem 0;
+  margin: 0 auto;
+  font-size: 1rem;
+  text-transform: uppercase;
+",
+                                                  ],
+                                                },
+                                                "displayName": "styled.p",
+                                                "foldedComponentIds": Array [],
+                                                "render": [Function],
+                                                "styledComponentId": "sc-htoDjs",
+                                                "target": "p",
+                                                "toString": [Function],
+                                                "warnTooManyClasses": [Function],
+                                                "withComponent": [Function],
+                                              }
+                                            }
+                                            forwardedRef={null}
+                                          >
+                                            <p
+                                              className="sc-htoDjs hZBEql"
+                                            >
+                                              Log in
+                                            </p>
+                                          </StyledComponent>
+                                        </styled.p>
+                                      </button>
+                                    </StyledComponent>
+                                  </styled.button>
+                                </div>
+                              </StyledComponent>
+                            </styled.div>
+                          </ForwardRef>
+                        </Link>
+                        <Link
+                          href="/register"
+                          passHref={true}
+                        >
+                          <ForwardRef
+                            color="secondary"
+                            href="/register"
+                            id="signup-btn"
+                            onClick={[Function]}
+                            onMouseEnter={[Function]}
+                            text="Sign up"
+                          >
+                            <styled.div>
+                              <StyledComponent
+                                forwardedComponent={
+                                  Object {
+                                    "$$typeof": Symbol(react.forward_ref),
+                                    "attrs": Array [],
+                                    "componentStyle": ComponentStyle {
+                                      "componentId": "sc-bZQynM",
+                                      "isStatic": false,
+                                      "lastClassName": "kzlsZH",
+                                      "rules": Array [
+                                        "
+  display: flex;
+",
+                                      ],
+                                    },
+                                    "displayName": "styled.div",
+                                    "foldedComponentIds": Array [],
+                                    "render": [Function],
+                                    "styledComponentId": "sc-bZQynM",
+                                    "target": "div",
+                                    "toString": [Function],
+                                    "warnTooManyClasses": [Function],
+                                    "withComponent": [Function],
+                                  }
+                                }
+                                forwardedRef={[Function]}
+                              >
+                                <div
+                                  className="sc-bZQynM kzlsZH"
+                                >
+                                  <styled.button
+                                    color="secondary"
+                                    id="signup-btn"
+                                    onClick={[Function]}
+                                  >
+                                    <StyledComponent
+                                      color="secondary"
+                                      forwardedComponent={
+                                        Object {
+                                          "$$typeof": Symbol(react.forward_ref),
+                                          "attrs": Array [],
+                                          "componentStyle": ComponentStyle {
+                                            "componentId": "sc-gzVnrw",
+                                            "isStatic": false,
+                                            "lastClassName": "hvoNeC",
+                                            "rules": Array [
+                                              "
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ",
+                                              [Function],
+                                              ";
+  border: 2px solid ",
+                                              [Function],
+                                              ";
+  border-radius: 0.5rem;
+  min-width: 270px;
+  height: min-content;
+  transition: 
+   color 0.25s ease,
+   border-color 0.25s ease,
+   background-color 0.25s ease;
+  
+  &:hover {
+    cursor: pointer;
+    color: #efefef;
+    background-color: ",
+                                              [Function],
+                                              ";
+    border-color: ",
+                                              [Function],
+                                              ";
+  }
+",
+                                            ],
+                                          },
+                                          "displayName": "styled.button",
+                                          "foldedComponentIds": Array [],
+                                          "render": [Function],
+                                          "styledComponentId": "sc-gzVnrw",
+                                          "target": "button",
+                                          "toString": [Function],
+                                          "warnTooManyClasses": [Function],
+                                          "withComponent": [Function],
+                                        }
+                                      }
+                                      forwardedRef={null}
+                                      id="signup-btn"
+                                      onClick={[Function]}
+                                    >
+                                      <button
+                                        className="sc-gzVnrw hvoNeC"
+                                        color="secondary"
+                                        id="signup-btn"
+                                        onClick={[Function]}
+                                      >
+                                        <styled.p>
+                                          <StyledComponent
+                                            forwardedComponent={
+                                              Object {
+                                                "$$typeof": Symbol(react.forward_ref),
+                                                "attrs": Array [],
+                                                "componentStyle": ComponentStyle {
+                                                  "componentId": "sc-htoDjs",
+                                                  "isStatic": false,
+                                                  "lastClassName": "hZBEql",
+                                                  "rules": Array [
+                                                    "
+  font-family: \\"Colgate Ready\\", serif;
+  padding: 0.75rem 0;
+  margin: 0 auto;
+  font-size: 1rem;
+  text-transform: uppercase;
+",
+                                                  ],
+                                                },
+                                                "displayName": "styled.p",
+                                                "foldedComponentIds": Array [],
+                                                "render": [Function],
+                                                "styledComponentId": "sc-htoDjs",
+                                                "target": "p",
+                                                "toString": [Function],
+                                                "warnTooManyClasses": [Function],
+                                                "withComponent": [Function],
+                                              }
+                                            }
+                                            forwardedRef={null}
+                                          >
+                                            <p
+                                              className="sc-htoDjs hZBEql"
+                                            >
+                                              Sign up
+                                            </p>
+                                          </StyledComponent>
+                                        </styled.p>
+                                      </button>
+                                    </StyledComponent>
+                                  </styled.button>
+                                </div>
+                              </StyledComponent>
+                            </styled.div>
+                          </ForwardRef>
+                        </Link>
+                      </div>
+                    </StyledComponent>
+                  </styled.div>
+                </div>
+              </StyledComponent>
+            </styled.div>
+          </div>
+        </StyledComponent>
+      </styled.div>
+    </AccountPopup>
+  </ApolloProvider>
+</MockedProvider>
+`;

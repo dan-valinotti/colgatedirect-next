@@ -1,14 +1,14 @@
 import { AppProps } from 'next/app';
 import React from 'react';
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Head from 'next/head';
-import { ThemeProvider } from '@material-ui/core/styles';
+
 import CssBaseline from '@material-ui/core/CssBaseline';
 import 'isomorphic-unfetch';
 import 'typeface-roboto';
 import 'react-multi-carousel/lib/styles.css';
 import '../styles/main.scss';
-import { theme } from '../views/theme';
+import theme from '../styles/theme';
 
 const GlobalStyle = createGlobalStyle`
 @font-face {
@@ -29,7 +29,11 @@ const GlobalStyle = createGlobalStyle`
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
-  font-family: 'Colgate Ready Bold', serif;
+  font-family: 'Colgate Ready', serif;
+}
+p {
+  font-weight: 400;
+  font-family: 'Colgate Ready', serif;
 }
 `;
 
@@ -49,6 +53,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
       <ThemeProvider theme={theme}>
+        <GlobalStyle />
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <Component {...pageProps} />

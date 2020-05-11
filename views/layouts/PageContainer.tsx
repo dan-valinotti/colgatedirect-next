@@ -26,8 +26,10 @@ const PageContainer: FunctionComponent<Props> = ({
     paddingTop,
     paddingLeft: 0,
     paddingRight: 0,
+    minHeight: 400,
   } : {
     paddingTop,
+    minHeight: 400,
   };
 
   return (

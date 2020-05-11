@@ -1,12 +1,13 @@
+/* eslint-disable global-require */
 import React from 'react';
 import Head from 'next/head';
 import { withTheme } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import NavBar from 'components/ui/NavBar';
+import { PageContainer } from 'components/ui/PageContainer';
 import ProductsGrid from '../components/ui/ProductsGrid';
 import { ProductSortKeys } from '../models';
-import PageContainer, { PageSize } from '../views/layouts/PageContainer';
 import HeroBanner from '../components/sections/HeroBanner';
 import { withMuiApp } from '../hocs/withMui';
 import FooterNav from '../components/FooterNav';
@@ -21,6 +22,7 @@ interface Props {
   sortIndex: number;
   variables: object;
 }
+
 
 function ProductsPage({
   query, reverse, sortKey, variables,
@@ -37,20 +39,24 @@ function ProductsPage({
   return (
     <>
       <Head>
-        <title>Products</title>
+        <title>ShopSmiles® by Colgate</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <NavBar />
-      <HeroBanner
-        title="ShopSmiles by Colgate®"
-        subtitle="The next generation of dental care is here."
-        bgColor="#a2c1d3"
-        bgImage={require('./images/colgate_smile_like_you_mean_it2.jpg')}
-        fontColor="#ffffff"
-        textAlign="right"
-        shopNow={false}
-      />
-      <PageContainer fullWidth paddingTop={30} size={PageSize.large}>
+      <PageContainer
+        maxWidth="100%"
+        mx="auto"
+        pt={45}
+      >
+        <HeroBanner
+          title="ShopSmiles by Colgate®"
+          subtitle="The next generation of dental care is here."
+          bgColor="#a2c1d3"
+          bgImage={require('./images/colgate_smile_like_you_mean_it2.jpg')}
+          fontColor="#ffffff"
+          textAlign="right"
+          shopNow={false}
+        />
         <PageContentSection
           id="home-content-1"
           alignContent="right"
@@ -115,9 +121,6 @@ function ProductsPage({
           alignWithEdge
           sectionColor="secondary"
         />
-        <PageContainer size={PageSize.large} paddingTop={30}>
-          <ProductsGrid query={query} reverse={reverse} sortKey={sortKey} variables={variables} />
-        </PageContainer>
       </PageContainer>
       <FooterNav />
     </>
