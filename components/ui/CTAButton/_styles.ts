@@ -14,6 +14,7 @@ const Button = styled.button`
   border-radius: 0.5rem;
   min-width: 270px;
   height: min-content;
+  min-height: 50px;
   transition: 
    color 0.25s ease,
    border-color 0.25s ease,
