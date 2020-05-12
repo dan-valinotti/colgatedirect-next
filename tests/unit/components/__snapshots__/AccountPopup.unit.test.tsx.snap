@@ -853,7 +853,7 @@ exports[`<AccountPopup /> Renders correctly 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "sc-gzVnrw",
                                             "isStatic": false,
-                                            "lastClassName": "hvoNeC",
+                                            "lastClassName": "ghUksR",
                                             "rules": Array [
                                               "
   display: flex;
@@ -868,6 +868,7 @@ exports[`<AccountPopup /> Renders correctly 1`] = `
   border-radius: 0.5rem;
   min-width: 270px;
   height: min-content;
+  min-height: 50px;
   transition: 
    color 0.25s ease,
    border-color 0.25s ease,
@@ -901,7 +902,7 @@ exports[`<AccountPopup /> Renders correctly 1`] = `
                                       onClick={[Function]}
                                     >
                                       <button
-                                        className="sc-gzVnrw fZOFjN"
+                                        className="sc-gzVnrw gpYuGG"
                                         color="primary"
                                         id="login-btn"
                                         onClick={[Function]}
@@ -1010,7 +1011,7 @@ exports[`<AccountPopup /> Renders correctly 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "sc-gzVnrw",
                                             "isStatic": false,
-                                            "lastClassName": "hvoNeC",
+                                            "lastClassName": "ghUksR",
                                             "rules": Array [
                                               "
   display: flex;
@@ -1025,6 +1026,7 @@ exports[`<AccountPopup /> Renders correctly 1`] = `
   border-radius: 0.5rem;
   min-width: 270px;
   height: min-content;
+  min-height: 50px;
   transition: 
    color 0.25s ease,
    border-color 0.25s ease,
@@ -1058,7 +1060,7 @@ exports[`<AccountPopup /> Renders correctly 1`] = `
                                       onClick={[Function]}
                                     >
                                       <button
-                                        className="sc-gzVnrw hvoNeC"
+                                        className="sc-gzVnrw ghUksR"
                                         color="secondary"
                                         id="signup-btn"
                                         onClick={[Function]}

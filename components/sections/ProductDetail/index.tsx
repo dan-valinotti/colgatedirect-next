@@ -1,7 +1,10 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { Typography } from '@material-ui/core';
+import {
+  Typography, Dialog, DialogContent, CircularProgress,
+} from '@material-ui/core';
 import { useMutation, useQuery } from '@apollo/react-hooks';
+import CTAButton from 'components/ui/CTAButton';
 import {
   TransformedProduct, getLineItems,
 } from '../../PDPComponent/_types';
@@ -30,10 +33,10 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
     data: getCartData,
     loading: getCartLoading,
     error: getCartError,
+    refetch: refetchCartData,
   } = useQuery(GET_CART_QUERY, {
     variables: {
       checkoutId: cartToken,
-      lineItems: getLineItems(lineItems),
     },
   });
 
@@ -48,6 +51,40 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
       lineItems,
     },
   });
+
+  const addToCart = () => {
+    if (cartToken && getCartData) {
+      refetchCartData({ checkoutId: cartToken })
+        .then((res) => {
+          const variantId = product.variant.id;
+          console.log(variantId);
+          const currentItems = res.data.node.lineItems.edges.map((item) => ({
+            variantId: item.node.variant.id,
+            quantity: item.node.quantity,
+          }));
+          // Check if product already exists in cart
+          if (currentItems.some((item) => item.variantId === variantId)) {
+            const index = currentItems.findIndex(
+              (item) => item.variantId === variantId,
+            );
+            currentItems[index].quantity += 1;
+          } else {
+            currentItems.push({
+              variantId,
+              quantity: 1,
+            });
+          }
+          // Set state variable lineItems to new list and run replacement query
+          setLineItems(currentItems);
+          replaceItems().then(() => {
+            refetchCartData()
+              .catch((error) => {
+                console.log(error);
+              });
+          }).catch((error) => console.log(error));
+        });
+    }
+  };
 
   // Waits for 'window' object to be availble for localStorage
   useEffect(() => {
@@ -75,9 +112,19 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
           <Paragraph>
             Price: ${parseFloat(product.price).toFixed(2)}
           </Paragraph>
-          <AddToCart variantId={product.id} quantityButton={false} quantity={0} />
+          <CTAButton id="atc" onClick={addToCart} text="Add to cart" color="secondary" />
         </Styled.ATCContainer>
       </Styled.DescriptionContainer>
+      {replaceItemsLoading && (
+        <Dialog open={replaceItemsLoading}>
+          <DialogContent>
+            <Typography variant="h6">Adding item to cart...</Typography>
+            <Styled.LoadingContainer>
+              <CircularProgress />
+            </Styled.LoadingContainer>
+          </DialogContent>
+        </Dialog>
+      )}
     </Styled.ProductDetailContainer>
   );
 };

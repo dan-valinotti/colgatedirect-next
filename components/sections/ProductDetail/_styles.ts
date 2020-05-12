@@ -52,6 +52,13 @@ const ProgressContainer = styled.div`
   padding: 30px 0 15px;
 `;
 
+const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0;
+`;
+
 export const Styled = {
   ProductDetailContainer,
   ImageContainer,
@@ -61,4 +68,5 @@ export const Styled = {
   ProductDescription,
   ATCContainer,
   ProgressContainer,
+  LoadingContainer,
 };
