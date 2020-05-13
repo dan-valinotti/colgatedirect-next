@@ -4,6 +4,7 @@ dist
 .next
 .DS_STORE
 .idea
+depcheck.json
 
 .env
 cypress/videos/*
