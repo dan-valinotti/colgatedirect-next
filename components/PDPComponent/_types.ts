@@ -1,8 +1,7 @@
 import gql from 'graphql-tag';
 import {
-  CurrencyCode, Metafield, MetafieldConnection, ProductVariant,
+  CurrencyCode, ProductVariant,
 } from '../../models';
-import { PriceV2 } from '../CartController/_types';
 
 // Map line items to array for cart replacement
 export function getLineItems(lineItems): object[] {
@@ -57,53 +56,6 @@ export const PRODUCT_INFO_QUERY = gql`
         }
     }
 `;
-
-export interface LineItemShort {
-  variantId: string;
-  quantity: number;
-}
-
-export interface LineItem {
-  node: {
-    variantId: string;
-    quantity: number;
-    id: string;
-    variant: ProductVariant;
-    title: string;
-    metafields: Metafield[];
-    priceV2: PriceV2;
-  };
-}
-
-export interface Variants {
-  edges: [{
-    node: {
-      id: string;
-      variantId: string;
-      quantity: number;
-      variant: ProductVariant;
-      title: string;
-      metafields: Metafield[];
-    };
-  }];
-}
-
-export interface TransformedProduct {
-  id: string;
-  handle: string;
-  title: string;
-  description: string;
-  imageSrc: string;
-  price: string;
-  priceV2: PriceV2;
-  variants: {
-    edges: [{
-      node: ProductVariant;
-    }];
-  };
-  variant?: ProductVariant;
-  metafields?: Metafield[];
-}
 
 export interface ProductDetails {
   productByHandle: {

@@ -3,13 +3,13 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useMutation, useQuery, useApolloClient } from '@apollo/react-hooks';
 import {
-  CREATE_CART,
+  CREATE_CART_QUERY,
   CreateCartResponse,
   GetCartRequest,
   GET_CART_QUERY,
   CreateCartRequest,
   CHECKOUT_LINE_ITEMS_REPLACE_MUTATION,
-} from '../CartController/_types';
+} from '../../common/queries/checkout';
 import CartController from '../CartController';
 import CartContentRow from '../CartContentRow/CartContentRow';
 import CartPopup from '../ui/CartPopup/index';
@@ -37,7 +37,7 @@ const CartData = (parentComponent) => {
     data: createCartData,
     loading: createCartLoading,
     error: createCartError,
-  }] = useMutation<CreateCartResponse>(CREATE_CART, {
+  }] = useMutation<CreateCartResponse>(CREATE_CART_QUERY, {
     variables: createVars,
   });
 

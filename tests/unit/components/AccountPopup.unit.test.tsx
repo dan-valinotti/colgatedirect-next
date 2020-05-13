@@ -6,7 +6,7 @@ import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { MockedProvider } from '@apollo/react-testing';
 import AccountPopup from "../../../components/ui/AccountPopup";
-import { CUSTOMER_INFO_QUERY } from '../../../components/ui/AccountPopup/_types';
+import { CUSTOMER_INFO_QUERY } from '../../../common/queries/account';
 
 describe('<AccountPopup />', () => {
   const mocks = [{
@@ -14,7 +14,7 @@ describe('<AccountPopup />', () => {
       query: CUSTOMER_INFO_QUERY,
       variables: {
         customerAccessToken: 'accessTokenMock',
-      }, 
+      },
     },
     result: {
       data: {

@@ -1,4 +1,4 @@
-import { TransformedProduct } from '../../PDPComponent/_types';
+import { TransformedProduct } from '../../../common/queries/checkout';
 
 export interface WhiteningPageProps {
   product: TransformedProduct;

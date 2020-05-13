@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { IconButton, Popover, Typography } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { ApolloError } from 'apollo-boost';
-import { GetCartResponse } from './_types';
+import { GetCartResponse } from '../../common/queries/checkout';
 import CartContent from '../CartContent/index';
 
 /**

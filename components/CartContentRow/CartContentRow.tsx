@@ -4,7 +4,7 @@ import {
 } from '@material-ui/core';
 import Link from 'next/link';
 import { ApolloError } from 'apollo-boost';
-import { GetCartResponse } from '../CartController/_types';
+import { GetCartResponse } from '../../common/queries/checkout';
 import { Styled } from './_styles';
 import AddToCart from '../PDPComponent/AddAndRemoveProduct';
 

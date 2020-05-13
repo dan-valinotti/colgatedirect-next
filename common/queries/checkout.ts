@@ -1,10 +1,42 @@
 import { gql } from 'apollo-boost';
-import { LineItem } from '../PDPComponent/_types';
+import { Metafield, ProductVariant } from '../../models';
 
+/**
+ * Getting Cart Data Types / Queries
+ */
 export type PriceV2 = {
   amount: string;
   currency: string;
 };
+
+export interface LineItem {
+  node: {
+    variantId: string;
+    quantity: number;
+    id: string;
+    variant: ProductVariant;
+    title: string;
+    metafields: Metafield[];
+    priceV2: PriceV2;
+  };
+}
+
+export interface TransformedProduct {
+  id: string;
+  handle: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  price: string;
+  priceV2: PriceV2;
+  variants: {
+    edges: [{
+      node: ProductVariant;
+    }];
+  };
+  variant?: ProductVariant;
+  metafields?: Metafield[];
+}
 
 export interface GetCartRequest {
   checkoutId: string;
@@ -27,42 +59,6 @@ export type GetCartResponse = {
     };
   };
 };
-
-export type CreateCartResponse = {
-  data: {
-    checkoutCreate: {
-      checkout: {
-        id: string;
-      };
-    };
-    checkoutUserErrors: string[];
-  };
-};
-
-export type CreateCartRequest = {
-  input: object;
-};
-
-export const GET_TOKEN = gql`
-    fragment checkoutCached on Checkout {
-        id @client
-    }
-`;
-
-export const CREATE_CART = gql`
-    mutation checkoutCreate($input: CheckoutCreateInput!) {
-        checkoutCreate(input: $input) {
-            checkout {
-                id
-            }
-            checkoutUserErrors {
-                code
-                field
-                message
-            }
-        }
-    }
-`;
 
 export const GET_CART_QUERY = gql`
     fragment checkout on Checkout {
@@ -114,6 +110,42 @@ export const GET_CART_QUERY = gql`
     }
 `;
 
+/**
+ * Creating new Cart Types / Queries
+ */
+export type CreateCartRequest = {
+  input: object;
+};
+
+export type CreateCartResponse = {
+  data: {
+    checkoutCreate: {
+      checkout: {
+        id: string;
+      };
+    };
+    checkoutUserErrors: string[];
+  };
+};
+
+export const CREATE_CART_QUERY = gql`
+    mutation checkoutCreate($input: CheckoutCreateInput!) {
+        checkoutCreate(input: $input) {
+            checkout {
+                id
+            }
+            checkoutUserErrors {
+                code
+                field
+                message
+            }
+        }
+    }
+`;
+
+/**
+ * Replace/Add items to Cart Types / Queries
+ */
 export const CHECKOUT_LINE_ITEMS_REPLACE_MUTATION = gql`
     mutation checkoutLineItemsReplace($checkoutId: ID!, $lineItems: [CheckoutLineItemInput!]!) {
         checkoutLineItemsReplace(checkoutId: $checkoutId, lineItems: $lineItems) {
