@@ -3,7 +3,7 @@ import {
   DataUsage, Map, EmojiObjects, SentimentVerySatisfied,
 } from '@material-ui/icons';
 import { Styled } from './_styles';
-import { TransformedProduct } from '../../PDPComponent/_types';
+import { TransformedProduct } from '../../../common/queries/checkout';
 import HeroBanner from '../../sections/HeroBanner';
 import IconDescription from '../../sections/IconDescription';
 

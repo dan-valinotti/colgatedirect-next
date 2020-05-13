@@ -124,7 +124,7 @@ exports[`<AccountPopup /> Renders correctly 1`] = `
             ],
             "kind": "Document",
             "loc": Object {
-              "end": 179,
+              "end": 211,
               "start": 0,
             },
           },
@@ -307,7 +307,7 @@ exports[`<AccountPopup /> Renders correctly 1`] = `
                     ],
                     "kind": "Document",
                     "loc": Object {
-                      "end": 179,
+                      "end": 211,
                       "start": 0,
                     },
                   },
@@ -533,7 +533,7 @@ exports[`<AccountPopup /> Renders correctly 1`] = `
                       ],
                       "kind": "Document",
                       "loc": Object {
-                        "end": 179,
+                        "end": 211,
                         "start": 0,
                       },
                     },

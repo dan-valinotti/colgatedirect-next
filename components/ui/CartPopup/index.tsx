@@ -6,7 +6,7 @@ import CartContent from 'components/CartContent';
 import { Styled } from './_styles';
 import LogoutButton from '../LogoutButton';
 import CTAButton from '../CTAButton';
-import { GetCartResponse } from './_types';
+import { GetCartResponse } from '../../../common/queries/checkout';
 
 /**
  * properties

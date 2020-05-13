@@ -3,10 +3,10 @@ import {
   Button, List, ListItem, Typography,
 } from '@material-ui/core';
 import Link from 'next/link';
-import { GetCartResponse } from '../CartController/_types';
+import { GetCartResponse } from '../../common/queries/checkout';
 import { Styled } from './_styles';
 import AddToCart from '../PDPComponent/AddAndRemoveProduct';
-import CTAButton from "../ui/CTAButton";
+import CTAButton from '../ui/CTAButton';
 
 /**
  * properties

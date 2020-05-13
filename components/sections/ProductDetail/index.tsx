@@ -6,11 +6,11 @@ import {
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import CTAButton from 'components/ui/CTAButton';
 import {
-  TransformedProduct, getLineItems,
+  getLineItems,
 } from '../../PDPComponent/_types';
 import {
-  CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY,
-} from '../../CartController/_types';
+  CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY, TransformedProduct,
+} from '../../../common/queries/checkout';
 import { Styled } from './_styles';
 import AddToCart from '../../PDPComponent/AddAndRemoveProduct';
 import { Heading, Paragraph } from '../../ui/Typography';
