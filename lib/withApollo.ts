@@ -1,5 +1,4 @@
-import { withApollo } from 'next-apollo';
-import { HttpLink, InMemoryCache, gql } from 'apollo-boost';
+import { HttpLink, InMemoryCache } from 'apollo-boost';
 import ApolloClient from 'apollo-client';
 import httpConfig from '../apollo.config';
 

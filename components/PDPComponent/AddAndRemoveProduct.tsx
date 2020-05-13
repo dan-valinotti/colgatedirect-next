@@ -3,9 +3,13 @@ import { useMutation, useQuery } from '@apollo/react-hooks';
 import {
   CircularProgress, Typography, DialogContent, Dialog, ButtonGroup, Button,
 } from '@material-ui/core';
-import { ProductsType, PRODUCTS_QUERY } from '../ui/ProductsGrid/_types';
-import { CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY, GetCartRequest } from '../CartController/_types';
-import { getLineItems } from './_types';
+import { ProductsType, PRODUCTS_QUERY } from '../../common/queries/products';
+import {
+  CHECKOUT_LINE_ITEMS_REPLACE_MUTATION,
+  GET_CART_QUERY,
+  GetCartRequest,
+} from '../../common/queries/checkout';
+import { getLineItems } from '../../common/queries/products';
 import { Styled as StyledThumbnail } from '../ui/ProductThumbnail/_styles';
 import { Styled as StyledGrid } from '../ui/ProductsGrid/_styles';
 

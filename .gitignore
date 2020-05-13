@@ -1,9 +1,12 @@
 node_modules
 package-lock.json
+yarn.lock
 dist
 .next
 .DS_STORE
+.vscode
 .idea
+depcheck.json
 
 .env
 cypress/videos/*

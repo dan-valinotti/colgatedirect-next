@@ -2,7 +2,7 @@ import React from 'react';
 import ReactFromJSON from 'react-from-json/dist';
 import ManualToothbrush from '../pdp/ManualToothbrush';
 import WhiteningPage from '../pdp/WhiteningPage';
-import { TransformedProduct } from '../PDPComponent/_types';
+import { TransformedProduct } from '../../common/queries/checkout';
 import { WhiteningPageProps } from '../pdp/WhiteningPage/_types';
 
 interface Props {

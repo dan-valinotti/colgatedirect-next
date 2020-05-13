@@ -1,27 +1,16 @@
-import { ApolloClient, gql } from 'apollo-boost';
+import { ApolloClient } from 'apollo-boost';
 import jwt from 'jsonwebtoken';
-import { HttpLink, createHttpLink } from 'apollo-link-http';
+import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { fetch } from 'cross-fetch/polyfill';
 import httpConfig from '../apollo.config';
+import {
+  LoginQueryVariables,
+  CustomerLoginResponse,
+  CUSTOMER_LOGIN_QUERY,
+} from '../common/queries/account';
 
 require('dotenv').config();
-
-interface LoginQueryVariables {
-  input: {
-    email: string;
-    password: string;
-  };
-}
-interface CustomerLoginResponse {
-  customerAccessTokenCreate: {
-    customerUserErrors: any[];
-    customerAccessToken: {
-      accessToken: string;
-      expiresAt: string;
-    };
-  };
-}
 
 const { JWT_SECRET } = process.env;
 const client = new ApolloClient({
@@ -33,31 +22,14 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
-const LOGIN_QUERY = gql`
-  mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
-    customerAccessTokenCreate(input: $input) {
-      customerUserErrors {
-        code
-        field
-        message
-      }
-      customerAccessToken {
-        accessToken
-        expiresAt
-      }
-    }
-  }
-`;
-
-export async function login(req, res) {
+export function login(req, res) {
   const { accessToken } = req.body;
   const validate = jwt.verify(accessToken, JWT_SECRET, (err, user) => {
     if (err) {
       res.json(err);
     } else {
       client.mutate<CustomerLoginResponse, LoginQueryVariables>({
-        mutation: LOGIN_QUERY,
+        mutation: CUSTOMER_LOGIN_QUERY,
         variables: {
           input: {
             email: user.email,

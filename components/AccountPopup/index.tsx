@@ -10,7 +10,7 @@ import LogoutButton from '../ui/LogoutButton';
 import {
   CUSTOMER_INFO_QUERY,
   GetCustomerInfoResponse,
-} from '../../hocs/withCustomerInfo';
+} from '../../common/queries/account';
 
 /*
 * Returns nodes to be rendered on AccountPopup depending on login status.
