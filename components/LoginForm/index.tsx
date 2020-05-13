@@ -17,7 +17,7 @@ import fetch from 'node-fetch';
 import { Styled } from './_styles';
 import {
   CustomerLoginRequest, ErrorStatus,
-} from './_types';
+} from '../../common/queries/account';
 
 /*
 * LoginForm - component that controls the process of logging in/handling

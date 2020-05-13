@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import Link from 'next/link';
 import { Styled } from './_styles';
 import LogoutButton from '../LogoutButton';
-import { CustomerData, GetCustomerInfoResponse, CUSTOMER_INFO_QUERY } from './_types';
+import { GetCustomerInfoResponse, CUSTOMER_INFO_QUERY } from '../../../common/queries/account';
 import CTAButton from '../CTAButton';
 
 const AccountPopup: FunctionComponent = () => {
