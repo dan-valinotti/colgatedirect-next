@@ -6,7 +6,7 @@ import Head from 'next/head';
 import { PageContainer } from 'components/ui/PageContainer';
 import { Styled } from './_styles';
 import { TransformedProduct } from '../../common/queries/checkout';
-import { PRODUCT_INFO_QUERY, ProductDetails } from './_types';
+import { PRODUCT_INFO_QUERY, ProductDetails } from '../../common/queries/products';
 import ProductDetail from '../sections/ProductDetail';
 import products from './customProductPages.json';
 import CustomPDPController from '../CustomPDPController';
@@ -49,6 +49,8 @@ const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
       variant: data.productByHandle.variants.edges[0].node,
     });
   }
+
+
 
   if (!loading && !error && data) {
     product = extractProduct();

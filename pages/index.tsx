@@ -3,11 +3,8 @@ import React from 'react';
 import Head from 'next/head';
 import { withTheme } from '@material-ui/core';
 import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
 import NavBar from 'components/ui/NavBar';
 import { PageContainer } from 'components/ui/PageContainer';
-import ProductsGrid from '../components/ui/ProductsGrid';
-import { ProductSortKeys } from '../models';
 import HeroBanner from '../components/sections/HeroBanner';
 import { withMuiApp } from '../hocs/withMui';
 import FooterNav from '../components/FooterNav';
@@ -15,18 +12,7 @@ import { theme } from '../views/theme';
 import PageContentSection from '../components/sections/PageContentSection';
 import { withApollo } from '../lib/apollo';
 
-interface Props {
-  query: string;
-  reverse: boolean;
-  sortKey: ProductSortKeys;
-  sortIndex: number;
-  variables: object;
-}
-
-
-function ProductsPage({
-  query, reverse, sortKey, variables,
-}: Props) {
+function ProductsPage() {
   const router = useRouter();
 
   const goToRoute = (href: string) => {

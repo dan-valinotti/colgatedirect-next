@@ -7,7 +7,7 @@ import { useMutation, useQuery } from '@apollo/react-hooks';
 import CTAButton from 'components/ui/CTAButton';
 import {
   getLineItems,
-} from '../../PDPComponent/_types';
+} from '../../../common/queries/products';
 import {
   CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, GET_CART_QUERY, TransformedProduct,
 } from '../../../common/queries/checkout';
