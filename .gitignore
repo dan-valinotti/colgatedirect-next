@@ -3,6 +3,7 @@ package-lock.json
 dist
 .next
 .DS_STORE
+.vscode
 .idea
 depcheck.json
 
