@@ -51,7 +51,6 @@ const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
   }
 
 
-
   if (!loading && !error && data) {
     product = extractProduct();
   }
@@ -61,7 +60,7 @@ const PDPComponent: FunctionComponent<Props> = ({ handle }: Props) => {
       {!error && product && (
         <>
           <Head>
-            <title>{product.title}</title>
+            <title>{product.title} | ShopSmiles® by Colgate</title>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           </Head>
           {customPdps.products.includes(product.handle) ? (
