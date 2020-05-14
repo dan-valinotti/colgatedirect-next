@@ -35,7 +35,7 @@ function ProductsPage() {
         pt={45}
       >
         <HeroBanner
-          title="ShopSmiles by Colgate®"
+          title="Smile like you mean it"
           subtitle="The next generation of dental care is here."
           bgColor="#a2c1d3"
           bgImage={require('./images/colgate_smile_like_you_mean_it2.jpg')}
