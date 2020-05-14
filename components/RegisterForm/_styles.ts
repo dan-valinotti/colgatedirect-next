@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Button } from '@material-ui/core';
+import { theme } from '~views/theme';
 
 const Container = styled.div`
   display: flex;
@@ -33,16 +34,17 @@ const FormFieldContainer = styled.div`
   }
 `;
 
-const SubmitButton = styled(Button)`
-  &&& {
-    margin-top: 1.25rem;
+const LoginLinkText = styled.p`
+  padding-top: 1rem;
+
+  a {
+    color: ${theme.palette.secondary.main}
   }
-  width: 10rem;
 `;
 
 export const Styled = {
   Container,
   FormContainer,
   FormFieldContainer,
-  SubmitButton,
+  LoginLinkText,
 };

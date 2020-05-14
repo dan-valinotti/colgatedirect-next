@@ -3,6 +3,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import { withTheme } from '@material-ui/core';
 import Head from 'next/head';
 import NavBar from 'components/ui/NavBar';
+import { PageContainer } from 'components/ui/PageContainer';
 import { theme } from '../views/theme';
 import { withMuiApp } from '../hocs/withMui';
 import RegisterForm from '../components/RegisterForm';
@@ -16,7 +17,13 @@ const RegisterPage = () => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <NavBar />
-    <RegisterForm />
+    <PageContainer
+      maxWidth="100%"
+      mx="auto"
+      pt={90}
+    >
+      <RegisterForm />
+    </PageContainer>
     <FooterNav />
   </ThemeProvider>
 );

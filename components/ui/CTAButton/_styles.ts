@@ -3,6 +3,7 @@ import { theme } from '../../../views/theme';
 
 const Container = styled.div`
   display: flex;
+  justify-content: center;
 `;
 
 const Button = styled.button`
