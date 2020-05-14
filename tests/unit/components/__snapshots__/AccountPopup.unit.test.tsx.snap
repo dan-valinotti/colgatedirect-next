@@ -641,7 +641,7 @@ exports[`<AccountPopup /> Renders correctly 1`] = `
           },
         },
         "typeDefs": undefined,
-        "version": "2.6.8",
+        "version": "local",
         "watchQuery": [Function],
       }
     }
@@ -817,10 +817,11 @@ exports[`<AccountPopup /> Renders correctly 1`] = `
                                     "componentStyle": ComponentStyle {
                                       "componentId": "sc-bZQynM",
                                       "isStatic": false,
-                                      "lastClassName": "kzlsZH",
+                                      "lastClassName": "dIMTHo",
                                       "rules": Array [
                                         "
   display: flex;
+  justify-content: center;
 ",
                                       ],
                                     },
@@ -837,7 +838,7 @@ exports[`<AccountPopup /> Renders correctly 1`] = `
                                 forwardedRef={[Function]}
                               >
                                 <div
-                                  className="sc-bZQynM kzlsZH"
+                                  className="sc-bZQynM dIMTHo"
                                 >
                                   <styled.button
                                     color="primary"
@@ -975,10 +976,11 @@ exports[`<AccountPopup /> Renders correctly 1`] = `
                                     "componentStyle": ComponentStyle {
                                       "componentId": "sc-bZQynM",
                                       "isStatic": false,
-                                      "lastClassName": "kzlsZH",
+                                      "lastClassName": "dIMTHo",
                                       "rules": Array [
                                         "
   display: flex;
+  justify-content: center;
 ",
                                       ],
                                     },
@@ -995,7 +997,7 @@ exports[`<AccountPopup /> Renders correctly 1`] = `
                                 forwardedRef={[Function]}
                               >
                                 <div
-                                  className="sc-bZQynM kzlsZH"
+                                  className="sc-bZQynM dIMTHo"
                                 >
                                   <styled.button
                                     color="secondary"
