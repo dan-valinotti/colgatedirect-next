@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   width: 100%;
-  max-width: 1000px;
+  max-width: 1250px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -13,7 +13,7 @@ const Container = styled.div`
 const GridContainer = styled.div`
   padding-top: 2rem;
   width: 100%;
-  height: min-content;
+  height: 100%;
 `;
 
 export const Styled = {

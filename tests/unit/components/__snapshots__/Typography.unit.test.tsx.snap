@@ -114,7 +114,7 @@ exports[`<Paragraph /> Does the rendered component match the Snapshot? 1`] = `
   fontFamily="\\"Colgate Ready\\", serif"
   fontSize={
     Array [
-      "0.8em",
+      "0.9em",
       "1em",
     ]
   }
@@ -127,7 +127,7 @@ exports[`<Paragraph /> Does the rendered component match the Snapshot? 1`] = `
     fontFamily="\\"Colgate Ready\\", serif"
     fontSize={
       Array [
-        "0.8em",
+        "0.9em",
         "1em",
       ]
     }
@@ -139,7 +139,7 @@ exports[`<Paragraph /> Does the rendered component match the Snapshot? 1`] = `
           "color": "rgba(0,0,0,0.8)",
           "fontFamily": "\\"Colgate Ready\\", serif",
           "fontSize": Array [
-            "0.8em",
+            "0.9em",
             "1em",
           ],
           "fontWeight": 400,
@@ -148,7 +148,7 @@ exports[`<Paragraph /> Does the rendered component match the Snapshot? 1`] = `
         "componentStyle": ComponentStyle {
           "componentId": "sc-bxivhb",
           "isStatic": false,
-          "lastClassName": "kueMaz",
+          "lastClassName": "beLkIv",
           "rules": Array [
             "
   ",
@@ -185,12 +185,12 @@ exports[`<Paragraph /> Does the rendered component match the Snapshot? 1`] = `
     textAlign="left"
   >
     <p
-      className="sc-bdVaJa sc-bxivhb kueMaz"
+      className="sc-bdVaJa sc-bxivhb beLkIv"
       color="rgba(0,0,0,1)"
       fontFamily="\\"Colgate Ready\\", serif"
       fontSize={
         Array [
-          "0.8em",
+          "0.9em",
           "1em",
         ]
       }

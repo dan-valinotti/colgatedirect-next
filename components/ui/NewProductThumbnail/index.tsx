@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Styled } from './_styles';
-import { TestInterface } from './_types';
+import { ThumbnailTitle, ThumbnailPrice } from '../Typography/index';
 
 type Props = {
   title: string;
@@ -16,7 +16,13 @@ const NewProductThumbnail: FunctionComponent<Props> = ({
   price,
 }: Props) => (
   <Styled.Container>
-    <h1>{title}</h1>
+    <Styled.ImageContainer>
+      <img src={image !== '' ? `${image}&height=160` : ''} alt={title} />
+    </Styled.ImageContainer>
+    <Styled.TextContainer>
+      <ThumbnailTitle tag="h6">{title}</ThumbnailTitle>
+      <ThumbnailPrice tag="p">${price}</ThumbnailPrice>
+    </Styled.TextContainer>
   </Styled.Container>
 );
 
