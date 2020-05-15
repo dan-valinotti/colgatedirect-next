@@ -11,6 +11,7 @@ const Container = styled.div`
   border-bottom: 1px solid ${theme.palette.grey[300]};
   border-right: 1px solid ${theme.palette.grey[300]};
   padding: 1.5em;
+  min-height: 350px;
 `;
 
 const ImageContainer = styled.div`

@@ -8,16 +8,11 @@ const Container = styled.div`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 350px);
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   grid-auto-flow: dense;
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start; */
   border-top: 1px solid ${theme.palette.grey[300]};
   border-left: 1px solid ${theme.palette.grey[300]};
-  width: 100%;
+  max-width: 100%;
   margin: 0 2em;
 `;
 
