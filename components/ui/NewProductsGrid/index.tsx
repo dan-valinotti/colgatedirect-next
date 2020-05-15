@@ -15,12 +15,12 @@ const NewProductsGrid: FunctionComponent = () => {
   );
 
   const [currentPage, setCurrentPage] = useState<number>(0);
-  const [perPage, setPerPage] = useState<number>(20);
+  const [perPage, setPerPage] = useState<number>(8);
   const [numPages, setNumPages] = useState<number>(0);
   const [filteredTotal, setFilteredTotal] = useState<any[]>(undefined);
 
   useEffect(() => {
-    if (productsData) {
+    if (productsData && !filteredTotal) {
       setFilteredTotal(productsData.products.edges
         .filter(
           ({ node }) => node.images.edges.length > 0,
@@ -36,10 +36,10 @@ const NewProductsGrid: FunctionComponent = () => {
 
   return (
     <Styled.Container>
-      <Styled.Grid>
-        {productsData && filteredTotal
-          && (
-            <>
+      {productsData && filteredTotal
+        && (
+          <>
+            <Styled.Grid>
               {filteredTotal
                 .slice(
                   currentPage * perPage,
@@ -59,21 +59,21 @@ const NewProductsGrid: FunctionComponent = () => {
                     );
                   }
                 })}
-              <Paginator
-                currentPage={currentPage}
-                nextPage={nextPage}
-                prevPage={prevPage}
-                total={filteredTotal.length}
-                perPage={perPage}
-              />
-            </>
-          )}
-        {productsError && (
-          <p>
-            There was an error retrieving the product collection.
-          </p>
+            </Styled.Grid>
+            <Paginator
+              currentPage={currentPage}
+              nextPage={nextPage}
+              prevPage={prevPage}
+              total={filteredTotal.length}
+              perPage={perPage}
+            />
+          </>
         )}
-      </Styled.Grid>
+      {productsError && (
+        <p>
+          There was an error retrieving the product collection.
+        </p>
+      )}
     </Styled.Container>
   );
 };

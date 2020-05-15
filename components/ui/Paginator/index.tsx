@@ -17,13 +17,27 @@ const Paginator: FunctionComponent<Props> = ({
   prevPage,
 }: Props) => (
   <Styled.Container>
-    {currentPage !== 0 && (
-      <button type="button" onClick={() => prevPage()}>{'<<'}</button>
-    )}
-    <p>{currentPage}</p>
-    {currentPage !== Math.ceil(total / perPage) - 1 && (
-      <button type="button" onClick={() => nextPage()}>{'>>'}</button>
-    )}
+    {currentPage !== 0
+      ? (
+        <Styled.NextPrevButton type="button" onClick={() => prevPage()}>
+          <i className="fas fa-chevron-left" />
+        </Styled.NextPrevButton>
+      ) : (
+        <Styled.ButtonPlaceholder />
+      )}
+    <Styled.PageNumberLabel>
+      Page
+      <br />
+      {currentPage}
+    </Styled.PageNumberLabel>
+    {currentPage !== Math.ceil(total / perPage) - 1
+      ? (
+        <Styled.NextPrevButton type="button" onClick={() => nextPage()}>
+          <i className="fas fa-chevron-right" />
+        </Styled.NextPrevButton>
+      ) : (
+        <Styled.ButtonPlaceholder />
+      )}
   </Styled.Container>
 );
 
