@@ -10,7 +10,7 @@ describe('Register form tests', () => {
 
   // Test: Does page load and component renders?
   it('Page load & component render', () => {
-    cy.get('#register-form > div > h4')
+    cy.get('#register-form > div > p')
       .contains('Register');
   });
 

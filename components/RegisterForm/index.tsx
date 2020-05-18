@@ -207,7 +207,7 @@ const RegisterForm: FunctionComponent = () => {
   return (
     <Styled.Container id="register-form">
       <Styled.FormContainer>
-        <Heading tag="h1">Register</Heading>
+        <Heading tag="h4">Register</Heading>
         <Styled.FormFieldContainer>
           <TextField
             id="firstname"
