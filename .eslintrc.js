@@ -22,7 +22,8 @@ module.exports = {
         "no-param-reassign": "off",
         "react/jsx-props-no-spreading": "off",
         "jsx-a11y/anchor-is-valid": "off",
-        "no-restricted-syntax": "off"
+        "no-restricted-syntax": "off",
+        "import/extensions": "off"
     },
     parserOptions: {
         project: './tsconfig.json',

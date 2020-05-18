@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import Router from 'next/router';
+import Link from 'next/link';
 import validator from 'validator';
 import {
   CircularProgress,
@@ -13,6 +14,8 @@ import MuiAlert from '@material-ui/lab/Alert';
 import { useMutation } from '@apollo/react-hooks';
 import { AccountCircle, VpnKey, Email } from '@material-ui/icons';
 import { Styled } from './_styles';
+import CTAButton from '../ui/CTAButton/index';
+import { Heading } from '../ui/Typography/index';
 import {
   CustomerCreateQuery,
   CustomerCreateRequest,
@@ -204,7 +207,7 @@ const RegisterForm: FunctionComponent = () => {
   return (
     <Styled.Container id="register-form">
       <Styled.FormContainer>
-        <Typography variant="h4">Register</Typography>
+        <Heading tag="h1">Register</Heading>
         <Styled.FormFieldContainer>
           <TextField
             id="firstname"
@@ -263,15 +266,22 @@ const RegisterForm: FunctionComponent = () => {
               ),
             }}
           />
-          <Styled.SubmitButton
-            id="form-submit"
-            variant="outlined"
-            color="secondary"
-            onClick={() => submitRegister()}
-          >
-            Submit
-          </Styled.SubmitButton>
+          <Styled.FormFieldContainer>
+            <CTAButton
+              id="form-submit"
+              color="secondary"
+              text="Submit"
+              onClick={() => submitRegister()}
+            />
+          </Styled.FormFieldContainer>
         </Styled.FormFieldContainer>
+        <Styled.LoginLinkText>
+          Already have an account? Click
+          <Link href="/login">
+            {' here '}
+          </Link>
+          to log in.
+        </Styled.LoginLinkText>
       </Styled.FormContainer>
       <Dialog
         open={dialogOpen}

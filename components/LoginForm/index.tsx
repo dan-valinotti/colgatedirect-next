@@ -14,10 +14,13 @@ import { AccountCircle, VpnKey } from '@material-ui/icons';
 import Link from 'next/link';
 import jwt from 'jsonwebtoken';
 import fetch from 'node-fetch';
+import CTAButton from 'components/ui/CTAButton';
 import { Styled } from './_styles';
+import { Heading } from '../ui/Typography/index';
 import {
   CustomerLoginRequest, ErrorStatus,
 } from '../../common/queries/account';
+
 
 /*
 * LoginForm - component that controls the process of logging in/handling
@@ -132,7 +135,7 @@ const LoginForm: FunctionComponent = () => {
   return (
     <Styled.Container id="login-form">
       <Styled.FormContainer>
-        <Typography variant="h4">Log In</Typography>
+        <Heading tag="h1">Log In</Heading>
         <Styled.FormFieldContainer>
           <TextField
             id="email"
@@ -174,15 +177,14 @@ const LoginForm: FunctionComponent = () => {
               </a>
             </Link>
           </Styled.LinkText>
-          <Styled.SubmitButton
-            variant="outlined"
-            color="secondary"
-            onClick={() => submitLogin()}
-            type="submit"
-            id="form-submit"
-          >
-            Submit
-          </Styled.SubmitButton>
+          <Styled.SubmitButtonContainer>
+            <CTAButton
+              color="secondary"
+              onClick={() => submitLogin()}
+              id="form-submit"
+              text="Submit"
+            />
+          </Styled.SubmitButtonContainer>
         </Styled.FormFieldContainer>
       </Styled.FormContainer>
       <Dialog

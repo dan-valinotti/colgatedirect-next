@@ -31,7 +31,7 @@ const HeroBanner: FunctionComponent<Props> = ({
     <Styled.Banner imageUrl={bgImage} bgColor={bgColor} textalign={textAlign}>
       <Styled.BannerContent textalign={textAlign}>
         <Styled.TextContainer textalign={textAlign}>
-          <HeroHeading as="h6" color={fontColor} textAlign={textAlign}>
+          <HeroHeading as="h1" color={fontColor} textAlign={textAlign} style={{ fontSize: '2.5em' }}>
             {title}
           </HeroHeading>
           <HeroBody color={fontColor} textAlign={textAlign}>
