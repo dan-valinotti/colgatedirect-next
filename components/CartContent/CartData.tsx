@@ -69,7 +69,7 @@ const CartData = (parentComponent) => {
   });
 
   // Loops through lineItems to get total price of cart
-  const getTotal = useCallback((items) => {
+  /*const getTotal = useCallback((items) => {
     let t = 0;
     setTotalLoading(true);
     if (items && items.length > 0) {
@@ -83,6 +83,14 @@ const CartData = (parentComponent) => {
     } else {
       setTotal(0);
     }
+  }, [setTotalLoading, setTotal]);*/
+
+  // Gets total from getCartData
+  const getTotal = useCallback((priceTotalV2) => {
+    console.log(priceTotalV2);
+    setTotalLoading(true);
+    setTotal(priceTotalV2);
+    setTotalLoading(false);
   }, [setTotalLoading, setTotal]);
 
   const clearCart = () => {
@@ -109,12 +117,13 @@ const CartData = (parentComponent) => {
   useEffect(() => {
     // If cart data is retrieved, write that data to the Apollo cache
     if (getCartData) {
-      getTotal(getCartData.node.lineItems.edges);
       client.writeData({
         data: {
           lineItems: getCartData.node.lineItems.edges.filter((item) => item.variantId),
         },
       });
+      getTotal(getCartData.node.totalPriceV2.amount);
+      console.log(getCartData.node.totalPriceV2);
     }
     // If localStorage exists and getCart did not give a response yet
     if (window.localStorage && !getCartData) {
@@ -173,6 +182,7 @@ const CartData = (parentComponent) => {
   };
   return (
     <>
+      {(getCartData) && (console.log(getCartData.node.totalPriceV2.amount))}
       {parentComponent.parentComponent === 'NavBar' && cartProps.cart && <CartController {...cartProps} />}
       {parentComponent.parentComponent === 'CartOverview' && cartProps.cart && <CartContentRow {...cartProps} />}
       {parentComponent.parentComponent === 'NavIconButtons' && cartProps.cart && <CartPopup {...cartProps} />}
