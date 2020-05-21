@@ -89,7 +89,7 @@ const CartData = (parentComponent) => {
   const getTotal = useCallback((priceTotalV2) => {
     console.log(priceTotalV2);
     setTotalLoading(true);
-    setTotal(priceTotalV2);
+    setTotal(parseFloat(priceTotalV2));
     setTotalLoading(false);
   }, [setTotalLoading, setTotal]);
 
@@ -123,7 +123,7 @@ const CartData = (parentComponent) => {
         },
       });
       getTotal(getCartData.node.totalPriceV2.amount);
-      console.log(getCartData.node.totalPriceV2);
+      console.log(getCartData);
     }
     // If localStorage exists and getCart did not give a response yet
     if (window.localStorage && !getCartData) {
@@ -165,6 +165,7 @@ const CartData = (parentComponent) => {
     createCartLoading,
     getCartData,
     getTotal,
+    total,
   ]); // If one of these variables is changed, useEffect() is run again.
 
   const cartProps = {
