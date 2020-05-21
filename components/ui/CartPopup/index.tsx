@@ -40,7 +40,7 @@ const CartPopup: FunctionComponent<Props> = ({
         .then(() => {
           if (!getCartLoading && !getCartError && cart) {
             // Recalculate total
-            getTotal(cart.node.lineItems.edges);
+            getTotal(cart.node.totalPriceV2.amount);
           }
         })
         .catch((error) => console.log(error));
@@ -51,7 +51,7 @@ const CartPopup: FunctionComponent<Props> = ({
 
   useEffect(() => {
     if (cart) {
-      getTotal(cart.node.lineItems.edges);
+      getTotal(cart.node.totalPriceV2.amount);
     }
   }, [cart, getTotal]);
 
