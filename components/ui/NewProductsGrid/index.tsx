@@ -14,7 +14,7 @@ const NewProductsGrid: FunctionComponent = () => {
     {},
   );
 
-  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const [perPage, setPerPage] = useState<number>(8);
   const [numPages, setNumPages] = useState<number>(0);
   const [filteredTotal, setFilteredTotal] = useState<any[]>(undefined);
