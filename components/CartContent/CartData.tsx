@@ -68,22 +68,6 @@ const CartData = (parentComponent) => {
     },
   });
 
-  // Loops through lineItems to get total price of cart
-  /*const getTotal = useCallback((items) => {
-    let t = 0;
-    setTotalLoading(true);
-    if (items && items.length > 0) {
-      items.forEach((item) => {
-        if (item.node.variant.priceV2.amount) {
-          t += parseFloat(item.node.variant.priceV2.amount) * parseFloat(item.node.quantity);
-        }
-      });
-      setTotal(t);
-      setTotalLoading(false);
-    } else {
-      setTotal(0);
-    }
-  }, [setTotalLoading, setTotal]);*/
 
   // Gets total from getCartData
   const getTotal = useCallback((priceTotalV2) => {
