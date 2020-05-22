@@ -23,7 +23,8 @@ const NewProductsGrid: FunctionComponent = () => {
     if (productsData && !filteredTotal) {
       setFilteredTotal(productsData.products.edges
         .filter(
-          ({ node }) => node.images.edges.length > 0,
+          ({ node }) => (
+            node.images.edges.length > 0 && node.priceRange.minVariantPrice.amount > 0),
         ));
     } if (filteredTotal !== undefined) {
       setNumPages(Math.ceil(filteredTotal.length / perPage));
@@ -36,6 +37,7 @@ const NewProductsGrid: FunctionComponent = () => {
 
   return (
     <Styled.Container>
+      {console.log(productsData)}
       {productsData && filteredTotal
         && (
           <>
@@ -46,7 +48,7 @@ const NewProductsGrid: FunctionComponent = () => {
                   (currentPage * perPage) + (perPage),
                 ).map(({ node }, key) => {
                   const imageSrc = node.images.edges[0].node.transformedSrc;
-                  const formattedPrice = `${parseFloat(node.priceRange.maxVariantPrice.amount, 10).toFixed(2)}`;
+                  const formattedPrice = `${parseFloat(node.priceRange.maxVariantPrice.amount).toFixed(2)}`;
                   if (imageSrc !== '') {
                     return (
                       <NewProductThumbnail
