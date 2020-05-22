@@ -46,7 +46,7 @@ const NewProductsGrid: FunctionComponent = () => {
                   (currentPage * perPage) + (perPage),
                 ).map(({ node }, key) => {
                   const imageSrc = node.images.edges[0].node.transformedSrc;
-                  const formattedPrice = `${parseInt(node.priceRange.maxVariantPrice.amount, 10).toFixed(2)}`;
+                  const formattedPrice = `${parseFloat(node.priceRange.maxVariantPrice.amount, 10).toFixed(2)}`;
                   if (imageSrc !== '') {
                     return (
                       <NewProductThumbnail
