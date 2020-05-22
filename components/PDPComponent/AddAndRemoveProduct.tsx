@@ -62,7 +62,7 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
   });
 
   const addToCartFunc = () => {
-    console.log("HERE");
+    console.log('HERE');
     if (cartToken && getCartData) {
       setAddButton(true);
       setLoading(true);
@@ -97,7 +97,7 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
               quantity: 1,
             });
           }
-          console.log(currentItems)
+          console.log(currentItems);
           // Set state variable lineItems to new list and run replacement query
           setLineItems(currentItems);
           replaceItems().then(() => {
@@ -120,7 +120,7 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
   };
 
   const removeFromCart = () => {
-    console.log("REMOVE");
+    console.log('REMOVE');
     if (cartToken && getCartData) {
       setAddButton(false);
       setLoading(true);
@@ -130,12 +130,12 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
             variantId: item.node.variant.id,
             quantity: item.node.quantity,
           }));
-          
+
           const index = currentItems.findIndex(
             (item) => item.variantId === variantId,
           );
           currentItems[index].quantity -= 1;
-          
+
           console.log(currentItems[index].quantity);
           // remove item once it's quantity equals zero
           currentItems = currentItems.filter((item) => item.quantity !== 0);
@@ -143,12 +143,15 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
           // Set state variable lineItems to new list and run replacement query
           setLineItems(currentItems);
           replaceItems().then(() => {
-            setLoading(false);
-            console.log(getCartData);
-          }).catch((error) => {
-            setLoading(false);
-            console.log(error);
-          });
+            refetchCartData()
+              .then(() => {
+                setLoading(false);
+              })
+              .catch((error) => {
+                console.log(error);
+                setLoading(false);
+              });
+          }).catch((error) => console.log(error));
         })
         .catch((err) => {
           console.log(err);
