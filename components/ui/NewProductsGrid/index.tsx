@@ -4,6 +4,10 @@ import { ProductsType, PRODUCTS_QUERY } from '../../../common/queries/products';
 import { Styled } from './_styles';
 import NewProductThumbnail from '../NewProductThumbnail/index';
 import Paginator from '../Paginator';
+import { Styled as StyledGrid } from '../../sections/CollectionSection/_styles';
+import { Styled as NavBarStyle } from '../NavBarItem/_styles';
+import { SortStyled } from '../../Collections/_styles';
+
 
 const NewProductsGrid: FunctionComponent = () => {
   const {
@@ -19,6 +23,26 @@ const NewProductsGrid: FunctionComponent = () => {
   const [numPages, setNumPages] = useState<number>(0);
   const [filteredTotal, setFilteredTotal] = useState<any[]>(undefined);
 
+  // Cursor hover over the sort button
+  const [hover, setHover] = useState<boolean>(false);
+
+  // Fix this once we get number of pages
+  const nextPage = () => (currentPage !== numPages - 1 && setCurrentPage(currentPage + 1));
+  const prevPage = () => (currentPage !== 0 && setCurrentPage(currentPage - 1));
+
+  // Sorts products from lowest to highest price
+  const sortLowToHigh = () => {
+    const tempFilteredTotal = [].concat(filteredTotal);
+    setFilteredTotal(tempFilteredTotal.sort((a, b) => a.node.priceRange.maxVariantPrice.amount - b.node.priceRange.maxVariantPrice.amount));
+  };
+
+  const handleMouseOver = () => {
+    setHover(true);
+  };
+  const handleMouseLeave = () => {
+    setHover(false);
+  };
+
   useEffect(() => {
     if (productsData && !filteredTotal) {
       setFilteredTotal(productsData.products.edges
@@ -31,14 +55,35 @@ const NewProductsGrid: FunctionComponent = () => {
     }
   }, [productsData, numPages, perPage, filteredTotal]);
 
-  // Fix this once we get number of pages
-  const nextPage = () => (currentPage !== numPages - 1 && setCurrentPage(currentPage + 1));
-  const prevPage = () => (currentPage !== 0 && setCurrentPage(currentPage - 1));
-
   return (
-    <Styled.Container>
-      {console.log(productsData)}
-      {productsData && filteredTotal
+    <>
+      <NavBarStyle.Container
+        onFocus={handleMouseOver}
+        onMouseOver={handleMouseOver}
+        onMouseLeave={handleMouseLeave}
+        className="sort"
+      >
+        <NavBarStyle.RootNavButton
+          hovered={hover}
+        >
+          <h4>Sort by:</h4>
+        </NavBarStyle.RootNavButton>
+        <NavBarStyle.SubItemContainer
+          onFocus={handleMouseOver}
+          onMouseOver={handleMouseOver}
+          onMouseLeave={handleMouseLeave}
+          hovered={hover}
+        >
+          <SortStyled.SubItem>
+            <button onClick={() => sortLowToHigh()} type="button">
+              {console.log(filteredTotal)}
+              <span>Low to High</span>
+            </button>
+          </SortStyled.SubItem>
+        </NavBarStyle.SubItemContainer>
+      </NavBarStyle.Container>
+      <Styled.Container>
+        {productsData && filteredTotal
         && (
           <>
             <Styled.Grid>
@@ -71,12 +116,13 @@ const NewProductsGrid: FunctionComponent = () => {
             />
           </>
         )}
-      {productsError && (
+        {productsError && (
         <p>
           There was an error retrieving the product collection.
         </p>
-      )}
-    </Styled.Container>
+        )}
+      </Styled.Container>
+    </>
   );
 };
 export default NewProductsGrid;
