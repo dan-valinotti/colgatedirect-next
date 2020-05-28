@@ -4,9 +4,9 @@ import { ProductsType, PRODUCTS_QUERY } from '../../../common/queries/products';
 import { Styled } from './_styles';
 import NewProductThumbnail from '../NewProductThumbnail/index';
 import Paginator from '../Paginator';
-import { Styled as StyledGrid } from '../../sections/CollectionSection/_styles';
-import { Styled as NavBarStyle } from '../NavBarItem/_styles';
+import { Styled as NavBarStyled } from '../NavBarItem/_styles';
 import { SortStyled } from '../../Collections/_styles';
+import { Styled as GridStyled} from '../../sections/CollectionSection/_styles';
 
 
 const NewProductsGrid: FunctionComponent = () => {
@@ -57,29 +57,33 @@ const NewProductsGrid: FunctionComponent = () => {
 
   return (
     <>
-      <NavBarStyle.Container
+      <NavBarStyled.Container
         onFocus={handleMouseOver}
         onMouseOver={handleMouseOver}
         onMouseLeave={handleMouseLeave}
         className="sort"
       >
-        <NavBarStyle.RootNavButton
+        <NavBarStyled.RootNavButton
           hovered={hover}
         >
           <h4>Sort by:</h4>
-        </NavBarStyle.RootNavButton>
-        <NavBarStyle.SubItemContainer
+        </NavBarStyled.RootNavButton>
+        
+        <NavBarStyled.SubItemContainer
           onFocus={handleMouseOver}
           onMouseOver={handleMouseOver}
           onMouseLeave={handleMouseLeave}
           hovered={hover}
         >
-          <SortStyled.RootNavButton onClick={() => sortLowToHigh()} >
-              {console.log(filteredTotal)}
-              <span>Low to High</span>
-          </SortStyled.RootNavButton>
-        </NavBarStyle.SubItemContainer>
-      </NavBarStyle.Container>
+          <NavBarStyled.SubItem onClick={() => sortLowToHigh()}>
+            <span>Low to High</span>
+          </NavBarStyled.SubItem>
+          <NavBarStyled.SubItem onClick={() => sortLowToHigh()}>
+            <span>Low to High</span>
+          </NavBarStyled.SubItem>
+        </NavBarStyled.SubItemContainer>
+      </NavBarStyled.Container>
+      <GridStyled.GridContainer>
       <Styled.Container>
         {productsData && filteredTotal
         && (
@@ -120,6 +124,7 @@ const NewProductsGrid: FunctionComponent = () => {
         </p>
         )}
       </Styled.Container>
+      </GridStyled.GridContainer>
     </>
   );
 };

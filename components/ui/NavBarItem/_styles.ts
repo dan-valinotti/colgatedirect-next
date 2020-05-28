@@ -5,7 +5,7 @@ const Container = styled.div`
   display: flex;
   height: 100%;
   position: relative;
-  z-index: 2;
+  z-index: 3;
 
   * {
     font-family: "Colgate Ready", serif;
@@ -14,13 +14,29 @@ const Container = styled.div`
   }
 `;
 
+const SubItemContainer = styled.div`
+  opacity:0;
+  height: min-content;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  transform: translateY(0%);
+  transition: transform 0.25s ease-in-out;
+
+
+`;
+
 const RootNavButton = styled.button`
   border: none;
   background: transparent;
   height: 100%;
   text-align: center;
   position: relative;
-  z-index: 2;
+  z-index: 3;
   background-color: #fafafa;
   padding: 0.5rem 2rem;
   font-size: 0.6rem;
@@ -30,6 +46,10 @@ const RootNavButton = styled.button`
   }
 
   ${(props) => props.hovered && css`
+    & + ${SubItemContainer} {
+      opacity: 1;
+      transform: translateY(100%);
+    }
     background-color: #ffffff;
     * {
       color: ${theme.palette.primary.main}
@@ -48,25 +68,6 @@ const RootNavButton = styled.button`
   }
 `;
 
-const SubItemContainer = styled.div`
-  height: min-content;
-  width: 100%;
-  min-height: 100%;
-  overflow: hidden;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: 1;
-  transform: translateY(0%);
-  transition: transform 0.25s ease-in-out;
-
-  ${(props) => props.hovered && css`
-    &:hover {
-      cursor: pointer;
-    }
-    transform: translateY(100%);
-  `};
-`;
 
 const SubItem = styled.button`
   width: 100%;
@@ -83,6 +84,7 @@ const SubItem = styled.button`
   }
 
   &:hover {
+    cursor: pointer;
     * {
       color: ${theme.palette.primary.main};
     }
