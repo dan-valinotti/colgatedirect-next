@@ -74,12 +74,10 @@ const NewProductsGrid: FunctionComponent = () => {
           onMouseLeave={handleMouseLeave}
           hovered={hover}
         >
-          <SortStyled.SubItem>
-            <button onClick={() => sortLowToHigh()} type="button">
+          <SortStyled.RootNavButton onClick={() => sortLowToHigh()} >
               {console.log(filteredTotal)}
               <span>Low to High</span>
-            </button>
-          </SortStyled.SubItem>
+          </SortStyled.RootNavButton>
         </NavBarStyle.SubItemContainer>
       </NavBarStyle.Container>
       <Styled.Container>
