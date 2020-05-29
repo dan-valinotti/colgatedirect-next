@@ -6,9 +6,7 @@ import NewProductsGrid from '../../ui/NewProductsGrid/index';
 const CollectionSection: FunctionComponent = () => (
   <Styled.Container>
     <Heading tag="h1">Collections</Heading>
-    <Styled.GridContainer>
-      <NewProductsGrid />
-    </Styled.GridContainer>
+    <NewProductsGrid />
   </Styled.Container>
 );
 
