@@ -57,11 +57,7 @@ const CartData = (parentComponent) => {
   });
 
   // Mutation replaces items in cart
-  const [replaceItems, {
-    data: replaceItemsData,
-    loading: replaceItemsLoading,
-    error: replaceItemsError,
-  }] = useMutation(CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, {
+  const [replaceItems] = useMutation(CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, {
     variables: {
       checkoutId: cartToken,
       lineItems,
@@ -71,7 +67,6 @@ const CartData = (parentComponent) => {
 
   // Gets total from getCartData
   const getTotal = useCallback((priceTotalV2) => {
-    console.log(priceTotalV2);
     setTotalLoading(true);
     setTotal(parseFloat(priceTotalV2));
     setTotalLoading(false);
@@ -81,7 +76,7 @@ const CartData = (parentComponent) => {
     setLoading(true);
     setLineItems([]);
     replaceItems()
-      .then((res) => {
+      .then(() => {
         getCartRefetch()
           .then(() => {
             setLoading(false);
@@ -107,7 +102,6 @@ const CartData = (parentComponent) => {
         },
       });
       getTotal(getCartData.node.totalPriceV2.amount);
-      console.log(getCartData);
     }
     // If localStorage exists and getCart did not give a response yet
     if (window.localStorage && !getCartData) {
