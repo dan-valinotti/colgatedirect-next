@@ -26,6 +26,7 @@ const SubItemContainer = styled.div`
   z-index: 2;
   transform: translateY(0%);
   transition: transform 0.25s ease-in-out;
+  
 
   ${(props) => props.hovered && css`
     &:hover {
@@ -39,7 +40,10 @@ const SubItemContainer = styled.div`
 const SubItemContainerSortBy = styled(SubItemContainer)`
     opacity: 0;
     height:0;
+    transition: opacity 0.25s ease-in-out;
+    z-index: 0;
 `;
+
 const RootNavButton = styled.button`
   border: none;
   background: transparent;
