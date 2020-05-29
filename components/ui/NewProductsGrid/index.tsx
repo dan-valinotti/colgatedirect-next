@@ -6,7 +6,7 @@ import NewProductThumbnail from '../NewProductThumbnail/index';
 import Paginator from '../Paginator';
 import { Styled as NavBarStyled } from '../NavBarItem/_styles';
 import { SortStyled } from '../../Collections/_styles';
-import { Styled as GridStyled} from '../../sections/CollectionSection/_styles';
+import { Styled as GridStyled } from '../../sections/CollectionSection/_styles';
 
 
 const NewProductsGrid: FunctionComponent = () => {
@@ -31,9 +31,14 @@ const NewProductsGrid: FunctionComponent = () => {
   const prevPage = () => (currentPage !== 0 && setCurrentPage(currentPage - 1));
 
   // Sorts products from lowest to highest price
-  const sortLowToHigh = () => {
+  // If sorting from low to high, arg = true, high to low then arg = false
+  const sortByPrice = (isLowToHigh) => {
     const tempFilteredTotal = [].concat(filteredTotal);
-    setFilteredTotal(tempFilteredTotal.sort((a, b) => a.node.priceRange.maxVariantPrice.amount - b.node.priceRange.maxVariantPrice.amount));
+    if (isLowToHigh) {
+      setFilteredTotal(tempFilteredTotal.sort((a, b) => a.node.priceRange.maxVariantPrice.amount - b.node.priceRange.maxVariantPrice.amount));
+    } else {
+      setFilteredTotal(tempFilteredTotal.sort((a, b) => b.node.priceRange.maxVariantPrice.amount - a.node.priceRange.maxVariantPrice.amount));
+    }
   };
 
   const handleMouseOver = () => {
@@ -68,24 +73,24 @@ const NewProductsGrid: FunctionComponent = () => {
         >
           <h4>Sort by:</h4>
         </NavBarStyled.RootNavButton>
-        
+
         <NavBarStyled.SubItemContainer
           onFocus={handleMouseOver}
           onMouseOver={handleMouseOver}
           onMouseLeave={handleMouseLeave}
           hovered={hover}
         >
-          <NavBarStyled.SubItem onClick={() => sortLowToHigh()}>
+          <NavBarStyled.SubItem onClick={() => sortByPrice(true)}>
             <span>Low to High</span>
           </NavBarStyled.SubItem>
-          <NavBarStyled.SubItem onClick={() => sortLowToHigh()}>
-            <span>Low to High</span>
+          <NavBarStyled.SubItem onClick={() => sortByPrice(false)}>
+            <span>High to Low</span>
           </NavBarStyled.SubItem>
         </NavBarStyled.SubItemContainer>
       </NavBarStyled.Container>
       <GridStyled.GridContainer>
-      <Styled.Container>
-        {productsData && filteredTotal
+        <Styled.Container>
+          {productsData && filteredTotal
         && (
           <>
             <Styled.Grid>
@@ -118,12 +123,12 @@ const NewProductsGrid: FunctionComponent = () => {
             />
           </>
         )}
-        {productsError && (
-        <p>
-          There was an error retrieving the product collection.
-        </p>
-        )}
-      </Styled.Container>
+          {productsError && (
+          <p>
+            There was an error retrieving the product collection.
+          </p>
+          )}
+        </Styled.Container>
       </GridStyled.GridContainer>
     </>
   );
