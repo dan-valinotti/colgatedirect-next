@@ -15,7 +15,7 @@ const Container = styled.div`
 `;
 
 const SubItemContainer = styled.div`
-  opacity:0;
+
   height: min-content;
   width: 100%;
   min-height: 100%;
@@ -27,9 +27,19 @@ const SubItemContainer = styled.div`
   transform: translateY(0%);
   transition: transform 0.25s ease-in-out;
 
+  ${(props) => props.hovered && css`
+    &:hover {
+      cursor: pointer;
+    }
+    transform: translateY(100%);
+  `};
 
 `;
 
+const SubItemContainerSortBy = styled(SubItemContainer)`
+    opacity: 0;
+    height:0;
+`;
 const RootNavButton = styled.button`
   border: none;
   background: transparent;
@@ -47,9 +57,11 @@ const RootNavButton = styled.button`
 
   ${(props) => props.hovered && css`
     & + ${SubItemContainer} {
+      height: min-content;
       opacity: 1;
       transform: translateY(100%);
     }
+    
     background-color: #ffffff;
     * {
       color: ${theme.palette.primary.main}
@@ -95,5 +107,6 @@ export const Styled = {
   Container,
   RootNavButton,
   SubItemContainer,
+  SubItemContainerSortBy,
   SubItem,
 };

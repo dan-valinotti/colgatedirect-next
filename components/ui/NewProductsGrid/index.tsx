@@ -74,7 +74,7 @@ const NewProductsGrid: FunctionComponent = () => {
           <h4>Sort by:</h4>
         </NavBarStyled.RootNavButton>
 
-        <NavBarStyled.SubItemContainer
+        <NavBarStyled.SubItemContainerSortBy
           onFocus={handleMouseOver}
           onMouseOver={handleMouseOver}
           onMouseLeave={handleMouseLeave}
@@ -86,7 +86,7 @@ const NewProductsGrid: FunctionComponent = () => {
           <NavBarStyled.SubItem onClick={() => sortByPrice(false)}>
             <span>High to Low</span>
           </NavBarStyled.SubItem>
-        </NavBarStyled.SubItemContainer>
+        </NavBarStyled.SubItemContainerSortBy>
       </NavBarStyled.Container>
       <GridStyled.GridContainer>
         <Styled.Container>
