@@ -140,7 +140,14 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
           // Set state variable lineItems to new list and run replacement query
           setLineItems(currentItems);
           replaceItems().then(() => {
-            setLoading(false);
+            refetchCartData()
+              .then(() => {
+                setLoading(false);
+              })
+              .catch((error) => {
+                console.log(error);
+                setLoading(false);
+              });
           }).catch((error) => {
             setLoading(false);
             console.log(error);
