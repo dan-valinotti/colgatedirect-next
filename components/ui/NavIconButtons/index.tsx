@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import CartData from 'components/CartContent/CartData';
+import CartData from 'components/CartData';
 import { Styled } from './_styles';
 import AccountPopup from '../AccountPopup';
 

@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Typography, withTheme } from '@material-ui/core';
 import NavBar from 'components/ui/NavBar';
 import { PageContainer } from 'components/ui/PageContainer';
-import CartData from '../components/CartContent/CartData';
+import CartData from '../components/CartData';
 import { withMuiApp } from '../hocs/withMui';
 import { withApollo } from '../lib/apollo';
 
