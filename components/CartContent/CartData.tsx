@@ -57,39 +57,26 @@ const CartData = (parentComponent) => {
   });
 
   // Mutation replaces items in cart
-  const [replaceItems, {
-    data: replaceItemsData,
-    loading: replaceItemsLoading,
-    error: replaceItemsError,
-  }] = useMutation(CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, {
+  const [replaceItems] = useMutation(CHECKOUT_LINE_ITEMS_REPLACE_MUTATION, {
     variables: {
       checkoutId: cartToken,
       lineItems,
     },
   });
 
-  // Loops through lineItems to get total price of cart
-  const getTotal = useCallback((items) => {
-    let t = 0;
+
+  // Gets total from getCartData
+  const getTotal = useCallback((priceTotalV2) => {
     setTotalLoading(true);
-    if (items && items.length > 0) {
-      items.forEach((item) => {
-        if (item.node.variant.priceV2.amount) {
-          t += parseFloat(item.node.variant.priceV2.amount) * parseFloat(item.node.quantity);
-        }
-      });
-      setTotal(t);
-      setTotalLoading(false);
-    } else {
-      setTotal(0);
-    }
+    setTotal(parseFloat(priceTotalV2));
+    setTotalLoading(false);
   }, [setTotalLoading, setTotal]);
 
   const clearCart = () => {
     setLoading(true);
     setLineItems([]);
     replaceItems()
-      .then((res) => {
+      .then(() => {
         getCartRefetch()
           .then(() => {
             setLoading(false);
@@ -109,12 +96,12 @@ const CartData = (parentComponent) => {
   useEffect(() => {
     // If cart data is retrieved, write that data to the Apollo cache
     if (getCartData) {
-      getTotal(getCartData.node.lineItems.edges);
       client.writeData({
         data: {
           lineItems: getCartData.node.lineItems.edges.filter((item) => item.variantId),
         },
       });
+      getTotal(getCartData.node.totalPriceV2.amount);
     }
     // If localStorage exists and getCart did not give a response yet
     if (window.localStorage && !getCartData) {
@@ -156,6 +143,7 @@ const CartData = (parentComponent) => {
     createCartLoading,
     getCartData,
     getTotal,
+    total,
   ]); // If one of these variables is changed, useEffect() is run again.
 
   const cartProps = {
@@ -173,6 +161,7 @@ const CartData = (parentComponent) => {
   };
   return (
     <>
+      {(getCartData) && (console.log(getCartData.node.totalPriceV2.amount))}
       {parentComponent.parentComponent === 'NavBar' && cartProps.cart && <CartController {...cartProps} />}
       {parentComponent.parentComponent === 'CartOverview' && cartProps.cart && <CartContentRow {...cartProps} />}
       {parentComponent.parentComponent === 'NavIconButtons' && cartProps.cart && <CartPopup {...cartProps} />}

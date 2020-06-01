@@ -641,7 +641,7 @@ exports[`<AccountPopup /> Renders correctly 1`] = `
           },
         },
         "typeDefs": undefined,
-        "version": "local",
+        "version": "2.6.10",
         "watchQuery": [Function],
       }
     }

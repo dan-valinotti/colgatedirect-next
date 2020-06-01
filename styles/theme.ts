@@ -1,5 +1,5 @@
 const fontSizes = {
-  xsmall: '0.8em',
+  xsmall: '0.9em',
   small: '1em',
   medsmall: '1.25em',
   medium: '1.75em',
@@ -86,6 +86,22 @@ const theme = {
         fontSizes.xsmall,
         fontSizes.small,
       ],
+      fontWeight: 400,
+      fontFamily: ColgateReady,
+    },
+    thumbnailTitle: {
+      fontSize: [
+        fontSizes.xsmall,
+      ],
+      color: 'rgba(0,0,0,0.8)',
+      fontWeight: 400,
+      fontFamily: ColgateReady,
+    },
+    thumbnailPrice: {
+      fontSize: [
+        fontSizes.medsmall,
+      ],
+      color: 'rgba(0,0,0,0.8)',
       fontWeight: 400,
       fontFamily: ColgateReady,
     },
