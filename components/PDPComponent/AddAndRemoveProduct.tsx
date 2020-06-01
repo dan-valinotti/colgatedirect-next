@@ -62,7 +62,6 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
   });
 
   const addToCartFunc = () => {
-    console.log('HERE');
     if (cartToken && getCartData) {
       setAddButton(true);
       setLoading(true);
@@ -97,7 +96,6 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
               quantity: 1,
             });
           }
-          console.log(currentItems);
           // Set state variable lineItems to new list and run replacement query
           setLineItems(currentItems);
           replaceItems().then(() => {
@@ -120,7 +118,6 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
   };
 
   const removeFromCart = () => {
-    console.log('REMOVE');
     if (cartToken && getCartData) {
       setAddButton(false);
       setLoading(true);
@@ -136,7 +133,6 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
           );
           currentItems[index].quantity -= 1;
 
-          console.log(currentItems[index].quantity);
           // remove item once it's quantity equals zero
           currentItems = currentItems.filter((item) => item.quantity !== 0);
 

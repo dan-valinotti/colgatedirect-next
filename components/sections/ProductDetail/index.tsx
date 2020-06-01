@@ -57,7 +57,6 @@ const ProductDetail: FunctionComponent<Props> = ({ product }: Props) => {
       refetchCartData({ checkoutId: cartToken })
         .then((res) => {
           const variantId = product.variant.id;
-          console.log(variantId);
           const currentItems = res.data.node.lineItems.edges.map((item) => ({
             variantId: item.node.variant.id,
             quantity: item.node.quantity,

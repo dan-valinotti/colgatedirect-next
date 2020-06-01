@@ -142,7 +142,6 @@ const RegisterForm: FunctionComponent = () => {
       setDialogOpen(true);
       submitRegisterRequest()
         .then((res) => {
-          console.log(res);
           setDialogOpen(false);
           // Check if access token was returned from API
           if (res.data.customerCreate.customer.id) {
@@ -150,7 +149,6 @@ const RegisterForm: FunctionComponent = () => {
             setDialogMessage('Success. Loggin in...');
             submitLoginRequest()
               .then((loginRes) => {
-                console.log(loginRes);
                 // If customerAccessToken exists (login succeeded)...
                 if (loginRes.data.customerAccessTokenCreate.customerAccessToken) {
                   window.localStorage.setItem(

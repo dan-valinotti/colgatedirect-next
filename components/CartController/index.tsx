@@ -101,7 +101,6 @@ const CartController: React.FC<Props> = ({
                 horizontal: 'right',
               }}
             >
-              {console.log(cart)}
               <CartContent
                 cart={cart}
                 total={total}
