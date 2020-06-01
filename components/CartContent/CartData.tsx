@@ -161,7 +161,6 @@ const CartData = (parentComponent) => {
   };
   return (
     <>
-      {(getCartData) && (console.log(getCartData.node.totalPriceV2.amount))}
       {parentComponent.parentComponent === 'NavBar' && cartProps.cart && <CartController {...cartProps} />}
       {parentComponent.parentComponent === 'CartOverview' && cartProps.cart && <CartContentRow {...cartProps} />}
       {parentComponent.parentComponent === 'NavIconButtons' && cartProps.cart && <CartPopup {...cartProps} />}
