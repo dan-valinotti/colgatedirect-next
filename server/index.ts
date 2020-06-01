@@ -12,7 +12,7 @@ import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import routes from './core/nextRoutes';
-import { login } from '../services/auth';
+import { login } from './services/auth';
 
 require('dotenv').config();
 

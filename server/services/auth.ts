@@ -3,12 +3,12 @@ import jwt from 'jsonwebtoken';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { fetch } from 'cross-fetch/polyfill';
-import httpConfig from '../apollo.config';
+import httpConfig from '../../apollo.config';
 import {
   LoginQueryVariables,
   CustomerLoginResponse,
   CUSTOMER_LOGIN_QUERY,
-} from '../common/queries/account';
+} from '../../common/queries/account';
 
 require('dotenv').config();
 

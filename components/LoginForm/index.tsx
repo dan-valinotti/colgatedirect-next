@@ -13,9 +13,9 @@ import MuiAlert from '@material-ui/lab/Alert';
 import { AccountCircle, VpnKey } from '@material-ui/icons';
 import Link from 'next/link';
 import { useMutation } from '@apollo/react-hooks';
-import jwt from 'jsonwebtoken';
 import fetch from 'node-fetch';
 import CTAButton from 'components/ui/CTAButton';
+import jwt from '~server/services/node_modules/jsonwebtoken';
 import { Styled } from './_styles';
 import { Heading } from '../ui/Typography/index';
 import {
