@@ -15,7 +15,7 @@ import Link from 'next/link';
 import { useMutation } from '@apollo/react-hooks';
 import fetch from 'node-fetch';
 import CTAButton from 'components/ui/CTAButton';
-import jwt from '~server/services/node_modules/jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import { Styled } from './_styles';
 import { Heading } from '../ui/Typography/index';
 import {

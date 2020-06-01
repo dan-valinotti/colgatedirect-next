@@ -26,7 +26,8 @@
     "test:unit": "jest",
     "test:integration": "jest --config tests/jest.integration.config.js",
     "test:watch": "jest --watch --no-cache",
-    "eslint:fix": "eslint . --ext .ts,.tsx --fix --ignore-path .gitignore"
+    "eslint:fix": "eslint . --ext .ts,.tsx --fix --ignore-path .gitignore",
+    "analyze": "cross-env ANALYZE=true yarn run build"
   },
   "engines": {
     "node": "^12.14.0",
@@ -117,6 +118,7 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
+    "@next/bundle-analyzer": "^9.4.4",
     "@types/dotenv": "^8.2.0",
     "@types/enzyme": "^3.10.5",
     "@types/enzyme-adapter-react-16": "^1.0.6",

@@ -4,6 +4,9 @@ const Dotenv = require('dotenv-webpack');
 const withImages = require('next-images');
 const withFonts = require('next-fonts');
 const withOptimizedImages = require('next-optimized-images');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true'
+});
 
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
@@ -83,8 +86,11 @@ const configureWebpack = (config, { dev, isServer }) => {
 };
 
 
-module.exports = withOptimizedImages(
-	withFonts({
-		webpack: configureWebpack
-	})
+module.exports = 
+withBundleAnalyzer(
+	withOptimizedImages(
+		withFonts({
+			webpack: configureWebpack
+		})
+	)
 );
