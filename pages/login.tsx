@@ -1,9 +1,7 @@
 import React from 'react';
-import { ThemeProvider } from '@material-ui/styles';
 import { withTheme } from '@material-ui/core';
 import Head from 'next/head';
 import NavBar from 'components/ui/NavBar';
-import { theme } from '../views/theme';
 import { withMuiApp } from '../hocs/withMui';
 import LoginForm from '../components/LoginForm';
 import FooterNav from '../components/FooterNav';
