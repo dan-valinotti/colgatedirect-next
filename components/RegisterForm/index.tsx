@@ -194,14 +194,6 @@ const RegisterForm: FunctionComponent = () => {
     }
   };
 
-  useEffect(() => {
-    // If user is already logged in, go to home page
-    if (window && window.localStorage.getItem('customerAccessToken')) {
-      // Router.push('/')
-      //   .catch((error) => console.log(error));
-    }
-  }, []);
-
   return (
     <Styled.Container id="register-form">
       <Styled.FormContainer>
