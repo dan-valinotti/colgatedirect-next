@@ -3,8 +3,8 @@ import { Grid } from '@material-ui/core';
 import StarRatings from 'react-star-ratings';
 import { Styled } from './_styles';
 import { ProductDetailsProps } from './_types';
-import DynamicTabs from '../../DynamicTabs';
-import AddToCart from '../../sections/AddToCart';
+import DynamicTabs from '../../../DynamicTabs';
+import AddToCart from '../../../sections/AddToCart';
 
 
 const ColgateDescription: FunctionComponent<ProductDetailsProps> = (

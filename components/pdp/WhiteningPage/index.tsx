@@ -8,8 +8,8 @@ import HeroBanner from '../../sections/HeroBanner';
 import product from './data.json';
 import { WhiteningPageProps } from './_types';
 
-import ColgateDescription from '../../WhiteningPageComponents/ColgateDescription';
-import MultiCarosel from '../../WhiteningPageComponents/MultiCarosel';
+import ColgateDescription from '../WhiteningPageComponents/ColgateDescription';
+import MultiCarosel from '../WhiteningPageComponents/MultiCarosel';
 import PageContainer, { PageSize } from '../../../views/layouts/PageContainer';
 import reviews from './reviews.json';
 
