@@ -1,11 +1,13 @@
 import styled, { css } from 'styled-components';
-import { theme } from '../../../views/theme';
+import { theme } from '../../views/theme';
 
 const Container = styled.div`
   display: flex;
   height: 100%;
   position: relative;
-  z-index: 3;
+  z-index: 1;
+  flex-direction: row;
+  justify-content: flex start;
 
   * {
     font-family: "Colgate Ready", serif;
@@ -13,9 +15,8 @@ const Container = styled.div`
     font-weight: 400;
   }
 `;
-
 const SubItemContainer = styled.div`
-
+opacity: 0;
   height: min-content;
   width: 100%;
   min-height: 100%;
@@ -23,10 +24,9 @@ const SubItemContainer = styled.div`
   position: absolute;
   left: 0;
   bottom: 0;
-  z-index: 2;
+  z-index: 0;
   transform: translateY(0%);
   transition: transform 0.25s ease-in-out;
-  
 
   ${(props) => props.hovered && css`
     &:hover {
@@ -34,14 +34,6 @@ const SubItemContainer = styled.div`
     }
     transform: translateY(100%);
   `};
-
-`;
-
-const SubItemContainerSortBy = styled(SubItemContainer)`
-    opacity: 0;
-    height:0;
-    transition: opacity 0.25s ease-in-out;
-    z-index: 0;
 `;
 
 const RootNavButton = styled.button`
@@ -50,22 +42,20 @@ const RootNavButton = styled.button`
   height: 100%;
   text-align: center;
   position: relative;
-  z-index: 3;
+  z-index: 1;
   background-color: #fafafa;
   padding: 0.5rem 2rem;
   font-size: 0.6rem;
 
   &:hover {
     cursor: pointer;
+    
   }
 
   ${(props) => props.hovered && css`
     & + ${SubItemContainer} {
-      height: min-content;
-      opacity: 1;
-      transform: translateY(100%);
+        opacity: 1;
     }
-    
     background-color: #ffffff;
     * {
       color: ${theme.palette.primary.main}
@@ -100,17 +90,15 @@ const SubItem = styled.button`
   }
 
   &:hover {
-    cursor: pointer;
     * {
       color: ${theme.palette.primary.main};
     }
   }
 `;
 
-export const Styled = {
+export const SortStyled = {
   Container,
   RootNavButton,
   SubItemContainer,
-  SubItemContainerSortBy,
   SubItem,
 };

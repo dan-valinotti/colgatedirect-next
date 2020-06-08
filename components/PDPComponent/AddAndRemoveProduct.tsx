@@ -151,7 +151,10 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
                 console.log(error);
                 setLoading(false);
               });
-          }).catch((error) => console.log(error));
+          }).catch((error) => {
+            setLoading(false);
+            console.log(error);
+          });
         })
         .catch((err) => {
           console.log(err);

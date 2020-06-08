@@ -4,6 +4,10 @@ import { ProductsType, PRODUCTS_QUERY } from '../../../common/queries/products';
 import { Styled } from './_styles';
 import NewProductThumbnail from '../NewProductThumbnail/index';
 import Paginator from '../Paginator';
+import { Styled as NavBarStyled } from '../NavBarItem/_styles';
+import { SortStyled } from '../../Collections/_styles';
+import { Styled as GridStyled } from '../../sections/CollectionSection/_styles';
+
 
 const NewProductsGrid: FunctionComponent = () => {
   const {
@@ -14,29 +18,79 @@ const NewProductsGrid: FunctionComponent = () => {
     {},
   );
 
-  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const [perPage, setPerPage] = useState<number>(8);
   const [numPages, setNumPages] = useState<number>(0);
   const [filteredTotal, setFilteredTotal] = useState<any[]>(undefined);
+
+  // Cursor hover over the sort button
+  const [hover, setHover] = useState<boolean>(false);
+
+  // Fix this once we get number of pages
+  const nextPage = () => (currentPage !== numPages - 1 && setCurrentPage(currentPage + 1));
+  const prevPage = () => (currentPage !== 0 && setCurrentPage(currentPage - 1));
+
+  // Sorts products from lowest to highest price
+  // If sorting from low to high, arg = true, high to low then arg = false
+  const sortByPrice = (isLowToHigh) => {
+    const tempFilteredTotal = [].concat(filteredTotal);
+    if (isLowToHigh) {
+      setFilteredTotal(tempFilteredTotal.sort((a, b) => a.node.priceRange.maxVariantPrice.amount - b.node.priceRange.maxVariantPrice.amount));
+    } else {
+      setFilteredTotal(tempFilteredTotal.sort((a, b) => b.node.priceRange.maxVariantPrice.amount - a.node.priceRange.maxVariantPrice.amount));
+    }
+  };
+
+  const handleMouseOver = () => {
+    setHover(true);
+  };
+  const handleMouseLeave = () => {
+    setHover(false);
+  };
 
   useEffect(() => {
     if (productsData && !filteredTotal) {
       setFilteredTotal(productsData.products.edges
         .filter(
-          ({ node }) => node.images.edges.length > 0,
+          ({ node }) => (
+            node.images.edges.length > 0 && node.priceRange.minVariantPrice.amount > 0),
         ));
     } if (filteredTotal !== undefined) {
       setNumPages(Math.ceil(filteredTotal.length / perPage));
     }
   }, [productsData, numPages, perPage, filteredTotal]);
 
-  // Fix this once we get number of pages
-  const nextPage = () => (currentPage !== numPages - 1 && setCurrentPage(currentPage + 1));
-  const prevPage = () => (currentPage !== 0 && setCurrentPage(currentPage - 1));
-
   return (
-    <Styled.Container>
-      {productsData && filteredTotal
+    <>
+      <NavBarStyled.Container
+        onFocus={handleMouseOver}
+        onMouseOver={handleMouseOver}
+        onMouseLeave={handleMouseLeave}
+        className="sort"
+      >
+        <NavBarStyled.RootNavButton
+          hovered={hover}
+        >
+          <h4>Sort by:</h4>
+        </NavBarStyled.RootNavButton>
+
+        <NavBarStyled.SubItemContainerSortBy
+          onFocus={handleMouseOver}
+          onMouseOver={handleMouseOver}
+          onMouseLeave={handleMouseLeave}
+          hovered={hover}
+        >
+          <NavBarStyled.SubItem onClick={() => sortByPrice(true)}>
+            <span>Low to High</span>
+          </NavBarStyled.SubItem>
+          <NavBarStyled.SubItem onClick={() => sortByPrice(false)}>
+            <span>High to Low</span>
+          </NavBarStyled.SubItem>
+        </NavBarStyled.SubItemContainerSortBy>
+      </NavBarStyled.Container>
+      <GridStyled.GridContainer>
+        <Styled.Container>
+          {productsData && filteredTotal
         && (
           <>
             <Styled.Grid>
@@ -46,7 +100,7 @@ const NewProductsGrid: FunctionComponent = () => {
                   (currentPage * perPage) + (perPage),
                 ).map(({ node }, key) => {
                   const imageSrc = node.images.edges[0].node.transformedSrc;
-                  const formattedPrice = `${parseInt(node.priceRange.maxVariantPrice.amount, 10).toFixed(2)}`;
+                  const formattedPrice = `${parseFloat(node.priceRange.maxVariantPrice.amount).toFixed(2)}`;
                   if (imageSrc !== '') {
                     return (
                       <NewProductThumbnail
@@ -69,12 +123,14 @@ const NewProductsGrid: FunctionComponent = () => {
             />
           </>
         )}
-      {productsError && (
-        <p>
-          There was an error retrieving the product collection.
-        </p>
-      )}
-    </Styled.Container>
+          {productsError && (
+          <p>
+            There was an error retrieving the product collection.
+          </p>
+          )}
+        </Styled.Container>
+      </GridStyled.GridContainer>
+    </>
   );
 };
 export default NewProductsGrid;

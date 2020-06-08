@@ -5,10 +5,12 @@ import { Styled } from './_styles';
 import LogoutButton from '../LogoutButton';
 import { GetCustomerInfoResponse, CUSTOMER_INFO_QUERY } from '../../../common/queries/account';
 import CTAButton from '../CTAButton';
+import usePopupVisible from '../NavBarIconClickOut/usePopupVisible';
 
 const AccountPopup: FunctionComponent = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [accessToken, setAccessToken] = useState<string>('');
+  const { ref, isPopupVisible, setIsPopupVisible } = usePopupVisible(true);
 
   const {
     data: getCustomerData,
@@ -24,7 +26,10 @@ const AccountPopup: FunctionComponent = () => {
   });
 
   // Handler functions for IconButton
-  const toggleOpen = () => setOpen(!open);
+  const toggleOpen = () => {
+    setIsPopupVisible(!open);
+    setOpen(!open);
+  };
 
   /**
    * useEffect() - monitor 'window' variable to wait for client browser to be
@@ -39,54 +44,62 @@ const AccountPopup: FunctionComponent = () => {
       refetchCustomerData()
         .catch((err) => console.log(err));
     }
-  }, [accessToken, refetchCustomerData]);
+    if (!isPopupVisible) {
+      setOpen(false);
+    }
+  }, [accessToken, refetchCustomerData, isPopupVisible]);
 
   return (
-    <Styled.AccountButtonContainer>
-      <i className="far fa-user-circle account-btn" role="presentation" onClick={toggleOpen} />
-      <Styled.AccountPopupContainer open={open}>
-        <Styled.AccountPopup id="popup-content">
-          {getCustomerData ? (
-            <Styled.AccountDetails>
-              <h3>Account</h3>
-              <p id="account-name">
-                {getCustomerData.customer.firstName} {getCustomerData.customer.lastName}
-                <br />
-                {getCustomerData.customer.email}
-              </p>
-              <div>
-                <CTAButton
-                  id="account-page-btn"
-                  color="primary"
-                  text="Account details"
-                  onClick={toggleOpen}
-                />
-                <LogoutButton />
-              </div>
-            </Styled.AccountDetails>
-          ) : (
-            <>
-              <Link href="/login" passHref>
-                <CTAButton
-                  color="primary"
-                  text="Log in"
-                  onClick={toggleOpen}
-                  id="login-btn"
-                />
-              </Link>
-              <Link href="/register" passHref>
-                <CTAButton
-                  color="secondary"
-                  text="Sign up"
-                  onClick={toggleOpen}
-                  id="signup-btn"
-                />
-              </Link>
-            </>
-          )}
-        </Styled.AccountPopup>
-      </Styled.AccountPopupContainer>
-    </Styled.AccountButtonContainer>
+    <div ref={ref}>
+      <Styled.AccountButtonContainer>
+        <i className="far fa-user-circle account-btn" role="presentation" onClick={toggleOpen} />
+        {isPopupVisible && (
+        <Styled.AccountPopupContainer open={open}>
+          <Styled.AccountPopup id="popup-content">
+            {getCustomerData ? (
+              <Styled.AccountDetails>
+                <h3>Account</h3>
+                <p id="account-name">
+                  {getCustomerData.customer.firstName} {getCustomerData.customer.lastName}
+                  <br />
+                  {getCustomerData.customer.email}
+                </p>
+                <div>
+                  <CTAButton
+                    id="account-page-btn"
+                    color="primary"
+                    text="Account details"
+                    onClick={toggleOpen}
+                  />
+                  <LogoutButton />
+                </div>
+              </Styled.AccountDetails>
+            ) : (
+              <>
+                <Link href="/login" passHref>
+                  <CTAButton
+                    color="primary"
+                    text="Log in"
+                    onClick={toggleOpen}
+                    id="login-btn"
+                  />
+                </Link>
+                <Link href="/register" passHref>
+                  <CTAButton
+                    color="secondary"
+                    text="Sign up"
+                    onClick={toggleOpen}
+                    id="signup-btn"
+                  />
+                </Link>
+              </>
+            )}
+          </Styled.AccountPopup>
+
+        </Styled.AccountPopupContainer>
+        )}
+      </Styled.AccountButtonContainer>
+    </div>
   );
 };
 

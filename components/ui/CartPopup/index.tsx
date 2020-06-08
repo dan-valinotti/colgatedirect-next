@@ -7,7 +7,7 @@ import { Styled } from './_styles';
 import LogoutButton from '../LogoutButton';
 import CTAButton from '../CTAButton';
 import { GetCartResponse } from '../../../common/queries/checkout';
-
+import usePopupVisible from '../NavBarIconClickOut/usePopupVisible';
 /**
  * properties
  */
@@ -32,9 +32,11 @@ const CartPopup: FunctionComponent<Props> = ({
   stopPolling,
 }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
+  const { ref, isPopupVisible, setIsPopupVisible } = usePopupVisible(true);
   // Handler functions for IconButton
   const toggleOpen = () => {
     if (!open) {
+      setIsPopupVisible(true);
       setOpen(true);
       getCartRefetch()
         .then(() => {
@@ -45,6 +47,7 @@ const CartPopup: FunctionComponent<Props> = ({
         })
         .catch((error) => console.log(error));
     } else {
+      setIsPopupVisible(false);
       setOpen(false);
     }
   };
@@ -53,23 +56,30 @@ const CartPopup: FunctionComponent<Props> = ({
     if (cart) {
       getTotal(cart.node.totalPriceV2.amount);
     }
-  }, [cart, getTotal]);
+    if (!isPopupVisible) {
+      setOpen(false);
+    }
+  }, [cart, getTotal, isPopupVisible]);
 
   return (
-    <Styled.CartButtonContainer>
-      <i className="fas fa-shopping-cart" role="presentation" onClick={toggleOpen} />
-      <Styled.CartPopupContainer open={open}>
-        <Styled.CartPopup>
-          {cart && (
+    <div ref={ref}>
+      <Styled.CartButtonContainer>
+        <i className="fas fa-shopping-cart" role="presentation" onClick={toggleOpen} />
+        {isPopupVisible && (
+        <Styled.CartPopupContainer open={open}>
+          <Styled.CartPopup>
+            {cart && (
             <CartContent
               cart={cart}
               total={total}
               clearCart={clearCart}
             />
-          )}
-        </Styled.CartPopup>
-      </Styled.CartPopupContainer>
-    </Styled.CartButtonContainer>
+            )}
+          </Styled.CartPopup>
+        </Styled.CartPopupContainer>
+        )}
+      </Styled.CartButtonContainer>
+    </div>
   );
 };
 

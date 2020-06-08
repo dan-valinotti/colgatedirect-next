@@ -12,12 +12,12 @@ type Props = {
 const Paginator: FunctionComponent<Props> = ({
   perPage,
   total,
-  currentPage = 0,
+  currentPage = 1,
   nextPage,
   prevPage,
 }: Props) => (
   <Styled.Container>
-    {currentPage !== 0
+    {currentPage !== 1
       ? (
         <Styled.NextPrevButton type="button" onClick={() => prevPage()}>
           <i className="fas fa-chevron-left" />
