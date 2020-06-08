@@ -12,13 +12,18 @@ import {
 import MuiAlert from '@material-ui/lab/Alert';
 import { AccountCircle, VpnKey } from '@material-ui/icons';
 import Link from 'next/link';
+import { useMutation } from '@apollo/react-hooks';
 import jwt from 'jsonwebtoken';
 import fetch from 'node-fetch';
 import CTAButton from 'components/ui/CTAButton';
 import { Styled } from './_styles';
 import { Heading } from '../ui/Typography/index';
 import {
-  CustomerLoginRequest, ErrorStatus,
+  CustomerLoginRequest,
+  ErrorStatus,
+  LoginQueryVariables,
+  CustomerLoginResponse,
+  CUSTOMER_LOGIN_QUERY,
 } from '../../common/queries/account';
 
 
@@ -41,6 +46,16 @@ const LoginForm: FunctionComponent = () => {
     email,
     password,
   });
+
+  // GraphQL Requests
+  const [submitLoginRequest, { data: submitLoginData }] = useMutation<CustomerLoginResponse>(
+    CUSTOMER_LOGIN_QUERY,
+    {
+      variables: {
+        input: variables,
+      },
+    },
+  );
 
   // onClose event for error Snackbar component
   const handleSnackbarClose = () => {
@@ -117,6 +132,48 @@ const LoginForm: FunctionComponent = () => {
     }
   };
 
+  const submitLoginTemp = () => {
+    if (validator.isEmail(email) && password !== '') {
+      setDialogOpen(true);
+      submitLoginRequest()
+        .then((res) => {
+          setDialogOpen(false);
+          // Check if access token was returned from API
+          if (res.data.customerAccessTokenCreate.customerAccessToken) {
+            window.localStorage.setItem(
+              'customerAccessToken',
+              res.data.customerAccessTokenCreate.customerAccessToken.accessToken,
+            );
+            // Go to homepage
+            Router.push('/');
+          } else {
+            // If access token is null, there was an error - set error status
+            setErrorStatus({
+              status: true,
+              code: res.data.customerAccessTokenCreate.customerUserErrors[0].code,
+              message: 'Incorrect email / password.',
+            });
+          }
+        })
+        .catch((error) => {
+          // This error only occurs due to network events, not a login failure
+          setDialogOpen(false);
+          setErrorStatus({
+            status: true,
+            code: 'UNIDENTIFIED_ERROR',
+            message: 'Internal server error.',
+          });
+          console.log(error);
+        });
+    } else {
+      setErrorStatus({
+        status: true,
+        code: 'INVALID_INPUT',
+        message: 'Please enter a valid email and password.',
+      });
+    }
+  };
+
   // onKeyDown event for TextFields to submit form on pressing 'enter'
   const handleKeyPress = (event) => {
     if (event.keyCode === 13) {
@@ -180,7 +237,7 @@ const LoginForm: FunctionComponent = () => {
           <Styled.SubmitButtonContainer>
             <CTAButton
               color="secondary"
-              onClick={() => submitLogin()}
+              onClick={() => submitLoginTemp()}
               id="form-submit"
               text="Submit"
             />

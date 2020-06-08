@@ -3,13 +3,12 @@ import { useMutation, useQuery } from '@apollo/react-hooks';
 import {
   CircularProgress, Typography, DialogContent, Dialog, ButtonGroup, Button,
 } from '@material-ui/core';
-import { ProductsType, PRODUCTS_QUERY } from '../../common/queries/products';
+import { ProductsType, PRODUCTS_QUERY, getLineItems } from '../../common/queries/products';
 import {
   CHECKOUT_LINE_ITEMS_REPLACE_MUTATION,
   GET_CART_QUERY,
   GetCartRequest,
 } from '../../common/queries/checkout';
-import { getLineItems } from '../../common/queries/products';
 import { Styled as StyledThumbnail } from '../ui/ProductThumbnail/_styles';
 import { Styled as StyledGrid } from '../ui/ProductsGrid/_styles';
 
@@ -63,6 +62,7 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
   });
 
   const addToCartFunc = () => {
+    console.log('HERE');
     if (cartToken && getCartData) {
       setAddButton(true);
       setLoading(true);
@@ -97,6 +97,7 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
               quantity: 1,
             });
           }
+          console.log(currentItems);
           // Set state variable lineItems to new list and run replacement query
           setLineItems(currentItems);
           replaceItems().then(() => {
@@ -119,6 +120,7 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
   };
 
   const removeFromCart = () => {
+    console.log('REMOVE');
     if (cartToken && getCartData) {
       setAddButton(false);
       setLoading(true);
@@ -134,6 +136,7 @@ function AddToCart({ variantId, quantityButton, quantity }: Props) {
           );
           currentItems[index].quantity -= 1;
 
+          console.log(currentItems[index].quantity);
           // remove item once it's quantity equals zero
           currentItems = currentItems.filter((item) => item.quantity !== 0);
 

@@ -7,6 +7,4 @@ services:
     ports:
       - 3000:3000
     environment:
-      - JWT_SECRET="Lk4paP9xFozBw2y0wjpXYQx+IgyWgrkbMSWc28KbeaqOHqWZkYyeeQtMjiXZLETbp/mJAaBn/UZHVF/hnHGQF0WQz1TupC2OrVnt1I03BielRoCjrft2gOPxb2WNRSmpuMCzKA2HZVtevRjbr4x++9MMIrLthM/CGPRawSOJyj6TEmmJC1eCzvbpvu++CPb07Sc7pSQtJIW8vWdpHirYOCFeuHrP+1zYlmKzWtZgb3QV1x0zU+5olbn+Pad7bipU70DksRXEVbtHBpIVM9y/UZqleWdTx4AUcBeJCEThHnB2y9o25+1yJKePWSYBBbxUQ/uYKRVWfSbZ+lpxJaZ9Fg=="
-    env_file:
-      - .env
+      - JWT_SECRET=Lk4paP9xFozBw2y0wjpXYQx+IgyWgrkbMSWc28KbeaqOHqWZkYyeeQtMjiXZLETbp/mJAaBn/UZHVF/hnHGQF0WQz1TupC2OrVnt1I03BielRoCjrft2gOPxb2WNRSmpuMCzKA2HZVtevRjbr4x++9MMIrLthM/CGPRawSOJyj6TEmmJC1eCzvbpvu++CPb07Sc7pSQtJIW8vWdpHirYOCFeuHrP+1zYlmKzWtZgb3QV1x0zU+5olbn+Pad7bipU70DksRXEVbtHBpIVM9y/UZqleWdTx4AUcBeJCEThHnB2y9o25+1yJKePWSYBBbxUQ/uYKRVWfSbZ+lpxJaZ9Fg==
