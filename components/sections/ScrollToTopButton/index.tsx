@@ -1,6 +1,7 @@
 import React, {
   FunctionComponent, useState, useEffect, useRef,
 } from 'react';
+import CTAButton from '../../ui/CTAButton';
 import { Styled } from './_styles';
 
 
@@ -24,18 +25,25 @@ const ScrollToTopButton: FunctionComponent = () => {
   };
 
   useEffect(() => {
-    document.addEventListener('scroll', toggleVisibility);
+    window.addEventListener('scroll', toggleVisibility);
   });
 
   return (
     <Styled.Container>
       {isButtonVisible && (
-      <Styled.Button onClick={() => scrollToTop}>
-        <div>To Top</div>
-      </Styled.Button>
+        <CTAButton
+          id="account-page-btn"
+          color="secondary"
+          text="Scroll To Top"
+          onClick={scrollToTop}
+        />
       )}
     </Styled.Container>
   );
 };
-
+/*
+<Styled.Button onClick={scrollToTop}>
+        <div>To Top</div>
+      </Styled.Button>
+*/
 export default ScrollToTopButton;
