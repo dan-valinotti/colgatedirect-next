@@ -31,12 +31,9 @@ const ScrollToTopButton: FunctionComponent = () => {
   return (
     <Styled.Container>
       {isButtonVisible && (
-        <CTAButton
-          id="account-page-btn"
-          color="secondary"
-          text="Scroll To Top"
-          onClick={scrollToTop}
-        />
+        <Styled.Button onClick={scrollToTop}>
+        <div>^</div>
+      </Styled.Button>
       )}
     </Styled.Container>
   );
@@ -45,5 +42,12 @@ const ScrollToTopButton: FunctionComponent = () => {
 <Styled.Button onClick={scrollToTop}>
         <div>To Top</div>
       </Styled.Button>
+
+      <CTAButton
+          id="account-page-btn"
+          color="secondary"
+          text="Scroll To Top"
+          onClick={scrollToTop}
+        />
 */
 export default ScrollToTopButton;
