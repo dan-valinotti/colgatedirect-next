@@ -41,13 +41,4 @@ const ScrollToTopButton: FunctionComponent = () => {
     </Styled.Container>
   );
 };
-/*
-<Styled.Button onClick={scrollToTop}>
-        <div>To Top</div>
-      </Styled.Button>
-<Styled.Button onClick={scrollToTop}>
-          <div>^</div>
-        </Styled.Button>
-
-*/
 export default ScrollToTopButton;
