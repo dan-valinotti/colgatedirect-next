@@ -34,7 +34,7 @@ const ScrollToTopButton: FunctionComponent = () => {
       <CTAButton
         id="scroll-to-top-btn"
         color="secondary"
-        text={<i className="far fa-user-circle account-btn" role="presentation" />}
+        text={<i className="fa fa-chevron-up" role="presentation" />}
         onClick={scrollToTop}
       />
       )}
