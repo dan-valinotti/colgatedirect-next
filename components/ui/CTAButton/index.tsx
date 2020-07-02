@@ -9,7 +9,7 @@ type Props = {
   /**
    * Text contained in button.
    */
-  text: string;
+  text: React.ReactNode;
   /**
    * Function to be executed on button click.
    */
@@ -29,7 +29,7 @@ const CTAButton: FunctionComponent<Props> = React.forwardRef(({
 }: Props, ref: any) => (
   <Styled.Container ref={ref}>
     <Styled.Button id={id} color={color} onClick={onClick}>
-      <Styled.ButtonText>
+      <Styled.ButtonText id={id}>
         {text}
       </Styled.ButtonText>
     </Styled.Button>
