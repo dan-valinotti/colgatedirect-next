@@ -11,7 +11,8 @@ const Button = styled.button`
   justify-content: center;
   align-items: center;
   color: ${(props) => theme.palette[props.color].main};
-  border: 2px solid ${(props) => theme.palette[props.color].main};
+  border:${(props) => ((props.id === 'scroll-to-top-btn') ? 'none' : '2px solid')};
+  border-color: ${(props) => theme.palette[props.color].main};
   border-radius: 0.5rem;
   min-width: ${(props) => ((props.id === 'scroll-to-top-btn') ? '20px' : '270px')};
   height: min-content;
@@ -24,8 +25,9 @@ const Button = styled.button`
 
   &:hover {
     cursor: pointer;
-    color: #efefef;
-    background-color: ${(props) => theme.palette[props.color].main};
+    color: ${(props) => ((props.id === 'scroll-to-top-btn') ? '#535353' : '#efefef')};
+
+    background-color: ${(props) => ((props.id === 'scroll-to-top-btn') ? 'none' : theme.palette[props.color].main)};
     border-color: ${(props) => theme.palette[props.color].main};
   }
 `;
@@ -34,7 +36,7 @@ const ButtonText = styled.p`
   font-family: "Colgate Ready", serif;
   padding: 0.75rem 0;
   margin: 0 auto;
-  font-size: 1rem;
+  font-size: ${(props) => ((props.id === 'scroll-to-top-btn') ? '2rem' : '1rem')};
   text-transform: uppercase;
 `;
 
