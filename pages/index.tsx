@@ -10,7 +10,7 @@ import { withMuiApp } from '../hocs/withMui';
 import FooterNav from '../components/FooterNav';
 import { theme } from '../views/theme';
 import PageContentSection from '../components/sections/PageContentSection';
-import ScrollToTopButton from '../components/sections/ScrollToTopButton';
+import ScrollToTopButton from '../components/ui/ScrollToTopButton';
 import { withApollo } from '../lib/apollo';
 
 function ProductsPage() {
